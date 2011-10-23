@@ -1,0 +1,71 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--using-xsl/choosingmodel
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: Choosing a Tree Model</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Choosing a Tree Model">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      
+      
+      <h1>Choosing a Tree Model</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Saxon provides two implementations of the internal tree data structure (or tree model).
+         The tree model can be chosen by an option on the command line (-dt for the tiny tree, -ds
+         for the standard tree) or from the Java API. The default is to use the tiny tree model.
+         The choice should make no difference to the results of a transformation (except the order
+         of attributes and namespace declarations) but only affects performance.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><i>There is an exception to this: the so-called "standard" tree model
+            (-ds) does not support type annotations. If you use Saxon-SA to annotate
+            element and attribute nodes, use the "tiny tree" (-dt).</i></p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Generally speaking, the tiny tree model is faster to build but slower to navigate. It
+         therefore performs better when you visit each node on the tree once or less. The only case
+         where the tiny tree is known to be significantly slower than the standard tree is when there
+         is a large "fan-out" (a parent node with thousands of immediate children) combined with very frequent use
+         of the parent axis.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The tiny tree model gives most benefit when you are processing a large document. It uses
+         a lot less memory, so it can prevent thrashing when the size of document
+         is such that the standard tree doesn't fit in real memory.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><i>If in doubt, stick with the default.</i></p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="choosingmodel.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="embedding.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

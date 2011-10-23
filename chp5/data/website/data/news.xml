@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<?xml-stylesheet href="../library/error.xsl" type="text/xsl"?>
+<resource name="news">
+<asset status='current' lastedit='27/09/2002'>
+<title>
+	<txt xml:lang="de">German News Article Title</txt>
+	<txt xml:lang="en">English News Article Title</txt>
+	<txt xml:lang="fr">French News Article Title</txt>
+	<txt xml:lang="it">Italian News Article Title</txt>
+</title>
+<summary>
+	<txt xml:lang="de">German summary version of news article</txt>
+	<txt xml:lang="en">English summary version of news article</txt>
+	<txt xml:lang="fr">French summary version of news article</txt>
+	<txt xml:lang="it">Italian summary version of news article</txt>
+</summary>
+</asset>
+
+<asset status='current' lastedit='03/09/2003'>
+<title>
+	<txt xml:lang="de">2nd German News Article Title</txt>
+	<txt xml:lang="en">2nd English News Article Title</txt>
+	<txt xml:lang="fr">2nd French News Article Title</txt>
+	<txt xml:lang="it">2nd Italian News Article Title</txt>
+</title>
+<summary>
+	<txt xml:lang="de">2nd German summary version of news article</txt>
+	<txt xml:lang="en">2nd English summary version of news article</txt>
+	<txt xml:lang="fr">2nd French summary version of news article</txt>
+	<txt xml:lang="it">2nd Italian summary version of news article</txt>
+</summary>
+</asset>
+</resource>

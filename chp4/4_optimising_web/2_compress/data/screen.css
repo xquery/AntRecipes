@@ -1,0 +1,3220 @@
+body {
+	font: 65%/1.3em "Trebuchet MS", Verdana, Arial, sans-serif;
+}
+a { color: #B4AF76; }
+
+div.container {
+	margin: 0 auto;
+	width: 940px;
+}
+
+div#header {
+	background: #1E2435;
+	height: 85px;
+}
+
+	div#header div.container {
+		padding-top: 13px;
+	}
+	
+	div#headerleft {
+		float: left;
+		padding-left: 17px;
+		margin-top: 3px;
+	}
+	
+	div#logo {
+		float: left;
+	}
+	
+	div#header h1 {
+		float: left;
+		width: 143px;
+		height: 27px;
+		text-indent: -10000px;
+		background: url(/resource/images/layout/header-h1.gif) top left no-repeat;
+	}
+	
+	div#header h2 {
+		float: left;
+		margin: 7px 0 0 15px;
+		color: #B4AF76;
+		letter-spacing: 0.5px;
+		font-weight: normal;
+		font-size: 1.4em;
+	}
+	
+	div#header ul#menu {
+		clear: both;
+		padding-top: 10px;
+	}
+	div#header ul#menu li {
+		display: block;
+		float: left;
+		margin-right: 2px;
+	}
+
+	div#header ul#menu li a {
+		display: block;
+		height: 32px;
+		text-indent: -10000px;
+	}
+
+	div#header ul#menu li#manufacturer a { width: 155px; background: url(/resource/images/layout/header-menu-manufacturer.png) 0 0; }
+	div#header ul#menu li#business a { width: 109px; background: url(/resource/images/layout/header-menu-business.png) 0 0; }
+	div#header ul#menu li#accessories a { width: 129px; background: url(/resource/images/layout/header-menu-accessories.png) 0 0; }
+	div#header ul#menu li#aftersales a { width: 79px; background: url(/resource/images/layout/header-menu-aftersales.png) 0 0; }
+	div#header ul#menu li#insurance a { width: 79px; background: url(/resource/images/layout/header-menu-insurance.png) 0 0; }
+	div#header ul#menu li#repair a { width: 111px; background: url(/resource/images/layout/header-menu-repair.png) 0 0; }
+	div#header ul#menu li#motability a { width: 87px; background: url(/resource/images/layout/header-menu-motability.png) 0 0; }
+
+	div#header ul#menu li#manufacturer a:hover { background-position: 0 -32px; }
+	div#header ul#menu li#business a:hover { background-position: 0 -32px; }
+	div#header ul#menu li#accessories a:hover { background-position: 0 -32px; }
+	div#header ul#menu li#aftersales a:hover { background-position: 0 -32px; }
+	div#header ul#menu li#insurance a:hover { background-position: 0 -32px; }
+	div#header ul#menu li#repair a:hover { background-position: 0 -32px; }
+	div#header ul#menu li#motability a:hover { background-position: 0 -32px; }
+
+	div#header ul#menu li#manufacturer a.current { background-position: 0 -32px; }
+	div#header ul#menu li#business a.current { background-position: 0 -64px; }
+	div#header ul#menu li#accessories a.current { background-position: 0 -64px; }
+	div#header ul#menu li#aftersales a.current { background-position: 0 -64px; }
+	div#header ul#menu li#insurance a.current { background-position: 0 -64px; }
+	div#header ul#menu li#repair a.current { background-position: 0 -64px; }
+	div#header ul#menu li#motability a.current { background-position: 0 -64px; }
+
+	div#header ul#menu li.select-open a { background-position: 0 -32px !important; }
+
+	div#header ul#manufacturer-select {
+		position: absolute;
+		width: 155px;
+		height: 113px;
+		z-index: 100;
+		display: none;
+	}
+
+	div#header ul#manufacturer-select li a {
+		text-indent: -10000px;
+		height: 28px !important;
+		display: block;
+	}
+
+	div#header ul#manufacturer-select li#manufacturer-select-toyota a {
+		height: 29px !important;
+	}
+
+	div#header ul#manufacturer-select li#manufacturer-select-lexus a {
+		background: url(/resource/images/layout/header-menu-lexus.png) top left no-repeat !important;
+	}
+	div#header ul#manufacturer-select li#manufacturer-select-mazda a {
+		background: url(/resource/images/layout/header-menu-mazda.png) top left no-repeat !important;
+	}
+	div#header ul#manufacturer-select li#manufacturer-select-peugeot a {
+		background: url(/resource/images/layout/header-menu-peugeot.png) top left no-repeat !important;
+	}
+	div#header ul#manufacturer-select li#manufacturer-select-toyota a {
+			background: url(/resource/images/layout/header-menu-toyota.png) top left no-repeat !important;
+	}
+
+	div#header ul#manufacturer-select li#manufacturer-select-lexus a:hover { background-position: 0 -28px !important; }
+	div#header ul#manufacturer-select li#manufacturer-select-mazda a:hover { background-position: 0 -28px !important; }
+	div#header ul#manufacturer-select li#manufacturer-select-peugeot a:hover { background-position: 0 -28px !important; }
+	div#header ul#manufacturer-select li#manufacturer-select-toyota a:hover { background-position: 0 -29px !important; }
+
+	
+	div#header div#submenu {
+		position: absolute;
+		margin: -13px 0 0 780px;
+		color: #B4AF76;
+		text-align: center;
+		width: 153px;
+		overflow: hidden;
+		background: url(/resource/images/layout/header-submenu-bg.png) no-repeat;
+	}
+	div#header div#submenu a {
+		font-weight: normal;
+		text-decoration: none;
+		color: #B4AF76;
+	}
+	div#header div#submenu a:hover {
+		text-decoration: underline;
+	}
+
+	img#header-login-button { margin: 5px 4px 45px 4px; }
+	img#header-login-button:hover { background: url(/resource/images/layout/header-login-button.png) no-repeat; }
+	img#header-myaccount-button { margin: 5px 3px 45px 2px; }
+	img#header-myaccount-button:hover { background: url(/resource/images/layout/header-myaccount-button.png) no-repeat; }
+	img#header-basket-button { margin: 5px 0 45px 4px; }
+	img#header-basket-button:hover { background: url(/resource/images/layout/header-basket-button.png) no-repeat; }
+	
+div#content {
+	padding-top: 25px;
+	background: url(/resource/images/layout/content-bg.png) top left repeat-x;
+}
+
+div#maincolumn {
+	float: left;
+	width: 760px;
+}
+
+div#leftcolumn {
+	width: 760px;
+}
+
+div#rightcolumn {
+	float: right;
+	width: 160px;
+}
+
+div#bottomcolumn {
+	width: 760px;
+	margin-top: 10px;
+	float: left;
+}
+
+div#bottomleft {
+	float: left;
+	margin-left: -4px;
+	width: 602px;
+}
+	
+div#footer {
+	margin-top: 30px;
+	padding-bottom: 1em;
+	color: #999;
+	font-size: 0.9em;
+}
+
+	div#footer a {
+		color: #999;
+		text-decoration: none;
+	}
+	div#footer a:hover {
+		text-decoration: underline;
+	}
+	div#footer div#footerright {
+		float: right;
+	}
+
+div.clear {
+	clear: both;
+}
+
+div#homepanel {
+	width: 756px;
+	height: 412px;
+	/*background: url(/resource/images/layout/homepanel-bg.png) top left no-repeat;*/
+}
+
+div#homepanel-background {
+	width: 599px;
+	height: 406px;
+	position: absolute;
+	border-right: 1px solid #E0E0E0;
+}
+img.homepanel-background-image {
+	width: 599px;
+	height: 406px;
+	position: absolute;
+	display: none;
+}
+div#homepanel-background-rrg { display: block; background: #FFF; z-index: 0; }
+/*div#homepanel-background-lexus { background: url(/resource/images/home/lexus.jpg) top left no-repeat; }
+div#homepanel-background-mazda { background: url(/resource/images/home/mazda.jpg) top left no-repeat; }
+div#homepanel-background-peugeot { background: url(/resource/images/home/peugeot.jpg) top left no-repeat; }
+div#homepanel-background-toyota { background: url(/resource/images/home/toyota.jpg) top left no-repeat; }*/
+
+div#tab-rrg {
+	width: 148px;
+	height: 34px;
+	background: url(/resource/images/layout/tablogo-rrg.png) top left no-repeat;
+	cursor: pointer;
+	text-indent: -10000px;
+	position: relative;
+}
+div#tab-rrg.tab-rrg-active {
+	background: url(/resource/images/layout/tablogo-rrg-active.png) top left no-repeat;
+}
+
+ul#manufacturer-tabs {
+	position: absolute;
+}
+ul#manufacturer-tabs li {
+	width: 148px;
+	height: 93px;
+	margin-bottom: 0px;
+	display: block;
+	overflow: hidden;
+	padding: 0;
+	cursor: pointer;
+	background: url(/resource/images/layout/homepanel-tab-bg2.png) bottom left no-repeat;
+}
+ul#manufacturer-tabs li a {
+	display: block;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	text-align: center;
+}
+
+ul#manufacturer-tabs li#tab-toyota { background: url(/resource/images/layout/homepanel-tab-bottom-bg.png) bottom left no-repeat; }
+
+ul#manufacturer-tabs li#tab-lexus img { width: 100px; height: 45px; margin: -23px 0 0 -50px; position: absolute; }
+ul#manufacturer-tabs li#tab-mazda img { width: 58px; height: 62px; margin: -31px 0 0 -29px; position: absolute; }
+ul#manufacturer-tabs li#tab-peugeot img { width: 76px; height: 62px; margin: -31px 0 0 -38px; position: absolute; }
+ul#manufacturer-tabs li#tab-toyota img { width: 75px; height: 62px; margin: -31px 0 0 -38px; position: absolute; }
+
+ul#manufacturer-tabs li#tab-toyota.active { background: url(/resource/images/layout/homepanel-tab-bottom-active2.png) bottom left no-repeat !important; }
+ul#manufacturer-tabs li.active { background: url(/resource/images/layout/homepanel-tab-active2.png) bottom left no-repeat !important; }
+
+
+div#homepanel-main {
+	position: absolute;
+	height: 404px;
+	width: 451px;
+	margin: -33px 0 0 148px;
+}
+div.homepanel-main-text {
+	height: 404px;
+	width: 599px;
+	padding-left: 30px;
+	display: none;
+	position: absolute;
+}
+div#homepanel-main-rrg {
+	display: block;
+}
+div#homepanel-main-rrg-inner {
+	width: 300px;
+}
+div#homepanel-main-rrg-inner p {
+	position: absolute;
+	width: 135px;
+	margin-top: 130px;
+	margin-left: -5px;
+	font-size: 1.2em;
+	color: #656565;
+	line-height: 120%;
+}
+div#homepanel-main-rrg-inner p a {
+	color: #B4AF76;
+	text-decoration: none;
+	text-transform: none;
+}
+div#homepanel-main-rrg-inner p a:hover { text-decoration: underline; }
+
+
+div#homepanel-main h3 {
+	font-size: 36px;
+	font-weight: bold;
+	margin-top: 30px;
+	margin-bottom: 16px;
+}
+div#homepanel-main h3.white {
+	color: #FFF;
+}
+div#homepanel-main h3.subheading {
+	font-weight: normal;
+	margin-top: 0;
+	color: #7F7F7F;
+	font-size: 28px;
+	line-height: 110%;
+	padding-bottom: 5px;
+}
+div#homepanel-main h4 {
+	font-size: 20px;
+	font-weight: normal;
+	margin-bottom: 10px;
+}
+div#homepanel-main h4 span {
+	font-size: 16px;
+}
+div#homepanel-main h4.white {
+	color: #FFF;
+}
+
+div#homepanel-main a {
+	text-transform: uppercase;
+	font-size: 12px;
+	font-weight: bold;
+	color: #000;
+}
+div#homepanel-main a.white {
+	color: #FFF;
+}
+
+div#homepanel-main img {
+	vertical-align: bottom;
+	margin-right: 5px;
+}
+
+div#homepanel-main ul {
+	width: 170px;
+}
+div#homepanel-main li {
+	background: url(/resource/images/home/bullet-black.gif) 0 0 no-repeat;
+	padding-left: 15px;
+	font-size: 1.2em;
+	margin-top: 20px;
+	line-height: 120%;
+}
+div#homepanel-main li strong {
+	text-transform: uppercase;
+	display: block;
+	white-space: nowrap;
+	margin-bottom: 0.3em;
+	font-size: 1.1em;
+}
+div#homepanel-main li a {
+	text-transform: none;
+	color: #B4AF76;
+}
+
+div#homepanel-main div.bulletblack {
+	width: 14px;
+	height: 13px;
+	float: left;
+	text-indent: -10000px;
+	background: url(/resource/images/home/bullet-black.png) top left no-repeat;
+}
+
+div#homepanel-main div.bulletwhite {
+	width: 14px;
+	height: 13px;
+	float: left;
+	text-indent: -10000px;
+	background: url(/resource/images/home/bullet-white.png) top left no-repeat;
+}
+
+div#homepanel-topbar { position:absolute;margin-left:148px;width:452px;height:1px;font-size:1px;border-top:1px solid #CFCFCF; }
+div#homepanel-bottombar { position:absolute;margin-top:405px;margin-left:6px;width:594px;height:7px;background:url(/resource/images/layout/homepanel-bg-bottom.png) top left repeat-x; }
+
+div#homepanel-side {
+	margin: 0 0 0 600px;
+	height: 412px;
+	width: 160px;
+	z-index:1000;
+	position: absolute;
+	background: url(/resource/images/layout/homepanel-bg-side.png) top right no-repeat;
+}
+div.homepanel-side-text {
+	position: absolute;
+	display: none;
+}
+div#homepanel-side-rrg {
+	display: block;
+}
+div#homepanel-right {
+	width: 20px;
+	height: 20px;
+	background: url(/resource/images/layout/homepanel-right.png);
+	position: absolute;
+	margin-top: 392px;
+	margin-left: 140px;
+	z-index: 2000;
+}
+
+div.hr {
+	height: 1px;
+	width: 153px;
+	background: url(/resource/images/layout/hr.gif) top left repeat-x;
+	font-size: 1px;
+}
+
+h3.new-models {
+	background: url(/resource/images/layout/h3-new-models.png) top left no-repeat;
+	text-indent: -10000px;
+	margin: 15px 0 10px 10px;
+	width: 99px;
+	height: 12px;
+}
+
+h3.promotions {
+	background: url(/resource/images/layout/h3-promotions.png) top left no-repeat;
+	text-indent: -10000px;
+	margin: 20px 0 10px 10px;
+	width: 98px;
+	height: 12px;
+}
+
+img.promotion {
+	width: 153px;
+	height: 85px;
+	border-bottom: 1px solid #E0E0E0;
+}
+
+img.video {
+	width: 153px;
+	height: 85px;
+	border-bottom: 1px solid #E0E0E0;
+	cursor: pointer;
+}
+
+
+h3.latest-videos {
+	background: url(/resource/images/layout/h3-latest-videos.png) top left no-repeat;
+	text-indent: -10000px;
+	margin: 10px 0 10px 10px;
+	width: 107px;
+	height: 12px;
+}
+
+h3.latest-news {
+	background: url(/resource/images/layout/h3-latest-news.png) top left no-repeat;
+	text-indent: -10000px;
+	margin: 15px 0 10px 10px;
+	width: 116px;
+	height: 12px;
+}
+
+h3.hear-about-it-first {
+	background: url(/resource/images/layout/h3-hear-about-it-first.png) top left no-repeat;
+	text-indent: -10000px;
+	width: 153px;
+	height: 15px;
+}
+
+div.new-models-scroller {
+	margin: 10px;
+	width: 130px;
+	height: 107px;
+	overflow: auto;
+	position: relative;
+}
+div.new-models-scroller li {
+	background: url(/resource/images/layout/bullet-grey.gif) 0 4px no-repeat;
+	margin-bottom: 0.2em;
+	padding-left: 10px;
+	font-size: 1.1em;
+}
+div.new-models-scroller li a {
+	color: #3F475C;
+	text-decoration: none;
+}
+div.new-models-scroller li a:hover {
+	text-decoration: underline;
+}
+
+ul#latest-news-list li {
+	background: url(/resource/images/layout/bullet-grey.gif) 0 4px no-repeat;
+	padding-left: 10px;
+	margin-bottom: 0.8em;
+	color: #3F475C;
+	font-size: 1.1em;
+}
+ul#latest-news-list li a {
+	color: #B4AF76;
+	font-weight: bold;
+	text-decoration: none;
+	white-space: nowrap;
+}
+ul#latest-news-list li a:hover {
+	text-decoration: underline;
+}
+
+div#three-column-box-header {
+	width: 593px;
+	height: 6px;
+	background: url(/resource/images/layout/three-column-box-header-bg.png) top left no-repeat;
+}
+
+div#three-column-box-content {
+	width: 543px;
+	background: url(/resource/images/layout/three-column-box-content-bg.png) bottom left no-repeat;
+	padding: 6px 35px 20px 35px;
+}
+
+div#three-column-box-content ul {
+	float: right;
+	width: 200px;
+	margin-right: 25px;
+}
+
+div#three-column-box-content li {
+	background: url(/resource/images/layout/bullet-big-bluebg.gif) 0 0.5em no-repeat;
+	border-bottom: 1px solid #454850;
+}
+
+div#three-column-box-content li a {
+	font-size: 1.2em;
+	color: #B4AF76;
+	text-decoration: none;
+	line-height: 1.5em;
+	display: block;
+	text-indent: 1.5em;
+	text-transform: lowercase;
+}
+div#three-column-box-content li a:hover {
+	text-decoration: underline;
+}
+
+div#three-column-box-content p {
+	font-weight: normal;
+	margin: 3px 0 7px 0;
+	color: #A8ABB1;
+	font-size: 10px;
+}
+div#three-column-box-content p a {
+	text-decoration: none;
+	font-size: 0.8em;
+	color: #B4AF76;
+}
+div#three-column-box-content p a:hover {
+	text-decoration: underline;
+}
+
+div#three-column-box-content label { display: none; }
+div#three-column-box-content input { font-size: 1.2em; margin-top: 0.5em; width: 230px; }
+input.unchanged { color: #999; }
+div#three-column-box-content input.submit { vertical-align: top; margin-left: 10px; width: auto; }
+
+img#book-your-service {
+	float: right;
+	margin-right: 1px;
+}
+
+/* scroller */
+.scrollgeneric {
+	line-height: 1px;
+	font-size: 1px;
+	position: absolute;
+	top: 0; left: 0;
+}
+.vscrollerbase {
+	width: 10px;
+	background: url(/resource/images/layout/homepanel-scroller-base.png) top left no-repeat;
+}
+.vscrollerbar {
+	width: 10px;
+	background: #666666;
+}
+.vscrollerbarbeg {
+	background: url(/resource/images/layout/homepanel-scroller-bar-top.png) top left no-repeat;
+	width: 10px;
+	height: auto;
+	top: 0px;
+}
+
+.vscrollerbarend {
+	background: url(/resource/images/layout/homepanel-scroller-bar-bottom.png);
+	width: 10px;
+	height: 10px;
+}
+
+
+
+
+/***********************************/
+/* added 10 june - toyota homepage */
+/***********************************/
+div#interiorpanel {
+	width: 756px;
+	margin-left: -4px;
+}
+
+div#interiorpanel-header {
+	height: 7px;
+	background: url(/resource/images/layout/interiorpanel-header-bg.png) top left no-repeat;
+	font-size: 1px;
+}
+
+div#interiorpanel-content {
+	background: url(/resource/images/layout/interiorpanel-bg.png) bottom left repeat-y;
+	padding-top: 10px;
+	padding-bottom: 20px;
+}
+
+div#interiorpanel-content.withcarousel {
+	padding-bottom: 0 !important;
+}
+
+div#interiorpanel-main {
+	clear: both;
+	padding-top: 15px;
+	margin: 0 4px 0 4px;
+}
+
+div#interiorpanel-hero {
+	clear: both;
+	height: 300px;
+}
+
+img.interiorpanel-hero-background {
+	height: 300px;
+	width: 748px;
+	position: absolute;
+	display: none;
+}
+
+div#manufacturer-branches {
+	margin: 15px 0 15px 15px;
+	float: left;
+	position: absolute;
+	background: #FFF;
+	padding: 10px 10px 5px 10px;
+	opacity: 0.6;
+}
+div#manufacturer-branches ul li {
+	font-size: 1em;
+}
+div#manufacturer-branches ul li a {
+	color: #666;
+	font-weight: bold;
+	text-decoration: none;
+	white-space: nowrap;
+}
+div#manufacturer-branches ul a:hover {
+	text-decoration: underline;
+}
+
+div#model-selector {
+	background: #FFF;
+	margin: 15px 15px 0 0;
+	float: right;
+	width: 125px;
+	position: relative;
+	padding: 15px 15px 10px 15px;
+	opacity: 0.9;
+}
+
+div#model-selector ul#model-selector-toyota {
+	padding: 15px 0 0 0;
+}
+
+div#model-selector ul#model-selector-toyota li {
+	background: url(/resource/images/layout/bullet-red.gif) 0 4px no-repeat;
+	padding-left: 10px;
+	margin-bottom: 0.4em;
+	font-size: 1.1em;
+}
+div#model-selector ul#model-selector-toyota li a {
+	color: #444;
+	text-decoration: none;
+	white-space: nowrap;
+}
+div#model-selector ul#model-selector-toyota a:hover {
+	text-decoration: underline;
+}
+div#model-selector ul#model-selector-toyota li.current a {
+	font-weight: bold;
+	color: #B51222;
+}
+
+div#interiorpanel-carousel {
+	background: #999;
+	height: 120px;
+}
+
+h3.toyota-models {
+	width: 125px;
+	height: 12px;
+	text-indent: -10000px;
+	background: url(/resource/images/layout/h3-toyota-models.png) top left no-repeat;
+}
+
+h3.branches {
+	width: 65px;
+	height: 12px;
+	text-indent: -10000px;
+	background: url(/resource/images/layout/h3-branches.png) top left no-repeat;
+	margin-bottom: 5px;
+}
+
+h2.toyota {
+	width: 159px;
+	height: 28px;
+	text-indent: -10000px;
+	background: url(/resource/images/toyota/logo.gif) top left no-repeat;
+	margin-left: 20px;
+	float: left;
+}
+
+ul#toyota-nav {
+	width: 524px;
+	position: absolute;
+	height: 21px;
+	margin-left: 204px;
+	margin-top: 4px;
+}
+
+ul#toyota-nav li {
+	display: block;
+	float: left;
+}
+ul#toyota-nav li a {
+	display: block;
+	height: 21px;
+	background: url(/resource/images/toyota/nav.png);
+	text-indent: -10000px;
+}
+ul#toyota-nav li.new-cars a { width: 65px; background-position: 0 0; margin-right: 3px; }
+ul#toyota-nav li.used-cars a { width: 67px; background-position: -68px 0; margin-right: 4px; }
+ul#toyota-nav li.accessories a { width: 76px; background-position: -139px 0; margin-right: 3px; }
+ul#toyota-nav li.showrooms a { width: 73px; background-position: -218px 0; margin-right: 6px; }
+ul#toyota-nav li.lcv a { width: 32px; background-position: -297px 0; margin-right: 7px; }
+ul#toyota-nav li.aftersales a { width: 65px; background-position: -336px 0; margin-right: 5px; }
+ul#toyota-nav li.finance a { width: 55px; background-position: -406px 0; margin-right: 5px; }
+ul#toyota-nav li.business a { width: 58px; background-position: -466px 0; }
+
+ul#toyota-nav li.new-cars a:hover { width: 65px; background-position: 0 -21px; margin-right: 3px; }
+ul#toyota-nav li.used-cars a:hover { width: 67px; background-position: -68px -21px; margin-right: 4px; }
+ul#toyota-nav li.accessories a:hover { width: 76px; background-position: -139px -21px; margin-right: 3px; }
+ul#toyota-nav li.showrooms a:hover { width: 73px; background-position: -218px -21px; margin-right: 6px; }
+ul#toyota-nav li.lcv a:hover { width: 32px; background-position: -297px -21px; margin-right: 7px; }
+ul#toyota-nav li.aftersales a:hover { width: 65px; background-position: -336px -21px; margin-right: 5px; }
+ul#toyota-nav li.finance a:hover { width: 55px; background-position: -406px -21px; margin-right: 5px; }
+ul#toyota-nav li.business a:hover { width: 58px; background-position: -466px -21px; }
+
+ul#toyota-nav li.new-cars a:active, ul#toyota-nav li.active a { width: 65px; background-position: 0 -42px; margin-right: 3px; }
+ul#toyota-nav li.used-cars a:active, ul#toyota-nav li.used-cars.active a { width: 67px; background-position: -68px -42px; margin-right: 4px; }
+ul#toyota-nav li.accessories a:active, ul#toyota-nav li.accessories.active a { width: 76px; background-position: -139px -42px; margin-right: 3px; }
+ul#toyota-nav li.showrooms a:active, ul#toyota-nav li.showrooms.active a { width: 73px; background-position: -218px -42px; margin-right: 6px; }
+ul#toyota-nav li.lcv a:active, ul#toyota-nav li.lcv.active a { width: 32px; background-position: -297px -42px; margin-right: 7px; }
+ul#toyota-nav li.aftersales a:active, ul#toyota-nav li.aftersales.active a { width: 65px; background-position: -336px -42px; margin-right: 5px; }
+ul#toyota-nav li.finance a:active, ul#toyota-nav li.finance.active a { width: 55px; background-position: -406px -42px; margin-right: 5px; }
+ul#toyota-nav li.business a:active, ul#toyota-nav li.business.active a { width: 58px; background-position: -466px -42px; }
+
+div.four-column {
+	width: 182px;
+	height: 100px;
+	float: left;
+	margin-right: 9px;
+}
+div.four-column-last {
+	margin-right: 0 !important;
+}
+
+div#one-column-box-header {
+	width: 182px;
+	height: 6px;
+	background: url(/resource/images/layout/one-column-box-header-bg.png) top left no-repeat;
+	font-size: 1px;
+}
+
+div#one-column-box-content {
+	width: 182px;
+	background: url(/resource/images/layout/one-column-box-content-bg.png) bottom left no-repeat;
+	min-height: 117px;
+	padding: 5px 10px 10px 10px;
+}
+
+div#one-column-box-content ul {
+	width: 156px;
+}
+
+div#one-column-box-content li {
+	background: url(/resource/images/layout/bullet-big-grey.gif) 0 0.5em no-repeat;
+	border-bottom: 1px solid #CCC;
+}
+
+div#one-column-box-content li a {
+	font-size: 1.1em;
+	color: #666;
+	text-decoration: none;
+	line-height: 2em;
+	display: block;
+	text-indent: 1.5em;
+}
+div#one-column-box-content li a:hover {
+	text-decoration: underline;
+}
+
+div#one-column-box-content p {
+	font-weight: bold;
+	margin-top: 0.5em;
+	color: #999;
+	font-size: 1.1em;
+	line-height: 130%;
+	width: 155px;
+}
+div#one-column-box-content p a {
+	text-decoration: none;
+	font-size: 0.9em;
+	color: #B51222;
+}
+div#one-column-box-content p a:hover {
+	text-decoration: underline;
+}
+div#one-column-box-content label { display: none; }
+div#one-column-box-content input { font-size: 1.1em; margin-top: 0.5em; width: 115px; }
+div#one-column-box-content input.submit { width: auto; vertical-align: top; margin-left: 5px }
+
+h3.useful-links {
+	width: 98px;
+	height: 12px;
+	text-indent: -10000px;
+	background: url(/resource/images/layout/h3-useful-links.png) top left no-repeat;
+	margin-bottom: 5px;
+}
+
+h3.newsletter {
+	width: 93px;
+	height: 12px;
+	text-indent: -10000px;
+	background: url(/resource/images/layout/h3-newsletter.png) top left no-repeat;
+	margin-bottom: 5px;
+}
+
+ul.subnav {
+	margin-top: 0.8em;
+	float: left;
+}
+ul.subnav li {
+	background: url(/resource/images/layout/bullet-big-grey.gif) 0 0 no-repeat;
+	margin-bottom: 0.4em;
+}
+ul.subnav li a {
+	font-size: 1.1em;
+	color: #666;
+	text-decoration: none;
+	display: block;
+	text-indent: 1.5em;
+}
+ul.subnav li a:hover {
+	text-decoration: underline;
+}
+
+div#interiorpanel-hero-background-auris { background-image: url(/resource/images/static/toyota/auris.jpg); }
+div#interiorpanel-hero-background-aygo { background-image: url(/resource/images/static/toyota/aygo.jpg); }
+div#interiorpanel-hero-background-yaris { background-image: url(/resource/images/static/toyota/yaris.jpg); }
+div#interiorpanel-hero-background-verso { background-image: url(/resource/images/static/toyota/verso.jpg); }
+div#interiorpanel-hero-background-avensis { background-image: url(/resource/images/static/toyota/avensis.jpg); }
+div#interiorpanel-hero-background-prius { background-image: url(/resource/images/static/toyota/prius.jpg); }
+div#interiorpanel-hero-background-rav4 { background-image: url(/resource/images/static/toyota/rav4.jpg); }
+div#interiorpanel-hero-background-cruiser { background-image: url(/resource/images/static/toyota/landcruiser.jpg); }
+div#interiorpanel-hero-background-cruiserv8 { background-image: url(/resource/images/static/toyota/landcruiserv8.jpg); }
+div#interiorpanel-hero-background-hilux { background-image: url(/resource/images/static/toyota/hilux.jpg); }
+
+
+
+
+
+
+
+/***********************************/
+/* other interior pages */
+/***********************************/
+h2.lexus {
+	width: 155px;
+	height: 34px;
+	text-indent: -10000px;
+	background: url(/resource/images/lexus/logo.gif) top left no-repeat;
+	margin-left: 20px;
+	float: left;
+}
+
+h3.lexus-models {
+	width: 125px;
+	height: 12px;
+	text-indent: -10000px;
+	background: url(/resource/images/layout/h3-lexus-models.png) top left no-repeat;
+}
+
+ul#lexus-nav {
+	width: 524px;
+	position: absolute;
+	height: 21px;
+	margin-left: 204px;
+	margin-top: 6px;
+}
+
+ul#lexus-nav li {
+	display: block;
+	float: left;
+}
+ul#lexus-nav li a {
+	display: block;
+	height: 21px;
+	background: url(/resource/images/lexus/nav.png);
+	text-indent: -10000px;
+}
+ul#lexus-nav li.new-cars a { width: 65px; background-position: 0 0; margin-right: 3px; }
+ul#lexus-nav li.used-cars a { width: 67px; background-position: -68px 0; margin-right: 4px; }
+ul#lexus-nav li.accessories a { width: 76px; background-position: -139px 0; margin-right: 3px; }
+ul#lexus-nav li.showrooms a { width: 73px; background-position: -218px 0; margin-right: 6px; }
+ul#lexus-nav li.aftersales a { width: 65px; background-position: -336px 0; margin-right: 5px; }
+ul#lexus-nav li.finance a { width: 55px; background-position: -406px 0; margin-right: 5px; }
+ul#lexus-nav li.business a { width: 58px; background-position: -466px 0; }
+
+ul#lexus-nav li.new-cars a:hover { width: 65px; background-position: 0 -21px; margin-right: 3px; }
+ul#lexus-nav li.used-cars a:hover { width: 67px; background-position: -68px -21px; margin-right: 4px; }
+ul#lexus-nav li.accessories a:hover { width: 76px; background-position: -139px -21px; margin-right: 3px; }
+ul#lexus-nav li.showrooms a:hover { width: 73px; background-position: -218px -21px; margin-right: 6px; }
+ul#lexus-nav li.aftersales a:hover { width: 65px; background-position: -336px -21px; margin-right: 5px; }
+ul#lexus-nav li.finance a:hover { width: 55px; background-position: -406px -21px; margin-right: 5px; }
+ul#lexus-nav li.business a:hover { width: 58px; background-position: -466px -21px; }
+
+ul#lexus-nav li.new-cars a:active, ul#lexus-nav li.new-cars.active a { width: 65px; background-position: 0 -42px; margin-right: 3px; }
+ul#lexus-nav li.used-cars a:active, ul#lexus-nav li.used-cars.active a { width: 67px; background-position: -68px -42px; margin-right: 4px; }
+ul#lexus-nav li.accessories a:active, ul#lexus-nav li.accessories.active a { width: 76px; background-position: -139px -42px; margin-right: 3px; }
+ul#lexus-nav li.showrooms a:active, ul#lexus-nav li.showrooms.active a { width: 73px; background-position: -218px -42px; margin-right: 6px; }
+ul#lexus-nav li.aftersales a:active, ul#lexus-nav li.aftersales.active a { width: 65px; background-position: -336px -42px; margin-right: 5px; }
+ul#lexus-nav li.finance a:active, ul#lexus-nav li.finance.active a { width: 55px; background-position: -406px -42px; margin-right: 5px; }
+ul#lexus-nav li.business a:active, ul#lexus-nav li.business.active a { width: 58px; background-position: -466px -42px; }
+
+div#model-selector ul#model-selector-lexus {
+	padding: 15px 0 0 0;
+}
+
+div#model-selector ul#model-selector-lexus li {
+	background: url(/resource/images/layout/bullet-grey.gif) 0 4px no-repeat;
+	padding-left: 10px;
+	margin-bottom: 0.4em;
+	font-size: 1.1em;
+}
+div#model-selector ul#model-selector-lexus li a {
+	color: #444;
+	text-decoration: none;
+	white-space: nowrap;
+}
+div#model-selector ul#model-selector-lexus a:hover {
+	text-decoration: underline;
+}
+div#model-selector ul#model-selector-lexus li.current a {
+	font-weight: bold;
+	color: #8E8481;
+}
+
+a.lexus { color: #5D524F !important; }
+
+
+
+
+
+
+
+
+
+
+
+
+h2.mazda {
+	width: 160px;
+	height: 32px;
+	text-indent: -10000px;
+	background: url(/resource/images/mazda/logo.gif) top left no-repeat;
+	margin-left: 20px;
+	float: left;
+}
+
+h3.mazda-models {
+	width: 125px;
+	height: 12px;
+	text-indent: -10000px;
+	background: url(/resource/images/layout/h3-mazda-models.png) top left no-repeat;
+}
+
+ul#mazda-nav {
+	width: 524px;
+	position: absolute;
+	height: 21px;
+	margin-left: 204px;
+	margin-top: 5px;
+}
+
+ul#mazda-nav li {
+	display: block;
+	float: left;
+}
+ul#mazda-nav li a {
+	display: block;
+	height: 21px;
+	background: url(/resource/images/mazda/nav.png);
+	text-indent: -10000px;
+}
+ul#mazda-nav li.new-cars a { width: 65px; background-position: 0 0; margin-right: 3px; }
+ul#mazda-nav li.used-cars a { width: 67px; background-position: -68px 0; margin-right: 4px; }
+ul#mazda-nav li.accessories a { width: 76px; background-position: -139px 0; margin-right: 3px; }
+ul#mazda-nav li.showrooms a { width: 73px; background-position: -218px 0; margin-right: 6px; }
+ul#mazda-nav li.lcv a { width: 32px; background-position: -297px 0; margin-right: 7px; }
+ul#mazda-nav li.aftersales a { width: 65px; background-position: -336px 0; margin-right: 5px; }
+ul#mazda-nav li.finance a { width: 55px; background-position: -406px 0; margin-right: 5px; }
+ul#mazda-nav li.business a { width: 58px; background-position: -466px 0; }
+
+ul#mazda-nav li.new-cars a:hover { width: 65px; background-position: 0 -21px; margin-right: 3px; }
+ul#mazda-nav li.used-cars a:hover { width: 67px; background-position: -68px -21px; margin-right: 4px; }
+ul#mazda-nav li.accessories a:hover { width: 76px; background-position: -139px -21px; margin-right: 3px; }
+ul#mazda-nav li.showrooms a:hover { width: 73px; background-position: -218px -21px; margin-right: 6px; }
+ul#mazda-nav li.lcv a:hover { width: 32px; background-position: -297px -21px; margin-right: 7px; }
+ul#mazda-nav li.aftersales a:hover { width: 65px; background-position: -336px -21px; margin-right: 5px; }
+ul#mazda-nav li.finance a:hover { width: 55px; background-position: -406px -21px; margin-right: 5px; }
+ul#mazda-nav li.business a:hover { width: 58px; background-position: -466px -21px; }
+
+ul#mazda-nav li.new-cars a:active, ul#mazda-nav li.new-cars.active a { width: 65px; background-position: 0 -42px; margin-right: 3px; }
+ul#mazda-nav li.used-cars a:active, ul#mazda-nav li.used-cars.active a { width: 67px; background-position: -68px -42px; margin-right: 4px; }
+ul#mazda-nav li.accessories a:active, ul#mazda-nav li.accessories.active a { width: 76px; background-position: -139px -42px; margin-right: 3px; }
+ul#mazda-nav li.showrooms a:active, ul#mazda-nav li.showrooms.active a { width: 73px; background-position: -218px -42px; margin-right: 6px; }
+ul#mazda-nav li.lcv a:active, ul#mazda-nav li.lcv.active a { width: 32px; background-position: -297px -42px; margin-right: 7px; }
+ul#mazda-nav li.aftersales a:active, ul#mazda-nav li.aftersales.active a { width: 65px; background-position: -336px -42px; margin-right: 5px; }
+ul#mazda-nav li.finance a:active, ul#mazda-nav li.finance.active a { width: 55px; background-position: -406px -42px; margin-right: 5px; }
+ul#mazda-nav li.business a:active, ul#mazda-nav li.active a { width: 58px; background-position: -466px -42px; }
+
+div#model-selector ul#model-selector-mazda {
+	padding: 15px 0 0 0;
+}
+
+div#model-selector ul#model-selector-mazda li {
+	background: url(/resource/images/layout/bullet-blue.gif) 0 4px no-repeat;
+	padding-left: 10px;
+	margin-bottom: 0.4em;
+	font-size: 1.1em;
+}
+div#model-selector ul#model-selector-mazda li a {
+	color: #444;
+	text-decoration: none;
+	white-space: nowrap;
+}
+div#model-selector ul#model-selector-mazda a:hover {
+	text-decoration: underline;
+}
+div#model-selector ul#model-selector-mazda li.current a {
+	font-weight: bold;
+	color: #007FC6;
+}
+
+a.mazda { color: #007FC6 !important; }
+
+
+
+
+
+
+
+
+
+h2.peugeot {
+	width: 176px;
+	height: 28px;
+	text-indent: -10000px;
+	background: url(/resource/images/peugeot/logo.gif) top left no-repeat;
+	margin-left: 20px;
+	float: left;
+}
+
+h3.peugeot-models {
+	width: 133px;
+	height: 12px;
+	text-indent: -10000px;
+	background: url(/resource/images/layout/h3-peugeot-models.png) top left no-repeat;
+}
+
+ul#peugeot-nav {
+	width: 524px;
+	position: absolute;
+	height: 21px;
+	margin-left: 204px;
+	margin-top: 4px;
+}
+
+ul#peugeot-nav li {
+	display: block;
+	float: left;
+}
+ul#peugeot-nav li a {
+	display: block;
+	height: 21px;
+	background: url(/resource/images/peugeot/nav.png);
+	text-indent: -10000px;
+}
+ul#peugeot-nav li.new-cars a { width: 65px; background-position: 0 0; margin-right: 3px; }
+ul#peugeot-nav li.used-cars a { width: 67px; background-position: -68px 0; margin-right: 4px; }
+ul#peugeot-nav li.accessories a { width: 76px; background-position: -139px 0; margin-right: 3px; }
+ul#peugeot-nav li.showrooms a { width: 73px; background-position: -218px 0; margin-right: 6px; }
+ul#peugeot-nav li.lcv a { width: 32px; background-position: -297px 0; margin-right: 7px; }
+ul#peugeot-nav li.aftersales a { width: 65px; background-position: -336px 0; margin-right: 5px; }
+ul#peugeot-nav li.finance a { width: 55px; background-position: -406px 0; margin-right: 5px; }
+ul#peugeot-nav li.business a { width: 58px; background-position: -466px 0; }
+
+ul#peugeot-nav li.new-cars a:hover { width: 65px; background-position: 0 -21px; margin-right: 3px; }
+ul#peugeot-nav li.used-cars a:hover { width: 67px; background-position: -68px -21px; margin-right: 4px; }
+ul#peugeot-nav li.accessories a:hover { width: 76px; background-position: -139px -21px; margin-right: 3px; }
+ul#peugeot-nav li.showrooms a:hover { width: 73px; background-position: -218px -21px; margin-right: 6px; }
+ul#peugeot-nav li.lcv a:hover { width: 32px; background-position: -297px -21px; margin-right: 7px; }
+ul#peugeot-nav li.aftersales a:hover { width: 65px; background-position: -336px -21px; margin-right: 5px; }
+ul#peugeot-nav li.finance a:hover { width: 55px; background-position: -406px -21px; margin-right: 5px; }
+ul#peugeot-nav li.business a:hover { width: 58px; background-position: -466px -21px; }
+
+ul#peugeot-nav li.new-cars a:active, ul#peugeot-nav li.new-cars.active a { width: 65px; background-position: 0 -42px; margin-right: 3px; }
+ul#peugeot-nav li.used-cars a:active, ul#peugeot-nav li.used-cars.active a { width: 67px; background-position: -68px -42px; margin-right: 4px; }
+ul#peugeot-nav li.accessories a:active, ul#peugeot-nav li.accessories.active a { width: 76px; background-position: -139px -42px; margin-right: 3px; }
+ul#peugeot-nav li.showrooms a:active, ul#peugeot-nav li.showrooms.active a { width: 73px; background-position: -218px -42px; margin-right: 6px; }
+ul#peugeot-nav li.lcv a:active, ul#peugeot-nav li.lcv.active a { width: 32px; background-position: -297px -42px; margin-right: 7px; }
+ul#peugeot-nav li.aftersales a:active, ul#peugeot-nav li.aftersales.active a { width: 65px; background-position: -336px -42px; margin-right: 5px; }
+ul#peugeot-nav li.finance a:active, ul#peugeot-nav li.finance.active a { width: 55px; background-position: -406px -42px; margin-right: 5px; }
+ul#peugeot-nav li.business a:active, ul#peugeot-nav li.business.active a { width: 58px; background-position: -466px -42px; }
+
+div.model-selector-peugeot { width: 130px !important; }
+div#model-selector ul#model-selector-peugeot {
+	padding: 15px 0 0 0;
+}
+
+div#model-selector ul#model-selector-peugeot li {
+	background: url(/resource/images/layout/bullet-darkblue.gif) 0 4px no-repeat;
+	padding-left: 10px;
+	margin-bottom: 0.4em;
+	font-size: 1.1em;
+}
+div#model-selector ul#model-selector-peugeot li a {
+	color: #444;
+	text-decoration: none;
+	white-space: nowrap;
+}
+div#model-selector ul#model-selector-peugeot a:hover {
+	text-decoration: underline;
+}
+div#model-selector ul#model-selector-peugeot li.current a {
+	font-weight: bold;
+	color: #00529C;
+}
+
+a.peugeot { color: #00529C !important; }
+
+
+
+
+
+
+
+/******* used car search *********/
+div#interiorpanel { /* this rule has been updated */
+	width: 756px;
+	margin-left: -4px;
+}
+
+div#interiorpanel-content { /* this rule has been updated */
+	background: url(/resource/images/layout/interiorpanel-bg.png) bottom left repeat-y;
+	padding-top: 10px;
+	padding-bottom: 20px;
+}
+
+div#interiorpanel-inner {
+	clear: both;
+	padding: 5px 20px 5px 20px;
+	margin: 0 4px 0 4px;
+	min-height: 400px;
+	font-family: Arial, sans-serif;
+}
+div#interiorpanel-inner h3 {
+	color: #666;
+	font-size: 2em;
+	text-transform: uppercase;
+	padding-bottom: 0.3em;
+	border-bottom: 2px solid #E0E0E0;
+	margin-bottom: 0.8em;
+	font-family: "Trebuchet MS", Verdana, Arial, sans-serif;
+}
+div#interiorpanel-inner p.intro {
+	font-size: 1.2em;
+	line-height: 150%;
+	width: 60%;
+}
+
+
+
+div#interiorpanel-inner a {
+	font-weight: bold;
+	color: #B4AF76;
+	text-decoration: none;
+}
+div#interiorpanel-inner a:hover { text-decoration: underline; }
+
+div.search-view {
+	clear: both;
+}
+div#quick-view {
+	display: none;
+}
+
+div.used-search-result-detailed {
+	width: 706px;
+	background: url(/resource/images/layout/search-result-bg.png) bottom left repeat-x;
+	padding-bottom: 10px;
+	border-top: 1px solid #E0E0E0;
+	border-left: 1px solid #E0E0E0;
+	border-right: 1px solid #E0E0E0;
+	border-bottom: 1px solid #E0E0E0;
+	margin-bottom: 5px;
+	cursor: pointer;
+	position: relative;
+}
+div.used-search-result-detailed div.photo {
+	float: left;
+	width: 138px;
+	height: 88px;
+	margin-left: 10px;
+	margin-top: 10px;
+}
+div.used-search-result-detailed div.photo img.photo {
+	border: 1px solid #9D9EA1;
+	width: 138px;
+	height: 88px;
+}
+div.used-search-result-detailed div.photo div.magnify {
+	position: absolute;
+	margin-top: 66px;
+	width: 22px;
+	height: 22px;
+	background: url(/resource/images/layout/magnify.png) top left no-repeat;
+}
+div.used-search-result-detailed div.main {
+	float: left;
+	width: 366px;
+	margin-left: 20px;
+	margin-top: 10px;
+}
+div.used-search-result-detailed div.title {
+	margin-bottom: 10px;
+}
+div.used-search-result-detailed div.price {
+	float: right;
+	background: #B4AF76;
+	padding: 5px 5px 7px 5px;
+	font-size: 1.6em;
+	font-weight: bold;
+	color: #FFF;
+}
+div.used-search-result-detailed h4 {
+	font-size: 2em;
+	font-weight: bold;
+	padding-top: 3px;
+	color: #1E2435;
+	line-height: 100%;
+}
+div.used-search-result-detailed h4 span { font-size: 0.8em; }
+div.used-search-result-detailed div.details1 {
+	float: left;
+	width: 178px;
+}
+div.used-search-result-detailed div.details2 {
+	float: left;
+	margin-left: 10px;
+	width: 178px;
+}
+div.used-search-result-detailed div.buttons {
+	float: left;
+	background: url(/resource/images/layout/corner-used-car.gif) top right no-repeat;
+	width: 140px;
+	margin-left: 22px;
+	padding-right: 10px;
+	text-align: right;
+	padding-top: 58px;
+}
+
+div.used-search-result-detailed dt {
+  	clear: both;
+  	float:left;
+  	width: 50%;
+	text-transform: uppercase;
+	font-weight: bold;
+	color: #666;
+	line-height: 150%;
+	border-bottom: 1px solid #E0E0E0;
+	font-size: 0.95em;
+}
+
+div.used-search-result-detailed dd {
+ 	float: left;
+ 	width: 50%;
+	line-height: 150%;
+	border-bottom: 1px solid #E0E0E0;
+	font-size: 0.95em;
+}
+
+div.used-search-result-detailed-active { background: #EAE9DC !important; }
+div.used-search-result-detailed-active div.buttons { background: url(/resource/images/layout/corner-used-car-on.gif) top right no-repeat !important; }
+div.used-search-result-detailed-active dt, div.used-search-result-detailed-active dd { border-bottom: 1px solid #B4AF76 !important; }
+
+
+
+ul#search-toggle {
+	margin-top: 20px;
+	margin-bottom: -20px;
+}
+ul#search-toggle li {
+	float: left;
+	height: 30px;
+	background: #FFF;
+	border-top: 1px solid #E0E0E0;
+	border-right: 1px solid #E0E0E0;
+	position: relative;
+}
+ul#search-toggle li.first {
+	border-left: 1px solid #E0E0E0;
+}
+ul#search-toggle li a {
+	display: block;
+	color: #666;
+	height: 30px;
+	line-height: 30px;
+	padding: 0 10px 0 30px;
+	text-transform: uppercase;
+	font-size: 1.2em;
+}
+ul#search-toggle li.current {
+	background-color: #1E2435;
+}
+ul#search-toggle li.current a {
+	color: #FFF;
+}
+ul#search-toggle li.current a:hover {
+	text-decoration: none;
+}
+ul#search-toggle li#detailed {
+	background-image: url(/resource/images/layout/search-icon-detailed.png);
+	background-position: 10px 9px;
+	background-repeat: no-repeat;
+}
+ul#search-toggle li#quick {
+	background-image: url(/resource/images/layout/search-icon-quick.png);
+	background-position: 10px 9px;
+	background-repeat: no-repeat;
+}
+ul#search-toggle li#detailed.current {
+	background-image: url(/resource/images/layout/search-icon-detailed-on.png);
+	background-position: 10px 9px;
+	background-repeat: no-repeat;
+}
+ul#search-toggle li#quick.current {
+	background-image: url(/resource/images/layout/search-icon-quick-on.png);
+	background-position: 10px 9px;
+	background-repeat: no-repeat;
+}
+
+div#sort-options {
+	float: right;
+	padding-top: 10px;
+	color: #1E2435;
+	font-weight: bold;
+	text-transform: uppercase;
+	position: relative;
+}
+
+div.used-search-result-row {
+	width: 696px;
+	background: url(/resource/images/layout/search-result-bg.png) bottom left repeat-x;
+	padding: 10px 10px 10px 0;
+	border-top: 1px solid #E0E0E0;
+	border-left: 1px solid #E0E0E0;
+	border-right: 1px solid #E0E0E0;
+	border-bottom: 1px solid #E0E0E0;
+	margin-bottom: 10px;
+	cursor: pointer;
+}
+div.used-search-result-quick {
+	width: 162px;
+	background: #FFF;
+	float: left;
+	margin-left: 10px;
+	border: 1px solid #9D9EA1;
+	display: inline;
+}
+div.used-search-result-quick div.photo {
+	width: 162px;
+}
+div.used-search-result-quick div.photo img.photo {
+	width: 162px;
+	height: 101px;
+	border-bottom: 1px solid #9D9EA1;
+}
+div.used-search-result-quick div.photo div.magnify {
+	position: absolute;
+	margin-top: 78px;
+	width: 22px;
+	height: 22px;
+	background: url(/resource/images/layout/magnify.png) top left no-repeat;
+}
+div.used-search-result-quick div.main {
+	padding: 10px 10px 15px 10px;
+}
+div.used-search-result-quick h4 {
+	font-size: 1.6em;
+	font-weight: bold;
+	color: #1E2435;
+	line-height: 100%;
+}
+div.used-search-result-quick h4 span { font-size: 0.8em; }
+div.used-search-result-quick div.price {
+	background: #B4AF76;
+	padding: 2px 3px 4px 3px;
+	font-size: 1.25em;
+	font-weight: bold;
+	color: #FFF;
+	display: inline;
+}
+div.used-search-result-quick p {
+	color: #666;
+	margin: 0.3em 0 0.7em 0;
+}
+div.used-search-result-quick div.buttons {
+	float: right;
+	margin-top: -2px;
+}
+div.used-search-result-quick div.preowned {
+	width: 55px;
+	height: 55px;
+	background: url(/resource/images/layout/corner-preowned.png) top left no-repeat;
+	position: absolute;
+	margin-left: 107px;
+}
+div.used-search-result-quick-active { background: #EAE9DC !important; }
+
+
+
+
+
+
+
+
+/**** new car search *****/
+
+div.new-search-result-detailed {
+	width: 706px;
+	background: url(/resource/images/layout/search-result-bg.png) bottom left repeat-x;
+	padding-bottom: 10px;
+	border-top: 1px solid #E0E0E0;
+	border-left: 1px solid #E0E0E0;
+	border-right: 1px solid #E0E0E0;
+	border-bottom: 1px solid #E0E0E0;
+	margin-bottom: 5px;
+	cursor: pointer;
+	position: relative;
+}
+div.new-search-result-detailed div.photo {
+	float: left;
+	width: 138px;
+	height: 88px;
+	margin-left: 10px;
+	margin-top: 10px;
+}
+div.new-search-result-detailed div.photo img.photo {
+	border: 1px solid #9D9EA1;
+	width: 138px;
+	height: 88px;
+}
+div.new-search-result-detailed div.photo div.magnify {
+	position: absolute;
+	margin-top: 66px;
+	width: 22px;
+	height: 22px;
+	background: url(/resource/images/layout/magnify.png) top left no-repeat;
+}
+div.new-search-result-detailed div.main {
+	float: left;
+	width: 366px;
+	margin-left: 20px;
+	margin-top: 10px;
+}
+div.new-search-result-detailed div.title {
+	margin-bottom: 10px;
+}
+div.new-search-result-detailed div.price {
+	float: right;
+	background: #B4AF76;
+	padding: 5px 5px 7px 5px;
+	font-size: 1.6em;
+	font-weight: bold;
+	color: #FFF;
+}
+div.new-search-result-detailed h4 {
+	font-size: 2em;
+	font-weight: bold;
+	padding-top: 3px;
+	color: #1E2435;
+	line-height: 100%;
+}
+div.new-search-result-detailed h4 span { font-size: 0.8em; }
+div.new-search-result-detailed div.details {
+	float: left;
+	width: 366px;
+}
+div.new-search-result-detailed div.buttons {
+	float: left;
+	width: 140px;
+	margin-left: 22px;
+	padding-right: 10px;
+	padding-top: 58px;
+}
+div.new-search-result-detailed div.buttons-lexus { background: url(/resource/images/layout/corner-new-lexus.gif) top right no-repeat; }
+div.new-search-result-detailed div.buttons-mazda { background: url(/resource/images/layout/corner-new-mazda.gif) top right no-repeat; }
+div.new-search-result-detailed div.buttons-peugeot { background: url(/resource/images/layout/corner-new-peugeot.gif) top right no-repeat; }
+div.new-search-result-detailed div.buttons-toyota { background: url(/resource/images/layout/corner-new-toyota.gif) top right no-repeat; }
+
+div.new-search-result-detailed dd {
+ 	width: 100%;
+	line-height: 150%;
+	border-bottom: 1px solid #E0E0E0;
+	font-size: 1.1em;
+}
+
+div.new-search-result-detailed-active { background: #EAE9DC !important; }
+div.new-search-result-detailed-active dt, div.new-search-result-detailed-active dd { border-bottom: 1px solid #B4AF76 !important; }
+
+
+
+div.new-search-result-row {
+	width: 696px;
+	background: url(/resource/images/layout/search-result-bg.png) bottom left repeat-x;
+	padding: 10px 10px 10px 0;
+	border-top: 1px solid #E0E0E0;
+	border-left: 1px solid #E0E0E0;
+	border-right: 1px solid #E0E0E0;
+	border-bottom: 1px solid #E0E0E0;
+	margin-bottom: 10px;
+}
+div.new-search-result-quick {
+	width: 162px;
+	background: #FFF;
+	float: left;
+	margin-left: 10px;
+	border: 1px solid #9D9EA1;
+	display: inline;
+	cursor: pointer;
+}
+div.new-search-result-quick div.photo {
+	width: 162px;
+}
+div.new-search-result-quick div.photo img.photo {
+	width: 162px;
+	height: 101px;
+	border-bottom: 1px solid #9D9EA1;
+}
+div.new-search-result-quick div.photo div.magnify {
+	position: absolute;
+	margin-top: 78px;
+	width: 22px;
+	height: 22px;
+	background: url(/resource/images/layout/magnify.png) top left no-repeat;
+}
+div.new-search-result-quick div.main {
+	padding: 10px 10px 15px 10px;
+}
+div.new-search-result-quick h4 {
+	font-size: 1.6em;
+	font-weight: bold;
+	color: #1E2435;
+	line-height: 100%;
+}
+div.new-search-result-quick h4 span { font-size: 0.8em; }
+div.new-search-result-quick div.price {
+	color: #B4AF76;
+	margin: 0.4em 0 1em 0;
+	font-size: 1.5em;
+	font-weight: bold;
+}
+div.new-search-result-quick p {
+	color: #666;
+	margin: 0.3em 0 0.7em 0;
+}
+div.new-search-result-quick div.buttons {
+	margin-top: -2px;
+}
+div.new-search-result-quick div.new {
+	width: 35px;
+	height: 35px;
+	background: url(/resource/images/layout/corner-new.png) top left no-repeat;
+	position: absolute;
+	margin-left: 127px;
+}
+div.new-search-result-quick-active { background: #EAE9DC !important; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+div#interiorpanel-content-nogradient {
+	background: url(/resource/images/layout/interiorpanel-bg-nogradient.png) top left repeat-y;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+div#interiorpanel-inner-top-generic {
+	padding: 5px 24px 20px 24px;
+}
+div#interiorpanel-inner-top-manufacturer { /* for manufacturer menus */
+	padding: 0;
+	margin-bottom: 16px;	
+}
+
+div#interiorpanel-content-nogradient h3 {
+	color: #666;
+	font-size: 2em;
+	text-transform: uppercase;
+	font-family: "Trebuchet MS", Verdana, Arial, sans-serif;
+}
+
+div#interiorpanel-content-nogradient h3.content {
+	color: #666;
+	font-size: 1.4em;
+	text-transform: uppercase;
+	font-family: "Trebuchet MS", Verdana, Arial, sans-serif;
+}
+
+div#interiorpanel-footer {
+	height: 15px;
+	background: url(/resource/images/layout/interiorpanel-footer-bg.png) top left no-repeat;
+	font-size: 1px;
+}
+
+div#interiorpanel-inner-background {
+	clear: both;
+	padding: 20px 20px 5px 20px;
+	margin: 0 4px 0 4px;
+	min-height: 400px;
+	font-family: Arial, sans-serif;
+	background: url(/resource/images/layout/interiorpanel-inner-background.png) top left repeat-x;
+}
+
+
+div#used-car-detail-left {
+	float: left;
+	width: 160px;
+}
+div#specification {
+	border: 1px solid #E0E0E0;
+	padding: 10px;
+	background: #FFF;
+}
+div#used-car-detail-left h5 {
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: 1.2em;
+	margin-bottom: 0.6em;
+}
+div#used-car-detail-left li {
+	font-size: 1.1em;
+	border-bottom: 1px solid #E0E0E0;
+	padding: 0.2em 0;
+}
+div#used-car-detail-left div.finance {
+	border: 1px solid #E0E0E0;
+	background: url(/resource/images/layout/finance-box-bg.png) bottom left repeat-x;
+	padding: 10px;
+	cursor: pointer;
+	margin-top: 10px;
+}
+div#used-car-detail-left div.finance h5 {
+	font-size: 1.25em;
+	font-weight: bold;
+	margin-bottom: 0.3em;
+}
+div#used-car-detail-left div.finance a {
+	font-weight: normal;
+	color: #000;
+}
+
+
+div#back-to-search-results {
+	float: right;
+	margin-top: -1.6em;
+}
+
+
+div#used-car-detail-main {
+	width: 356px;
+	float: left;
+	margin-left: 15px;
+	padding-top: 0.5em;
+}
+div#used-car-detail-main h4 {
+	font-size: 2.4em;
+	font-family: "Trebuchet MS", Verdana, Arial, sans-serif;
+	font-weight: bold;
+	line-height: 100%;
+	margin-top: -5px;
+}
+div#used-car-detail-main h4 span { font-size: 0.8em; }
+div#used-car-detail-main div#photo {
+	width: 354px;
+	height: 230px;
+	border: 1px solid #999; /* used cars have borders as they're not likely to be on white backgrounds */
+	margin-top: 1.8em;
+	margin-bottom: 1.2em;
+}
+div#used-car-detail-main div#photo-controls {
+	float: right;
+	margin-right: -7px;
+	padding-bottom: 20px;
+}
+div#used-car-detail-main div#photo-controls a {
+	border: 1px solid #999;
+	font-size: 1.2em;
+	color: #999;
+	padding: 4px 7px;
+	margin-right: 7px;
+	font-weight: bold;
+	text-decoration: none;
+}
+div#used-car-detail-main div#photo-controls a:hover {
+	text-decoration: underline;
+}
+div#used-car-detail-main div#photo-controls a.activeSlide {
+	color: #FFF;
+	background: #B4AF76;
+}
+div#used-car-detail-main div#photo-controls a.activeSlide:hover { text-decoration: none; }
+div#used-car-detail-main h5 {
+	margin: 1.6em 0 0.4em 0;
+	font-size: 1.4em;
+	font-weight: bold;
+	clear: right;
+}
+div#used-car-detail-main p {
+	font-size: 1.2em;
+	line-height: 130%;
+}
+div#used-car-detail-main p a {
+	color: #B4AF76;
+	font-weight: bold;
+}
+div#used-car-detail-main label { display: none; }
+div#used-car-detail-main input { margin-top: 0.5em; width: 150px; }
+input.unchanged { color: #999; }
+div#used-car-detail-main input.submit { vertical-align: top; margin-left: 10px; width: auto; }
+
+ 
+
+
+
+div#used-car-detail-right {
+	width: 160px;
+	float: left;
+	margin-left: 15px;
+	padding-top: 0.5em;
+}
+div#used-car-detail-right div.price {
+	background: #B4AF76;
+	padding: 2px 5px 2px 5px;
+	font-size: 1.8em;
+	font-weight: bold;
+	color: #FFF;
+	display: inline;
+}
+div#used-car-detail-right a img {
+	margin-top: 5px;
+}
+div#used-car-detail-right dl {
+	margin-top: 2em;
+}
+div#used-car-detail-right dt {
+  	clear: both;
+  	float:left;
+  	width: 60%;
+	text-transform: uppercase;
+	font-weight: bold;
+	color: #666;
+	line-height: 150%;
+	border-bottom: 1px solid #E0E0E0;
+	font-size: 0.95em;
+}
+
+div#used-car-detail-right dd {
+ 	float: left;
+ 	width: 40%;
+	line-height: 150%;
+	border-bottom: 1px solid #E0E0E0;
+	font-size: 0.95em;
+}
+
+
+
+
+
+/*** search ***/
+div#right-car-search-new { display: none; }
+div#right-car-search ul {
+	padding: 0;
+}
+div#right-car-search li {
+	float: left;
+	display: block;
+}
+div#right-car-search li a {
+	display: block;
+	height: 18px;
+	background: url(/resource/images/layout/right-search-tabs.gif) top left no-repeat;
+	text-indent: -10000px;	
+}
+div#right-car-search li#right-car-search-tab-used a {
+	width: 59px;
+	margin-right: 2px;
+	background-position: 0 0;
+}
+div#right-car-search li#right-car-search-tab-used a:hover { background-position: 0 -18px; }
+div#right-car-search li#right-car-search-tab-used.current a { background-position: 0 -36px; }
+div#right-car-search li#right-car-search-tab-new a {
+	width: 60px;
+	background-position: -61px 0;
+}
+div#right-car-search li#right-car-search-tab-new a:hover { background-position: -61px -18px; }
+div#right-car-search li#right-car-search-tab-new.current a { background-position: -61px -36px; }
+div#right-car-search-top {
+	background: url(/resource/images/layout/right-car-search-top.png) top left no-repeat;
+	clear: left;
+	height: 7px;
+	font-size: 1px;
+	width: 160px;
+}
+div#right-car-search-content {
+	min-height: 100px;
+	background: url(/resource/images/layout/right-car-search-bg.png) bottom left no-repeat;
+	padding: 3px 16px 18px 11px;
+}
+div#right-car-search-content label {
+	text-transform: uppercase;
+	font-weight: normal;
+	letter-spacing: 0.5px;
+	color: #BCBEC3;
+	display: block;
+}
+
+div#right-car-search-content select {
+	width: 133px;
+	margin-bottom: 14px;
+	font-size: 11px;
+	color: #444;
+}
+div#right-car-search-content input.submit {
+	margin-top: 6px;
+}
+
+h4.used-car-search {
+	width: 132px;
+	height: 12px;
+	background: url(/resource/images/layout/h4-used-car-search.png) top left no-repeat;
+	text-indent: -10000px;
+	margin-bottom: 13px;
+}
+h4.new-car-search {
+	width: 128px;
+	height: 12px;
+	background: url(/resource/images/layout/h4-new-car-search.png) top left no-repeat;
+	text-indent: -10000px;
+	margin-bottom: 13px;
+}
+
+
+
+
+
+
+/* new => new model pages */
+
+
+
+div#model-menu {
+	background: #1e2435;
+	width: 160px;
+	float: left;
+}
+div#model-menu ul {
+	padding: 0;
+	margin: 10px 0 0 0;
+}
+div#model-menu ul li {
+	background: url(/resource/images/layout/bullet-model.gif) 12px 8px no-repeat;
+	font-size: 1.1em;
+	font-family: "trebuchet ms";
+	padding: 4px 0 4px 22px;
+	border-bottom: 1px solid #353a4a;
+}
+div#model-menu ul li a {
+	color: #8f929a;
+	display: block;
+	text-decoration: none;
+	white-space: nowrap;
+}
+div#model-menu ul li a:hover {
+	text-decoration: underline;
+}
+div#model-menu ul li.current a {
+	font-weight: bold;
+	color: #fff;
+}
+div#model-menu ul li.current a:hover { text-decoration: none; }
+
+div#model-menu ul#model-menu-toyota li.current {
+	background: #cc0033 url(/resource/images/layout/bullet-model-toyota.gif) 12px 8px no-repeat;
+}
+div#model-menu ul#model-menu-mazda li.current {
+	background: #0080c5 url(/resource/images/layout/bullet-model-mazda.gif) 12px 8px no-repeat;
+}
+div#model-menu ul#model-menu-peugeot li.current {
+	background: #00529c url(/resource/images/layout/bullet-model-peugeot.gif) 12px 8px no-repeat;
+}
+div#model-menu ul#model-menu-lexus li.current {
+	background: #8e8481 url(/resource/images/layout/bullet-model-lexus.gif) 12px 8px no-repeat;
+}
+
+
+
+div#model-information {
+	float: left;
+	margin-left: 20px;
+	width: 528px;
+}
+div#model-information h3 {
+	color: #666 !important;
+	font-size: 2em !important;
+	text-transform: uppercase !important;
+	padding-bottom: 0.4em !important;
+	border-bottom: 1px solid #e0e0e0 !important;
+	margin-bottom: 0.8em !important;
+	font-family: "trebuchet ms", verdana, arial, sans-serif !important;
+	width: 354px;
+	margin-top: 5px;
+}
+div#model-information h3 span {
+	font-size: 0.7em !important;
+	display: block !important;
+	margin-top: 0.5em !important;
+}
+
+div#model-information h3.model-detail {
+	margin-top: 0;
+	line-height: 110%;
+}
+div#model-information h3.model-detail span {
+	font-size: 1em;
+	display: block;
+	margin: 0;
+	line-height: 110%;
+}
+
+div#model-text {
+	float: right;
+	width: 155px;
+	font-size: 1.1em;
+	color: #222;
+	line-height: 130%;
+}
+
+div#photo { width: 354px !important; height: 230px !important; overflow: hidden !important; position: relative !important; }
+
+/*div#model-information div#photo-controls { margin-top: 260px; }*/
+div#model-information div#photo-controls a {
+	border: 1px solid #999;
+	font-size: 1.2em;
+	color: #999;
+	padding: 4px 7px;
+	margin-right: 7px;
+	font-weight: bold;
+	text-decoration: none;
+}
+div#model-information div#photo-controls a:hover {
+	text-decoration: underline;
+}
+div#model-information div#photo-controls a.activeslide:hover { text-decoration: none; }
+div#model-information h5 {
+	margin: 1.6em 0 0.4em 0;
+	font-size: 1.4em;
+	font-weight: bold;
+}
+div#model-information div#photo-controls.toyota a.activeSlide { color: #fff; background: #cc0033; }
+div#model-information div#photo-controls.mazda a.activeSlide { color: #fff; background: #0080c5; }
+div#model-information div#photo-controls.peugeot a.activeSlide { color: #fff; background: #00529c; }
+div#model-information div#photo-controls.lexus a.activeSlide { color: #fff; background: #8e8481; }
+
+
+h3.toyota-models-interior {
+	width: 125px;
+	height: 12px;
+	text-indent: -10000px;
+	background: url(/resource/images/layout/h3-toyota-models-interior.gif) top left no-repeat;
+	margin-left: 10px;
+	margin-top: 10px;
+}
+h3.mazda-models-interior {
+	width: 118px;
+	height: 12px;
+	text-indent: -10000px;
+	background: url(/resource/images/layout/h3-mazda-models-interior.gif) top left no-repeat;
+	margin-left: 10px;
+	margin-top: 10px;
+}
+h3.peugeot-models-interior {
+	width: 133px;
+	height: 12px;
+	text-indent: -10000px;
+	background: url(/resource/images/layout/h3-peugeot-models-interior.gif) top left no-repeat;
+	margin-left: 10px;
+	margin-top: 10px;
+}
+h3.lexus-models-interior {
+	width: 109px;
+	height: 12px;
+	text-indent: -10000px;
+	background: url(/resource/images/layout/h3-lexus-models-interior.gif) top left no-repeat;
+	margin-left: 10px;
+	margin-top: 10px;
+}
+
+div.model-search-result {
+	width: 528px;
+	background: url(/resource/images/layout/search-result-bg.png) bottom left repeat-x;
+	padding-bottom: 10px;
+	border-top: 1px solid #e0e0e0;
+	border-left: 1px solid #e0e0e0;
+	border-right: 1px solid #e0e0e0;
+	border-bottom: 1px solid #e0e0e0;
+	margin-bottom: 5px;
+	cursor: pointer;
+	position: relative;
+}
+div.model-search-result div.photo {
+	float: left;
+	width: 90px;
+	height: 58px;
+	margin-left: 10px;
+	margin-top: 10px;
+}
+div.model-search-result div.photo img.photo {
+	border: 1px solid #9d9ea1;
+	width: 90px;
+	height: 58px;
+}
+div.model-search-result div.main {
+	float: left;
+	width: 235px;
+	margin-left: 20px;
+	margin-top: 10px;
+}
+div.model-search-result div.title {
+	margin-bottom: 5px;
+}
+div.model-search-result div.price {
+	float: right;
+	font-size: 1.6em;
+	font-weight: bold;
+	color: #888;
+	margin-top: 0.3em;
+	background: #B4AF76;
+	padding: 5px 5px 6px 5px;
+	color: #FFF;
+}
+div.model-search-result h4 {
+	font-size: 1.8em;
+	font-weight: bold;
+	color: #1e2435;
+	line-height: 110%;
+	width: 160px;
+}
+div.model-search-result h4 span { font-size: 0.8em; }
+div.model-search-result div.details {
+	float: left;
+	width: 366px;
+}
+div.model-search-result div.buttons {
+	float: left;
+	width: 140px;
+	margin-left: 20px;
+	padding-top: 10px;
+}
+
+div.model-search-result dl {
+	width: 235px;
+}
+div.model-search-result dt {
+  	clear: both;
+  	float: left;
+  	width: 40%;
+	text-transform: uppercase;
+	font-weight: bold;
+	color: #666;
+	line-height: 150%;
+	border-bottom: 1px solid #e0e0e0;
+	font-size: 0.95em;
+}
+div.model-search-result dd {
+ 	float: left;
+ 	width: 60%;
+	line-height: 150%;
+	border-bottom: 1px solid #e0e0e0;
+	font-size: 0.95em;
+}
+
+div.model-search-result-active { background: #eae9dc !important; }
+div.model-search-result-active dt, div.model-search-result-active dd { border-bottom: 1px solid #b4af76 !important; }
+
+
+div#sort-options-model {
+	float: right;
+	padding-top: 30px;
+	padding-bottom: 5px;
+	color: #1e2435;
+	font-weight: bold;
+	position: relative;
+	text-transform: uppercase;
+}
+div#sort-options-model a {
+	color: #b4af76;
+	text-decoration: none;
+}
+div#sort-options-model a:hover {
+	text-decoration: underline;
+}
+
+div#showing-models {
+	float: left;
+	padding-top: 30px;
+	padding-bottom: 5px;
+	color: #1e2435;
+	font-weight: bold;
+	position: relative;
+	text-transform: uppercase;
+}
+div#showing-models a {
+	color: #b4af76;
+	text-decoration: none;
+}
+div#showing-models a:hover {
+	text-decoration: underline;
+}
+
+
+div#model-submenu-header {
+	width: 155px;
+	height: 20px;
+	float: right;
+	background: url(/resource/images/layout/select-model-variant-button-off.png) top left no-repeat;
+	margin-top: 2px;
+	cursor: pointer;
+}
+div#model-submenu-header.current {
+	background: url(/resource/images/layout/select-model-variant-button-on.png) top left no-repeat !important;
+}
+div#model-submenu {
+	width: 155px;
+	background: url(/resource/images/layout/select-model-variant-bg.png) bottom left no-repeat;
+	position: absolute;
+	margin: 22px 0 0 373px;
+	display: none;
+	z-index: 1000;
+}
+div#model-submenu .vscrollerbase {
+	background: none !important;
+}
+div#model-submenu ul {
+	margin: 0 1px;
+}
+div#model-submenu li {
+	border-bottom: 1px solid #f0f0ee;
+	padding: 3px 0;
+}
+div#model-submenu li a {
+	display: block;
+	color: #1e2435;
+	text-decoration: none;
+	padding: 0 6px;
+}
+div#model-submenu li a:hover {
+	text-decoration: underline;
+}
+div#model-submenu li.current a {
+	font-weight: bold;
+}
+div#model-submenu li.current a:hover {
+	text-decoration: none;
+}
+
+/* this has been updated from before... */
+div#search-pagination {
+	text-align: center;
+	font-size: 1.2em;
+	line-height: 150%;
+	margin-top: 20px;
+	position: relative;
+}
+div#search-pagination a {
+	color: #B4AF76;
+	padding: 10px 5px;
+	font-weight: bold;
+	text-decoration: none;
+}
+div#search-pagination a:hover { text-decoration: underline; }
+div#search-pagination span {
+	padding: 10px 5px;
+	color: #1E2435;
+	font-weight: bold;
+}
+div#search-pagination a.prevnext {
+	color: #1E2435;
+	padding: 10px;
+}
+/* end update */
+
+
+
+
+
+
+
+
+
+
+/********** map *************/
+div#mapresults {
+	padding-top: 10px;
+	display: none;
+	float: right;
+	margin-top: 10px;
+	width: 534px;
+}
+div#branch-finder-container {
+	padding-top: 20px;
+	border-top: 1px solid #E0E0E0;
+	display: none;
+	margin-top: 10px;
+}
+div#branch-finder-map { 
+	width: 532px;
+	height: 350px;
+	border: 1px solid #CCC;
+	margin-bottom: 10px;
+}
+div#mapresults p {
+	font-size: 1.4em;
+	margin-bottom: 10px;
+	display: none;
+	line-height: 120%;
+}
+div#maploading {
+	width: 532px;
+	height: 350px;
+	position: absolute;
+	background: #FFF;
+	z-index: 10000000;
+	border: 1px solid #CCC;
+	opacity: 0.9;
+}
+div#maploading div {
+	width:300px;height:100px;position:absolute;top:50%;left:50%;margin:-50px 0 0 -150px;text-align:center;color:#999;font-family:Arial,sans-serif;font-weight: bold;font-size:12px;
+}
+div#branch-finder-contact {
+	width: 155px;
+	float: right;
+	font-size: 1.2em;
+	line-height: 140%;
+}
+div#branch-finder-directions {
+	width: 354px;
+	float: left;
+	font-size: 1.1em;
+	line-height: 140%;
+}
+div#branch-finder-directions table {
+	width: 100%;
+	border-top: 1px solid #E0E0E0;
+	margin-top: 5px;
+}
+div#branch-finder-directions tr td {
+	border-bottom: 1px solid #E0E0E0;
+	padding: 5px 0;
+}
+div#branch-finder-directions td {
+	vertical-align: top;
+}
+div#branch-finder-directions td.step {
+	width: 25px;
+	color: #999;
+	font-weight: bold;
+}
+div#branch-finder-directions td.step a { color: #999; }
+div#branch-finder-directions td.miles {
+	text-align: right;
+	color: #999;
+}
+div#directions-print { float: right; }
+div#directions-print a { color: #B4AF76; }
+
+
+
+
+
+/***** new car detail pages ******/
+span#new-model-price {
+	background: #B4AF76;
+	padding: 5px 5px 6px 5px;
+	font-size: 1.6em;
+	font-weight: bold;
+	color: #FFF;
+	float: right;
+	z-index: 10000;
+	margin-right: 19px;
+	margin-bottom: -100px;
+}
+div.photo-controls-right {
+	float: right;
+	margin: 10px 167px 10px 0 !important;
+	padding: 6px 0;
+}
+div#model-text-bottom {
+	width: 528px;
+	font-size: 1.2em;
+	line-height: 130%;
+}
+div#model-text-bottom h4 {
+	font-weight: bold;
+	font-size: 1.4em;
+	color: #666;
+	font-family: "trebuchet ms", verdana, arial, sans-serif;
+	margin: 1.2em 0 1em 0;
+}
+div#model-text-bottom li {
+	list-style: square;
+	margin: 0 0 0.6em 1.4em;
+}
+div#model-detail-right {
+	float: right;
+	width: 155px;
+}
+div#model-detail-right li {
+	font-size: 1em;
+	border-bottom: 1px solid #E0E0E0;
+	padding: 0.2em 0;
+}
+div#model-detail-right li span {
+	color: #999;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+div#model-detail-right h5 {
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: 1.2em;
+	margin-bottom: 0.6em;
+	margin-top: 0;
+}
+div#model-detail-right h5.toyota { color: #cc0033; }
+div#model-detail-right h5.mazda { color: #0080c5; }
+div#model-detail-right h5.peugeot { color: #00529c; }
+div#model-detail-right h5.lexus { color: #8e8481; }
+div#model-detail-right p.priceincludes {
+	line-height: 130%;
+	margin-top: 10px;
+	color: #999;
+	font-size: 0.95em;
+	margin-bottom: 9px;
+}
+
+
+
+
+
+
+
+
+
+/*********** MY SHOWROOM ************/
+ul#search-toggle li#my-cars {
+	background-image: url(/resource/images/layout/search-icon-quick.png);
+	background-position: 10px 9px;
+	background-repeat: no-repeat;
+}
+ul#search-toggle li#my-cars-compared {
+	background-image: url(/resource/images/layout/search-icon-compare.png);
+	background-position: 10px 9px;
+	background-repeat: no-repeat;
+}
+ul#search-toggle li#my-cars.current {
+	background-image: url(/resource/images/layout/search-icon-quick-on.png);
+	background-position: 10px 9px;
+	background-repeat: no-repeat;
+}
+ul#search-toggle li#my-cars-compared.current {
+	background-image: url(/resource/images/layout/search-icon-compare-on.png);
+	background-position: 10px 9px;
+	background-repeat: no-repeat;
+}
+ul#search-toggle li.disabled {
+	background-color: #333;
+}
+
+div#my-cars-compared-view table {
+	border-top: 1px solid #E0E0E0; border-right: 1px solid #E0E0E0;
+}
+div#my-cars-compared-view table tr td {
+	border-bottom: 1px solid #E0E0E0;
+	border-left: 1px solid #E0E0E0;
+}
+div#my-cars-compared-view table td {
+	width: 20%;
+	width: 120px;
+	padding: 8px 10px;
+	color: #1E2435;
+	font-size: 1.2em;
+	vertical-align: top;
+	background: #FFF;
+}
+div#my-cars-compared-view table td select {
+	width: 100%;
+}
+
+div#my-cars-compared-view table td div.select-car {
+	margin-top: 10px;
+	color: #CCC;
+	font-weight: bold;
+	text-transform: uppercase;
+	font-size: 0.9em;
+	text-align: center;
+}
+
+div#my-cars-compared-view table td div.photo {
+	border: 1px solid #9D9EA1;
+	width: 100%;
+	margin-top: 5px;
+}
+div#my-cars-compared-view table td div.photo img {
+	width: 100%;
+}
+div#my-cars-compared-view table td div.photo div.preowned {
+	position: absolute;
+	width: 41px;
+	height: 41px;
+	margin-left: 83px;
+	background: url(/resource/images/layout/corner-preowned-small.png) top left no-repeat;
+}
+div#my-cars-compared-view table td div.photo div.new {
+	position: absolute;
+	width: 41px;
+	height: 41px;
+	margin-left: 83px;
+	background: url(/resource/images/layout/corner-new-small.png) top left no-repeat;
+}
+
+div#my-cars-compared-view table td.nocar {
+	background: #FFF !important;
+}
+
+div#my-cars-compared-view table td.transparent {
+	background: transparent !important;
+	border: none !important;
+}
+div#my-cars-compared-view table td.active {
+	background: #F4F4ED !important;
+	cursor: pointer;
+}
+div#my-cars-compared-view table tr.header td {
+	background: #F4F4ED;
+}
+div#my-cars-compared-view table tr.buttons td.col1, div#my-cars-compared-view table tr.buttons td.col2, div#my-cars-compared-view table tr.buttons td.col3, div#my-cars-compared-view table tr.buttons td.col4 {
+	background: #F4F4ED;
+}
+div#my-cars-compared-view table tr.highlight td {
+	background: #FAF9F6;
+}
+div#my-cars-compared-view table td.header {
+	font-size: 1.2em;
+	color: #333;
+	font-weight: bold;
+	text-transform: uppercase;
+	padding-top: 12px;
+}
+div#my-cars-compared-view table td.label {
+	color: #B4AF76;
+	font-weight: bold;
+	text-transform: uppercase;
+	font-size: 1.2em;
+}
+
+p#only4cars {
+	margin-top: 1em;
+	font-size: 1.1em;
+	color: #666;
+	display: inline;
+	padding: 2px;
+	margin-left: -2px;
+}
+div#my-cars-view {
+	background: #FFF;
+	border: 1px solid #E0E0E0;
+	padding: 10px 0 0 10px;
+}
+div#my-cars-view div.car {
+	border: 1px solid #CCC;
+	width: 336px;
+	float: left;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	background: url(/resource/images/layout/search-result-bg.png) bottom left repeat-x;
+	cursor: pointer;
+}
+div#my-cars-view div.photo {
+	width: 100px;
+	float: left;
+	border: 1px solid #ccc;
+	margin: 10px 0 10px 10px;
+}
+div#my-cars-view div.photo img {
+	width: 100%;
+}
+div#my-cars-view div.text {
+	width: 200px;
+	margin-left: 125px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+div#my-cars-view div.remove-button {
+	position: absolute;
+	width: 45px;
+	height: 8px;
+	margin: 3px 0 0 289px;
+	background: url(/resource/images/layout/my-showroom-remove.png) top left no-repeat;
+}
+
+div#my-cars-view h4 {
+	font-size: 1.6em;
+	font-weight: bold;
+	color: #1E2435;
+	line-height: 100%;
+}
+div#my-cars-view h4 span { display: block; margin-top: 0.2em; font-size: 0.8em; }
+div#my-cars-view div.buttons {
+	color: #B4AF76;
+	font-size: 1.6em;
+	font-weight: bold;
+	margin-top: 13px;
+}
+
+div#my-cars-view div.car div.bar {
+	background: #EEE;
+	border-top: 1px solid #E0E0E0;
+	padding: 2px 8px;
+	clear: both;
+}
+
+div#my-cars-view div.car div.bar input {
+	vertical-align: middle;
+}
+div#my-cars-view div.car div.bar label {
+	text-transform: uppercase;
+	font-weight: bold;
+	color: #333;
+}
+div#my-cars-view div.car div.bar div.rightlink {
+	text-transform: uppercase;
+	float: right;
+	margin-top: 2px;
+}	
+
+div#my-cars-view div.car-selected {
+	background: #ECEBDD;
+}
+
+div#compare-selected-button {
+	float: right;
+	padding-top: 10px;
+	width: 157px;
+	height: 18px;
+	background: url(/resource/images/layout/compare-selected-cars-button.gif) top left no-repeat;
+	cursor: pointer;
+	display: none;
+}
+
+
+
+
+/******** RIGHT COLUMN ***********/
+h4.our-branches {
+	background: url(/resource/images/layout/h4-our-branches.png) top left no-repeat;
+	text-indent: -10000px;
+	margin: 20px 0 10px 0;
+	width: 101px;
+	height: 12px;
+}
+select#our-branches {
+	width: 152px;
+	font-size: 1em;
+}
+h5.find-your-nearest-branch {
+	background: url(/resource/images/layout/h5-find-your-nearest-branch.png) top left no-repeat;
+	text-indent: -10000px;
+	margin: 10px 0 5px 0;
+	width: 141px;
+	height: 9px;
+}
+input#find-your-nearest-branch {
+	width: 109px;
+	font-size: 1.1em;
+}
+input#find-your-nearest-branch-submit {
+	margin-left: 5px;
+	vertical-align: top;
+}
+
+
+div#my-showroom-empty {
+	width: 160px;
+	height: 163px;
+	background: url(/resource/images/static/myshowroom.png) top left no-repeat;
+	margin-top: 25px;
+	text-indent: -10000px;
+}
+div#my-showroom-empty a {
+	display: block;
+	width: 160px;
+	height: 163px;
+}
+
+
+
+div#vehicle-service {
+	width: 160px;
+	height: 88px;
+	background: url(/resource/images/layout/book-your-service.png) top left no-repeat;
+	text-indent: -10000px;
+	float: left;
+}
+div#vehicle-service a {
+	display: block;
+	width: 160px;
+	height: 88px;
+}
+
+
+
+
+h4.my-showroom {
+	background: url(/resource/images/layout/h4-my-showroom.png) top left no-repeat;
+	text-indent: -10000px;
+	margin: 0 0 7px 0;
+	width: 117px;
+	height: 12px;
+}
+div#my-showroom {
+	margin-top: 25px;
+}
+div#my-showroom-header {
+	height: 7px;
+	background: url(/resource/images/layout/my-showroom-header.png) top left no-repeat;
+}
+div#my-showroom-content {
+	background: url(/resource/images/layout/my-showroom-content.png) bottom left no-repeat;
+	padding: 6px 16px 7px 10px;
+}
+div#my-showroom-content div.row { cursor: pointer; clear: both; border-bottom: 1px solid #dcdac4; padding: 5px 0; }
+div#my-showroom-content div.photo { width: 40px; border: 1px solid #CCC; float: left; }
+div#my-showroom-content div.photo img { width: 100%; }
+div#my-showroom-content div.main { float: right; width: 85px; color: #666; }
+div#my-showroom-content div.main a { font-size: 1.1em; display: block; color: #989358; font-weight: bold; text-decoration: none; }
+
+div#my-showroom-content div.row-active div.photo { border-color: #999; }
+div#my-showroom-content div.row-active div.main { color: #000; }
+div#my-showroom-content div.row-active div.main a { text-decoration: underline; }
+
+div#my-showroom-footer {
+	height: 28px;
+	background: url(/resource/images/layout/my-showroom-footer.png) top left no-repeat;
+	cursor: pointer;
+}
+
+
+
+
+
+
+/************* generic content page styles *************/
+div#interiorpanel-inner-background.content {
+	font-size: 1.2em;
+	line-height: 150%;
+}
+div#interiorpanel-inner-background.content p {
+	margin-bottom: 1.6em;
+}
+div#interiorpanel-inner-background.content h4 {
+	font-weight: bold;
+	font-size: 1.5em;
+	margin-bottom: 0.4em;
+}
+div#interiorpanel-inner-background.content h5 {
+	font-weight: bold;
+	font-size: 1.2em;
+	margin-bottom: 0.4em;
+}
+div#interiorpanel-inner-background.content p a {
+	color: #B4AF76;
+}
+
+
+
+
+
+
+/******* contact us ***********/
+div.branch-column {
+	width: 154px;
+	float: left;
+	margin-right: 30px;
+}
+div.branch-column-last {
+	margin-right: 0;
+}
+div.branch-column div.logo {
+	border: 1px solid #E0E0E0;
+	text-align: center;
+}
+div.branch-column div.photo {
+	text-align: center;
+	margin-top: 10px;
+}
+div.branch-column ul {
+	margin-top: 20px;
+}
+div.branch-column li {
+	border-bottom: 1px solid #dcdac4;
+}
+div.branch-column li a {
+	padding: 4px 0 0 0;
+	display: block;
+	color: #333;
+	text-decoration: none;
+}
+div.branch-column li a:hover {
+	text-decoration: underline;
+}
+div#branch-postcode-box {
+	float: right;
+	width: 180px;
+	padding: 5px;
+	background: #dcdac4;
+	margin-left: 20px;
+	height: 23px;
+}
+div#branch-postcode-box input { width: 135px; }
+div#branch-postcode-box input.submit { width: auto; vertical-align: middle; margin: 0 0 0 5px; }
+
+
+
+
+/************* new add showroom buttons *************/
+div.add-showroom-button {
+	width: 144px;
+	height: 20px;
+	background: url(/resource/images/layout/add-to-my-showroom-button.gif) top left no-repeat;
+	cursor: pointer;
+}
+div.add-showroom-spinner {
+	width: 173px;
+	height: 20px;
+	display: none;
+	text-align: right;
+	padding-top: 2px;
+}
+
+
+/********* book test drive ***********/
+form#test-drive-form fieldset { padding: 10px; border: 1px solid #E0E0E0; margin-top: 20px; }
+form#test-drive-form img { clear: both; cursor: pointer; }
+form#test-drive-form img#continue { margin: 10px 0 10px 325px; }
+form#test-drive-form img#submit { margin: 10px 0 10px 341px; }
+form#test-drive-form legend { font-weight: bold; text-transform: uppercase; padding: 0 10px; border: 1px solid #E0E0E0; background: #eae9e3; }
+form#test-drive-form label { clear: left; display: block; float: left; width: 140px; margin-right: 10px; padding: 3px 0 0 0; text-align: right; font-weight: bold; }
+form#test-drive-form input, form#test-drive-form textarea, form#test-drive-form select { float: left; width: 300px; margin-bottom: 10px; }
+form#test-drive-form textarea { height: 80px; }
+form#test-drive-form select { width: 300px; }
+form#test-drive-form select.inset { margin-left: 150px; margin-top: -5px; }
+form#test-drive-form select.time { margin-top: 3px; width: 110px; margin-left: 5px; }
+form#test-drive-form input.required { background: url(/resource/images/layout/form-field-required.gif) top right no-repeat; }
+form#test-drive-form input.test-drive-branch { clear: left; } 
+form#test-drive-form span { display: block; width: 200px; padding-left: 5px; border-left: 1px solid #E0E0E0; margin-left: 20px; float: left; font-size: 0.9em; line-height: 120%; }
+form#test-drive-form span a { color: #B4AF76; }
+form#test-drive-form span#date-time-text { padding: 0 !important; border: none !important; margin: 0 !important; font-size: 1em !important; font-weight: bold; }
+form#test-drive-form span.select { margin-top: 5px; }
+form#test-drive-form div#date-time-container { float: left; width: 300px; padding-bottom: 10px; }
+form#test-drive-form div#branch-container { float:left; width:300px; margin-top:3px; font-size:0.9em; line-height:120%; }
+form#test-drive-form div#branch-container input { float: left; width: auto; }
+form#test-drive-form div#branch-container label { clear: none; float: left; width: 260px; margin-left: 5px; padding-bottom: 5px; text-align: left; font-weight: normal; }
+form#test-drive-form div#branch-container label a { color: #B4AF76; }
+form#test-drive-form div#branch-container select { width: 140px; margin-left: 5px; margin-top: -5px; font-size: 0.9em; }
+
+
+
+
+
+/********* book service ***********/
+form#vehicle-service-form div.form-item { clear: left; }
+form#vehicle-service-form input.form-submit { margin-left: 200px; width: auto; }
+form#vehicle-service-form span.form-required { display: none; } 
+form#vehicle-service-form div.form-checkboxes, form#vehicle-service-form div.form-radios { float: left; margin: 0; }
+form#vehicle-service-form fieldset { padding: 10px; border: 1px solid #E0E0E0; margin-top: 20px; }
+form#vehicle-service-form img { clear: both; cursor: pointer; }
+form#vehicle-service-form img#continue { margin: 10px 0 10px 325px; }
+form#vehicle-service-form img#submit { margin: 10px 0 10px 341px; }
+form#vehicle-service-form legend { font-weight: bold; text-transform: uppercase; padding: 0 10px; border: 1px solid #E0E0E0; background: #eae9e3; }
+form#vehicle-service-form label { clear: left; display: block; float: left; width: 180px; margin-right: 20px; padding: 3px 0 0 0; text-align: right; font-weight: bold; }
+form#vehicle-service-form label.option { width: auto; }
+form#vehicle-service-form input, form#vehicle-service-form textarea, form#vehicle-service-form select { float: left; width: 300px; margin-bottom: 10px; }
+form#vehicle-service-form textarea { height: 80px; }
+form#vehicle-service-form select { width: 300px; }
+form#vehicle-service-form select.inset { margin-left: 150px; margin-top: -5px; }
+form#vehicle-service-form select.time { margin-top: 3px; width: 110px; margin-left: 5px; }
+form#vehicle-service-form input.required { background: url(/resource/images/layout/form-field-required.gif) top right no-repeat; }
+form#vehicle-service-form input.test-drive-branch { clear: left; } 
+form#vehicle-service-form span { display: block; width: 200px; padding-left: 5px; border-left: 1px solid #E0E0E0; margin-left: 20px; float: left; font-size: 0.9em; line-height: 120%; }
+form#vehicle-service-form span a { color: #B4AF76; }
+form#vehicle-service-form span#date-time-text { padding: 0 !important; border: none !important; margin: 0 !important; font-size: 1em !important; font-weight: bold; }
+form#vehicle-service-form span.select { margin-top: 5px; }
+
+
+
+
+
+
+/********* loyalty***********/
+ul.loyalty-benefits h4 {
+	color: #CE0000 !important;
+	font-size: 1.1em !important;
+}
+
+table#loyalty-discounts {
+	border: 1px solid #aaa;
+	margin: 10px 0 40px 0;
+	border-collapse: collapse;
+}
+
+table#loyalty-discounts tr {
+	height: 22px;
+	border-bottom: 1px solid #bbb;
+}
+
+table#loyalty-discounts th {
+	font-weight: bold;
+	font-size: 13px;
+	padding: 3px 10px;
+	background-color: #f3f3ee;
+}
+
+table#loyalty-discounts td {
+	border-right: 1px solid #bbb;
+	text-align: center;
+}
+form#loyalty-club-form div.form-item { clear: left; }
+form#loyalty-club-form input.form-submit { margin-left: 200px; width: auto; }
+form#loyalty-club-form span.form-required { display: none; } 
+form#loyalty-club-form div.form-checkboxes, form#loyalty-club-form div.form-radios { float: left; margin: 0; }
+form#loyalty-club-form fieldset { padding: 10px; border: 1px solid #E0E0E0; margin-top: 20px; }
+form#loyalty-club-form img { clear: both; cursor: pointer; }
+form#loyalty-club-form img#continue { margin: 10px 0 10px 325px; }
+form#loyalty-club-form img#submit { margin: 10px 0 10px 341px; }
+form#loyalty-club-form legend { font-weight: bold; text-transform: uppercase; padding: 0 10px; border: 1px solid #E0E0E0; background: #eae9e3; }
+form#loyalty-club-form label { clear: left; display: block; float: left; width: 180px; margin-right: 20px; padding: 3px 0 0 0; text-align: right; font-weight: bold; }
+form#loyalty-club-form label.option { width: auto; }
+form#loyalty-club-form input, form#loyalty-club-form textarea, form#loyalty-club-form select { float: left; width: 300px; margin-bottom: 10px; }
+form#loyalty-club-form textarea { height: 80px; }
+form#loyalty-club-form select { width: 300px; }
+form#loyalty-club-form select.inset { margin-left: 150px; margin-top: -5px; }
+form#loyalty-club-form select.time { margin-top: 3px; width: 110px; margin-left: 5px; }
+form#loyalty-club-form input.required { background: url(/resource/images/layout/form-field-required.gif) top right no-repeat; }
+form#loyalty-club-form input.test-drive-branch { clear: left; } 
+form#loyalty-club-form span { display: block; width: 200px; padding-left: 5px; border-left: 1px solid #E0E0E0; margin-left: 20px; float: left; font-size: 0.9em; line-height: 120%; }
+form#loyalty-club-form span a { color: #B4AF76; }
+form#loyalty-club-form span#date-time-text { padding: 0 !important; border: none !important; margin: 0 !important; font-size: 1em !important; font-weight: bold; }
+form#loyalty-club-form span.select { margin-top: 5px; }
+
+
+
+form#finance-form div.form-item { clear: left; }
+form#finance-form input.form-submit { margin-left: 200px; width: auto; }
+form#finance-form span.form-required { display: none; } 
+form#finance-form div.form-checkboxes, form#finance-form div.form-radios { float: left; margin: 0; }
+form#finance-form fieldset { padding: 10px; border: 1px solid #E0E0E0; margin-top: 20px; }
+form#finance-form img { clear: both; cursor: pointer; }
+form#finance-form img#continue { margin: 10px 0 10px 325px; }
+form#finance-form img#submit { margin: 10px 0 10px 341px; }
+form#finance-form legend { font-weight: bold; text-transform: uppercase; padding: 0 10px; border: 1px solid #E0E0E0; background: #eae9e3; }
+form#finance-form label { clear: left; display: block; float: left; width: 180px; margin-right: 20px; padding: 3px 0 0 0; text-align: right; font-weight: bold; }
+form#finance-form label.option { width: auto; }
+form#finance-form input, form#finance-form textarea, form#finance-form select { float: left; width: 300px; margin-bottom: 10px; }
+form#finance-form textarea { height: 80px; }
+form#finance-form select { width: 300px; }
+form#finance-form select.inset { margin-left: 150px; margin-top: -5px; }
+form#finance-form select.time { margin-top: 3px; width: 110px; margin-left: 5px; }
+form#finance-form input.required { background: url(/resource/images/layout/form-field-required.gif) top right no-repeat; }
+form#finance-form input.test-drive-branch { clear: left; } 
+form#finance-form span { display: block; width: 200px; padding-left: 5px; border-left: 1px solid #E0E0E0; margin-left: 20px; float: left; font-size: 0.9em; line-height: 120%; }
+form#finance-form span a { color: #B4AF76; }
+form#finance-form span#date-time-text { padding: 0 !important; border: none !important; margin: 0 !important; font-size: 1em !important; font-weight: bold; }
+form#finance-form span.select { margin-top: 5px; }
+
+
+
+
+div#branch-finder-prompt h5 {
+	color:#666666;
+	font-family:"trebuchet ms",verdana,arial,sans-serif;
+	font-size:1.4em;
+	font-weight:bold;
+	margin:1.2em 0 0.6em 0;
+}
+div#branch-finder-prompt p {
+	line-height: 130%;
+	width: 356px;
+}
+div#branch-finder-prompt p a {
+	color: #B4AF76;
+	font-weight: bold;
+}
+div#branch-finder-prompt label { display: none; }
+div#branch-finder-prompt input { margin-top: 0.5em; width: 150px; }
+input.unchanged { color: #999; }
+div#branch-finder-prompt input.submit { vertical-align: top; margin-left: 10px; width: auto; }
+
+
+
+
+
+/* generic table styles */
+table.generic {
+	border-left: 1px solid #E0E0E0;
+	border-top: 1px solid #E0E0E0;
+	border-bottom: 1px solid #E0E0E0;
+}
+table.generic td {
+	padding: 5px 10px;
+	border-right: 1px solid #E0E0E0;
+	border-bottom: 1px solid #E0E0E0;
+	font-size: 1.1em;
+}
+table.generic th {
+	font-weight: bold;
+	padding: 5px 10px;
+	border-right: 1px solid #E0E0E0;
+	border-bottom: 2px solid #E0E0E0;
+	font-size: 1.1em;
+	background: #f3f3ee;
+	text-transform: uppercase;
+}
+table.generic tr.footer td { color: #999; }
+table.generic dl { color: #999; margin-top: 5px; }
+table.generic dt { float: left; font-weight: bold; width: 50px; }
+
+
+
+
+table.generic td table td { border: none; padding: 2px 0; }
+
+
+
+
+div#price-includes-search {
+	float: right;
+	line-height: 130%;
+	width: 30%;
+	padding: 10px;
+	background: #F5F5F5;
+}
+
+div#price-includes-model {
+	line-height: 130%;
+	padding: 10px;
+	background: #F5F5F5;
+	margin-top: 10px;
+	font-size: 0.9em;
+}
+
+div#price-includes-range {
+	line-height: 130%;
+	padding: 10px;
+	background: #F5F5F5;
+	font-size: 0.9em;
+}
+
+
+
+
+
+
+div.aftersales-splash {
+	width: 205px;
+	margin-right: 30px;
+	float: left;
+	margin-top: 15px;
+}
+
+
+
+
+
+
+ul.content {
+	list-style: square;
+	margin-left: 1.3em;
+	margin-bottom: 1em;
+}
+ul.inline {
+	margin-top: -1.3em;
+	margin-bottom: 2.6em;
+}
+
+div.model-detail-specification {
+	margin-bottom: 67px;
+}
+
+
+/**** content tabs ******/
+.ui-tabs-hide { display: none; }
+.ui-tabs-nav {
+    font-family: "Trebuchet MS", Trebuchet, Verdana, Helvetica, Arial, sans-serif;
+    font-size: 11px;
+}
+.ui-tabs-nav {
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0 4px;
+}
+.ui-tabs-nav:after { /* clearing without presentational markup, IE gets extra treatment */
+    display: block;
+    clear: both;
+    content: " ";
+}
+.ui-tabs-nav li {
+    float: left;
+	list-style-type: none !important;
+    margin: 0 0 0 -1px !important;
+    min-width: 84px; /* be nice to Opera */
+}
+.ui-tabs-nav a, .ui-tabs-nav a span {
+    display: block;
+    padding: 0 10px;
+    background: url(/resource/images/layout/model-tab.png) no-repeat;
+}
+.ui-tabs-nav a {
+    margin: 1px 0 0; /* position: relative makes opacity fail for disabled tab in IE */
+    padding-left: 0;
+    color: #666;
+    font-weight: bold;
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap; /* required in IE 6 */    
+    outline: 0; /* prevent dotted border in Firefox */
+}
+.ui-tabs-nav .ui-tabs-selected a {
+    position: relative;
+    top: 1px;
+    z-index: 2;
+    margin-top: 0;
+    color: #000;
+}
+.ui-tabs-nav a span {
+    width: 64px; /* IE 6 treats width as min-width */
+    min-width: 64px;
+    height: 18px; /* IE 6 treats height as min-height */
+    min-height: 18px;
+    padding-top: 6px;
+    padding-right: 0;
+}
+*>.ui-tabs-nav a span { /* hide from IE 6 */
+    width: auto;
+    height: auto;
+}
+.ui-tabs-nav .ui-tabs-selected a span {
+    padding-bottom: 1px;
+}
+.ui-tabs-nav .ui-tabs-selected a, .ui-tabs-nav a:hover, .ui-tabs-nav a:focus, .ui-tabs-nav a:active {
+    background-position: 100% -150px;
+}
+.ui-tabs-nav a, .ui-tabs-nav .ui-tabs-disabled a:hover, .ui-tabs-nav .ui-tabs-disabled a:focus, .ui-tabs-nav .ui-tabs-disabled a:active {
+    background-position: 100% -100px;
+}
+.ui-tabs-nav .ui-tabs-selected a span, .ui-tabs-nav a:hover span, .ui-tabs-nav a:focus span, .ui-tabs-nav a:active span {
+    background-position: 0 -50px;
+}
+.ui-tabs-nav a span, .ui-tabs-nav .ui-tabs-disabled a:hover span, .ui-tabs-nav .ui-tabs-disabled a:focus span, .ui-tabs-nav .ui-tabs-disabled a:active span {
+    background-position: 0 0;
+}
+.ui-tabs-nav .ui-tabs-selected a:link, .ui-tabs-nav .ui-tabs-selected a:visited, .ui-tabs-nav .ui-tabs-disabled a:link, .ui-tabs-nav .ui-tabs-disabled a:visited { /* @ Opera, use pseudo classes otherwise it confuses cursor... */
+    cursor: text;
+}
+.ui-tabs-nav a:hover, .ui-tabs-nav a:focus, .ui-tabs-nav a:active,
+.ui-tabs-nav .ui-tabs-unselect a:hover, .ui-tabs-nav .ui-tabs-unselect a:focus, .ui-tabs-nav .ui-tabs-unselect a:active { /* @ Opera, we need to be explicit again here now... */
+    cursor: pointer;
+}
+.ui-tabs-disabled {
+    opacity: .4;
+    filter: alpha(opacity=40);
+}
+.ui-tabs-panel {
+    border-top: 1px solid #CCC;
+    padding: 1em 8px;
+    background: #fff; /* declare background color for container to avoid distorted fonts in IE while fading */
+}
+
+/* Additional IE specific bug fixes... */
+* html .ui-tabs-nav { /* auto clear, @ IE 6 & IE 7 Quirks Mode */
+    display: inline-block;
+}
+*:first-child+html .ui-tabs-nav  { /* @ IE 7 Standards Mode - do not group selectors, otherwise IE 6 will ignore complete rule (because of the unknown + combinator)... */
+    display: inline-block;
+}
+
+
+
+/* jqModal base Styling courtesy of;
+	Brice Burgess <bhb@iceburg.net> */
+
+/* The Window's CSS z-index value is respected (takes priority). If none is supplied,
+	the Window's z-index value will be set to 3000 by default (via jqModal.js). */
+	
+.jqmWindow {
+    display: none;
+    position: fixed;
+    background-color: #000;
+    color: #666;
+    padding: 10px;
+	border: 5px solid #333;
+	top: 50%;
+    left: 50%;
+}
+
+
+/* same width as video flash, 15px more height */
+.jqmWindow-lexus {
+    margin: -160px 0 0 -200px;
+    width: 400px;
+	height: 315px;
+}
+
+.jqmWindow-mazda {
+    margin: -152px 0 0 -219px;
+    width: 438px;
+	height: 303px;
+}
+
+.jqmWindow-peugeot {
+    margin: -160px 0 0 -200px;
+    width: 400px;
+	height: 315px;
+}
+
+.jqmWindow-toyota {
+    margin: -92px 0 0 -160px;
+    width: 320px;
+	height: 183px;
+}
+
+.jqmOverlay { background-color: #000; }
+
+/* Background iframe styling for IE6. Prevents ActiveX bleed-through (<select> form elements, etc.) */
+* iframe.jqm {position:absolute;top:0;left:0;z-index:-1;
+	width: expression(this.parentNode.offsetWidth+'px');
+	height: expression(this.parentNode.offsetHeight+'px');
+}
+
+/* Fixed posistioning emulation for IE6
+     Star selector used to hide definition from browsers other than IE6
+     For valid CSS, use a conditional include instead */
+* html .jqmWindow {
+     position: absolute;
+     top: expression((document.documentElement.scrollTop || document.body.scrollTop) + Math.round(17 * (document.documentElement.offsetHeight || document.body.clientHeight) / 100) + 'px');
+}

@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<!-- ============================================================= -->
+<!-- ANT RECIPES FOR WEB DEVELOPERS CHP 1 Text Recipe              -->
+<!-- Author: James Fuller / Webcomposite                           -->
+<!-- Email/WWW: jim.fuller@webcomposite.com /  www.antrecipes.com  -->
+<!-- ============================================================= -->
+<!--    (C) Copyright James Fuller 2009 - All Rights Reserved.     -->
+<!--  use the -debug flag for more information when running ant  //-->
+
+<project name="localisation" basedir="." default="run">
+<description>localisation</description>
+
+<tstamp prefix="start"/>
+
+<property name="language" value="en"/>
+
+<target name="Replace" description="example">
+<replace
+    file="index1.html"
+    summary="yes"
+    encoding="iso-8859-1"
+    replacefilterfile="replace.properties.${language}">
+    <replacefilter
+        token="@datepublished@"
+        value="${start.TSTAMP}"/>
+</replace>
+</target>
+
+
+
+<target name="translate">
+  <translate toDir="result/de"
+        starttoken="@"
+        endtoken="@"
+        bundle="resource/localisation"
+        bundlelanguage="de"
+        forceoverwrite="yes"
+        srcencoding="ISO8859_1"
+        destencoding="ISO8859_1"
+        bundleencoding="ISO8859_1">
+        <fileset dir="data">
+            <include name="**/*.xml"/>
+        </fileset>
+  </translate>
+</target>
+
+
+<!-- ===================================================== -->
+<!-- Run Target                                            -->
+<!-- ===================================================== -->
+<target name="run" depends="clean,translate" description="runs all examples"/>
+
+ 
+<!-- ===================================================== -->
+<!-- Clean Target                                          -->
+<!-- ===================================================== -->     
+<target name="clean">
+	<delete dir="result"/>
+	<mkdir dir="result"/>
+</target>
+
+
+<macrodef name="localise">
+   <attribute name="lang" default="en"/>
+   <attribute name="src" default="."/>
+   <sequential>
+      <translate toDir="result/@{lang}"
+            starttoken="@"
+            endtoken="@"
+            bundle="resource/local"
+            bundlelanguage="@{lang}"
+            forceoverwrite="yes"
+            srcencoding="${encoding }"
+            destencoding="${encoding }"
+            bundleencoding="${encoding}">
+            <fileset dir="@{src}">
+                <include name="**/*.txt"/>
+            </fileset>
+      </translate>
+   </sequential>
+</macrodef>
+
+</project>

@@ -1,0 +1,51 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--expressions/range
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: Range expressions</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Range expressions">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>Range expressions</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The expression <code>E1 to E2</code> returns a sequence of integers. For example, <code>1 to 5</code>
+         returns the sequence <code>1, 2, 3, 4, 5</code>. This is useful in <code>for</code> expressions, for example
+         the first five nodes of a node sequence can be processed by writing <code>for $i in 1 to 5 return (//x)[$i]</code>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">If you prefer, you can write this as <code>(//x)[position() = 1 to 5]</code>. This works because
+         comparison of a single integer (<code>position()</code>) to a sequence of integers (<code>1 to 5</code>)
+         is true if the integer on the left is equal to any integer in the sequence.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="range.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="comparisons.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ============================================================= --> 
+<!-- ANT RECIPES FOR WEB DEVELOPERS CHP XML Recipe                 -->
+<!-- Author: James Fuller / Webcomposite                           --> 
+<!-- Email/WWW: jim.fuller@webcomposite.com /  www.antrecipes.com  --> 
+<!-- ============================================================= --> 
+<!--    (C) Copyright James Fuller 2007 - All Rights Reserved.     -->
+<antlib>
+
+<macrodef name="saxon">
+   <attribute name="xml"/>
+   <attribute name="xslt"/>
+   <attribute name="dest"/>
+   <attribute name="ext"/>
+   <sequential>
+   <xslt in="@{xml}"
+      destdir="@{dest}"  
+      basedir="."
+      includes="@{xml}"
+      extension="@{ext}"
+      style="@{xslt}"
+      classpathref="saxon.path">
+   </xslt>
+   </sequential>
+</macrodef>
+
+<macrodef name="saxon2">
+  <attribute name="in"/>
+  <attribute name="out"/>
+  <attribute name="style"/>
+  <sequential>
+		<java classname="net.sf.saxon.Transform" fork="yes" failonerror="true">
+			<classpath refid="saxon.path"/>
+			<arg line="-l"/>
+			<arg line="-o @{out}"/>
+			<arg line="@{in} @{style}"/>
+		</java>
+  </sequential>
+</macrodef>
+
+</antlib>

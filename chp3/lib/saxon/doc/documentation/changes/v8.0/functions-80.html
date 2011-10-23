@@ -1,0 +1,99 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--changes/v8.0/functions-80
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: Functions and Operators</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Functions and Operators">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>Functions and Operators</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>normalize-space()</code> function now returns a zero-length string if the argument is an empty sequence.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Casting from <code>xs:anyURI</code> to <code>xdt:untypedAtomic</code> is now allowed.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Integers of unlimited size are now supported when using the <code>xs:integer</code> data type.
+         The full range of <code>xs:unsignedLong</code> is now supported.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Decimal division has been changed. The scale of the result (the number of digits after the
+         decimal point) is now the maximum of (18, s1, s2) where s1 is the scale of the first operand and
+         s2 is the scale of the second. An extension function 
+         <a class="bodylink" href="javascript:tosubpage('extensions','functions','decimaldivide')">decimal-divide()</a>
+         has been introduced to perform decimal division to a user-specified precision.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>idiv</code> operator now allows operands of any numeric type.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">A negative year is allowed in values of type <code>xs:dateTime</code>, <code>xs:gYear</code>,
+         and <code>xs:gYearMonth</code>. (Negative years were allowed in <code>xs:date</code> in Saxon 7.9.1)
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Division of one duration by another to produce a double is implemented.</p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Some operations on durations are now performed using long arithmetic rather than double arithmetic,
+         which improves the precision of the result.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>eq</code>, <code>gt</code>... family of operators now allow either operand to be an empty
+         sequence, in which case the result is an empty sequence.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>id()</code> function now accepts a second parameter, this is a node that identifies the
+         document to be searched to find the required ID value. (The corresponding change to other functions
+         such as <code>idref()</code>, <code>lang()</code>, and <code>key()</code> has not yet been made)
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>deep-equals()</code> function now compares attributes using their typed value rather than
+         their string value.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">If the fragment identifier included in a URI reference passed to the <code>document()</code> function is not a valid
+         NCName, it is now ignored, and the function returns the document node. Previously an empty sequence would
+         be returned.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="functions-80.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../v8.0.html">Up</a>&nbsp;&nbsp;<a class="nav" href="schema-80.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

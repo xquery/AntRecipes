@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ============================================================= -->
+<!-- ANT RECIPES FOR WEB DEVELOPERS CHP 2 XML Recipe               -->
+<!-- Author: James Fuller / Webcomposite                           -->
+<!-- Email/WWW: jim.fuller@webcomposite.com /  www.antrecipes.com  -->
+<!-- ============================================================= -->
+<!--    (C) Copyright James Fuller 2010 - All Rights Reserved.     -->
+<!--  use the -debug flag for more information when running ant  //-->
+<project name="schemavalidate" basedir="." default="run">
+	<description>Demonstrate how to use Ant's schemavalidate task</description>
+	<!-- ===================================================== -->
+	<!-- Example1                                              -->
+	<!-- ===================================================== -->
+	<target name="example1">
+		<schemavalidate>
+			<schema namespace="http://www.example.com" file="data/example.xsd"/>
+			<fileset dir="data" includes="good-example.xml"/>
+		</schemavalidate>
+	</target>
+	<!-- ===================================================== -->
+	<!-- Example2                                              -->
+	<!-- ===================================================== -->
+	<target name="example2">
+
+		<schemavalidate>
+			<schema namespace="http://www.example.com" file="data/example.xsd"/>
+			<fileset dir="data" includes="bad-example.xml"/>
+		</schemavalidate>
+	</target>
+	<!-- ===================================================== -->
+	<!-- Run Target                                            -->
+	<!-- ===================================================== -->
+	<target name="run" depends="example1,example2" description="runs all examples"/>
+	<!-- ===================================================== -->
+	<!-- Clean Target                                          -->
+	<!-- ===================================================== -->
+	<target name="clean">
+		<delete dir="result"/>
+		<mkdir dir="result"/>
+	</target>
+</project>

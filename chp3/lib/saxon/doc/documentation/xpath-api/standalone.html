@@ -1,0 +1,69 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--xpath-api/standalone
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: The Standalone XPath API</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: The Standalone XPath API">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      
+      
+      <h1>The Standalone XPath API</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Because JAXP 1.3 is not available as a standard component of JDK 1.4, Saxon also provides a standalone
+         XPath API of its own, with no dependencies on the JAXP 1.3 classes. This is available in the package
+         <code>net.sf.saxon.sxpath</code>, which is included in the standard JAR file: <code>saxon8.jar</code>
+         or <code>saxon8sa.jar</code>. It is a simpler API with less capability than the JAXP API, for example
+         it does not allow XPath expressions to contain references to external variables or user-defined functions.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">This interface consists essentially of two classes. The <code>XPathEvaluator</code> class can be used to
+         establish a static context for compiling an XPath expression, and provides a method <code>compileExpression</code>
+         that takes an XPath expression as a string, and returns an object of class <code>XPathExpression</code>.
+         The XPathExpression object can then be evaluated using its <code>evaluate()</code> method. This method
+         takes as an argument an object of class <code>Source</code> to represent the document against which the
+         expression is evaluated. This can be a document that has already been parsed and built as a tree structure
+         (represented, for example, by a <code>DOMSource</code> object or by a Saxon <code>NodeInfo</code>,
+         or it can be an unparsed XML document supplied as a <code>StreamSource</code> or a <code>SAXSource</code>.
+         The result of the expression is returned as a Java <code>List</code>, which may contain a mixture of nodes
+         and atomic values. Nodes are represented using the class <code>NodeInfo</code>, unless the source used a 
+         different object model in which case they are returned using the node classes of that object model. Atomic values
+         are represented using the appropriate Java class, for example <code>Double</code>, <code>Boolean</code>, 
+         or <code>String</code>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Further details of these classes are available in the JavaDoc documentation.</p>
+      
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="standalone.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="nodeinfo.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

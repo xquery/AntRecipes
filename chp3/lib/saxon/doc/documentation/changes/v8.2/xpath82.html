@@ -1,0 +1,73 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--changes/v8.2/xpath82
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: Changes in XPath 2.0 Processing</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Changes in XPath 2.0 Processing">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>Changes in XPath 2.0 Processing</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Namespace URIs have been updated as defined in the October 2004 draft specifications: for example
+         <code>http://www.w3.org/2004/10/xpath-functions</code> and <code>http://www.w3.org/2004/10/xpath-datatypes</code>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The right-hand operand of the "/" operator can now be an expression of any type. (The left-hand operand must
+         still return nodes, which means that in a path expression, every step except the last must return nodes.) If the
+         expression returns atomic values, no sorting into document order or removal of duplicates takes place. A type
+         error occurs if the returned value contains a mixture of nodes and atomic values. This facility allows expressions
+         such as <code>sum(//item/(@price * @qty)), eliminating the need for range variables in many situations.</code>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The revised rules for backwards compatible processing in general comparisons have been implemented. These
+         are much closer to the XPath 1.0 rules. Most notably, an expression such as <code>@price &gt; @discount</code>
+         where both attributes are untyped is now a numeric comparison rather than a string comparison.
+         Backwards-compatible mode is invoked in an XSLT stylesheet specifying <code>version="1.0"</code>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The revised rules for backwards compatibility in arithmetic expressions have been implemented. The main 
+         changes are (a) numeric arithmetic always produces an <code>xs:double</code> result (never an integer or a
+         decimal - except in the case of the <code>idiv</code> operator), 
+         (b) arguments that can't be converted to a number generate NaN (rather than an error or an empty
+         sequence).
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Compile-time warning messages are now produced for steps in path expressions that can never retrieve
+         any nodes, for example <code>child::text()</code> if the context node is an attribute, or <code>..</code>
+         if the context node is a document node.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="xpath82.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../v8.2.html">Up</a>&nbsp;&nbsp;<a class="nav" href="functions82.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

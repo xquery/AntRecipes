@@ -1,0 +1,86 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--xsl-elements/character-map
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: xsl:character-map</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: xsl:character-map">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>xsl:character-map</h1>
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>xsl:character-map</code> declaration defines a named character map for use
+         during serialization. The <code>name</code> attribute gives the name of the character map, which can be
+         referenced from the <code>use-character-maps</code> attribute of <code>xsl:output</code>. The
+         <code>xsl:character-map</code> element contains a set of <code>xsl:output-character</code> elements each
+         of which defines the output representation of a given Unicode character. The character is specified using
+         the <code>character</code> attribute, the string which is to replace this character on serialization is
+         specified using the <code>string</code> attribute. Both attributes are mandatory.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The replacement string is output <i>as is</i>, even if it contains special (markup) characters. So, for
+         example, you can define &lt;xsl:output-character character="&amp;#xa0;" string="&amp;nbsp;"/&gt; to ensure that
+         NBSP characters are output using the entity reference <code>&amp;nbsp;</code>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Character maps allow you to produce output that is not well-formed XML, and they thus provide a replacement
+         facility for <code>disable-output-escaping</code>. A useful technique is to use characters in the Unicode
+         private use area (xE000 to xF8FF) as characters which, if present in the result tree, will be mapped to
+         special strings on output. For example, if you want to generate a proprietary XML-like format that uses
+         tags such as &lt;!IF&gt;, &lt;!THEN&gt;, and &lt;!ELSE&gt;, then you could map these to the three characters
+         xE000, xE001, xE002 (which you could in turn define as entities so they can be written symbolically in your
+         stylesheet or source document).
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Character maps are preferred to <code>disable-output-escaping</code> because they do not rely on an
+         intimate interface between the transformation engine and the serializer, and they do not distort the data model. The
+         special characters can happily be stored in a DOM, passed across the SAX interface, or manipulated in any
+         other way, before finally being rendered by the serializer.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Character maps may be assembled from other character maps using the <code>use-character-maps</code>
+         attribute. This contains a space-separated list of the names of other character maps that are to be
+         included in this character map.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Using character maps may be expensive at run-time. I have not measured the effect. Saxon currently makes no
+         special attempts to optimize their use: if character maps are used, then every character that is output
+         will be looked up in a hash table to see if there is a replacement string.
+      </p>
+      
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="character-map.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="choose.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

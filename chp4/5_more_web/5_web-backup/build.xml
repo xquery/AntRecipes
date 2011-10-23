@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ============================================================= -->
+<!-- ANT RECIPES FOR WEB DEVELOPERS CHP 3 Web Recipe               -->
+<!-- Author: James Fuller / Webcomposite                           -->
+<!-- Email/WWW: jim.fuller@webcomposite.com /  www.antrecipes.com  -->
+<!-- ============================================================= -->
+<!--    (C) Copyright James Fuller 2009 - All Rights Reserved.     -->
+<!--  use the -debug flag for more information when running ant  //-->
+<project name="Backup Web Application" default="backup" basedir=".">
+	<description>Backup web server distribution and associated database</description>
+	<!-- ===================================================== -->
+	<!-- Property definition                                   -->
+	<!-- ===================================================== -->
+	<xmlproperty file="ant-global.properties.xml"/>
+	<!-- ===================================================== -->
+	<!-- Type definition                                       -->
+	<!-- ===================================================== -->
+	<typedef file="macrodef.xml"/>
+	<!-- ===================================================== -->
+	<!-- Example1 Target                                       -->
+	<!-- ===================================================== -->
+	<target name="example1" if="app.hosts.virtual.documentroot" description="build entry point">
+		<!-- backup all web sites -->
+		<for list="${app.hosts.virtual.documentroot}" param="websrc">
+			<sequential>
+				<echo message="@{websrc}"/>
+				<backup-dir source="@{websrc}" target="${app.dir.backup}" prefix="${app.prefix.web}">
+					<filter>
+						<include name="**/*.css"/>
+						<include name="**/*.gif"/>
+						<include name="**/*.html"/>
+						<exclude name="CVS"/>
+					</filter>
+				</backup-dir>
+			</sequential>
+		</for>
+	</target>
+	<!-- ===================================================== -->
+	<!-- Run Target                                            -->
+	<!-- ===================================================== -->
+	<target name="run" depends="clean,example1" description="runs all examples"/>
+	<!-- ===================================================== -->
+	<!-- Clean Target                                          -->
+	<!-- ===================================================== -->
+	<target name="clean">
+		<delete dir="result"/>
+		<mkdir dir="result"/>
+	</target>
+</project>

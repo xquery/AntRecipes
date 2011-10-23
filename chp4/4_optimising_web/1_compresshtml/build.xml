@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!-- ============================================================= -->
+<!-- ANT RECIPES FOR WEB DEVELOPERS CHP 2 Web Recipe               -->
+<!-- Author: James Fuller / Webcomposite                           -->
+<!-- Email/WWW: jim.fuller@webcomposite.com /  www.antrecipes.com  -->
+<!-- ============================================================= -->
+<!--    (C) Copyright James Fuller 2009 - All Rights Reserved.     -->
+<!--  use the -debug flag for more information when running ant  //-->
+<project name="Compress HTML" basedir="." default="run">
+	<description>Compress HTML</description>
+	<!-- ===================================================== -->
+	<!-- Example1 Target                                       -->
+	<!-- ===================================================== -->
+	<target name="example1">
+		<!-- 
+<replaceregexp match="\s+" replace=" " flags="g">
+	<fileset dir="website"/>
+</replaceregexp>
+//-->
+		<echo message="target1: since this task permanently changes files in /data dir, you will need to uncomment the replaceregexp task in the ant build file"/>
+	</target>
+	<!-- ===================================================== -->
+	<!-- Example2 Target                                       -->
+	<!-- ===================================================== -->
+	<target name="example2">
+		<copy todir="result/filters">
+			<fileset dir="data"/>
+			<filterchain>
+				<tokenfilter>
+					<filetokenizer/>
+					<replaceregex pattern="\s+" flags="g" replace=" "/>
+				</tokenfilter>
+			</filterchain>
+		</copy>
+	</target>
+	<!-- ===================================================== -->
+	<!-- Run Target                                            -->
+	<!-- ===================================================== -->
+	<target name="run" depends="clean,example1,example2" description="runs all examples"/>
+	<!-- ===================================================== -->
+	<!-- Clean Target                                          -->
+	<!-- ===================================================== -->
+	<target name="clean">
+		<delete dir="result"/>
+		<mkdir dir="result"/>
+	</target>
+</project>

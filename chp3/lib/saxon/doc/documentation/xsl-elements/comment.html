@@ -1,0 +1,83 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--xsl-elements/comment
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: xsl:comment</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: xsl:comment">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>xsl:comment</h1>
+      
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>xsl:comment</code> element can appear anywhere within an <code>xsl:template</code>. It indicates
+         text that is to be output to the current output stream in the form of an XML or HTML
+         comment.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The content of the comment may be given either by a <code>select</code> attribute or by an enclosed
+         sequence constructor. If the <code>select</code> attribute is used and the value is a sequence, then
+         the items in the sequence are output space-separated.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">For example, the text below inserts some JavaScript into a generated HTML document:</p>
+      
+      
+      <div class="codeblock" style="border: solid thin; background-color: #B1CCC7; padding: 2px"><pre><code>&lt;script language="JavaScript"&gt;
+    &lt;xsl:comment&gt;
+        function bk(n) {
+            parent.frames['content'].location="chap" + n + ".1.html";
+        }
+    //&lt;/xsl:comment&gt;
+&lt;/script&gt;
+</code></pre></div>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Note that special characters occurring within the comment text will <i>not</i>
+         be escaped.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>xsl:comment</code> element will normally contain text only but it may contain other
+         elements such as <a href="../xsl-elements/if.html" target="_self" class="bodylink">xsl:if</a> or <a href="../xsl-elements/value-of.html" target="_self" class="bodylink">xsl:value-of</a>.
+         However, it should not contain literal result elements.
+         
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><i>Tip: the <code>xsl:comment</code> element can be very useful for debugging your stylesheet. Use comments in the generated
+            output as a way of tracking which rules in the stylesheet were invoked to produce the output.</i></p>
+      
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="comment.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="copy.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

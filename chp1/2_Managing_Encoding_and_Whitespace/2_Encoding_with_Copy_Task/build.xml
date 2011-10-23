@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!-- ============================================================= -->
+<!-- ANT RECIPES FOR WEB DEVELOPERS CHP 1 Text Recipe              -->
+<!-- Author: James Fuller / Webcomposite                           -->
+<!-- Email/WWW: jim.fuller@webcomposite.com /  www.antrecipes.com  -->
+<!-- ============================================================= -->
+<!--    (C) Copyright James Fuller 2010 - All Rights Reserved.     -->
+<!--  use the -debug flag for more information when running ant  //-->
+
+<project name="Fix Encoding" default="run" basedir=".">
+    <description>Fix Encoding</description>
+
+    <!-- ===================================================== -->
+    <!-- Force-encoding Target                                 -->
+    <!-- ===================================================== -->
+    <target name="force-encoding">
+        <copy todir="result" outputencoding="utf8">
+            <fileset dir="data">
+                <include name="*.*"/>
+            </fileset>
+        </copy>
+    </target>
+    
+    
+    <!-- ===================================================== -->
+    <!-- Run Target                                            -->
+    <!-- ===================================================== -->
+    <target name="run" depends="clean,force-encoding" description="runs all examples"/>
+    
+    
+    <!-- ===================================================== -->
+    <!-- Clean Target                                          -->
+    <!-- ===================================================== -->     
+    <target name="clean" description="">
+        <delete dir="result"/>
+        <mkdir dir="result"/>
+    </target>
+    
+</project>

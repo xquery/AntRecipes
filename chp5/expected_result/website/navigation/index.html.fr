@@ -1,0 +1,34 @@
+
+<!DOCTYPE html
+  SYSTEM "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="fr">
+   <!--time published:January 15 2009|1957-->
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      				
+      <meta name="description" content="(fr)">
+      				
+      <meta name="keyword" content="(fr)">
+      				
+      <meta http-equiv="Pragma" content="no-cache">
+      				
+      <meta http-equiv="Content-Language" content="fr">
+      				
+      <meta name="language" content="fr, french">
+      			
+      				
+      <title>Multilingual Website (fr)</title>
+      			
+   </head>
+   <frameset cols="*" frameborder="0" border="0">
+      <frameset rows="40,*,40" frameborder="0" border="0" framespacing="0" leftmargin="0" marginheight="0" marginwidth="0" topmargin="0">
+         <frame frameborder="0" scrolling="no" src="header.html" name="header" title="header">
+         <frameset cols="100,400" frameborder="0" border="0" framespacing="0" leftmargin="0" marginheight="0" marginwidth="0" topmargin="0">
+            <frame frameborder="0" scrolling="no" src="navigation.html" name="navigation" title="navigation">
+            <frame frameborder="0" scrolling="yes" src="main.html" name="main" title="main">
+         </frameset>
+         <frame frameborder="0" scrolling="yes" src="footer.html" name="footer" title="footer">
+      </frameset>
+   </frameset>
+</html>

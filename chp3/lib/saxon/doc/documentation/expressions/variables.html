@@ -1,0 +1,70 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--expressions/variables
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: Variable References</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Variable References">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      
+      <h1>Variable References</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The value of a variable (local or global variable, local or global parameter) may be referred to
+         using the construct <code>$<i>name</i></code>, where <i>name</i> is the variable name.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The variable is always bound at the textual place where the expression containing it appears;
+         for example a variable used within an <code>xsl:attribute-set</code> must be in scope at the point where the
+         attribute-set is defined, not the point where it is used.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">A variable may be declared to be of a particular type, for example it may be constrained to 
+         be an integer, or a sequence of strings, or an attribute node. In a schema-aware environment, this
+         may also be a reference to a user-defined type in a schema. If there is no type declared for the variable,
+         it may take a value of any data type, and in general it is not possible to 
+         determine its data type statically.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">It is an error to refer to a variable that has not been declared.</p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Starting with XPath 2.0, variables (known as range variables) may be declared within
+         an XPath expression, not only using <code>xsl:variable</code> elements in an XSLT stylesheet. The
+         expressions that declare variables are the <code>for</code>, <code>some</code>, and <code>every</code>
+         expressions. In XQuery, variables can also be declared in a <code>let</code> or <code>typeswitch</code>
+         expression, as well as in the signature of a user-written function.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="variables.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="functioncalls.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

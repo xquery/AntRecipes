@@ -1,0 +1,70 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--xsl-elements/perform-sort
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: xsl:perform-sort</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: xsl:perform-sort">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>xsl:perform-sort</h1>
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>xsl:perform-sort</code> instruction takes a sequence as its input and
+         produces a sorted sequence as its output.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The input sequence may be specified either using the <code>select</code> attribute, or using the
+         instructions contained within the <code>xsl:perform-sort</code> instruction.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The sort criteria are specified using <code>xsl:sort</code> elements as children of
+         <code>xsl:perform-sort</code>, in the usual way.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">For example:</p>
+      
+      
+      <div class="codeblock" style="border: solid thin; background-color: #B1CCC7; padding: 2px"><pre><code>&lt;xsl:perform-sort select="//BOOK"&gt;
+    &lt;xsl:sort select="author/last-name"/&gt;
+    &lt;xsl:sort select="author/first-name"/&gt;
+&lt;/xsl:perform-sort&gt;</code></pre></div>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">It's often useful to use <code>xsl:perform-sort</code> inside a stylesheet function; the function
+         can return the sorted sequence as its result, and can be invoked directly from an XPath expression.
+      </p>
+      
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="perform-sort.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="preserve-space.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

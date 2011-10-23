@@ -1,0 +1,56 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--expressions/except
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: Set difference and intersection</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Set difference and intersection">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>Set difference and intersection</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">These operators are new in XPath 2.0.</p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The expression <code>E1 except E2</code> selects all nodes that are in <code>E1</code> unless
+         they are also in <code>E2</code>. Both expressions must return sequences of nodes. The results
+         are returned in document order. For example, <code>@* except @note</code> returns all attributes
+         except the <code>note</code> attribute.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The expression <code>E1 intersect E2</code> selects all nodes that are in both <code>E1</code> and
+         <code>E2</code>. Both expressions must return sequences of nodes. The results
+         are returned in document order. For example, <code>preceding::fig intersect ancestor::chapter//fig</code> 
+         returns all preceding <code>fig</code> elements within the current chapter.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="except.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="union.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

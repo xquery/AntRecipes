@@ -1,0 +1,245 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--xpath-api/expressions
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: Using the JAXP XPath API</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Using the JAXP XPath API">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      
+      
+      <h1>Using the JAXP XPath API</h1>
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Saxon provides an API for executing XPath expressions. The API is an implementation of the JAXP 1.3
+         XPath API, which in turn is loosely modelled
+         on the DOM Level 3 API for XPath (which Saxon does not implement). 
+         For full documentation, see the Javadoc description of package
+         <code>net.sf.saxon.xpath</code>. Two sample applications using this API are available: they are called
+         <code>XPathExample.java</code> and <code>ApplyXPathJAXP.java</code>,
+         and can be found in the <code>samples/java</code> directory.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The  <code>XPathExample.java</code> application has been rewritten in Saxon 8.2 
+         to use JAXP 1.3 interfaces.  To run this application, see the instructions
+         in <a class="bodylink" href="javascript:topage('samples', 'shakespeare')">Shakespeare XPath Sample Application</a>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>ApplyXPathJAXP.java</code> application is an enhanced version of the class of the
+         same name issued as a sample application in the JAXP 1.3 distribution. It has been enhanced to show
+         the use of more advanced features, such as the ability to bind namespaces, variables, and functions, and
+         also to demonstrate use of the XPath API with different object models.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Because the XPath API in Saxon predates the introduction of the JAXP 1.3 XPath API, there is often more
+         than one way of achieving the same effect. It is likely that in time, some of the native Saxon methods will
+         be deprecated and replaced by the standard JAXP methods.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">An application using the JAXP 1.3 XPath API starts by instantiating a factory class. This is done by 
+         calling:
+      </p>
+      
+      
+      <div class="codeblock" style="border: solid thin; background-color: #B1CCC7; padding: 2px"><pre><code>
+XPathFactory xpathFactory = XPathFactory.newInstance(objectModel);
+XPath xpath = xpathFactory.newXPath();
+</code></pre></div>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Here <code>objectModel</code> is a URI that identifies the object model you are using. Saxon recognizes
+         four values for the object model:
+      </p>
+      
+      
+      <table xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         
+         <thead>
+            <tr>
+               <td>
+                  <p><b>Symbolic name</b></p>
+               </td>
+               <td>
+                  <p><b>Meaning</b></p>
+               </td>
+            </tr>
+         </thead>
+         
+         <tbody>
+            
+            <tr>
+               <td valign="top">
+                  <p>XPathConstants.DOM_OBJECT_MODEL</p>
+               </td>
+               <td>
+                  <p>The DOM object model</p>
+               </td>
+            </tr>
+            
+            <tr>
+               <td valign="top">
+                  <p>NamespaceConstant.OBJECT_MODEL_SAXON</p>
+               </td>
+               <td>
+                  <p>Saxon's native object model.
+                     This means anything that implements the <code>NodeInfo</code> interface, including
+                     the standard tree, the tiny tree, and third-party implementations of <code>NodeInfo</code>.
+                  </p>
+               </td>
+            </tr>
+            
+            <tr>
+               <td valign="top">
+                  <p>NamespaceConstant.OBJECT_MODEL_JDOM</p>
+               </td>
+               <td>
+                  <p>The JDOM object model</p>
+               </td>
+            </tr>
+            
+            <tr>
+               <td valign="top">
+                  <p>NamespaceConstant.OBJECT_MODEL_XOM</p>
+               </td>
+               <td>
+                  <p>The XOM object model</p>
+               </td>
+            </tr>
+            
+         </tbody>
+         
+      </table>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">To ensure that Saxon is selected as your XPath implementation, you must specify one of these
+         constants as your chosen object model, and you must ensure that the Java system property
+         <code>javax.xml.xpath.XPathFactory</code> is set to the value <code>net.sf.saxon.xpath.XPathFactoryImpl</code>.
+         Normally, if Saxon is on your classpath then the Saxon XPath implementation will be picked up automatically, but
+         if there are other implementations on the classpath as well then it is best to set the system property 
+         explicitly to be sure.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">This API is based on the class <code>net.sf.saxon.xpath.XPathEvaluator</code>. This class provides a few
+         simple configuration interfaces to set the source document, the static context, and the context node,
+         plus a number of methods for evaluating XPath expressions.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>XPath</code> object returned from the above calls allows you to set the static context for
+         evaluating XPath expressions (you can pre-declare namespaces, variables, and functions), and to compile
+         XPath expressions in this context. A compiled XPath expression (an object of class <code>XPathExpression</code>)
+         can then be evaluated, with a supplied node (represented by a class in the selected object model) supplied
+         as the context node. For further details, see the Javadoc specifications and the supplied example applications.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The JAXP specification leaves it rather up to the implementation how the results of an XPath expression will
+         be returned. This is partly because it is defined only for XPath 1.0, which has a much simpler type system, and
+         partly because it is deliberately designed to be independent of the object model used to represent XML trees.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">If you specify the return type <code>XPathConstants.BOOLEAN</code> then Saxon will return the effective
+         boolean value of the expression, as a <code>java.lang.Boolean</code>. This is the same as wrapping the expression
+         in a call of the XPath <code>boolean()</code> function.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">If you specify the return type <code>XPathConstants.STRING</code> then Saxon will return the result
+         of the expression converted to a string, as a <code>java.lang.Boolean</code>. 
+         This is the same as wrapping the expression in a call of the XPath <code>string()</code> function.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">If you specify the return type <code>XPathConstants.NUMBER</code> then Saxon will return the result
+         of the expression converted to a double as a <code>java.lang.Double</code>. 
+         This is the same as wrapping the expression in a call of the XPath <code>number()</code> function.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">If you specify the return type <code>XPathConstants.NODE</code> then Saxon will return the result
+         the result as a node object in the selected object model. With the DOM model this will be an instance
+         of <code>org.w3.dom.Node</code>, with the native Saxon model it will be an instance of <code>net.sf.saxon.om.NodeInfo</code>,
+         and so on.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">If the return type is <code>XPathConstants.NODESET</code>, the result will be a Java <code>List</code>
+         containing node objects in the selected object model. Note that the DOM <code>NodeList</code> class is <b>not</b>
+         returned.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Saxon does not recognize additional values for the return type other than the values defined in JAXP. If you
+         want to return a different result type, for example a list of integers or a date, use one of the methods in which the result
+         type is unspecified. If any conversions are necessary, do them within the XPath expression itself, using casts
+         or constructor functions. The Java object that is returned will be a representation of the XPath value, 
+         converted in the same way as arguments to a extension functions.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Saxon's implementation of <code>XPathExpression</code> (namely <code>net.sf.saxon.xpath.XPathExpressionImpl</code>)
+         provides additional methods for evaluating the XPath expression. In particular the <code>rawIterator()</code>
+         method with no arguments returns a Saxon <code>SequenceIterator</code> which allows the application to process
+         the results of any XPath expression, with no conversion: all values will be represented using a native Saxon class,
+         for example a node will be represented as a <code>NodeInfo</code> and a QName as a <code>QNameValue</code>.
+         The <code>NodeInfo</code> interface is described in the next section.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><i>The native Saxon methods rely on the dynamic context being established using separate <code>setXX()</code>
+            calls on the <code>XPathExpressionImpl</code> object. If these methods are used, the <code>XPathExpression</code>
+            object will not be thread-safe.</i></p>
+      
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">XPath itself provides no sorting capability. You can therefore specify a sort order in which you want
+         the results of an expression returned. This is done by nominating another expression, via the <code>setSortKey</code>
+         method: this second expression is applied to each item in the result sequence, and its value determines
+         the position of that item in the sorted result order.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">You can call methods directly on the <code>NodeInfo</code> object to get information about a node: for
+         example <code>getDisplayName()</code> gets the name of the node in a form suitable for display, and
+         <code>getStringValue()</code> gets the string value of the node, as defined in the XPath data model. You
+         can also use the node as the context node for evaluation of subsequent expressions.
+      </p>
+      
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="expressions.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="standalone.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

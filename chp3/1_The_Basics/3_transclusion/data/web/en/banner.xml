@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <div id="banner">
+      <div id="Logo">
+      ExampleLogo
+      </div>
+      <div id="bannerTitle">&#160;</div>
+      <div id="bannerRightLogo">
+        <a href="#" target="_blank">
+	CONTACT
+        </a>
+        <a href="#" target="_blank">
+	ABOUT US
+        </a>
+      </div>
+</div>

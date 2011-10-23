@@ -1,0 +1,70 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--changes/intro/xpathapi83
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: JAXP 1.3 support: the XPath API</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: JAXP 1.3 support: the XPath API">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>JAXP 1.3 support: the XPath API</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The classes that deliver the JAXP 1.3 XPath API have been moved to a separate JAR file,
+         saxon8-xpath.jar. This need not be on the classpath (and therefore jaxp-api.jar need not be on the classpath)
+         unless the application actually needs to use the free-standing JAXP XPath API.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">To allow applications to use XPath expressions without requiring installation of JAXP 1.3, a new simple
+         (but non-standard) XPath API has been introduced in package <code>net.sf.saxon.sxpath</code>. This
+         is part of the standard <code>saxon8.jar</code> distribution. It is based on the design principles of the
+         JAXP 1.3 API, but removes some features: it does not support variables or functions, and does not allow
+         the result type to be set (you can control the result type by using casts or constructor functions within
+         the XPath expression itself).
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">All references to JAXP 1.3 classes such as <code>javax.xml.namespace.QName</code> have been
+         removed from the main body of the <code>saxon8.jar</code> code, to remove installation problems
+         under JDK 1.4. Many of these references were not really needed, for example they were used to represent
+         error codes within the XPathException object.
+      </p>
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The Saxon class <code>StandaloneContext</code>, which can be used to set up the static context
+         in the lower-level native API
+         for evaluating XPath expressions, now allows the default namespace for elements and types to be set, 
+         by means of a new method <code>setDefaultElementNamespace()</code>.
+      </p>
+      
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="xpathapi83.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../intro.html">Up</a>&nbsp;&nbsp;<a class="nav" href="schema83.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

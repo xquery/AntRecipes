@@ -1,0 +1,86 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--extensions/functions/evaluate-node
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: saxon:evaluate-node()</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: saxon:evaluate-node()">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>saxon:evaluate-node()</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><b>evaluate-node(node)</b></p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">This function allows XPath expressions to be read from a source document and evaluated at run-time.</p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The supplied argument must be a node, and the string-value of the node must contain an XPath expression. 
+         The result of the function is the result of
+         evaluating this XPath expression. This is useful where XPath expressions are held in source documents,
+         for example to parameterize the calculations performed by a query or stylesheet, or to provide XPointer-like
+         cross-references within a document.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The static context for the expression takes the in-scope namespaces and the base URI from the node
+         containing the expression (or from its parent element, if it is an attribute or text node). 
+         The expression cannot refer to any variables defined outside the expression
+         itself, and it cannot refer to user-defined types or user-defined functions. However, it has access to the
+         standard function library (in the default function namespace) and to Saxon extension functions and Java methods.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">In the dynamic evaluation context, the context item is the node supplied as the first argument, while the
+         context position and size are both set to one. This means that the expression can be a relative path
+         expression referring to nodes reachable from the node that contains the expression.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">For example, given the following source document:</p>
+      
+      
+      <div class="codeblock" style="border: solid thin; background-color: #B1CCC7; padding: 2px"><pre><code>&lt;doc xmlns:alpha="http://www.alpha.com/"&gt;
+  &lt;data&gt;23&lt;/data&gt;
+  &lt;exp&gt;preceding-sibling::alpha:data + 5&lt;/exp&gt;
+&lt;/doc&gt;</code></pre></div>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">the expression <code>saxon:evaluate-node(//alpha:exp)</code> returns <code>28</code>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">See also <a class="bodylink" href="javascript:tosubpage('extensions','functions','evaluate')">saxon:evaluate</a>,
+         which is a similar function intended for evaluating XPath expressions constructed dynamically by code
+         in a stylesheet or query.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="evaluate-node.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../functions.html">Up</a>&nbsp;&nbsp;<a class="nav" href="expression.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

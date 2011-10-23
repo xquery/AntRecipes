@@ -1,0 +1,94 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--xsl-elements/for-each-group
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: xsl:for-each-group</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: xsl:for-each-group">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>xsl:for-each-group</h1>
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>xsl:for-each-group</code> element selects a sequence of nodes and/or atomic
+         values and organizes them into subsets called groups. There are four possible ways of defining the
+         grouping:
+      </p>
+      
+      
+      <ul xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         
+         <li>
+            <p><b>group-by:</b> This groups together all items having the same value for a grouping key.
+               The grouping key may have multiple values (a sequence of values) in which case the item is added
+               to more than one group.
+            </p>
+         </li>
+         
+         
+         <li>
+            <p><b>group-adjacent:</b> This groups together all items having the same value for a grouping key,
+               provided that they are also adjacent in the input sequence. This is useful when you need to wrap a
+               new element around a sequence of related elements in the source documents, for example a consecutive
+               sequence of <code>&lt;bullet&gt;</code> elements. In this case the grouping key must be single-valued.
+            </p>
+         </li>
+         
+         
+         <li>
+            <p><b>group-starting-with:</b> This processes the items in the supplied sequence in turn, starting
+               a new group whenever one of the items matches a specified pattern. This is useful, for example,
+               when matching an <code>&lt;h2&gt;</code> element and its following <code>&lt;p&gt;</code>
+               elements.
+            </p>
+         </li>
+         
+         
+         <li>
+            <p><b>group-ending-with:</b> This processes the items in the supplied sequence in turn, closing
+               the current group whenever one of the items matches a specified pattern. This is useful
+               when matching a sequence of items in which the last item in the group carries some distinguishing
+               attribute such as <code>continued="no"</code>.
+            </p>
+         </li>
+         
+         
+      </ul>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Saxon implements the <code>xsl:for-each-group</code> instruction in full, except that some error
+         conditions are not detected. For examples of using the instruction, see 
+         <a href="http://www.w3.org/TR/xslt20#grouping" target="_blank" class="bodylink">the draft XSLT 2.0 specification</a>.
+      </p>
+      
+      
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="for-each-group.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="function.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

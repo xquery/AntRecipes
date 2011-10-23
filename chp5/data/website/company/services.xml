@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<?xml-stylesheet href="services.xsl" type="text/xsl"?>
+<resource name="contact" type="document">
+
+	<RDF:RDF xmlns:RDF="http://www.w3c.org/RDF/" xmlns:DC="http://purl.org/RDF/DC/">
+	<RDF:Description RDF:HREF="http://purl.org/metadata/dublin_core_elements" 
+		DC:Title="Services Page" 	
+		DC:Creator="Jim Fuller"
+		DC:Subject="Services Page" 
+		DC:Description="Contains general services details" 
+		DC:Publisher="" 
+		DC:Format="text/html" 
+		DC:Type="Technical Report" 
+		DC:Language="en" 
+		DC:Date="05/08/2003"/>
+	</RDF:RDF>
+<title>
+	<txt xml:lang="en">Services Page(english)</txt>
+	<txt xml:lang="fr">Services Page(french)</txt>
+	<txt xml:lang="de">Services Page(deutsch)</txt>
+	<txt xml:lang="it">Services Page(italian)</txt>
+</title>
+
+</resource>

@@ -1,0 +1,44 @@
+#Firefly-MainMenu {
+    list-style-image: url("chrome://anttoolbar/skin/view.gif");
+}
+
+#GBLTut-TB-Web,
+#GBLTut-TB-Combined-Web {
+    list-style-image: url("chrome://anttoolbar/skin/page.gif");
+}
+
+#GBLTut-TB-Combined-Image {
+	list-style-image: url("chrome://anttoolbar/skin/view.gif");
+}
+
+#GBLTut-TB-Combined {
+    list-style-image: url("chrome://anttoolbar/skin/view.gif");
+}
+
+#GBLTut-TB-Combined > .toolbarbutton-menubutton-button {
+	-moz-box-orient: horizontal;
+}
+
+#Firefly-edit {
+    list-style-image: url("chrome://anttoolbar/skin/edit.gif");
+}
+
+#Firefly-info {
+    list-style-image: url("chrome://anttoolbar/skin/info.gif");
+}
+
+#Firefly-save {
+    list-style-image: url("chrome://anttoolbar/skin/save.gif");
+}
+
+#Firefly-test {
+    list-style-image: url("chrome://anttoolbar/skin/test.gif");
+}
+
+#Firefly-undo {
+    list-style-image: url("chrome://anttoolbar/skin/undo.gif");
+}
+
+#Firefly-view {
+    list-style-image: url("chrome://anttoolbar/skin/view.gif");
+}

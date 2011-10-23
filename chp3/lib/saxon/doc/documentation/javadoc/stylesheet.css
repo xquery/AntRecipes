@@ -1,0 +1,131 @@
+/* Javadoc style sheet for Saxon API */
+
+/* Define colors, fonts and other style attributes here to override the defaults */
+
+/* 
+Text blue: #3D5B96
+Dark blue: #c1cede
+Mid blue: #e4eef0 
+Light blue: #f6fffb
+mid green #B1CCC7
+rust #96433D
+*/
+
+/* Page background color */
+body { background-color: #e4eef0 }
+
+/* Table colors */
+.TableHeadingColor     { background: #c1cede } 
+.TableSubHeadingColor  { background: #c1cede } 
+.TableRowColor         { background: #e4eef0 } 
+
+/* Font used in left-hand frame lists */
+.FrameTitleFont   { font-size: 10pts; font-family: Verdana, Arial, Helvetica, sans-serif; }
+.FrameHeadingFont { font-size: 10pts; font-family: Verdana, Arial, Helvetica, sans-serif;}
+.FrameItemFont    { font-size: 10pts; font-family: Verdana, Arial, Helvetica, sans-serif; }
+
+/* Example of smaller, sans-serif font in frames */
+/* .FrameItemFont  { font-size: 10pt; font-family: Verdana, Arial, Helvetica, sans-serif; } */
+
+/* Navigation bar fonts and colors */
+.NavBarCell1    { background-color:#c1cede;}
+.NavBarCell1Rev { background-color:#96433D;}
+.NavBarFont1    { font-family: font-family: Verdana, Arial, Helvetica, sans-serif; color:#96433D;}
+.NavBarFont1Rev { font-family: font-family: Verdana, Arial, Helvetica, sans-serif; color:#FFFFFF;}
+
+.NavBarCell2    { font-family: font-family: Verdana, Arial, Helvetica, sans-serif; background-color:#f6fffb;}
+.NavBarCell3    { font-family: font-family: Verdana, Arial, Helvetica, sans-serif; background-color:#f6fffb;}
+
+body {
+	SCROLLBAR-FACE-COLOR: #c1cede; 
+	SCROLLBAR-HIGHLIGHT-COLOR: #e4eef0; 
+	SCROLLBAR-SHADOW-COLOR: #e4eef0; 
+	SCROLLBAR-ARROW-COLOR: #f6fffb; 
+	SCROLLBAR-BASE-COLOR: #e4eef0;
+}
+
+/* used for main page headings */
+
+
+h1 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 14pt;
+	font-style: normal;
+	color: #3D5B96;
+	font-weight: bold;
+	text-decoration: none;
+}
+h2 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12pt;
+	font-style: normal;
+	color: #3D5B96;
+	font-weight: bold;
+	text-decoration: none;
+}
+h3 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11pt;
+	font-style: normal;
+	color: #3D5B96;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+a {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9pt;
+	font-style:normal;
+	color: #96433D;
+	font-weight: normal;
+	text-decoration: none;
+}
+
+p {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9pt;
+	font-style:normal;
+	color: #3D5B96;
+	font-weight: normal;
+	text-decoration: none;
+}
+
+td {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9pt;
+	font-style:normal;
+	color: #3D5B96;
+	font-weight: normal;
+	text-decoration: none;
+}
+
+dl {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9pt;
+	font-style:normal;
+	color: #3D5B96;
+	font-weight: normal;
+	text-decoration: none;
+}
+
+dt {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9pt;
+	font-style:normal;
+	color: #3D5B96;
+	font-weight: normal;
+	text-decoration: none;
+}
+
+pre {
+	font-family: font-family: lucida sans typewriter, courier, monospace;
+	font-size: 10pt;
+	font-style:normal;
+	color: #3D5B96;
+	font-weight: normal;
+	text-decoration: none;
+}
+
+b {
+	font-weight: bold;
+}

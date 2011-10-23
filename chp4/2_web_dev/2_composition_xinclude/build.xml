@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ============================================================= -->
+<!-- ANT RECIPES FOR WEB DEVELOPERS CHP 3 Web Recipe               -->
+<!-- Author: James Fuller / Webcomposite                           -->
+<!-- Email/WWW: jim.fuller@webcomposite.com /  www.antrecipes.com  -->
+<!-- ============================================================= -->
+<!--    (C) Copyright James Fuller 2010 - All Rights Reserved.     -->
+<!--  use the -debug flag for more information when running ant  //-->
+<project name="xinclude-xhtml" basedir=".">
+	<description>Demonstrate how to use xinclude with websites</description>
+	<!-- ===================================================== -->
+	<!-- Task definition                                       -->
+	<!-- ===================================================== -->
+	<taskdef name="xcluder" classname="gr.abiss.xcluder.XercesXcluder">
+		<classpath>
+			<pathelement location="../../lib/xcluder/xcluder-0.9.2.jar"/>
+		</classpath>
+	</taskdef>
+	<!-- ===================================================== -->
+	<!-- Example1                                              -->
+	<!-- ===================================================== -->
+	<target name="example1" description="perform xinclude on xhtml">
+		<xcluder in="data/test.html" out="result/test.html" indent="yes"/>
+	</target>
+	<!-- ===================================================== -->
+	<!-- Example2                                              -->
+	<!-- ===================================================== -->
+	<target name="example2" description="perform xinclude on xhtml">
+		<xinclude dest="result">
+			<fileset dir="data"/>
+		</xinclude>
+	</target>
+	<!-- ===================================================== -->
+	<!-- Run Target                                            -->
+	<!-- ===================================================== -->
+	<target name="run" depends="clean,example1,example2" description="runs all examples"/>
+	<!-- ===================================================== -->
+	<!-- Clean Target                                          -->
+	<!-- ===================================================== -->
+	<target name="clean">
+		<delete dir="result"/>
+		<mkdir dir="result"/>
+	</target>
+	<macrodef name="xinclude">
+		<attribute name="dest"/>
+		<element name="file-elements" implicit="yes"/>
+		<sequential>
+			<apply executable="xmllint" failonerror="false">
+				<arg line="-xinclude"/>
+				<file-elements/>
+			</apply>
+		</sequential>
+	</macrodef>
+</project>

@@ -1,0 +1,330 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--using-xquery/embedding
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: Invoking XQuery from Java</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Invoking XQuery from Java">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      
+      
+      <h1>Invoking XQuery from Java</h1>
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Rather than using the query processor from the command line, you may want to issue queries from your
+         own application, perhaps one that enables it to be used within an applet or servlet. If you run
+         the processor repeatedly, this will always be much faster than running it each time from
+         a command line, even if it handles a different query each time.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">There is currently no standard API for XQuery, so Saxon provides its own. It is fully described
+         in the JavaDoc included in the download: look for the package <code>net.sf.saxon.query</code>.
+         The starting point is the class <code>QueryStaticContext</code>. What follows here is an
+         overview. For an example of how the API can be used, take a look at the source code for the class
+         <code>QueryAPIExamples</code> in the <code>samples/java</code> directory.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The first thing you need to do is to create a <code>net.sf.saxon.Configuration</code> object.
+         This holds values of all the system settings, corresponding to flags available on the command line.
+         You don't need to set any properties in the <code>Configuration</code> object if you are happy
+         with the default settings.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><i>For schema-aware processing, assuming you are using the schema-aware version of Saxon, 
+            create an instance of
+            <code>com.saxonica.validate.SchemaAwareConfiguration</code>, which is a subclass of
+            <code>Configuration</code>.</i></p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Then you need to create a <code>net.sf.saxon.query.StaticQueryContext</code> object. As the name
+         implies, this holds information about the static (compile-time) context for a query. Most aspects
+         of the static context can be defined in the Query Prolog, but this object allows you to initialize
+         the static context from the application instead if you need to. Some of the facilities provided are
+         very much for advanced users only, for example the ability to declare variables and functions, and
+         the ability to specify a NamePool to be used. One aspect of the static context that you may need
+         to use is the ability to declare collations. Using the method <code>declareCollation</code> you can
+         create a mapping between a collation URI (which can then be used anywhere in the Query) and a Java
+         <code>Comparator</code> object used to implement that collation.
+      </p>
+      
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>StaticQueryContext</code> object can now be used to compile a Query. The text of the
+         Query can be supplied either as a <code>String</code> or as a Java <code>Reader</code>. There
+         are thus two different <code>compileQuery</code> methods. Each of them returns the compiled
+         query in the form of an <code>XQueryExpression</code>. The <code>XQueryExpression</code>, as you would expect,
+         can be executed repeatedly, as often as you want, in the same or in different threads.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">For example:</p>
+      
+      
+      <div class="codeblock" style="border: solid thin; background-color: #B1CCC7; padding: 2px"><pre><code>
+Configuration config = new Configuration();
+StaticQueryContext staticContext = 
+        new StaticQueryContext(config);
+XQueryExpression exp = 
+        staticContext.compileQuery("count(//book)");
+</code></pre></div>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><i>Note: the <code>StaticQueryContext</code> object gets updated by the query parser with additional
+            information defined in the query prolog. For this reason, a new <code>StaticQueryContext</code> object
+            is required for each query you compile.</i></p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Before you run your query, you may want to build one or more trees representing
+         XML documents that can be used as input to your query. You don't need to do this: if the query
+         loads its source documents using the <code>doc()</code> function then this will be done
+         automatically, but doing it yourself gives you more control. A document node at the root of
+         a tree is represented in Saxon by the <code>net.sf.saxon.DocumentInfo</code> interface.
+         The <code>StaticQueryContext</code> provides a convenience method, <code>buildDocument()</code>,
+         that allows an instance of <code>DocumentInfo</code> to be constructed. The input parameter to
+         this is defined by the class <code>javax.xml.transform.Source</code>, which is part of the 
+         standard Java JAXP API: the <code>Source</code> interface is an umbrella for different kinds of
+         XML document source, including a <code>StreamSource</code> which parses raw XML from a byte
+         or character stream, <code>SAXSource</code> which takes the input from a SAX parser (or an
+         object that is simulating a SAX parser), and <code>DOMSource</code> which provides the input
+         from a DOM.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Saxon also provides a several additional implementations of the <code>Source</code> interface
+         that can be used as input to this method. Saxon's <code>DocumentInfo</code> and <code>NodeInfo</code>
+         classes both implement this interface, though this isn't useful for this particular method because
+         you will only have one of these once you have built the tree from some other source.
+         The <code>net.sf.saxon.jdom.DocumentWrapper</code> class allows
+         the input to be taken from a JDOM document, while  <code>net.sf.saxon.xom.DocumentWrapper</code> serves
+         the same purpose for XOM. The <code>net.sf.saxon.AugmentedSource</code> object
+         can wrap any other kind of <code>Source</code>, and provides additional options as to how the <code>Source</code>
+         should be processed, for example whether it should be validated against a schema. This will only work if
+         you created the <code>StaticQueryContext</code> using a <code>SchemaAwareConfiguration</code>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">To execute your compiled query, you need to create a <code>DynamicQueryContext</code> object
+         that holds the run-time context information. The main things you can set in the run-time context are:
+      </p>
+      
+      
+      <ul xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         
+         <li>
+            <p>Values of parameters (external global variables). You can set these using the <code>setParameter()</code>
+               method. The mappings from Java classes to XQuery/XPath data types is the same as the mapping used for the
+               returned values from an external Java method call, and is described under 
+               <a class="bodylink" href="javascript:topage('extensibility', 'function-result')">Result of an Extension Function</a>.
+            </p>
+         </li>
+         
+         <li>
+            <p>The context node can be set using the method <code>setContextNode()</code> or
+               <code>setContextItem()</code>.
+            </p>
+         </li>
+         
+         <li>
+            <p>You can also set a URIResolver and/or ErrorListener. These default to the ones that were
+               used during Query compilation.
+            </p>
+         </li>
+         
+      </ul>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">You are now ready to evaluate the query. There are several methods on the <code>QueryExpression</code>
+         object that you can use to achieve this. The <code>evaluate()</code> method returns the result sequence 
+         as a Java <code>java.util.List</code>. The <code>evaluateSingle()</code> method is suitable when you know
+         that the result sequence will contain a single item: this returns this item as an Object, or returns null
+         if the result is an empty sequence. There is also an <code>iterator</code> method that returns an iterator
+         over the results. This is a Saxon object of class <code>net.sf.saxon.om.SequenceIterator</code>: it is similar
+         to the standard Java iterator, but not quite identical; for example, it can throw exceptions. Finally,
+         there is a <code>run()</code> method, which executes the query, converts the results to an XML document,
+         and writes this document to a JAXP <code>Result</code> object, which may represent a DOM, a SAX ContentHandler,
+         or a serial output stream.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>evaluate()</code> and <code>evaluateSingle()</code> methods return the result as a Java object
+         of the most appropriate type: for example a String is returned as a <code>java.lang.String</code>, a 
+         boolean as a <code>java.lang.Boolean</code>. A node is returned using the Saxon representation of a node,
+         <code>net.sf.saxon.om.NodeInfo</code>. With the standard and tinytree models, this object also implements
+         the DOM <code>Node</code> interface (but any attempt to update the node throws an error).
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>iterator()</code> method, by contrast, does not do any conversion of the result. It is returned
+         using its native Saxon representation, for example a String is returned as an instance of 
+         <code>sf.net.saxon.value.StringValue</code>. You can then use all the methods available on this class
+         to process the returned value.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>run()</code> method is probably the most efficient in the case of queries that construct a new
+         document as their output, because it allows the nodes of the result document to be serialized (or sent to the
+         destination) as they are created, without creating a tree structure in memory first.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Here is a simple example for a query that returns a singleton integer result:</p>
+      
+      
+      <div class="codeblock" style="border: solid thin; background-color: #B1CCC7; padding: 2px"><pre><code>
+DynamicQueryContext dynamicContext = 
+        new DynamicQueryContext(config);
+dynamicContext.setContextNode(
+        xquery.buildDocument(
+                new StreamSource(new File("books.xml")));
+Long count = (Long)exp.evaluateSingle(dynamicContext);
+System.out.println("There are " + count.intValue() + " books");
+</code></pre></div>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Here is an example where the query returns a list of nodes:</p>
+      
+      
+      <div class="codeblock" style="border: solid thin; background-color: #B1CCC7; padding: 2px"><pre><code>
+XQueryExpression exp = xquery.compileQuery("//book/title");
+DynamicQueryContext dynamicContext = 
+        new DynamicQueryContext(config);
+dynamicContext.setContextNode(
+        xquery.buildDocument(
+                new StreamSource(new File("books.xml")));
+SequenceIterator books = exp.iterator(dynamicContext);
+while (true) {
+    NodeInfo book = books.next();
+    if (book==null) break;
+    String title = book.getStringValue();
+    System.out.println(title);
+}
+</code></pre></div>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">If you want to process the results of the query in your application, that's all there is to it. But you
+         may want to output the results as serialized XML. Saxon provides two ways of doing this: you can produce
+         wrapped output, or raw output. Raw output works only if the result consists of a single document or element
+         node, and it outputs the subtree rooted at that element node in the form of a serialized XML document. The
+         simplest way to produce raw output is to use the <code>run()</code> method on the <code>XQueryExpression</code>
+         object, but you can also do it by retrieving the result as a SequenceIterator and passing this to the
+         <code>serialize()</code> method of the <code>QueryResult</code> class.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Wrapped
+         output works for any result sequence, for example a sequence of integers or a sequence of attribute and
+         comment nodes; this works by wrapping each item in the result sequence as an XML element, with details
+         of its type and value. To produce wrapped output, you first wrap the result sequence as an XML tree, and then serialize the
+         tree. This can be done using the <code>QueryResult</code> class. This class doesn't need to be
+         instantiated, its methods are static. The method <code>QueryResult.wrap</code> takes as input the iterator
+         produced by evaluating the query using the <code>iterator()</code> method, and produces as output
+         a <code>DocumentInfo</code> object representing the results wrapped as an XML tree. The method
+         <code>QueryResult.serialize</code> takes any document or element node as input, and writes it to
+         a specified destination, using specified output properties. The destination is supplied as an object
+         of class <code>javax.xml.transform.Result</code>. Like the <code>Source</code>, this is part of the
+         JAXP API, and allows the destination to be specified as a StreamResult (representing a byte stream or
+         character stream), a SAXResult (which wraps a SAX ContentHandler), or a DOMResult
+         (which delivers the result as a DOM). The output properties are used only when writing to
+         a StreamResult: they correspond to the properties available in the <code>xsl:output</code> element
+         for XSLT. The property names are defined by constants in the JAXP <code>javax.xml.transform.OutputKeys</code>
+         class (or <code>net.sf.saxon.event.SaxonOutputKeys</code> for Saxon extensions): for details of the
+         values that are accepted, see the JavaDoc documentation or the JAXP specification.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Here is an example that produces wrapped output:</p>
+      
+      
+      <div class="codeblock" style="border: solid thin; background-color: #B1CCC7; padding: 2px"><pre><code>
+XQueryExpression exp = 
+        xquery.compileQuery("//book");
+DynamicQueryContext dynamicContext = 
+        new DynamicQueryContext(config);
+dynamicContext.setContextNode(
+        xquery.buildDocument(
+                new StreamSource(new File("books.xml")));
+SequenceIterator books = exp.iterator(dynamicContext);
+DocumentInfo resultDoc = QueryResult.wrap(books, config);
+Properties props = new Properties();
+props.setProperty(OutputKeys.METHOD, "xml");
+props.setProperty(OutputKeys.INDENT, "yes");
+QueryResult.serialize(resultDoc, 
+        new StreamResult(System.out), props);
+</code></pre></div>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">This example produces output without wrapping:</p> 
+      
+      
+      <div class="codeblock" style="border: solid thin; background-color: #B1CCC7; padding: 2px"><pre><code>
+XQueryExpression exp = xquery.compileQuery("//book");
+DynamicQueryContext dynamicContext = 
+        new DynamicQueryContext(config);
+dynamicContext.setContextNode(
+        xquery.buildDocument(
+                new StreamSource(new File("books.xml")));
+SequenceIterator books = exp.iterator(dynamicContext);
+Properties props = new Properties();
+props.setProperty(OutputKeys.METHOD, "xml");
+props.setProperty(OutputKeys.INDENT, "no");
+int nr = 1;
+while (true) {
+    NodeInfo book = books.next();
+    if (book==null) break;
+    System.out.println("===== BOOK " + nr + " =====");
+    QueryResult.serialize(book, new StreamResult(System.out), props);
+}     
+</code></pre></div>
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">If the results do not need to be processed by the application, the same effect can be 
+         achieved more efficiently using the code shown below:
+      </p>
+      
+      
+      <div class="codeblock" style="border: solid thin; background-color: #B1CCC7; padding: 2px"><pre><code>
+XQueryExpression exp = xquery.compileQuery("//book");
+DynamicQueryContext dynamicContext = 
+        new DynamicQueryContext(config);
+dynamicContext.setContextNode(
+        xquery.buildDocument(
+                new StreamSource(new File("books.xml")));
+Properties props = new Properties();
+props.setProperty(OutputKeys.METHOD, "xml");
+props.setProperty(OutputKeys.INDENT, "no");
+exp.run(dynamicContext, new StreamResult(System.out), props);           
+</code></pre></div>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="embedding.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="callingfunctions.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

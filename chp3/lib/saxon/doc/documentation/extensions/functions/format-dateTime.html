@@ -1,0 +1,87 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--extensions/functions/format-dateTime
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: saxon:format-dateTime()</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: saxon:format-dateTime()">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>saxon:format-dateTime()</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><b>format-dateTime(	$value	 as xs:dateTime?,
+            $picture	 as xs:string,
+            $language	 as xs:string?,
+            $calendar	 as xs:string?,
+            $country	 as xs:string?) as xs:string?</b></p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><b>format-dateTime($value as xs:dateTime?, $picture as xs:string) as xs:string?</b></p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><b>format-date(	$value	 as xs:date?,
+            $picture	 as xs:string,
+            $language	 as xs:string?,
+            $calendar	 as xs:string?,
+            $country	 as xs:string?) as xs:string?</b></p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><b>format-date($value as xs:date?, $picture as xs:string) as xs:string?</b></p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><b>format-time(	$value	 as xs:time?,
+            $picture	 as xs:string,
+            $language	 as xs:string?,
+            $calendar	 as xs:string?,
+            $country	 as xs:string?) as xs:string?</b></p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><b>format-time($value as xs:time?, $picture as xs:string) as xs:string?</b></p>
+      
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">These functions are identical to the XSLT functions of the same name, but are made
+         available in the Saxon namespace for the benefit of XQuery users. For full details, 
+         see the current draft of the 
+         <a href="http://www.w3.org/TR/xslt20/" target="_blank" class="bodylink">XSLT 2.0 specification</a>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">For example, the call <code>saxon:format-date(current-date(), '[D1o] [MNn], [Y0001]')</code> 
+         might produce the output <code>3rd September, 2004</code>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><i>These functions (in the Saxon namespace) are available in Saxon-SA only.</i></p>
+      
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="format-dateTime.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../functions.html">Up</a>&nbsp;&nbsp;<a class="nav" href="format-number.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

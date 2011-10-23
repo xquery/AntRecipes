@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ============================================================= -->
+<!-- ANT RECIPES FOR WEB DEVELOPERS CHP XML Recipe                 -->
+<!-- Author: James Fuller / Webcomposite                           -->
+<!-- Email/WWW: jim.fuller@webcomposite.com /  www.antrecipes.com  -->
+<!-- ============================================================= -->
+<!--    (C) Copyright James Fuller 2010 - All Rights Reserved.     -->
+<!--  use the -debug flag for more information when running ant  //-->
+<project name="conditions_xml" default="run" basedir=".">
+	<description>Demonstrate the conditions to determine parser properties</description>
+	<!-- ===================================================== -->
+	<!-- Example1 		                                       -->
+	<!-- ===================================================== -->
+	<target name="example1">
+		<condition property="supportnamespaces">
+			<or>
+				<parsersupports feature="http://xml.org/sax/features/namespaces"/>
+			</or>
+		</condition>
+		<echo>
+		Your parser supports XML Namespaces: ${supportnamespaces}
+		</echo>
+	</target>
+	<!-- ===================================================== -->
+	<!-- Example2 		                                       -->
+	<!-- ===================================================== -->
+	<target name="example2">
+		<condition property="supportschema">
+			<or>
+				<parsersupports feature="http://apache.org/xml/features/validation/schema"/>
+				<parsersupports feature="http://java.sun.com/xml/jaxp/properties/schemaSource"/>
+			</or>
+		</condition>
+		<echo>
+		Your parser supports XML Schema: ${supportschema}
+		</echo>
+	</target>
+	<!-- ===================================================== -->
+	<!-- Example3 		                                       -->
+	<!-- ===================================================== -->
+	<target name="example3">
+		<condition property="supportxerces">
+			<or>
+				<parsersupports property="http://apache.org/xml/properties/schema/external-noNamespaceSchemaLocation" value="document.xsd"/>
+			</or>
+		</condition>
+		<echo>
+		Your parser supports external-noNamespaceSchemaLocation: ${supportxerces}
+		</echo>
+	</target>
+	<!-- ===================================================== -->
+	<!-- Run Target                                            -->
+	<!-- ===================================================== -->
+	<target name="run" depends="clean,example1,example2,example3" description="runs all examples"/>
+	<!-- ===================================================== -->
+	<!-- Clean Target                                          -->
+	<!-- ===================================================== -->
+	<target name="clean">
+		<delete dir="result"/>
+		<mkdir dir="result"/>
+	</target>
+</project>

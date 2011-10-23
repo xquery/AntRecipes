@@ -1,0 +1,93 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--functions/intro/fn_round-half-to-even
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: fn:round-half-to-even</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: fn:round-half-to-even">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>fn:round-half-to-even</h1>
+      <p class="subhead">fn:round-half-to-even(numeric? $srcval) &#8594; numeric?</p>
+      <p><i>Function signature</i></p>
+      <table>
+         <tr>
+            <td width="120">
+               <p>$srcval</p>
+            </td>
+            <td width="150">
+               <p>numeric ?</p>
+            </td>
+         </tr>
+         <tr>
+            <td width="120">
+               <p><b>Result</b></p>
+            </td>
+            <td width="150">
+               <p>numeric ?</p>
+            </td>
+         </tr>
+      </table>
+      <p><i>Rounds a numeric value to the nearest whole number, rounding x.5 towards
+            the nearest even number.</i></p>
+      <p><a href="http://www.w3.org/TR/xpath-functions/#func-round-half-to-even" target="_blank" class="bodylink">XPath 2.0 Specification</a></p>
+      <p class="subhead">fn:round-half-to-even(numeric? $srcval, integer $precision) &#8594; numeric?</p>
+      <p><i>Function signature</i></p>
+      <table>
+         <tr>
+            <td width="120">
+               <p>$srcval</p>
+            </td>
+            <td width="150">
+               <p>numeric ?</p>
+            </td>
+         </tr>
+         <tr>
+            <td width="120">
+               <p>$precision</p>
+            </td>
+            <td width="150">
+               <p>xs:integer </p>
+            </td>
+         </tr>
+         <tr>
+            <td width="120">
+               <p><b>Result</b></p>
+            </td>
+            <td width="150">
+               <p>numeric ?</p>
+            </td>
+         </tr>
+      </table>
+      <p><i>Rounds a numeric value to the nearest integer multiple of 10 the power of minus precision, 
+            rounding x.5 towards the nearest number whose last digit is even.</i></p>
+      <p><a href="http://www.w3.org/TR/xpath-functions/#func-round-half-to-even" target="_blank" class="bodylink">XPath 2.0 Specification</a></p>
+      <p><b>Note:</b>In the case of doubles and floats, rounding errors may occur giving unexpected effects.
+      </p>
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="fn_round-half-to-even.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../intro.html">Up</a>&nbsp;&nbsp;<a class="nav" href="fn_seconds-from-dateTime.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

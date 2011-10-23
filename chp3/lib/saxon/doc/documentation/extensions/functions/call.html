@@ -1,0 +1,62 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--extensions/functions/call
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: saxon:call()</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: saxon:call()">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>saxon:call()</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><b>call($function as jt:net.sf.saxon.expr.UserFunction, $arg1 as item()*, ...) ==&gt; item()*</b></p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><i>This function is available only in Saxon-SA</i></p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">This function allows a first-class function created using <code>saxon:function()</code> to be invoked. The
+         function (that is, the value returned by the call on <code>saxon:function()</code>) is passed
+         as the first argument, and the parameters to be supplied to that function are passed as the
+         second and subsequent arguments. The value returned by the target function is returned.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">A call to <code>saxon:call</code> is typically contained within a <i>higher-order function</i>,
+         which accepts a parameter indicating the function to be called.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">For examples of how this function is used, see 
+         <a class="bodylink" href="javascript:tosubpage('extensions','functions','function')">saxon:function</a>.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="call.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../functions.html">Up</a>&nbsp;&nbsp;<a class="nav" href="decimaldivide.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

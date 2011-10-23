@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<!-- ============================================================= -->
+<!-- ANT RECIPES FOR WEB DEVELOPERS CHP XML Recipe                 -->
+<!-- Author: James Fuller / Webcomposite                           -->
+<!-- Email/WWW: jim.fuller@webcomposite.com /  www.antrecipes.com  -->
+<!-- ============================================================= -->
+<!--    (C) Copyright James Fuller 2010 - All Rights Reserved.     -->
+<!--  use the -debug flag for more information when running ant  //-->
+<project name="docbook" basedir="." default="run">
+	<description>Simple usage of Docbook via Ant</description>
+	<!-- Input Properties -->
+	<property name="in.dir" value="data"/>
+	<property name="main.infile" value="test.xml"/>
+	<property name="layout.infile" value="layout.xml"/>
+	<!-- Output Properties -->
+	<property name="out.dir" value="result"/>
+	<property name="html.outfile" value="${out.dir}/output.html"/>
+	<property name="wordml.outfile" value="${out.dir}/output.wordml"/>
+	<!-- DocBook Properties -->
+	<property name="docbook.dir" value="../../lib/docbook"/>
+	<property name="docbook-sch.dir" value="${docbook.dir}/docbook-xml"/>
+	<property name="docbook-xsl.dir" value="${docbook.dir}/docbook-xsl"/>
+	<!-- XSLT Properties -->
+	<property name="html.stylesheet" value="${docbook-xsl.dir}/html/docbook.xsl"/>
+	<property name="wordml.stylesheet" value="${docbook-xsl.dir}/wordml/docbook.xsl"/>
+	<!-- XSLT engine -->
+	<property name="xslt.processor.class" value="com.icl.saxon.StyleSheet"/>
+	<path id="xslt.processor.classpath">
+		<pathelement path="${docbook.dir}/jar/saxon-6.5.5.jar"/>
+	</path>
+	<!-- ===================================================== -->
+	<!-- docbook2html   									   -->
+	<!-- ===================================================== -->
+	<target name="docbook2html">
+		<java classname="${xslt.processor.class}" fork="yes" dir="${in.dir}" failonerror="true">
+			<classpath refid="xslt.processor.classpath"/>
+			<arg line="-o ../${html.outfile}"/>
+			<arg line="-l"/>
+			<arg line="${main.infile} ../${html.stylesheet}"/>
+		</java>
+	</target>
+	<!-- ===================================================== -->
+	<!-- docbook2wordml										   -->
+	<!-- ===================================================== -->
+	<target name="docbook2wordml">
+		<java classname="${xslt.processor.class}" fork="yes" dir="${in.dir}" failonerror="true">
+			<classpath refid="xslt.processor.classpath"/>
+			<arg line="-o ../${wordml.outfile}"/>
+			<arg line="-l"/>
+			<arg line="${main.infile} ../${wordml.stylesheet}"/>
+			<arg line="wordml.template=template.xml"/>
+			<!-- set wordml.template //-->
+		</java>
+	</target>
+	<!-- ===================================================== -->
+	<!-- Run Target                                            -->
+	<!-- ===================================================== -->
+	<target name="run" depends="clean, docbook2html, docbook2wordml">
+</target>
+	<!-- ===================================================== -->
+	<!-- Clean Target                                          -->
+	<!-- ===================================================== -->
+	<target name="clean">
+		<delete dir="result"/>
+		<mkdir dir="result"/>
+	</target>
+</project>

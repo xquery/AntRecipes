@@ -1,0 +1,155 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--conformance/xslt20
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: XSLT 2.0 conformance</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: XSLT 2.0 conformance">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      
+      <h1>XSLT 2.0 conformance</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">This release of Saxon
+         implements many facilities defined in the draft XSLT 2.0 specification. This implementation
+         is not yet complete, though most features defined in the 
+         <a href="http://www.w3.org/TR/xslt20/" target="_blank" class="bodylink">working draft</a> of 5 November 2004 are available. Some
+         minor changes agreed by the Working Group since that publication have also been implemented.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Saxon-B 8.x acts as a <i>Basic XSLT Processor</i>,
+         while Saxon-SA 8.x acts as a <i>Schema-Aware XSLT Processor</i>. The distinction is that a Basic XSLT Processor
+         does not allow schemas to be imported and does not support validation of source or result documents or reference
+         to user-defined types. These correspond to the two conformance levels defined in the XSLT 2.0 specification.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The XSLT 2.0 specification defines two optional conformance features, the serialization feature and
+         the backwards compatibility feature. These optional features are implemented in both Saxon variants.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Known restrictions, relative to the conformance rules for a basic XSLT processor,
+         include the following:
+      </p>
+      
+      
+      <ul xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         
+         
+         <li>
+            <p>The <code>xsl:output</code> option <code>normalize-unicode</code>
+               is not implemented.
+            </p>
+         </li>
+         
+         
+         <li>
+            <p>The <code>xhtml</code> output method does not follow all the rules for XHTML formatting in
+               the serialization specification.
+            </p>
+         </li>
+         
+         
+         <li>
+            <p>If <code>key()</code> is called in a match pattern, the argument must be a string literal.
+            </p>
+         </li>
+         
+         
+         <li>
+            <p>When the source document is supplied as a pre-built tree (in any format), Saxon strips whitespace
+               text nodes as requested by the stylesheet, but takes no account of any <code>xml:space</code>
+               attributes present in the tree.
+            </p>
+         </li>
+         
+         
+         <li>
+            <p>Not all the error codes defined in the specification are used.</p>
+         </li>
+         
+         
+         <li>
+            <p>The rule that in forwards compatibility mode, an optional attribute should be ignored if its value
+               is not one of the values that is allowed for the attribute, is not implemented. (At any rate, it is not implemented
+               for all such cases).
+            </p>
+         </li>
+         
+         
+         <li>
+            <p>Error XT1650 is not reported. A static error should be reported if there are two conflicting
+               <code>xsl:output</code> declarations; Saxon simply uses the last one in declaration order.
+            </p>
+         </li>
+         
+         
+      </ul>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">In the schema-aware XSLT processor, the following restrictions apply:</p>
+      
+      
+      <ul xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         
+         <li>
+            <p>The <code>type</code> attribute of <code>xsl:document</code>, <code>xsl:result-document</code>,
+               and instructions that copy document nodes, is not implemented.
+            </p>
+         </li>
+         
+         
+         <li>
+            <p>Error XT0485 is not reported. This error prevents the construction of an element that has two QName-valued
+               attributes using the same prefix to refer to different URIs.
+            </p>
+         </li>
+         
+         
+         <li>
+            <p>When a namespace-sensitive attribute value (typically, a QName) is validated, checking of the
+               namespace prefix is deferred until the attribute is added to an element and the full namespace context of the
+               element is known. If the element itself uses <code>validation="strip"</code>, then the type annotations are
+               removed before the attribute has been fully validated, so an invalid prefix will not be reported as an error.
+            </p>
+         </li>
+          
+         
+         
+         <li>
+            <p>The distinction between the types <code>xdt:untyped </code> and <code>xs:anyType</code> is not fully implemented.
+            </p>
+         </li>
+         
+      </ul>
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="xslt20.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="xpath20.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

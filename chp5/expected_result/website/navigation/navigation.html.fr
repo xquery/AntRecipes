@@ -1,0 +1,38 @@
+
+<!DOCTYPE html
+  SYSTEM "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="fr">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      				
+      <meta name="description" content="(fr)">
+      				
+      <meta name="keyword" content="(fr)">
+      				
+      <meta http-equiv="Pragma" content="no-cache">
+      				
+      <meta http-equiv="Content-Language" content="fr">
+      				
+      <meta name="language" content="fr, french">
+      			
+      				
+      <title>Multilingual Website (fr)</title>
+      			
+      <link rel="stylesheet" type="text/css" href="../resource/css/basic.css">
+   </head>
+   <body bgcolor="#ff9900">
+      				
+      <!--- copyright 2003 sample company Ltd (fr) //-->
+      			
+      <h3><a href="../navigation/main.html" target="main">
+            	
+            	Nav Frame(fr)
+            	
+            	
+            </a></h3><a href="../company/product.html" target="main">Products</a><br><i>(javascript test)</i><br><br><a href="../company/services.html" target="main">Services</a><br><i>(flash test)</i><br><br><a href="../company/contact.html" target="main">Contact</a><br><i>(exslt test)</i><br><br><a href="../company/news.html" target="main">News </a><br><i>(data test)</i><br><br><a href="../company/about.html" target="main">About</a><br><i>(img test)</i><br><br>
+      				
+      <!---  sample footer comment (fr) //-->
+      			
+   </body>
+</html>

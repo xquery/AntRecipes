@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ============================================================= -->
+<!-- ANT RECIPES FOR WEB DEVELOPERS CHP 3 Web Recipe               -->
+<!-- Author: James Fuller / Webcomposite                           -->
+<!-- Email/WWW: jim.fuller@webcomposite.com /  www.antrecipes.com  -->
+<!-- ============================================================= -->
+<!--    (C) Copyright James Fuller 2009 - All Rights Reserved.     -->
+<!--  use the -debug flag for more information when running ant  //-->
+<project name="validate-xhtml" basedir=".">
+	<description>Demonstrate how to validate xhtml</description>
+	<!-- ===================================================== -->
+	<!-- XML Catalog definition                                -->
+	<!-- ===================================================== -->
+	<xmlcatalog id="xhtmlDTDs">
+		<catalogpath>
+			<pathelement path="etc/xmlcatalog.xml"/>
+		</catalogpath>
+	</xmlcatalog>
+	<!-- ===================================================== -->
+	<!-- Example1                                              -->
+	<!-- ===================================================== -->
+	<target name="example1" description="validate xhtml">
+		<xmlvalidate failonerror="yes">
+			<xmlcatalog>
+				<dtd publicId="-//W3C//DTD XHTML Basic 1.0//EN" location="etc/xhtml-basic10.dtd"/>
+			</xmlcatalog>
+			<fileset dir="data" includes="test.html"/>
+		</xmlvalidate>
+	</target>
+	<!-- ===================================================== -->
+	<!-- Example2                                              -->
+	<!-- ===================================================== -->
+	<target name="example2" description="validate xhtml 1.1">
+		<xmlvalidate failonerror="no" warn="yes">
+			<xmlcatalog refid="xhtmlDTDs"/>
+			<fileset dir="data" includes="**/*.html"/>
+			<attribute name="http://xml.org/sax/features/validation" value="true"/>
+		</xmlvalidate>
+	</target>
+	<!-- ===================================================== -->
+	<!-- mirror-xhtml-dtd                                      -->
+	<!-- ===================================================== -->
+	<target name="mirror-xhtml-dtd" description="download">
+		<get src="http://www.w3.org/TR/xhtml11/xhtml11.zip" dest="etc/xhtml11.zip"/>
+		<!-- need to unzip this as well //-->
+	</target>
+	<!-- ===================================================== -->
+	<!-- Run Target                                            -->
+	<!-- ===================================================== -->
+	<target name="run" depends="clean,example1" description="runs all examples"/>
+	<!-- ===================================================== -->
+	<!-- Clean Target                                          -->
+	<!-- ===================================================== -->
+	<target name="clean">
+		<delete dir="result"/>
+		<mkdir dir="result"/>
+	</target>
+</project>

@@ -1,0 +1,95 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--functions/intro/fn_sum
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: fn:sum</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: fn:sum">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>fn:sum</h1>
+      <p class="subhead">fn:sum($srcval as xdt:anyAtomicType*) &#8594; xdt:anyAtomicType?</p>
+      <p><i>Function signature</i></p>
+      <table>
+         <tr>
+            <td width="120">
+               <p>$arg</p>
+            </td>
+            <td width="150">
+               <p>xdt:anyAtomicType *</p>
+            </td>
+         </tr>
+         <tr>
+            <td width="120">
+               <p><b>Result</b></p>
+            </td>
+            <td width="150">
+               <p>xdt:anyAtomicType </p>
+            </td>
+         </tr>
+      </table>
+      <p><i>Returns the total of a sequence of numbers or durations</i></p>
+      <p><a href="http://www.w3.org/TR/xpath-functions/#func-sum" target="_blank" class="bodylink">XPath 2.0 Specification</a></p>
+      <p>Implemented. In 7.4, works on all numeric types and returns the same type as the
+         arguments. Changed in 7.8 to return integer 0 for an empty
+         sequence, rather than double 0.0. Changed in 8.1 to allow totalling of durations
+         as well as numbers.
+      </p>
+      <p class="subhead">fn:sum($srcval as xdt:anyAtomicType*, $zero as xdt:anyAtomicType?) &#8594; xdt:anyAtomicType?</p>
+      <p><i>Function signature</i></p>
+      <table>
+         <tr>
+            <td width="120">
+               <p>$arg</p>
+            </td>
+            <td width="150">
+               <p>xdt:anyAtomicType *</p>
+            </td>
+         </tr>
+         <tr>
+            <td width="120">
+               <p>$zero</p>
+            </td>
+            <td width="150">
+               <p>xdt:anyAtomicType ?</p>
+            </td>
+         </tr>
+         <tr>
+            <td width="120">
+               <p><b>Result</b></p>
+            </td>
+            <td width="150">
+               <p>xdt:anyAtomicType ?</p>
+            </td>
+         </tr>
+      </table>
+      <p><i>Returns the total of a sequence of numbers, specifying the value to be returned for an empty sequence</i></p>
+      <p><a href="http://www.w3.org/TR/xpath-functions/#func-sum" target="_blank" class="bodylink">XPath 2.0 Specification</a></p>
+      <p>Implemented in Saxon 8.1</p>
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="fn_sum.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../intro.html">Up</a>&nbsp;&nbsp;<a class="nav" href="xslt_system-property.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--functions/intro/fn_input
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: fn:input</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: fn:input">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>fn:input</h1>
+      <p class="subhead">fn:input() &#8594; node*</p>
+      <p><i>Function signature</i></p>
+      <table>
+         <tr>
+            <td width="120">
+               <p><b>Result</b></p>
+            </td>
+            <td width="150">
+               <p>node() *</p>
+            </td>
+         </tr>
+      </table>
+      <p><i>Returns the sequence of nodes established by the calling environment as the current
+            input collection</i></p>
+      <p><a href="http://www.w3.org/TR/xpath-functions/#func-input" target="_blank" class="bodylink">XPath 2.0 Specification</a></p>
+      <p>Removed in Saxon 7.8</p>
+      <p><b>Note:</b>This implementation of the input() function is very simple. If the parameter
+         {http://saxon.sf.net/}input has been supplied to the transformation, the function returns the value
+         of this parameter. This must be a node sequence - which means it cannot be supplied from the 
+         command line. If no such parameter has been supplied, it returns the root of the principal source
+         document (the document containing the node that was matched on entry to the transformation).
+      </p>
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="fn_input.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../intro.html">Up</a>&nbsp;&nbsp;<a class="nav" href="fn_in-scope-prefixes.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--index/intro
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: Introduction</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Introduction">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      
+      <h1>Introduction</h1>
+      
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Release 8.3 is the latest installment of Saxonica's progressive implementation of the 
+         <a href="http://www.w3.org/TR/xpath20" target="_blank" class="bodylink">XPath 2.0</a>, 
+         <a href="http://www.w3.org/TR/xslt20" target="_blank" class="bodylink">XSLT 2.0</a>, and
+         <a href="http://www.w3.org/TR/xquery" target="_blank" class="bodylink">XQuery 1.0</a> specifications. 
+         This release implements the schema-aware features of these languages, and also includes
+         a free-standing schema processor conforming to 
+         <a href="http://www.w3.org/TR/2004/PER-xmlschema-1-20040318/" target="_blank" class="bodylink">XML Schema 1.0</a></p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><b>Saxon 8.3 revises the support for the new APIs in JAXP 1.3, to ease installation
+            problems when running under JDK 1.4.</b></p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">These APIs are standard with J2SE 5.0 (also known
+         as JDK 1.5). When using Saxon 8.3 with JDK 1.4, these facilities are only available if you download 
+         <a href="https://jaxp.dev.java.net/">the JAXP 1.3 library</a> from Sun, and ensure that the files
+         <code>jaxp-api.jar</code> and <code>dom.jar</code> are on your <code>CLASSPATH</code>.
+         However, for standard XQuery and XSLT processing these extra libraries are not needed.
+         For further information see <a href="../index/prerequisites.html" target="_self" class="bodylink">Prerequisites</a>.
+         
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The product is aligned with the W3C working drafts published on 11 February 2005,
+         though a few features are not yet implemented.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Saxon 8.3 is available in two versions. Saxon-B 8.3 is a non-schema-aware
+         processor, and is available as an open-source product, free of charge, from 
+         <a href="http://saxon.sf.net/" target="_blank" class="bodylink">SourceForge</a>. It is designed to conform to the
+         basic conformance level of XSLT 2.0, and the equivalent level of functionality in XQuery 1.0. 
+         Saxon-SA 8.3 is the schema-aware version of the package, and is available as a commercially
+         supported product from <a href="http://www.saxonica.com/" target="_blank" class="bodylink">Saxonica Limited</a>.
+         Licensing options are available to provide XSLT only, XQuery only, or schema validation
+         only, as well as a full license that gives access to all functionality.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">This documentation covers both products, with differences noted where applicable.</p>
+      
+      
+      <div class="boxed" style="border: solid thin; background-color: #B1CCC7; padding: 2px">Please note: this documentation is provided on the 
+         <a xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" href="http://www.saxonica.com/" target="_blank" class="bodylink">Saxonica</a> web site and also in the download file.
+         On occasions the online version may be more up-to-date. The download file also includes full
+         API documentation: see the doc/api directory.
+      </div>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><a href="../javadoc/index.html" target="_blank" class="bodylink">JavaDoc API specifications</a> (for the current release only)
+         are also available.
+      </p> 
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">A full change log is provided in <a class="bodylink" href="javascript:topage('changes', 'intro')">changes.html</a></p> 
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Saxon 8.x has been used for production applications by many users. The code is proving
+         stable and reliable. However, you need to be aware that the specifications are still
+         subject to change, and that new Saxon releases will track the changing specifications
+         with no concessions to backward compatibility.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">If you are looking for complete stability, 
+         the preferred version for production use remains
+         <a href="http://saxon.sf.net/saxon6.5.3/" target="_blank" class="bodylink">Saxon 6.5.3</a>, which
+         implements XSLT 1.0 and XPath 1.0.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Saxon 8.3 requires Java JDK 1.4 or later. If you have a choice, it is best to use JDK 1.5,
+         since that includes the latest version of JAXP as standard, giving less scope for configuration
+         problems. (Note that JDK 1.5 is sometimes called JDK 5.0)
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="intro.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="gettingstarted.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

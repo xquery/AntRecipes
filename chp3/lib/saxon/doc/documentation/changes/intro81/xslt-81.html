@@ -1,0 +1,112 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--changes/intro81/xslt-81
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: XSLT changes</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: XSLT changes">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>XSLT changes</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>xsl:sequence</code> instruction can no longer contain a sequence
+         constructor. Specifically, it must have no content other than (optionally) 
+         one or more <code>xsl:fallback</code> instructions. This is a change agreed by
+         the Working Group since the November 2003 drafts were published.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" test="seq023.xsl">The <code>xsl:perform-sort</code> instruction can now contain a sequence
+         constructor as an alternative to a <code>select</code> attribute.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" test="sort030 sort031">The <code>xsl:sort</code> element can now contain a sequence
+         constructor as an alternative to a <code>select</code> attribute.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" test="seq912err.xsl">A check has been added that within <code>xsl:for-each</code> and
+         <code>xsl:for-each-group</code>, any <code>xsl:sort</code> elements appear before any other
+         instructions. This enforces a rule in XSLT 1.0 and XSLT 2.0 that was previously not enforced.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" test="idky204.xsl idky36.xsl">The <code>xsl:key</code> element may now have a content constructor
+         to evaluate the key value, in place of the <code>use</code> attribute.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" test="nspc55-61">The <code>[xsl:]inherit-namespaces</code> attribute is implemented on 
+         <code>xsl:element</code>, <code>xsl:copy</code>, and literal result elements. By default, the
+         namespace nodes on a constructed element are inherited by its children. Setting this attribute
+         to "no" prevents this. The difference will not usually be noticeable unless the result document
+         is serialized with <code>version="1.1" undeclare-namespaces="yes"</code>.
+      </p> 
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" test="outp79-81">The <code>xsl:result-document</code> instruction may now take
+         serialization attributes such as <code>method</code>, <code>indent</code>, or <code>saxon:indent-spaces</code>.
+         These attributes may be AVTs, so the values can be decided at run-time. Any values specified on the
+         <code>xsl:result-document</code> instruction override the values specified on the <code>xsl:output</code>
+         declaration.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" test="func35">Zero-length text nodes can now be constructed. They disappear when added as a child
+         node of an element, but can exist so long as they are parentless. This means, for example, that a
+         function whose body evaluates three <code>xsl:value-of</code> instructions will always return a
+         sequence of three text nodes, regardless of the actual values.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" test="impincl16">A dynamic error that occurs while evaluating a predicate in a match pattern
+         is now treated as a recoverable error. By default, a warning is output, and execution continues
+         as if the predicate returned false. (Previous releases of Saxon recovered silently from this error
+         without reporting it; previous versions of the XSLT specification treated the error as fatal. The 
+         product is now aligned with the specification.)
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" test="variable26 variable26err">When <code>xsl:call-template</code> specifies a parameter 
+         using <code>xsl:with-param</code>
+         for which there is no corresponding parameter declared in the called template, no error
+         is reported if the call-template instruction is in backwards compatible mode,
+         that is if the <code>version</code> attribute is equal to "1.0".
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" test="copy66 copy67">A document node can now be copied using <code>xsl:copy</code> or
+         <code>xsl:copy-of</code>. If the destination is a tree, copying the document node has the same effect
+         as copying its children. But it the destination is a sequence, the document node itself is copied.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="xslt-81.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../intro81.html">Up</a>&nbsp;&nbsp;<a class="nav" href="xquery-81.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

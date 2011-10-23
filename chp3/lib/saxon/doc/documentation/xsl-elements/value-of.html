@@ -1,0 +1,234 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--xsl-elements/value-of
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: xsl:value-of</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: xsl:value-of">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>xsl:value-of</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>xsl:value-of</code> element evaluates an expression as a string,
+         and outputs its value to the current result tree.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The full syntax of expressions is given in <a class="bodylink" href="javascript:topage('expressions', 'intro')">XPath Expression Syntax</a>.
+         
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>select</code> attribute identifes the expression. If this is not specified, the value
+         to be output is obtained by evaluating the sequence constructor contained within the <code>xsl:value-of</code>
+         element.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The optional <code>disable-output-escaping</code> attribute may be set to "yes" or "no"; the default is
+         "no". If set to "yes", special characters such as "&lt;" and "&amp;" will be output as themselves,
+         not as entities. Be aware that in general this can produce non-well-formed XML or HTML. It is useful,
+         however, when generating things such as ASP or JSP pages. Escaping may not be disabled when writing
+         to a result tree fragment.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">If the <code>select</code> expression evaluates to a sequence containing more than one item,
+         the result depends on whether a <code>separator</code> attribute is present. If the
+         <code>separator</code> is absent when running in 1.0 mode, then only the
+         first item is considered. When running in 2.0 mode, all the items are output. The separator
+         defaults to a single space if the <code>select</code> attribute is used, or to a zero-length string
+         if a sequence constructor is used. The <code>separator</code> attribute may be specified
+         as an <i>attribute value template</i>.
+      </p>
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Here are some examples of expressions that can be used in the select attribute:</p>
+      
+      
+      
+      
+      <table xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         
+         <tr>
+            
+            <td width="50%" valign="top">
+               <p><b>Expression</b></p>
+            </td>
+            
+            <td width="50%" valign="top">
+               <p><b>value</b></p>
+            </td>
+            
+         </tr>
+         
+         <tr>
+            
+            <td width="50%" valign="top">
+               <p>TITLE</p>
+            </td>
+            
+            <td width="50%" valign="top">
+               <p>The character content of the first child TITLE element if there is one</p>
+            </td>
+            
+         </tr>
+         
+         <tr>
+            
+            <td width="50%" valign="top">
+               <p>@NAME</p>
+            </td>
+            
+            <td width="50%" valign="top">
+               <p>The value of the NAME attribute of the current element if there is one</p>
+            </td>
+            
+         </tr>
+         
+         <tr>
+            
+            <td width="50%" valign="top">
+               <p>.</p>
+            </td>
+            
+            <td width="50%" valign="top">
+               <p>The expanded character content of the current element</p>
+            </td>
+            
+         </tr>
+         
+         <tr>
+            
+            <td width="50%" valign="top">
+               <p>../TITLE</p>
+            </td>
+            
+            <td width="50%" valign="top">
+               <p>The expanded character content of the first TITLE child of the
+                  parent element, if there is one
+               </p>
+            </td>
+            
+         </tr>
+         
+         <tr>
+            
+            <td width="50%" valign="top">
+               <p>ancestor::SECTION/TITLE</p>
+            </td>
+            
+            <td width="50%" valign="top">
+               <p>The expanded character content of the first TITLE child of the
+                  enclosing SECTION element, if there is one
+               </p>
+            </td>
+            
+         </tr>
+         
+         <tr>
+            
+            <td width="50%" valign="top">
+               <p>ancestor::*/TITLE</p>
+            </td>
+            
+            <td width="50%" valign="top">
+               <p>The expanded character content of the first TITLE child of the
+                  nearest enclosing element that has a child element named TITLE
+               </p>
+            </td>
+            
+         </tr>
+         
+         
+         <tr>
+            
+            <td width="50%" valign="top">
+               <p>PERSON[@ID]</p>
+            </td>
+            
+            <td width="50%" valign="top">
+               <p>The content of the first child PERSON element having an ID attribute,
+                  if there is one
+               </p>
+            </td>
+            
+         </tr>
+         
+         <tr>
+            
+            <td width="50%" valign="top">
+               <p>*[last()]/@ID</p>
+            </td>
+            
+            <td width="50%" valign="top">
+               <p>The value of the ID attribute of the last child element of any type,
+                  if there are any 
+               </p>
+            </td>
+            
+         </tr>
+         
+         <tr>
+            
+            <td width="50%" valign="top">
+               <p>.//TITLE</p>
+            </td>
+            
+            <td width="50%" valign="top">
+               <p>The content of the first descendant TITLE element if there is one</p>
+            </td>
+            
+         </tr>
+         
+         <tr>
+            
+            <td width="50%" valign="top">
+               <p>sum(*/@SALES)</p>
+            </td>
+            
+            <td width="50%" valign="top">
+               <p>The numeric total of the values of the SALES attributes of all child
+                  elements that have a SALES attribute
+               </p>
+            </td>
+            
+         </tr>
+         
+         
+         
+      </table>
+      
+      
+      
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="value-of.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="variable.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

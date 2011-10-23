@@ -1,0 +1,92 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--changes/v8.2/xslt82
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: Changes to XSLT 2.0 support</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Changes to XSLT 2.0 support">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>Changes to XSLT 2.0 support</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>[xsl:]use-when</code> attribute, which allows conditional inclusion/exclusion of sections
+         of a stylesheet, is implemented. 
+         There are some very minor restrictions described in the conformance section. Note that the Saxon
+         implementation of the <code>system-property()</code> function allows Java system properties to
+         be read, which provides a convenient way of supplying information that can be tested in the 
+         <code>use-when</code> condition.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The standard attribute <code>[xsl:]default-collation</code> is implemented. This may appear
+         on any instruction in the stylesheet (prefixed xsl if the instruction is <i>not</i> in the XSLT namespace). Its value is
+         a URI that indicates the default collation to be used on that element and its descendants. Note that this doesn't affect
+         the collation used by <code>xsl:sort</code>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The revised rules for constructing the content of simple-valued nodes (attributes, text nodes, comments, etc)
+         are implemented. The rules are now the same whether the content is constructed using a content constructor or a
+         <code>select</code> attribute, and if the supplied content includes adjacent text nodes, these are concatenated
+         without inserting a separator. Anticipating a change in the specification, these rules have also been implemented
+         for attribute value templates.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>xsl:import-schema</code> may now contain an inline schema (that is, it may have an
+         <code>xs:schema</code> element as a child). 
+      </p> 
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">A local variable is no longer visible within an <code>xsl:fallback</code> instruction that is a sibling of the variable
+         declaration. This change has been made to the specification (and will be made to XSLT 1.0 by means of an 
+         erratum) because <code>xsl:fallback</code> is only evaluated when its sibling instructions are <i>not</i>
+         evaluated.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Changes affecting <code>xsl:number</code> in backwards-compatible mode have been implemented. The effect
+         is essentially that NaN is output when invalid values are supplied in the <code>value</code> attribute.
+      </p> 
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Error conditions affecting <code>xsl:decimal-format</code> are now checked more rigorously, as described
+         in the latest W3C specification.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">When the XSLT processor is run from the command line, the base output URI now defaults to the current working
+         directory. It is therefore no longer necessary to use the -o option in order to use a relative URI with 
+         &lt;xsl:result-document&gt;. For security reasons this change does not apply when invoking Saxon using the
+         Java API, unless the application sets it explicitly.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="xslt82.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../v8.2.html">Up</a>&nbsp;&nbsp;<a class="nav" href="xquery82.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

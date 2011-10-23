@@ -1,0 +1,87 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--using-xquery/callingfunctions
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: Calling XQuery Functions from Java</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Calling XQuery Functions from Java">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      
+      <h1>Calling XQuery Functions from Java</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Although the usual way to invoke XQuery from a Java application is to compile and execute a query
+         as described above, it is also possible to invoke individual XQuery functions directly from Java if required.
+         This interface is very efficient but performs less validation of parameters than the standard interface described above.
+         To achieve this, first compile the query as described above, specifying a query that includes one or more
+         <code>declare function</code> declarations in the query prolog. It is then possible to retrieve the 
+         <code>UserFunction</code> objects representing the compiled code of these functions, by calling the
+         <code>getUserDefinedFunction</code> method on the <code>StaticQueryContext</code> object.
+         Such a function can be called using its <code>call</code> method. The first argument to this is an array 
+         containing the values of the arguments. These must be supplied using Saxon's native classes, for example
+         an integer argument is supplied as an instance of <code>net.sf.saxon.value.IntegerValue</code>. These
+         values must be of the type expected by the function; no conversion or type checking takes place (which
+         means that a ClassCastException will probably occur if the wrong type of value is supplied). The second
+         argument to the <code>call</code> method is a <code>Controller</code>. A Controller can be obtained
+         by calling the <code>getController()</code> method on the <code>XQueryExpression</code> object. The same Controller
+         can be used for a series of separate function calls.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">For example:</p>
+      
+      
+      <div class="codeblock" style="border: solid thin; background-color: #B1CCC7; padding: 2px"><pre><code>
+StaticQueryContext sqc = 
+        new StaticQueryContext(new Configuration());
+QueryProcessor processor = 
+        new QueryProcessor(sqc);
+
+XQueryExpression exp1 = processor.compileQuery(
+        "declare namespace f='f.ns';" +
+        "declare function f:t1($p as xs:integer) { $p * $p };" +
+        "declare function f:t2($p as xs:integer) { $p + $p };" +
+        "1"
+);
+
+UserFunction fn1 = sqc.getUserDefinedFunction("f.ns", "t1", 1);
+UserFunction fn2 = sqc.getUserDefinedFunction("f.ns", "t2", 1);
+Controller controller = exp1.getController();
+
+IntegerValue[] arglist = new IntegerValue[1];
+for (int x=1; x&lt;1000000; x++) {
+    arglist[0] = new IntegerValue(x);
+    Value v1 = fn1.call(arglist, controller);
+    Value v2 = fn2.call(arglist, controller);
+    System.err.println("Returned product " + v1 + "; sum =" + v2);
+}</code></pre></div>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="callingfunctions.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="resultformat.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

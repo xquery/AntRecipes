@@ -1,0 +1,93 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--changes/intro/xslt83
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: XSLT 2.0 Changes</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: XSLT 2.0 Changes">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>XSLT 2.0 Changes</h1>
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">If the third argument of the <code>key()</code> function is specified, the function now returns
+         only nodes that are in the subtree rooted at that node. Previously it returned all nodes in the same
+         document as the node specified in the third argument. This represents a change recently agreed to
+         the XSLT 2.0 specification.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>input-type-annotations</code> attribute on the <code>xsl:stylesheet</code>
+         element is implemented.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>undeclare-namespaces</code> attribute of <code>xsl:output</code> and
+         <code>xsl:result-document</code> is renamed <code>undeclare-prefixes</code>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>use-character-maps</code> attribute is now supported on
+         <code>xsl:result-document</code>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>collation</code> attribute of <code>xsl:sort</code> can now be an
+         attribute value template.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The default format for the minutes and seconds components of the time in
+         the <code>format-time()</code> function is now "01" rather than "1": that is, a leading zero is
+         included by default.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Representation of ordinal numbers in dates output by <code>format-date()</code>
+         can now be localized (through a new method in the <code>Numberer</code> interface).
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>xsl:result-document</code> instruction now enforces the rule that a
+         transformation cannot write two result trees to the same URI.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">There is no longer an upper limit on the size of numbers that can be formatted using
+         <code>&lt;xsl:number&gt;</code> with format token "1".
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Error XT0275 is now detected: using xsl:strip-space on an element defined in the 
+         schema to have simple content.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="xslt83.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../intro.html">Up</a>&nbsp;&nbsp;<a class="nav" href="xquery83.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

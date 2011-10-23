@@ -1,0 +1,2 @@
+A bunch of special characters
+$ % @ \u00c4 \u00a3

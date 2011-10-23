@@ -1,0 +1,104 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--extensibility/functions/instance-methods
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: Calling Java Instance-Level Methods</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Calling Java Instance-Level Methods">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>Calling Java Instance-Level Methods</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><b>Instance-level methods</b> (that is, non-static methods)
+         are called by supplying an extra first argument of type Java Object which is the
+         object on which the method is to be invoked. A Java Object is usually created by calling an extension
+         function (e.g. a constructor) that returns an object; it may also be passed to the style sheet as the
+         value of a global parameter. Matching of method names is done as for static methods.
+         If there are several methods in the class that match the localname, the system again tries to
+         find the one that is the best fit, according to the types of the supplied arguments.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">For example, the following XSLT stylesheet prints the date and time. (In XSLT 2.0, of course,
+         this no longer requires extension functions, but the example is still valid.)
+      </p>
+      
+      
+      <div class="codeblock" style="border: solid thin; background-color: #B1CCC7; padding: 2px"><pre><code>
+&lt;xsl:stylesheet
+  version="1.0"
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+  xmlns:date="java:java.util.Date"&gt;
+
+&lt;xsl:template match="/"&gt;
+  &lt;html&gt;
+    &lt;xsl:if test="function-available('date:to-string') and 
+                          function-available('date:new')"&gt;
+      &lt;p&gt;&lt;xsl:value-of select="date:to-string(date:new())"/&gt;&lt;/p&gt;
+    &lt;/xsl:if&gt;
+  &lt;/html&gt;
+&lt;/xsl:template&gt;
+
+&lt;/xsl:stylesheet&gt;
+</code></pre></div>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The equivalent in XQuery is:</p>
+      
+      
+      <div class="codeblock" style="border: solid thin; background-color: #B1CCC7; padding: 2px"><pre><code>
+declare namespace date="java:java.util.Date";
+&lt;p&gt;{date:to-string(date:new())}&lt;/p&gt;
+</code></pre></div>
+      
+      
+      
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">A Java method called as an extension function may have an extra first argument of
+         class <code>net.sf.saxon.expr.XPathContext</code>.
+         This argument is not
+         supplied by the calling XPath or XQuery code, but by Saxon itself. 
+         The <code>XPathContext</code> object provides methods to access many
+         internal Saxon resources, the most useful being <code>getContextItem()</code> which returns the context item
+         from the dynamic context. The XPathContext object is not available with constructors.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">If any exceptions are thrown by the method, or if a matching method cannot be found,
+         processing of the stylesheet will be abandoned. If the tracing option has been set (-T) on the
+         command line, a full stack trace will be output. The exception will be wrapped in a
+         <code>TransformerException</code> and passed to any user-specified <code>ErrorListener</code> object, 
+         so the <code>ErrorListener</code> can also produce extra diagnostics.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="instance-methods.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../functions.html">Up</a>&nbsp;&nbsp;<a class="nav" href="../converting-args.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

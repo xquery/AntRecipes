@@ -1,0 +1,149 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--changes/intro81/extensions-81
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: Changes to Extension Functions</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Changes to Extension Functions">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>Changes to Extension Functions</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" test="saxon81">A new extension function (technically a pseudo-function) <code>saxon:try()</code>
+         has been added. This returns the value of its first argument, unless evaluation of the first argument
+         fails, in which case it returns the value of its second argument. This provides a simple means for catching
+         dynamic errors. No information is available about the actual error that occurred.
+         <i>This function is available only in Saxon-SA</i>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" test="exslt057">The EXSLT extension function <code>random:random-sequence</code> has been
+         implemented (acknowledgements to Martin Szugat)
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" test="**untested**">The <code>saxon:serialize()</code> extension function is now available in
+         environments other than XSLT (for example, in XQuery): in such cases the second argument is the name
+         of the serialization method (xml, html, xhtml, text), and the other serialization parameters are all defaulted.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" test="saxon83">The XPath expression used within a <code>saxon:evaluate</code> expression now has
+         access to all the functions that would be available to a static XPath expression appearing in the same position:
+         including constructor functions, user-defined stylesheet or XQuery functions, and Java extension functions.
+         The default function namespace is also inherited from the calling environment.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" test="saxon80">In the case of a node in a temporary tree, the <code>saxon:line-number()</code> function
+         now identifies the line in the stylesheet containing the instruction that created this node. As with line numbering
+         in source documents, this only works if line numbering is enabled using the -l or -T option on the command line,
+         or the corresponding API option. This line number is also used to identify such nodes in trace output.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" test="saxon84">A new extension function <code>saxon:string-to-utf8()</code> is available. It returns
+         a sequence of integers representing the octets in the UTF8 encoding of a string.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" test="saxon84">New extension functions <code>saxon:octets-to-hexBinary()</code> and <code>hexBinary-to-octets</code>
+         are available. They translate between a sequence of integers (in the range 0-255) representing a sequence of octets,
+         and the <code>xs:hexBinary</code> value representing that sequence of octets.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" test="saxon84">New extension functions <code>saxon:octets-to-base64Binary()</code> and <code>base64Binary-to-octets</code>
+         are available. They translate between a sequence of integers (in the range 0-255) representing a sequence of octets,
+         and the <code>xs:base64Binary</code> value representing that sequence of octets.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The single-argument extension functions <code>saxon:min</code> and <code>saxon:max</code>, which had already been
+         removed from the documentation, have now been dropped from the product. They are superseded by the standard
+         XPath 2.0 <code>min()</code> and <code>max()</code> functions. The EXSLT <code>min()</code> and <code>max()</code> functions
+         remain available.
+      </p>
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" test="qstrong011">The output of the <code>trace()</code> function is now sent to the TraceListener, if a
+         TraceListener has been activated (for example by use of the -T option on the Query or XSLT command line). If no
+         TraceListener is active, the output is sent directly to System.err as before.
+      </p>
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Two new extension functions are available (in Saxon-SA only) to enable the use of higher-order functions in 
+         XSLT and XQuery. The first, <code>saxon:function()</code>, takes the name and arity of a user-defined
+         function as input, and returns a value representing this function (a <code>FirstClassFunction</code> object). The second function,
+         <code>saxon:call()</code> takes this FirstClassFunction object as its first argument, and the values to be supplied
+         to the function as the second and subsequent arguments, and returns the result of calling the identified function with
+         these arguments. Higher-order functions make XSLT and XQuery into fully-capable functional programming languages,
+         and enable the implementation of many algorithms (for example, graph-searching algorithms) that would otherwise be
+         extremely clumsy to program.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" test="qschema034">A new higher-order extension function <code>saxon:for-each-group</code> is 
+         available (in Saxon-SA only). This is intended primarily
+         for use in XQuery, which lacks XSLT's <code>xsl:for-each-group</code> construct. The function takes three parameters:
+         the population of items to be grouped, a function to calculate the grouping key, and a function to process each group (where
+         a group is defined as a subset of the population having the same values of the grouping key). It returns the result of
+         applying this function to each group in turn. The groups are processed in order of first appearance.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" test="qschema035 qschema036">A new higher-order extension function <code>saxon:analyze-string</code> is 
+         available (in Saxon-SA only). This is intended primarily
+         for use in XQuery, which lacks XSLT's <code>xsl:analyze-string</code> construct. The function takes four or five parameters:
+         the string to be analyzed, a regular expresion (regex), a function to process matching substrings, 
+         a function to process non-matching substrings, and optionally, a set of flags corresponding to those available
+         on the <code>matches()</code> function. The function splits the string into a sequence of substrings, each of which
+         either matches the regex or does not match it, and then calls one of the two functions as appropriate, with
+         this substring as an argument.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" test="qschema037 qschema038">Versions of the XSLT functions <code>format-date()</code>, <code>format-dateTime</code>,
+         <code>format-number()</code>, and <code>format-time()</code> have been made available as extension functions
+         in the Saxon namespace, thus making them available to XQuery users. They are available in Saxon-SA only.
+         There is no equivalent of XSLT's decimal formats, so it is not possible to change the characters used for the
+         decimal point and grouping separators, for example.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" test="qxmp169">A new extension function <code>saxon:namespace-node()</code> is added. This allows a parentless
+         namespace node to be constructed. The function serves the same purpose in XQuery as the <code>xsl:namespace</code>
+         instruction in XSLT: it allows dynamically-computed namespaces to be added to the result document.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="extensions-81.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../intro81.html">Up</a>&nbsp;&nbsp;<a class="nav" href="internal-81.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

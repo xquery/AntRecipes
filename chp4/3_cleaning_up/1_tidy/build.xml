@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ============================================================= -->
+<!-- ANT RECIPES FOR WEB DEVELOPERS CHP 3 Web Recipe               -->
+<!-- Author: James Fuller / Webcomposite                           -->
+<!-- Email/WWW: jim.fuller@webcomposite.com /  www.antrecipes.com  -->
+<!-- ============================================================= -->
+<!--    (C) Copyright James Fuller 2009 - All Rights Reserved.     -->
+<!--  use the -debug flag for more information when running ant  //-->
+<project name="tidy" default="run" basedir=".">
+	<description>Demonstrate how to cleanup html/xml using HTML Tidy</description>
+	<!-- ===================================================== -->
+	<!-- Task definition                                       -->
+	<!-- ===================================================== -->
+	<taskdef name="jtidy" classname="org.w3c.tidy.ant.JTidyTask">
+		<classpath>
+			<pathelement location="../../lib/jtidy/jtidy.jar"/>
+		</classpath>
+	</taskdef>
+	<!-- ===================================================== -->
+	<!-- Property definition                                   -->
+	<!-- ===================================================== -->
+	<!-- define tidy properties //-->
+	<property name="tidy.config" location="etc/tidy-config.properties"/>
+	<!-- ===================================================== -->
+	<!-- Example1 Target                                       -->
+	<!-- ===================================================== -->
+	<target name="example1">
+		<tidy1 in="data/test.xml" out="result/test.out.xml"/>
+	</target>
+	<!-- ===================================================== -->
+	<!-- Example2 Target                                       -->
+	<!-- ===================================================== -->
+	<target name="example2">
+		<jtidy destdir="result" properties="${tidy.config}">
+			<fileset dir="data"/>
+			<parameter name="drop-font-tags" value="true"/>
+		</jtidy>
+	</target>
+	<!-- ===================================================== -->
+	<!-- Run Target                                            -->
+	<!-- ===================================================== -->
+	<target name="run" depends="clean,example1, example2" description="runs all examples"/>
+	<!-- ===================================================== -->
+	<!-- Clean Target                                          -->
+	<!-- ===================================================== -->
+	<target name="clean">
+		<delete dir="result"/>
+		<mkdir dir="result"/>
+	</target>
+	<!-- declare tidy macrodef //-->
+	<!-- NOTE: YOU NEED TIDY INSTALLED //-->
+	<macrodef name="tidy1">
+		<attribute name="in"/>
+		<attribute name="out"/>
+		<sequential>
+			<apply executable="tidy">
+				<arg value="-config ${tidy.config} &lt; @{in} &gt; @{out}"/>
+			</apply>
+		</sequential>
+	</macrodef>
+</project>

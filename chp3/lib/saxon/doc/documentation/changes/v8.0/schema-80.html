@@ -1,0 +1,57 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--changes/v8.0/schema-80
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: Schema processing</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Schema processing">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>Schema processing</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The product build structure has been changed to generate two products, Saxon-B and Saxon-SA. 
+         Saxon-B is the open source product; Saxon-SA contains additional functionality to support schema processing.
+         The basic hooks to plug in schema processing were already present in Saxon 7.9.1. The code in Saxon-B is all
+         present in identical form in Saxon-SA; Saxon-SA does not change the basic open source code, it adds extra
+         components.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The code for reading and analysing schemas was originally derived from similar code in Castor. It has been
+         almost totally rewritten and greatly enhanced, though parts of the original design remain intact. The run-time validation
+         code (to validate instance documents against a schema) is completely new.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">For further information see <a class="bodylink" href="javascript:tosubpage('changes','v8.1','schema81')">Schema Processing</a>.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="schema-80.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../v8.0.html">Up</a>&nbsp;&nbsp;<a class="nav" href="xpath-api-80.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

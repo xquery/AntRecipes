@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<library  xmlns="http://www.example.com">
+ <magazine>MSDN Magazine</magazine>
+ <book>Professional XML Databases</book>
+</library>

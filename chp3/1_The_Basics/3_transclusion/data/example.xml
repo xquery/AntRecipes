@@ -1,0 +1,4 @@
+<sequential>
+<echo test="instructions from example.xml document"/>
+        <xi:include href="test.xml" xmlns:xi="http://www.w3.org/2003/XInclude"/>
+</sequential>

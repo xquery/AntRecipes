@@ -1,0 +1,341 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--using-xquery/commandline
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: Running XQuery from the Command Line</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Running XQuery from the Command Line">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      
+      
+      <h1>Running XQuery from the Command Line</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><i>If you are using the schema-aware version of Saxon, there is a variant
+            of this command line that invokes schema-aware processing: see
+            <a class="bodylink" href="javascript:topage('schema-processing', 'saquerycmd')">Schema-Aware Query from the Command Line</a>.</i></p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The Java class <code>net.sf.saxon.Query</code> has a main program that
+         may be used to run a query contained in a file. The form of
+         command is:
+      </p>
+      
+      
+      <p class="command">java&nbsp; net.sf.saxon.Query &nbsp; [options]&nbsp;&nbsp; query&nbsp;&nbsp; [ <i xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">params...</i>]
+         
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The options must come first, then the file name containing the query, then the params.</p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The options are as follows (in any order): </p>
+      
+      
+      <table xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         
+         
+         <tr>
+            <td valign="top" width="20%">
+               <p>-ds</p>
+            </td>
+            
+            <td>
+               <p>Use the classic tree model for source documents. 
+                  See <a class="bodylink" href="javascript:topage('using-xsl', 'choosingmodel')">Choosing a Tree Model</a>.
+                  
+               </p>
+            </td>
+         </tr>
+         
+         
+         <tr>
+            <td valign="top" width="20%">
+               <p>-dt</p>
+            </td>
+            
+            <td>
+               <p>Use the "tinytree" tree model for source documents. This is the default tree model.
+                  See <a class="bodylink" href="javascript:topage('using-xsl', 'choosingmodel')">Choosing a Tree Model</a>. 
+                  
+               </p>
+            </td>
+         </tr>
+         
+         
+         <tr>
+            <td valign="top" width="20%">
+               <p>-noext</p>
+            </td>
+            
+            <td>
+               <p>Prevents the query calling external Java functions. This is useful for safety if the query
+                  is untrusted. 
+                  
+               </p>
+            </td>
+         </tr>
+         
+         
+         <tr>
+            <td valign="top" width="20%">
+               <p>-o filename</p>
+            </td>
+            
+            <td>
+               <p>Send output to named file. In the absence of this option, the results go to standard output.
+                  The output format depends on whether the -wrap option is present.
+                  
+               </p>
+            </td>
+         </tr>
+         
+         
+         <tr>
+            <td valign="top">
+               <p>-r classname</p>
+            </td>
+            
+            <td>
+               <p>Use the specified URIResolver to process all URIs. The URIResolver is a user-defined class,
+                  that implements the URIResolver interface defined in JAXP, whose function is to take a URI supplied as
+                  a string, and return a SAX InputSource. It is invoked to process URIs used in the doc() function,
+                  and (if -u is also specified) to process the URI
+                  of the source file provided on the command line.
+               </p>
+            </td>
+         </tr>
+         
+         
+         <tr>
+            <td valign="top">
+               <p>-s filename-or-URI</p>
+            </td>
+            
+            <td>
+               <p>Take input from the specified file. If the -u option is specified, or if the name begins with "file://"
+                  or "http://", then the name is assumed to be a URI rather than a filename. This file must contain an
+                  XML document. The document node of the document is made available to the query as the context item. 
+                  The source document can be
+                  specified as "-" to take the source from standard input. 
+               </p>
+            </td>
+         </tr>
+         
+         
+         <tr>
+            <td valign="top">
+               <p>-strip</p>
+            </td>
+            
+            <td>
+               <p>Strip all whitespace-only text nodes from source documents.</p>
+            </td>
+         </tr>
+         
+         
+         <tr>
+            <td valign="top">
+               <p>-t</p>
+            </td>
+            
+            <td>
+               <p>Display version and timing information to the standard error output. The output also traces
+                  the files that are read and written, and extension modules that are loaded.
+               </p>
+            </td>
+         </tr>
+         
+         
+         <tr>
+            <td valign="top">
+               <p>-T</p>
+            </td>
+            
+            <td>
+               <p>Enable execution tracing. This will cause a trace of the query execution to be output
+                  to the standard error output. The events that are traced are currently function calls (entry
+                  and exit) and element construction.
+               </p>
+            </td>
+         </tr>
+         
+         
+         <tr>
+            <td valign="top">
+               <p>-TJ</p>
+            </td>
+            
+            <td>
+               <p>Switches on tracing of the binding of calls to external Java methods.
+                  This is useful when analyzing why Saxon fails to find a Java method to match
+                  an extension function call in the stylesheet, or why it chooses one method over another when several
+                  are available.
+               </p>
+            </td>
+         </tr>
+         
+         
+         <tr>
+            <td valign="top">
+               <p>-u</p>
+            </td>
+            
+            <td>
+               <p>Indicates that the name of the source document is a URI;
+                  otherwise it is taken as a filename, unless it starts with "http:" or "file:", in which
+                  case they it is taken as a URL.
+               </p>
+            </td>
+         </tr>
+         
+         
+         <tr>
+            <td valign="top">
+               <p>-val</p>
+            </td>
+            
+            <td>
+               <p>This option is available only with the schema-aware version of the 
+                  command, <code>com.saxonica.Transform</code>;
+                  it requests validation of source documents using an XML Schema.
+               </p>
+            </td>
+         </tr>
+         
+         
+         <tr>
+            <td valign="top">
+               <p>-vw</p>
+            </td>
+            
+            <td>
+               <p>Indicates that validation errors found when validting the result tree should be treated as warnings only.
+                  This option is available only with the Saxon-SA version of the command, <code>com.saxonica.Transform</code>.
+               </p>
+            </td>
+         </tr>
+         
+         
+         <tr>
+            <td valign="top">
+               <p>-wrap</p>
+            </td>
+            
+            <td>
+               <p>Wraps the result sequence in an XML element structure that indicates the type of each node or
+                  atomic value in the query result. This format can handle any type of query result. In the
+                  absence of this option, the command effectively wraps a <code>document{}</code> constructor
+                  around the supplied query, so that the result is a single XML document, which is then serialized.
+                  This will fail if the query result includes constructs that cannot be added to a document node
+                  in this way, notably free-standing attribute nodes.
+               </p>
+            </td>
+         </tr>
+         
+         
+         <tr>
+            <td valign="top">
+               <p>-?</p>
+            </td>
+            <td>
+               <p>Display command syntax</p>
+            </td>
+         </tr>
+         
+         
+         
+         <tr>
+            <td valign="top">
+               <p>query</p>
+            </td>
+            
+            <td>
+               <p>Identifies the file containing the query. Mandatory. The argument can be
+                  specified as "-" to read the query from standard input. The query can also be specified
+                  inline by enclosing it in curly braces (if it contains spaces, you will also need quotes
+                  outside the curly braces to keep the command line processor happy). 
+                  For example <code>java net.sf.saxon.Query {doc('a.xml')//p[1]}</code> selects elements
+                  within the file a.xml in the current directory.
+               </p>
+            </td>
+         </tr>
+         
+         
+      </table>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">A <i>param</i> takes the form <code>name=value</code>, <i>name</i> being the
+         name of the parameter, and <i>value</i> the value of the parameter. These parameters are
+         accessible within the query as external variables, using the <code>$name</code> syntax, provided
+         they are declared in the query prolog. If there is no such declaration, the supplied
+         parameter value is silently ignored.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">A <i>param</i> preceded by a leading plus sign (+) is interpreted as a filename or directory.
+         The content of the file is parsed as XML, and the resulting document node is passed to the stylesheet
+         as the value of the parameter. If the parameter value is a directory, then all the immediately contained
+         files are parsed as XML, and the resulting sequence of document nodes is passed as the value of the
+         parameter. For example, <code>+lookup=lookup.xml</code> sets the value of the external variable
+         <code>lookup</code> to the document node at the root of the tree representing the parsed contents
+         of the file <code>lookup.xml</code>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">A <i>param</i> preceded by a leading exclamation mark is interpreted as a serialization parameter.
+         For example, <code>!indent=yes</code> requests indented output, and <code>!encoding=iso-8859-1</code>
+         requests that the serialized output be in ISO 8859/1 encoding. This is equivalent to specifying
+         the attribute <code>indent="yes"</code> or <code>encoding="iso-8859-1"</code>
+         on an <code>xsl:output</code> declaration in an XSLT stylesheet.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Under Windows, and some other operating systems, it is possible to supply a value containing
+         spaces by enclosing it in double quotes, for example <code>name="John Smith"</code>. This is a feature
+         of the operating system shell, not something Saxon does, so it may not work the
+         same way under every operating system.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">If the parameter name is in a non-null namespace, the parameter can be given a value using
+         the syntax <code>{uri}localname=value</code>. Here <code>uri</code> is the namespace URI of the
+         parameter's name, and <code>localname</code> is the local part of the name.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">This applies also to output parameters. For example, you can set the indentation level to 4 by
+         using the parameter <code>!{http://saxon.sf.net/}indent-spaces=4</code>. For the extended set of
+         output parameters supported by Saxon, see <a class="bodylink" href="javascript:topage('extensions', 'output-extras')">extensions.html</a>.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="commandline.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="embedding.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

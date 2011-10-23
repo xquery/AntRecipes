@@ -1,0 +1,64 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--changes/intro81/schema-81
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: Changes to Schema Processing</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Changes to Schema Processing">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>Changes to Schema Processing</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" test="ctMHKnnn">Checking of the Unique Particle Attribute constraint is now done more rigorously. In particular,
+         (a) a violation is now reported in the case where two particles of the form &lt;element ref="foo"/&gt;
+         referring to the same element declaration exist in the same content model (in a position where either
+         could match), and (b) conflicts between two &lt;xs:any&gt; particles, or between an &lt;xs:any&gt; particle
+         and an &lt;xs:element&gt; particle, are now detected.
+      </p> 
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>com.saxonica.Validate</code> command now outputs multiple validation errors in a
+         single run.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The same facility is available when validation is invoked from user applications, provided that
+         the application calls <code>configuration.validationWarnings(true)</code>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" test="**untested**">The method <code>getSchemaTypeInfo()</code> is now available on Saxon nodes in the TinyTree object model.
+         This method is defined in DOM Level 3 to return a <code>TypeInfo</code> object, which provides basic information about
+         the type of the node following schema validation. At present Saxon provides a copy of the TypeInfo interface, to avoid 
+         introducing a dependency on DOM Level 3 being installed.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="schema-81.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../intro81.html">Up</a>&nbsp;&nbsp;<a class="nav" href="fando-81.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

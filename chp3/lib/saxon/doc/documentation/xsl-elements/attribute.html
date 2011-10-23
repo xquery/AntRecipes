@@ -1,0 +1,122 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--xsl-elements/attribute
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: xsl:attribute</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: xsl:attribute">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>xsl:attribute</h1>
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>xsl:attribute</code> element is used to add an attribute value to an
+         <code>xsl:element</code> element or general formatting element, or to an element created using <code>xsl:copy</code>.
+         The attribute must be output immediately after the element, with no intervening character data.
+         The name of the attribute is indicated by the
+         <code>name</code> attribute and the value by the content of the <code>xsl:attribute</code> element.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The attribute name is interpreted as an <i>attribute value template</i>, so it may contain string expressions
+         within curly braces. The full syntax of string expressions is given in <a class="bodylink" href="javascript:topage('expressions', 'intro')">XPath Expression Syntax</a>
+         
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The attribute value may be given either by a <code>select</code> attribute or by an enclosed
+         sequence constructor. If the <code>select</code> attribute is used and the value is a sequence, then
+         the items in the sequence are output space-separated.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>separator</code> attribute is not yet available.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">For example, the following code creates a &lt;FONT&gt; element with several attributes:</p>
+      
+      
+      <div class="codeblock" style="border: solid thin; background-color: #B1CCC7; padding: 2px"><pre><code>&lt;xsl:element name="FONT"&gt;
+    &lt;xsl:attribute name="SIZE"&gt;4&lt;/xsl:attribute&gt;
+    &lt;xsl:attribute name="FACE"&gt;Courier New&lt;/xsl:attribute&gt;
+Some output text
+&lt;/xsl:element&gt;
+</code></pre></div>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">A new attribute <code>type</code> is available in XSLT 2.0. This indicates the
+         data type of the value of the attribute. In Saxon, the value must be a built-in type defined
+         in XML Schema, for example <code>xs:integer</code> or <code>xs:date</code>. Type annotations
+         are only accessible if the attribute is added to a temporary tree that specifies 
+         <code>validation="preserve"</code>. The value given to the attribute must be a string
+         that conforms to the rules for the data type, as defined in XML Schema.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">There are two main uses for the <code>xsl:attribute</code> element: 
+      </p>
+      
+      <ul xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         
+         <li>
+            <p>It is the only way to set attributes on an element generated dynamically using xsl:element</p>
+         </li>
+         
+         <li>
+            <p>It allows attributes of a literal result element to be calculated using xsl:value-of.</p>
+         </li>
+         
+      </ul>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>xsl:attribute</code> must be output immediately after the relevant element is generated: there must
+         be no intervening character data (other than white space which is ignored). Saxon outputs the closing
+         "&gt;" of the element start tag as soon as something other than an attribute is written to the output
+         stream, and rejects an attempt to output an attribute if there is no currently-open start tag. Any special
+         characters within the attribute value will automatically be escaped (for example, "&lt;" will be output as
+         "&amp;lt;")
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">If two attributes are output with the same name, the second one takes precedence.</p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The attribute <code>disable-output-escaping</code> is new in XSLT 2.0. If this is set to
+         the value "yes", then the attribute value will be output as-is, without escaping of special
+         characters. This affects both the normal XML escaping (e.g. of ampersand) and the special URL
+         escaping that occurs with non-ASCII characters in HTML URL attributes (e.g. href) which normally causes
+         a space to be output as %20. Saxon's extension attribute <code>saxon:disable-output-escaping</code>, which
+         served the same purpose in previous Saxon releases, is no longer available.
+      </p>
+      
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="attribute.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="attribute-set.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

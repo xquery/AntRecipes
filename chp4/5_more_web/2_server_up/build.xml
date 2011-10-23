@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ============================================================= -->
+<!-- ANT RECIPES FOR WEB DEVELOPERS CHP 3 Web Recipe               -->
+<!-- Author: James Fuller / Webcomposite                           -->
+<!-- Email/WWW: jim.fuller@webcomposite.com /  www.antrecipes.com  -->
+<!-- ============================================================= -->
+<!--    (C) Copyright James Fuller 2009 - All Rights Reserved.     -->
+<!--  use the -debug flag for more information when running ant  //-->
+<project name="uptime" basedir="." default="run">
+	<description>Generate simple dashboard</description>
+	<!-- ===================================================== -->
+	<!-- Example1 Target                                       -->
+	<!-- ===================================================== -->
+	<target name="example1" description="check if server is up">
+		<condition property="server.up">
+			<and>
+				<http url="http://www.webcomposite.com/index.html"/>
+			</and>
+		</condition>
+		<fail unless="server.up" message="webserver is down."/>
+		<echo message="status:${server.up}"/>
+	</target>
+	<!-- ===================================================== -->
+	<!-- Example2 Target                                       -->
+	<!-- ===================================================== -->
+	<target name="example2" description="generate a web page detailing server health">
+		<condition property="webserver.up">
+			<and>
+				<http url="http://www.webcomposite.com"/>
+			</and>
+		</condition>
+		<condition property="emailserver.up">
+			<and>
+				<socket server="mail.example.org" port="25"/>
+			</and>
+		</condition>
+		<condition property="ftpserver.up">
+			<and>
+				<socket server="ftp.example.org" port="21"/>
+			</and>
+		</condition>
+		<xslt in="data/site.xml" style="etc/server-status.xsl" out="result/site-status.html">
+			<param name="webserver.up" expression="${webserverup.up}"/>
+			<param name="emailserver.up" expression="${emailserverup.up}"/>
+			<param name="ftpserver.up" expression="${ftpserverup.up}"/>
+		</xslt>
+	</target>
+	<!-- ===================================================== -->
+	<!-- Run Target                                            -->
+	<!-- ===================================================== -->
+	<target name="run" depends="clean,example1" description="runs all examples"/>
+	<!-- ===================================================== -->
+	<!-- Clean Target                                          -->
+	<!-- ===================================================== -->
+	<target name="clean">
+		<delete dir="result"/>
+		<mkdir dir="result"/>
+	</target>
+</project>

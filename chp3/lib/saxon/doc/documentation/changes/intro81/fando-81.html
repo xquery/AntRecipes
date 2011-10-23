@@ -1,0 +1,135 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--changes/intro81/fando-81
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: Changes to Functions and Operators</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Changes to Functions and Operators">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>Changes to Functions and Operators</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">All namespace URIs starting with <code>http://www.w3.org/2003/11</code> have been updated to
+         <code>http://www.w3.org/2004/07</code>, as defined in the July 2004 working drafts.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" test="qxmp146.xq qxmp147.xq">The rules for comparing an xs:dateTime or xs:time 
+         with a timezone to one without a timezone have been changed to use the implicit timezone
+         rather than UTC. Corresponding change for xs:date not yet made.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" test="idky36 idky37">The XSLT <code>key()</code> function now takes an optional third
+         argument: this is a node identifying the document to be searched.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" test="str103">The <code>concat()</code> function now accepts any atomic value as an argument, and 
+         implicitly casts the supplied value to a string.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" test="date074">The <code>format-dateTime()</code> and <code>format-time()</code> functions
+         have been changed to handle the 12-hour clock using the convention of numbering the hour starting at
+         noon or midnight as 12 rather than 0, and treating midnight as a.m. and noon as p.m.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" test="date055 date057">The six functions for extracting the components of a duration are now
+         named <code>years-from-duration()</code>, <code>months-from-duration()</code>, <code>days-from-duration()</code>
+         <code>hours-from-duration()</code>, <code>minutes-from-duration()</code>, <code>seconds-from-duration()</code>.
+         The new names have been added; previous names are retained as synonyms for the time being. The
+         functionality is unchanged.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" test="date093 date094">The <code>sum()</code> function can now total a sequence of durations,
+         and accepts an optional second argument to indicate the value to be returned when the sequence is
+         empty. This defaults to the integer zero.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" test="date095 date096">The <code>avg()</code> function can now average a sequence of durations.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" test="expr57">The <code>min()</code> and <code>max()</code> functions, given a set of untypedAtomic
+         values as input, now return the <code>xs:double</code> value after converting the value to a number, 
+         not the original 
+         untypedAtomic value. For example, given an untyped input document, <code>min(//item/@val)</code>
+         will now typically return an <code>xs:double</code>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" test="func36">The implementation of the XSLT <code>function-available()</code> function has
+         been extended so it now recognizes all the functions in the static context, including system functions,
+         Saxon-specific extension functions, Java extension functions, constructor functions (including those
+         corresponding to user-defined atomic types in the schema-aware product), stylesheet functions, and
+         imported XQuery functions. This applies whether the function-name is supplied as a string literal (the usual
+         case) or whether it is known only at run-time (a pathological case encountered only in conformance tests).
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" test="nspc64">The function <code>namespace-uri-from-QName()</code> now returns a zero-length
+         string rather than an empty sequence if the QName is in the null namespace.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" test="**untested**">The two-argument form of the <code>idref()</code> function is
+         implemented (this was introduced since the November 2003 working drafts).
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" test="reluri12 reluri13 reluri17">The <code>base-uri()</code> with no arguments now returns the base URI of the context
+         node. The base URI of the static context (that is, the base URI of the stylesheet or query module) is now obtained
+         using the new function <code>static-base-uri()</code>. (This change was agreed by the Working Groups on 24 Aug 2004.)
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The ability to cast from an <code>xs:time</code> to an <code>xs:dateTime</code> has been removed. This was the
+         only remaining cast whose result was context-dependent, so the WGs have removed the functionality. The functionality
+         has been replaced with a new function <code>dateTime</code> that takes a date and time as its two arguments.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The function <code>QName</code> is introduced as a replacement for <code>expanded-QName</code>. For
+         the time being, the old name is retained as a synonym.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Conversion of <code>QName</code> to <code>string</code> is now supported. A QName value always retains
+         the prefix that was specified when the QName was constructed, and although this plays no part in comparing QName 
+         values, the original prefix is used when the QName is converted to a string.
+      </p>
+      
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="fando-81.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../intro81.html">Up</a>&nbsp;&nbsp;<a class="nav" href="extensions-81.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

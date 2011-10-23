@@ -1,0 +1,84 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--xsl-elements/element
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: xsl:element</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: xsl:element">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>xsl:element</h1>
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>xsl:element</code> instruction is used to create an output element 
+         whose name might be calculated at run-time.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The element has a mandatory attribute, <code>name</code>, which is the name of the generated element.
+         The name attribute is an <i>attribute value template</i>, so it may contain string expressions inside
+         curly braces.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The attributes of the generated element are defined by subsequent <code>xsl:attribute</code> elements. The
+         content of the generated element is whatever is generated between the <code>&lt;xsl:element&gt;</code> and
+         <code>&lt;/xsl:element&gt;</code> tags.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Additionally, attributes of the generated element can be defined by reference to a named attribute set.
+         The optional use-attribute-sets attribute contains a white-space-separated list of attribute set names. They
+         are applied in the order given: if the same attribute is generated more than once, the later value always takes
+         precedence.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">For example, the following code creates a &lt;FONT&gt; element with several attributes:</p>
+      
+      
+      <div class="codeblock" style="border: solid thin; background-color: #B1CCC7; padding: 2px"><pre><code>&lt;xsl:element name="FONT"&gt;
+    &lt;xsl:attribute name="SIZE"&gt;4&lt;/xsl:attribute&gt;
+    &lt;xsl:attribute name="FACE"&gt;Courier New&lt;/xsl:attribute&gt;
+Some output text
+&lt;/xsl:element&gt;</code></pre></div>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">A new attribute <code>type-annotation</code> is available in XSLT 2.0. This indicates the
+         data type of the value of the element. In Saxon 7.3, the value must be a built-in type defined
+         in XML Schema, for example <code>xs:integer</code> or <code>xs:date</code>. Type annotations
+         are only accessible if the attribute is added to a temporary tree that specifies 
+         <code>type-information="preserve"</code>. The value given to the element must be a string
+         that conforms to the rules for the data type, as defined in XML Schema. In particular
+         this means that the element must not have any element children.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="element.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="fallback.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

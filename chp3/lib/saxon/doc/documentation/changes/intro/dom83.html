@@ -1,0 +1,158 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--changes/intro/dom83
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: DOM Level 3 support</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: DOM Level 3 support">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>DOM Level 3 support</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Saxon 8.2 introduced support for JAXP 1.3 and DOM Level 3. Unfortunately this caused
+         complications in the installation procedure, because these specifications are not supported
+         "out of the box" with Java JDK 1.4. Saxon 8.3 includes various changes designed to remove
+         these problems. This section describes the changes to DOM support; the next section describes
+         changes to the XPath API.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><b>Saxon 8.3 introduces significant changes in the way that DOM interfaces are supported.</b></p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The two implementations of the Saxon object model, Tree and TinyTree, no longer implement
+         DOM interfaces. This change is made for two reasons: firstly, there are incompatibilities between 
+         the DOM interface in JDK 1.4 and JDK 1.5 that make it impossible to support both
+         with the same code, and secondly, the ever-increasing complexity of the DOM interface burdens
+         the Saxon implementation without adding anything useful for most users.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">So the <code>NodeInfo</code> implementations in these two tree models no longer implement <code>org.w3.dom.Node</code>
+         and its subclasses. Instead, it is possible to wrap a Saxon <code>NodeInfo</code> object in a new class,
+         <code>NodeOverNodeInfo</code>, which adds the DOM methods. 
+         When a Saxon node is supplied to an extension function
+         that expects a DOM Node or NodeList, Saxon performs this wrapping automatically. This actually means that
+         it is now possible to supply any kind of Saxon node to an extension function that expects a DOM Node - previously
+         not all Saxon nodes implemented the DOM Node interface (for example some parentless nodes, or text nodes in
+         some temporary trees, or nodes that wrap JDOM or XOM nodes).
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Because the Saxon tree implementations no longer implement the DOM, the JAXP factory class
+         <code>net.sf.saxon.om.DocumentBuilderFactoryImpl</code> is no longer available. In addition, it is no longer
+         possible to use the JAXP <code>DOMSource</code> class to supply a Saxon tree as a source or result for
+         a transformation. Instead, you can supply a <code>NodeInfo</code> directly as a <code>Source</code>, or a
+         <code>TreeBuilder</code> or <code>TinyBuilder</code> as a <code>Result</code>. 
+         There are examples in <code>TraxExamples.java</code> that show how to do this.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Saxon still supports <code>DOMSource</code> and <code>DOMResult</code> as the source or result
+         of a transformation. However, they must now encapsulate a third-party DOM Node. 
+         They are not used when transforming to or from Saxon trees.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">All modules in Saxon that are concerned with DOM support have been moved out of the
+         main JAR file into <code>saxon-dom.jar</code>, which need not be on the classpath if DOM interfaces are
+         not required. There are now no references to DOM interfaces in the main body of Saxon code. DOM therefore
+         has exactly the same status as other external object models, for example JDOM and XOM. In fact, it is now
+         possible to register a support module for an additional external object model with the Saxon <code>Configuration</code>,
+         so object models are now completely pluggable.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">If DOM interfaces are needed, then the classpath should contain both <code>saxon-dom.jar</code>
+         and the DOM level 3 classes. The DOM level 3 classes are a standard part of JDK 1.5, but under JDK 1.4
+         they must be installed separately, as part of the JAXP 1.3 package. The requisite JAR file is simply called
+         <code>dom.jar</code>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>SchemaType</code> interface in Saxon no longer implements the DOM <code>TypeInfo</code>
+         interface. Instead, a <code>TypeInfo</code> can be now be obtained by wrapping a <code>SchemaType</code>
+         in a <code>TypeInfoImpl</code>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Similarly, Saxon no longer provides native support for the DOM <code>LSResourceResolver</code> interface.
+         In places where it is needed, for example in the validation API, an <code>LSResourceResolver</code> can be
+         packaged inside a <code>URIResourceResolver</code>, which makes it look like a standard JAXP
+         <code>URIResolver</code>. The Saxon <code>Configuration</code> and <code>PipelineConfiguration</code>
+         now allow only a <code>URIResolver</code> to be registered directly, but the validation APIs get round this
+         by registering a <code>URIResourceResolver</code> that wraps the <code>LSResourceResolver</code>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">A method <code>getPrefix()</code> has been added to <code>NodeInfo</code>. This method was 
+         previously available on nodes that implemented the DOM <code>Node</code> interface, but not on
+         other nodes.
+      </p>
+      
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The net effect of these changes is:</p>
+      
+      
+      <ul xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         
+         <li>
+            <p>To run XQuery or XSLT, the only JAR file you need on the classpath is saxon8.jar, and this will run
+               under either JDK 1.4 or JDK 1.5.
+            </p>
+         </li>
+         
+         <li>
+            <p>If you use the XPath API defined in JAXP 1.3, you will also need saxon8-xpath.jar on the classpath. If you
+               use this with JDK 1.4, you will also need to download the JAXP 1.3 component from Sun, and place the jaxp-api.jar
+               JAR file on your classpath.
+            </p>
+         </li>
+         
+         <li>
+            <p>If you use DOM level 3 interfaces under JAXP 1.3, you will also need the dom.jar file from the JAXP 1.3 distribution
+               on your classpath.
+            </p>
+         </li>
+         
+         <li>
+            <p>If you recompile Saxon, it is easiest to do so under JDK 1.5; but you can recompile under JDK 1.4 if all the
+               necessary JAXP components are present.
+            </p>
+         </li>
+         
+      </ul>
+      
+      
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="dom83.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../intro.html">Up</a>&nbsp;&nbsp;<a class="nav" href="xpathapi83.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

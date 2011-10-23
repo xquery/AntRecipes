@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ============================================================= -->
+<!-- ANT RECIPES FOR WEB DEVELOPERS CHP 2 XML Recipe              -->
+<!-- Author: James Fuller / Webcomposite                           -->
+<!-- Email/WWW: jim.fuller@webcomposite.com /  www.antrecipes.com  -->
+<!-- ============================================================= -->
+<!--    (C) Copyright James Fuller 2010 - All Rights Reserved.     -->
+<!--  use the -debug flag for more information when running ant  //-->
+<project name="Validate XML" basedir="." default="run">
+	<description>Demonstrate how to Validate XML in Ant using xmlvalidate task</description>
+	<!-- ===================================================== -->
+	<!-- validate-wellformed Target                            -->
+	<!-- ===================================================== -->
+	<target name="validate-wellformed">
+		<xmlvalidate failonerror="no" lenient="yes" warn="yes">
+			<fileset dir="data" includes="*.xml"/>
+		</xmlvalidate>
+	</target>
+	<!-- ===================================================== -->
+	<!-- validate-dtd Target                                   -->
+	<!-- ===================================================== -->
+	<target name="validate-dtd">
+		<xmlvalidate warn="false" lenient="no">
+			<fileset dir="data" includes="valid.xml"/>
+			<dtd publicId="-//" location="etc/example.dtd"/>
+		</xmlvalidate>
+	</target>
+	<!-- ===================================================== -->
+	<!-- validate-schema Target                                -->
+	<!-- ===================================================== -->
+	<target name="validate-xmlschema">
+		<xmlvalidate warn="false" lenient="no">
+			<fileset dir="data" includes="example.xml"/>
+			<attribute name="http://xml.org/sax/features/validation" value="true"/>
+			<attribute name="http://apache.org/xml/features/validation/schema" value="true"/>
+		</xmlvalidate>
+	</target>
+	<!-- ===================================================== -->
+	<!-- Run Target                                            -->
+	<!-- ===================================================== -->
+	<target name="run" depends="clean,validate-wellformed,validate-xmlschema,validate-dtd" description="runs all examples"/>
+	<!-- ===================================================== -->
+	<!-- Clean Target                                          -->
+	<!-- ===================================================== -->
+	<target name="clean">
+		<delete dir="result"/>
+		<mkdir dir="result"/>
+	</target>
+</project>

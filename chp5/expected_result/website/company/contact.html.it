@@ -1,0 +1,58 @@
+
+<!DOCTYPE html
+  SYSTEM "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="it">
+   <!--time published:January 15 2009|1957-->
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      				
+      <meta name="description" content="(it)">
+      				
+      <meta name="keyword" content="(it)">
+      				
+      <meta http-equiv="Pragma" content="no-cache">
+      				
+      <meta http-equiv="Content-Language" content="it">
+      				
+      <meta name="language" content="it, italian">
+      			
+      				
+      <title>Multilingual Website (it)</title>
+      			
+      <link rel="stylesheet" type="text/css" href="../resource/css/basic.css">
+   </head>
+   <body bgcolor="#c0c0c0">
+      				
+      <!--- copyright 2003 sample company Ltd (it) //-->
+      			
+      <h1>
+         	
+         	
+         	
+         	Contact Page(italian)
+         
+      </h1>
+      <p>Convert this string  into a token list.</p>
+      <token>John,Bobby,Gabi,Jason,Mike,Tim,Tammy,Marilyn</token><br>
+      				<br>
+      				
+      <hr>
+      				
+      <center>
+         					<font size="-3" color="555555">
+            						Sample Company Ltd. [ Copyright 2003, All Rights Reserved ] </font>
+         					<a href="../contact/index.html" target="main">
+            						<font size="-3" color="555555">[(+44)55555555555 ]</font>
+            					</a>
+         					<a href="mailto:jim.fuller@ruminate.co.uk" target="_new">
+            						<font size="-3" color="555555">[jim.fuller@ruminate.co.uk]</font>
+            					</a>
+         				
+      </center>
+      			
+      				
+      <!---  sample footer comment (it) //-->
+      			
+   </body>
+</html>

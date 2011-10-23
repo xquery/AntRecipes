@@ -1,0 +1,7 @@
+<?xml version='1.0'?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+
+  <system systemId="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"
+          uri="file:html-4/loose.dtd "/>
+
+</catalog>

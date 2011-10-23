@@ -1,0 +1,40 @@
+
+<!DOCTYPE html
+  SYSTEM "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="de">
+   <!--time published:April 17 2010|1220-->
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      				
+      <meta name="description" content="(de)">
+      				
+      <meta name="keyword" content="(de)">
+      				
+      <meta http-equiv="Pragma" content="no-cache">
+      				
+      <meta http-equiv="Content-Language" content="de">
+      				
+      <meta name="language" content="de, deutsch">
+      			
+      				
+      <title>Multilingual Website (de)</title>
+      			
+      <link rel="stylesheet" type="text/css" href="../resource/css/basic.css">
+   </head>
+   <body bgcolor="#AA1100">
+      				
+      <!--- copyright 2009 sample company Ltd (de) //-->
+      			
+      <h2 align="right">
+         	
+         	
+         	Footer Frame(deutsch)
+         	
+         
+      </h2>
+      				
+      <!---  sample footer comment (de) //-->
+      			
+   </body>
+</html>

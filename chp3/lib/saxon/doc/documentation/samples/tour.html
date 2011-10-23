@@ -1,0 +1,249 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--samples/tour
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: Knight's Tour</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Knight's Tour">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      
+      <h1>Knight's Tour</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">This program is available in two forms: as an XSLT stylesheet <code>tour.xsl</code> and as
+         an XQuery <code>tour.xq</code>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">This is a program whose output is a knight's tour of the chessboard (the knight can start
+         on any square, and has to visit each square exactly once). The XSLT version was published as an example
+         stylesheet in my book <i>XSLT 2.0 Programmers Reference</i> (<a href="www.wrox.com">Wrox Press</a>)
+         but has been completely reworked so it now makes extensive use of features in XSLT 2.0,  XPath 2.0
+         and XQuery. It is worth studying the stylesheet and query as an introduction to the use of the new features
+         in these languages. Comparing the two versions, it can be seen that they are very similar: the only differences
+         are in the surface syntax of the two languages.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The stylesheet can be found in the file <code>samples\tour.xsl</code>, the query in
+         <code>samples\tour.xq</code>. No source documentis required. 
+         You can run this example with a command of the form:
+      </p>
+      
+      
+      <p class="command">
+         java -jar saxon8.jar -it main samples\styles\tour.xsl start=e5 &gt;tour.html
+         
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">or</p>
+      
+      <p class="command">
+         java -cp saxon8.jar net.sf.saxon.Query samples\query\tour.xq start=e5 &gt;tour.html
+         
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">When you display the resulting HTML file in your browser it should look like this:</p>
+      
+      
+      <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" align="center">
+         
+         <p><b><big>Knight's tour starting at e5</big></b></p>
+         
+         <table border="1" cellpadding="4" size="64">
+            
+            <tr>
+               
+               <td align="center" bgcolor="white">6</td>
+               
+               <td align="center" bgcolor="xffff44">3</td>
+               
+               <td align="center" bgcolor="white">8</td>
+               
+               <td align="center" bgcolor="xffff44">21</td>
+               
+               <td align="center" bgcolor="white">42</td>
+               
+               <td align="center" bgcolor="xffff44">51</td>
+               
+               <td align="center" bgcolor="white">18</td>
+               
+               <td align="center" bgcolor="xffff44">39</td>
+               
+            </tr>
+            
+            <tr>
+               
+               <td align="center" bgcolor="xffff44">9</td>
+               
+               <td align="center" bgcolor="white">22</td>
+               
+               <td align="center" bgcolor="xffff44">5</td>
+               
+               <td align="center" bgcolor="white">2</td>
+               
+               <td align="center" bgcolor="xffff44">19</td>
+               
+               <td align="center" bgcolor="white">40</td>
+               
+               <td align="center" bgcolor="xffff44">43</td>
+               
+               <td align="center" bgcolor="white">50</td>
+               
+            </tr>
+            
+            <tr>
+               
+               <td align="center" bgcolor="white">4</td>
+               
+               <td align="center" bgcolor="xffff44">7</td>
+               
+               <td align="center" bgcolor="white">20</td>
+               
+               <td align="center" bgcolor="xffff44">41</td>
+               
+               <td align="center" bgcolor="white">52</td>
+               
+               <td align="center" bgcolor="xffff44">49</td>
+               
+               <td align="center" bgcolor="white">38</td>
+               
+               <td align="center" bgcolor="xffff44">17</td>
+               
+            </tr>
+            
+            <tr>
+               
+               <td align="center" bgcolor="xffff44">23</td>
+               
+               <td align="center" bgcolor="white">10</td>
+               
+               <td align="center" bgcolor="xffff44">27</td>
+               
+               <td align="center" bgcolor="white">48</td>
+               
+               <td align="center" bgcolor="xffff44">1</td>
+               
+               <td align="center" bgcolor="white">44</td>
+               
+               <td align="center" bgcolor="xffff44">55</td>
+               
+               <td align="center" bgcolor="white">60</td>
+               
+            </tr>
+            
+            <tr>
+               
+               <td align="center" bgcolor="white">26</td>
+               
+               <td align="center" bgcolor="xffff44">31</td>
+               
+               <td align="center" bgcolor="white">24</td>
+               
+               <td align="center" bgcolor="xffff44">53</td>
+               
+               <td align="center" bgcolor="white">56</td>
+               
+               <td align="center" bgcolor="xffff44">61</td>
+               
+               <td align="center" bgcolor="white">16</td>
+               
+               <td align="center" bgcolor="xffff44">37</td>
+               
+            </tr>
+            
+            <tr>
+               
+               <td align="center" bgcolor="xffff44">11</td>
+               
+               <td align="center" bgcolor="white">28</td>
+               
+               <td align="center" bgcolor="xffff44">47</td>
+               
+               <td align="center" bgcolor="white">34</td>
+               
+               <td align="center" bgcolor="xffff44">45</td>
+               
+               <td align="center" bgcolor="white">54</td>
+               
+               <td align="center" bgcolor="xffff44">59</td>
+               
+               <td align="center" bgcolor="white">64</td>
+               
+            </tr>
+            
+            <tr>
+               
+               <td align="center" bgcolor="white">32</td>
+               
+               <td align="center" bgcolor="xffff44">25</td>
+               
+               <td align="center" bgcolor="white">30</td>
+               
+               <td align="center" bgcolor="xffff44">13</td>
+               
+               <td align="center" bgcolor="white">62</td>
+               
+               <td align="center" bgcolor="xffff44">57</td>
+               
+               <td align="center" bgcolor="white">36</td>
+               
+               <td align="center" bgcolor="xffff44">15</td>
+               
+            </tr>
+            
+            <tr>
+               
+               <td align="center" bgcolor="xffff44">29</td>
+               
+               <td align="center" bgcolor="white">12</td>
+               
+               <td align="center" bgcolor="xffff44">33</td>
+               
+               <td align="center" bgcolor="white">46</td>
+               
+               <td align="center" bgcolor="xffff44">35</td>
+               
+               <td align="center" bgcolor="white">14</td>
+               
+               <td align="center" bgcolor="xffff44">63</td>
+               
+               <td align="center" bgcolor="white">58</td>
+               
+            </tr>
+            
+         </table>
+         
+      </div>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="tour.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="trax.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

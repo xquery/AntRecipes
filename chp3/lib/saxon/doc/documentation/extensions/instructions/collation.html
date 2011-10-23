@@ -1,0 +1,104 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--extensions/instructions/collation
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: saxon:collation</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: saxon:collation">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>saxon:collation</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><i>Note: It is also possible to specify a collation directly by using a URI of
+            the form <code>http://saxon.sf.net/collation?keyword=value;keyword=value;...</code>.
+            For details see <a class="bodylink" href="javascript:topage('conformance', 'collation-uri')">Collation URIs</a>.</i></p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>saxon:collation</code> element is a top-level element used to define 
+         collating sequences that may be used in sort keys and in functions such as 
+         <code>compare()</code>. The collation name is a URI (though actually
+         any string can be used), and
+         is defined in the mandatory <code>name</code> attribute. The other attributes 
+         control how the collation is defined. There are three ways of setting up a collation:
+      </p>
+      
+      
+      <ol xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         <li>
+            <p>by <b>class</b>. In this case the <code>class</code> attribute is used to specify
+               the fully qualified name of a Java class that implements the 
+               <code>java.util.Comparator</code> interface. Note that if the collation is to be used
+               in functions such as contains() and starts-with(), this class must also be a
+               <code>java.text.RuleBasedCollator</code>. This approach allows a user-defined collation
+               to be implemented in Java.
+            </p>
+         </li>
+         
+         
+         <li>
+            <p>by <b>rules</b>. In this case the <code>rules</code> attribute is used to specify
+               details of the ordering required, using the syntax of the Java RuleBasedCollator. To give a
+               simplified example, <code>rules="A &amp;lt; B &amp;lt; C"</code></p>
+         </li>
+         
+         
+         <li>
+            <p>by locale and tailoring. In this case the <b>lang</b>, <b>strength</b>, and <b>decomposition</b>
+               attributes are used to obtain a collation for a particular locale, and to customize it.
+               The <code>lang</code> attribute follows the rules of the <code>xml:lang</code> attribute, 
+               for example specify
+               "en-US" for US English. This is used to find the collation appropriate to a Java locale.
+               The <b>strength</b> attribute sets the strength of the collator. Values are "primary", "secondary",
+               "tertiary", and "identical". 
+               The <b>decomposition</b> attribute determines how the collator handles Unicode composed characters. 
+               Values are "none", "standard", and "full". 
+               See the JDK documentation for full details of these attributes.
+            </p>
+         </li>
+      </ol>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <b>default</b> attribute specifies whether this collation is the default collation. 
+         Value is "yes" or "no". The value "yes" indicates that this collation
+         is to be used as the default collation. If more than one collation is specified as the default, the last one wins.
+         If no default collation is specified, Unicode codepoint collation is used.
+      </p>
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Sorting and comparison according to Unicode codepoints can be achieved by setting up a collator as 
+         <code>&lt;saxon:collation name="unicode" class="net.sf.saxon.sort.CodepointCollator"/&gt;</code></p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><i>Note that a stylesheet containing a <code>saxon:collation</code> declaration cannot be
+            compiled at this release, because the underlying Java classes are not serializable.</i></p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="collation.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../instructions.html">Up</a>&nbsp;&nbsp;<a class="nav" href="doctype.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

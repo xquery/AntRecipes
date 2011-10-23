@@ -1,0 +1,110 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--conformance/xquery
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: XQuery 1.0 Conformance</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: XQuery 1.0 Conformance">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      
+      <h1>XQuery 1.0 Conformance</h1>
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">This release of Saxon implements
+         the full XQuery 1.0 grammar as defined in the <a href="http://www.w3.org/TR/xquery/" target="_blank" class="bodylink">working draft</a> of 29 October 2004
+         The <a href="../conformance/xpath20.html" target="_self" class="bodylink">restrictions</a> noted with respect to XPath 2.0 apply equally to Saxon's support for
+         XQuery 1.0.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The current XQuery specification does not define multiple conformance levels. However, it is widely expected
+         that as with XSLT 2.0, there will be a conformance level that requires XML Schema support and another that does not.
+         Saxon-SA aims to support the schema-aware conformance level when it is defined, Saxon-B the basic conformance level.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Restrictions in Saxon compared with the current draft of XQuery 1.0 include the
+         following:
+      </p>
+      
+      
+      <ul xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         
+         
+         <li>
+            <p>The encoding specified in the XQuery version declaration, if present, is ignored.</p>
+         </li>
+         
+         
+         <li>
+            <p>If a document node appears in the sequence constructor for an element node, no error is
+               produced. Instead the children of the document node are copied to the new element, as in XSLT.
+            </p>
+         </li>
+         
+         
+         <li>
+            <p>Whitespace characters such as tab and newline appearing in attribute content 
+               are not normalized.
+            </p>
+         </li>
+         
+         
+         <li>
+            <p>The default serialization options are currently as defined in XSLT. For example, HTML serialization is
+               used if the first element output is an &lt;html&gt; element.
+            </p>
+         </li>
+         
+         
+         <li>
+            <p>If there is a circularity among the definitions of global variables, this is reported as a dynamic
+               error rather than a static error.
+            </p>
+         </li>
+         
+         
+         <li>
+            <p>The <code>no-preserve</code> option on the <code>copy-namespaces</code> declaration
+               in the Query Prolog is not yet implemented.
+            </p>
+         </li>
+         
+         
+         <li>
+            <p>Saxon does not report an error if the namespace axis is used in a query.</p>
+         </li>
+         
+         
+      </ul>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="xquery.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="schema.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

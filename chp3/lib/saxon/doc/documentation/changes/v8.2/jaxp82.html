@@ -1,0 +1,107 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--changes/v8.2/jaxp82
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: JAXP 1.3 support</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: JAXP 1.3 support">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>JAXP 1.3 support</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Saxon 8.2 implements APIs defined in JAXP 1.3 (JAXP is the Java API for XML Processing). JAXP 1.3
+         is a standard component in JDK 1.5, but if you are using JDK 1.4, it must be installed separately.
+         For licensing reasons the JAXP package is not included in the Saxon distribution; instead you must
+         download it separately from <a href="https://jaxp.dev.java.net/">https://jaxp.dev.java.net/</a>.
+         This download includes two JAR files, <code>jaxp-api.jar</code> and <code>dom.jar</code>, which
+         must be present on the classpath when running Saxon under JDK 1.4. Note that this means you cannot 
+         invoke Saxon
+         using the <code>-jar</code> option, since this requires all files to be present in a single JAR archive,
+         and ignores the CLASSPATH setting.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The JAXP 1.3 XPath API is supported. This allows XPath expressions to be evaluated programmatically
+         from a Java application. The underlying tree structure can be any implementation of the Saxon Object Model
+         (the <code>NodeInfo</code> interface), or a DOM, or JDOM, or XOM. For full details, see
+         <a class="bodylink" href="javascript:topage('api-guide', 'intro')">The XPath API</a>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">This has been achieved largely by making the existing classes in the old Saxon XPath API implement
+         the new JAXP interfaces. Existing applications using the old interfaces should for the most part continue
+         to work unchanged, and can be migrated to use the new JAXP methods when the opportunity arises.
+         Note however that the old <code>XPathExpression</code> class has been renamed <code>XPathExpressionImpl</code>
+         to void confusion with the JAXP interface named <code>XPathExpression</code> (which <code>XPathExpressionImpl</code>
+         now implements). 
+         Some applications will probably want to continue to use the native Saxon methods, because the JAXP 
+         interface is oriented towards XPath 1.0 rather than 2.0: although the Saxon implementation supports
+         XPath 2.0, the JAXP interface imposes limitations in the way that results are returned.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">To generalize the handling of external object models, a new interface <code>ExternalObjectModel</code>
+         has been introduced, which is implemented by each object model. External object models can be registered
+         with the <code>Configuration</code>, and there is a method in the <code>Configuration</code> to search
+         for the object model implementation that supports a given class of node. This doesn't quite allow new
+         object models to be plugged into Saxon without source code change, but it gets close.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>QNameValue</code> class can convert between a Saxon <code>QNameValue</code>
+         and a JAXP <code>QName</code>. Conversion between these two classes is also supported when
+         calling Java extension functions and when passing stylesheet parameters.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The new Saxon <code>NamespaceContextImpl</code> class acts as a bridge between Saxon's
+         <code>NamespaceResolver</code> and the equivalent JAXP 1.3 <code>NamespaceContext</code> interface.
+         This allows any implementation of Saxon's <code>NamespaceResolver</code> to be wrapped as a
+         JAXP 1.3 <code>NamespaceContext</code>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The nodes in Saxon's standard tree and tinytree models now implement the DOM Level 3 Node interface.</p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Saxon-SA 8.2 also supports the JAXP 1.3 schema validation API. For details, see 
+         <a class="bodylink" href="javascript:topage('schema-processing', 'intro')">schema processing</a>.
+      </p>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="jaxp82.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../v8.2.html">Up</a>&nbsp;&nbsp;<a class="nav" href="XOM82.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

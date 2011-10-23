@@ -1,0 +1,11 @@
+build.xml
+
+data: contains xml/xslt distro
+
+etc: logging utilities
+
+lib: contains xslt processor
+
+result: results of processing
+
+expected_result: pre generated website to check against

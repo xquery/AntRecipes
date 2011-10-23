@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!-- ============================================================= -->
+<!-- ANT RECIPES FOR WEB DEVELOPERS CHP 1 Text Recipe              -->
+<!-- Author: James Fuller / Webcomposite                           -->
+<!-- Email/WWW: jim.fuller@webcomposite.com /  www.antrecipes.com  -->
+<!-- ============================================================= -->
+<!--    (C) Copyright James Fuller 2010 - All Rights Reserved.     -->
+<!--  use the -debug flag for more information when running ant  //-->
+<project name="Filter Example" basedir="." default="run">
+	<description>Ant native replace task example</description>
+
+	<target name="example1a">
+		<replace dir="data" value="Gabriela">
+  			<include name="**/*.txt"/>
+  			<replacetoken><![CDATA[firstname]]></replacetoken>
+		</replace>
+	</target>
+
+	<target name="example1b">
+		<replace file="data/test.txt" propertyFile="data/some.properties" value="some default value">
+			<replacefilter token="@token1@"/>
+			<replacefilter token="@token2@" value="value2"/>
+			<replacefilter token="@token3@" property="value3"/>
+		</replace>
+	</target>
+	<target name="example2">
+		<replaceregexp file="data/regex-test.txt" match="(Clinton|Bush|Reagan)" replace=" former presidents" flags="g" byline="true"/>
+	</target>
+	<target name="example3">
+		<replaceregexp byline="true">
+			<regexp pattern="xmlns=(.*)"/>
+			<substitution expression="xmlns:xsl=\1"/>
+			<fileset dir="data" includes="**/*.xslt"/>
+		</replaceregexp>
+	</target>
+	<!-- ===================================================== -->
+	<!-- Run Target                                            -->
+	<!-- ===================================================== -->
+	<target name="run" depends="clean,example1b,example2,example3" description="runs all examples"/>
+	<!-- ===================================================== -->
+	<!-- Clean Target                                          -->
+	<!-- ===================================================== -->
+	<target name="clean">
+		<delete dir="result"/>
+		<mkdir dir="result"/>
+	</target>
+</project>

@@ -1,0 +1,129 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--changes/intro81/sadifference-81
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: Differences between Saxon-SA and Saxon-B</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Differences between Saxon-SA and Saxon-B">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>Differences between Saxon-SA and Saxon-B</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Some new features in this release are available only in the commercial
+         version of the product, Saxon-SA.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The extra features in Saxon-SA include the following:</p>
+      
+      
+      <ol xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         
+         
+         <li>
+            <p>Saxon-SA incorporates a schema processor, and enables schema-aware
+               XSLT and XQuery processing.
+            </p>
+         </li>
+         
+         
+         <li>
+            <p>Saxon-SA includes support for higher-order functions. See the description
+               of <a class="bodylink" href="javascript:tosubpage('extensions','functions','function')">saxon:function</a> for details. 
+               Higher-order
+               functions enable full functional programming capability in XSLT and XQuery,
+               allowing complex algorithms to be expressed concisely.
+            </p>
+         </li>
+         
+         
+         <li>
+            <p>Saxon-SA includes extension functions, designed primarily for use in XQuery,
+               that mimic the behavior of features found in XSLT but not in XQuery. Specifically:
+            </p>
+            
+            
+            <ul>
+               
+               <li>
+                  <p>saxon:analyze-string() enables powerful regular expression processing,
+                     allowing the creating of markup based on the lexical structure of the string
+                  </p>
+               </li>
+               
+               <li>
+                  <p>saxon:for-each-group() provides a grouping facility for XQuery</p>
+               </li>
+               
+               <li>
+                  <p>saxon:format-number() provides formatting capability for numbers</p>
+               </li>
+               
+               <li>
+                  <p>saxon:format-date() provides formatting capability for dates and times</p>
+               </li>
+               
+            </ul>
+            
+            
+         </li>
+         
+         
+         <li>
+            <p>Saxon-SA provides more comprehensive diagnostics on run-time errors. Specifically,
+               when a fatal run-time error occurs, the error handler provides a stack trace showing the functions
+               and templates that were active at the point of the error, in terms of their position
+               in the source stylesheet or query.
+            </p>
+         </li>
+         
+         
+         <li>
+            <p>Saxon-SA provides a try/catch capability: it is possible to trap run-time errors
+               and recover from them.
+            </p>
+         </li>
+         
+         
+         <li>
+            <p>Saxon-SA includes an optimized hash-join implementation of the GeneralComparison "="
+               operator in XPath. This is optimized for the case where the types of values are likely to be known, as
+               is the case when the input documents have been validated against a schema; but it is also likely
+               to give performance improvements in other cases, especially where the sequences being compared are
+               lengthy. 
+               (Architectural changes have also been made that will allow the schema-aware product to include
+               further performance optimizations in the future).
+            </p>
+         </li>
+         
+         
+      </ol>
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="sadifference-81.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../intro81.html">Up</a>&nbsp;&nbsp;<a class="nav" href="defects-81.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

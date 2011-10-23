@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<?xml-stylesheet href="navigation.xsl" type="text/xsl"?>
+<resource name="navigation" type="document">
+
+	<RDF:RDF xmlns:RDF="http://www.w3c.org/RDF/" xmlns:DC="http://purl.org/RDF/DC/">
+	<RDF:Description RDF:HREF="http://purl.org/metadata/dublin_core_elements" 
+		DC:Title="Navigation Frame Page" 	
+		DC:Creator="Jim Fuller"
+		DC:Subject="Navigation Page" 
+		DC:Description="Contains navigation links" 
+		DC:Publisher="" 
+		DC:Format="text/html" 
+		DC:Type="Technical Report" 
+		DC:Language="en" 
+		DC:Date="05/08/2003"/>
+	</RDF:RDF>
+
+<title>
+	<txt xml:lang="en">Nav Frame(en)</txt>
+	<txt xml:lang="fr">Nav Frame(fr)</txt>
+	<txt xml:lang="de">Nav Frame(de)</txt>
+	<txt xml:lang="it">Nav Frame(it)</txt>
+</title>
+
+
+</resource>

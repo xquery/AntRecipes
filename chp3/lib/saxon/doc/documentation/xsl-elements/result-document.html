@@ -1,0 +1,99 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--xsl-elements/result-document
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: xsl:result-document</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: xsl:result-document">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>xsl:result-document</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>xsl:result-document</code> element is new in XSLT 2.0, and replaces the previous extension element
+         <code>saxon:output</code>. It is used to direct output to a secondary output destination. 
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>format</code> attribute is optional. If present,
+         it gives the name of an <code>xsl:output</code> element that describes the serialization
+         format for this output document; if absent, the unnamed <code>xsl:output</code> declaration
+         is used.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>href</code> attribute gives the URI for the result document. If this is a relative
+         URI, it is interpreted relative to the base output URI. This is the systemID of the Result object
+         supplied as the destination for the transformation, or if you are using the command line, the value
+         of the <code>-o</code> flag. If the <code>href</code> attribute is omitted, the document is written
+         to the location identified by the base output URI: this will only work if all the output produced
+         by the stylesheet is within the scope of an <code>xsl:result-document</code> instruction.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">This base output URI must be a writable location, which generally will only be the case
+         when using the "file:/" protocol.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The optional <code>validation</code> and <code>type</code> attributes determines what
+         happens to any type annotations on element or attribute nodes. These values must not be used in 
+         the basic Saxon product.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>xsl:result-document</code> instruction may also take
+         serialization attributes such as <code>method</code>, <code>indent</code>, or <code>saxon:indent-spaces</code>.
+         These attributes may be AVTs, so the values can be decided at run-time. Any values specified on the
+         <code>xsl:result-document</code> instruction override the values specified on the <code>xsl:output</code>
+         declaration.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Here is an example that uses xsl:result-document:</p>
+      
+      
+      <div class="codeblock" style="border: solid thin; background-color: #B1CCC7; padding: 2px"><pre><code>&lt;xsl:template match="preface"&gt;
+    &lt;xsl:result-document href="{$dir}/preface.html" method="html"&gt;
+        &lt;html&gt;&lt;body bgcolor="#00eeee"&gt;&lt;center&gt;
+            &lt;xsl:apply-templates/&gt;
+        &lt;/center&gt;&lt;hr/&gt;&lt;/body&gt;&lt;/html&gt;
+    &lt;/xsl:result-document&gt;
+    &lt;a href="{$dir}/preface.html"&gt;Preface&lt;/a&gt;
+&lt;/xsl:template&gt;</code></pre></div>
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Here the body of the preface is directed to a file called preface.html (prefixed
+         by a constant that supplies the directory name). Output then reverts to the previous destination,
+         where an HTML hyperlink to the newly created file is inserted.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="result-document.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="sequence.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

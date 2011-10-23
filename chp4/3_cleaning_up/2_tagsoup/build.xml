@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ============================================================= -->
+<!-- ANT RECIPES FOR WEB DEVELOPERS CHP 3 Web Recipe               -->
+<!-- Author: James Fuller / Webcomposite                           -->
+<!-- Email/WWW: jim.fuller@webcomposite.com /  www.antrecipes.com  -->
+<!-- ============================================================= -->
+<!--    (C) Copyright James Fuller 2009 - All Rights Reserved.     -->
+<!--  use the -debug flag for more information when running ant  //-->
+<project name="tagsoup" default="run" basedir=".">
+	<description>Demonstrate how to cleanup html/xml using John Cowen's TagSoup</description>
+	<!-- ===================================================== -->
+	<!-- Property defintion                                    -->
+	<!-- ===================================================== -->
+	<property name="jar.tagsoup" location="../../lib/tagsoup/tagsoup.jar"/>
+	<!-- ===================================================== -->
+	<!-- Example1 Target                                       -->
+	<!-- ===================================================== -->
+	<target name="example1">
+		<tagsoup in="data/test.xml" out="result/test.out.xml"/>
+	</target>
+	<!-- ===================================================== -->
+	<!-- Example2 Target                                       -->
+	<!-- ===================================================== -->
+	<target name="example2">
+		<tagsoup in="data/index.html" out="result/index.out.html"/>
+	</target>
+	<!-- ===================================================== -->
+	<!-- Run Target                                            -->
+	<!-- ===================================================== -->
+	<target name="run" depends="clean,example1,example2" description="runs all examples"/>
+	<!-- ===================================================== -->
+	<!-- Clean Target                                          -->
+	<!-- ===================================================== -->
+	<target name="clean">
+		<delete dir="result"/>
+		<mkdir dir="result"/>
+	</target>
+	<!-- declare tagsoup1 macrodef //-->
+	<macrodef name="tagsoup">
+		<attribute name="in"/>
+		<attribute name="out"/>
+		<attribute name="output-encoding" default="utf-8"/>
+		<attribute name="omit-xml-declaration" default="false"/>
+		<sequential>
+			<java jar="${jar.tagsoup}" fork="true" failonerror="true" output="@{out}">
+				<!-- no namespace switch 
+		 <arg line=" nons"/>
+	//-->
+				<arg value="@{in}"/>
+			</java>
+		</sequential>
+	</macrodef>
+</project>

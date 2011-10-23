@@ -1,0 +1,53 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--extensibility/functions/constructors
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: Calling Java Constructors</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Calling Java Constructors">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>Calling Java Constructors</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><b>Java constructors</b> are called by using the function named <code>new()</code>. 
+         If there are several constructors, then again
+         the system tries to find the one that is the best fit, according to the types of the supplied arguments. The result
+         of calling <code>new()</code> is an XPath value whose type is denoted by a QName whose local name
+         is the actual Java class (for example <code>java.sql.Connection</code> or <code>java.util.List</code>)
+         and whose namespace
+         URI is <code>http://saxon.sf.net/java-type</code> (conventional prefix <code>class</code>). Any '$'
+         characters in the class name are replaced by '-' characters in the QName.
+         The only things that can be done with a wrapped Java Object
+         are to assign it to a variable, to pass it to an extension function, and to convert it to a string, number,
+         or boolean, using the rules given below.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="constructors.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../functions.html">Up</a>&nbsp;&nbsp;<a class="nav" href="instance-methods.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

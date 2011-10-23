@@ -1,0 +1,93 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--changes/intro/internal83
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: Internal Changes</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Internal Changes">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>Internal Changes</h1>
+      
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The class <code>SequenceValue</code> has disappeared; all its functionality has been moved
+         up into the <code>Value</code> class. This reflects the reality that every value in the XPath data
+         model is a sequence. (If there is a special case, it is the singleton value, not the sequence. However,
+         I decided not to add a <code>SingletonValue</code> class, since we already have <code>SingletonNode</code>
+         and <code>AtomicValue</code> which do the job between them.)
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">This may cause some side-effects on the detailed rules for binding of Java extension functions. In the
+         past some distinctions were made depending on whether the supplied value of an argument was or was not
+         a <code>SequenceValue</code>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">A new class <code>ValueRepresentation</code> has been introduced. This represents the union of 
+         <code>Value</code> and <code>NodeInfo</code>. In many places where previously a <code>Value</code>
+         was expected, the software can now handle a <code>NodeInfo</code> as well: notably when setting or getting
+         the value of a variable. The greatly reduces the need to wrap a <code>NodeInfo</code> within a
+         <code>SingletonNode</code> whenever there is a need to use it as a value.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">When an expression is evaluated lazily, the Closure that contains all the information needed to
+         evaluate it no longer contains copies of local variables if the expression does not use any local variables
+         (which is true most of the time). As well as avoiding the small cost of doing the copying, this has the
+         more significant benefit that it avoids creating unnecessary long-lasting references to the objects representing
+         the variables, which means they can be garbage-collected sooner.
+      </p> 
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>PipelineConfiguration</code> object now includes, where appropriate, a reference to the
+         <code>Controller</code>. This makes much more context information available to a user-written serializer.
+         The code for creating a <code>CharacterMapExpander</code> has been moved into a new method in the
+         <code>Controller</code>, allowing user-written serializers to expand character maps if they wish to do so.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>convert</code> method (or set of methods) on <code>AtomicValue</code> has been
+         changed. Conversion to a built-in type is now handled using the <code>convertPrimitive</code> method.
+         These and similar methods (such as <code>validateContent</code>) now return an <code>ErrorValue</code>
+         rather than throwing an exception when the conversion fails: this is designed to improve performance on paths
+         where failures are normal, such as when validating a union type. There is also an option to perform the conversion
+         without validation, which is especially useful when obtaining the typed value of a node that is known to be valid
+         (Saxon does not store the typed value, but computes it from the string value each time it is needed.)
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The implementation of several of the XPath axes against a XOM object model has been rewritten
+         (for improved performance) by Wolfgang Hoschek.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="internal83.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../intro.html">Up</a>&nbsp;&nbsp;<a class="nav" href="pull83.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

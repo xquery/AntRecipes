@@ -1,0 +1,79 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--expressions/path
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: Path expressions</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Path expressions">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      
+      <h1>Path expressions</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">A path expression is a sequence of steps separated by the <code>/</code> or <code>//</code> operator.
+         For example, <code>../@desc</code> selects the <code>desc</code> attribute of the parent of the context
+         node.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">In XPath 2.0, path expressions have been generalized so that any expression can be used as an operand
+         of <code>/</code>, (both on the left and the right), so long as its value is a sequence of nodes. For
+         example, it is possible to use a union expression (in parentheses) or a call to the <code>id()</code>
+         or <code>key()</code> functions. The right-hand operand is evaluated once for each node in the sequence
+         that results from evaluating the left-hand operand, with that node as the context item. In the result
+         of the path expression, nodes are sorted in document order, and duplicates are eliminated.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">In practice, it only makes sense to use expressions on the right of <code>/</code> if they depend
+         on the context item. It is legal to write <code>$x/$y</code> provided both <code>$x</code> and
+         <code>$y</code> are sequences of nodes, but the result is exactly the same as writing <code>./$y</code>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Note that the expressions <code>./$X</code> or <code>$X/.</code> can be used to remove duplicates
+         from <code>$X</code> and sort the results into document order. The same effect can be achieved by writing
+         <code>$X|()</code></p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The operator <code>//</code> is an abbreviation for <code>/descendant-or-self::node()/</code>.
+         An expression of the form <code>/E</code> is shorthand for <code>root(.)/E</code>, and the expression
+         <code>/</code> on its own is shorthand for <code>root(.)</code>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The expression on the left of the <code>/</code> operator must return a node or sequence of nodes. The
+         expression on the right can return either a sequence of nodes or a sequence of atomic values (but not a mixture 
+         of the two). This allow constructs such as <code>$x/number()</code>, which returns the sequence obtained
+         by converting each item in $x to a number.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="path.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="cast.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

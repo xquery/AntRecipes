@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ============================================================= -->
+<!-- ANT RECIPES FOR WEB DEVELOPERS CHP 3 Web Recipe               -->
+<!-- Author: James Fuller / Webcomposite                           -->
+<!-- Email/WWW: jim.fuller@webcomposite.com /  www.antrecipes.com  -->
+<!-- ============================================================= -->
+<!--    (C) Copyright James Fuller 2010 - All Rights Reserved.     -->
+<!--  use the -debug flag for more information when running ant  //-->
+<project name="basic" default="run" basedir=".">
+	<description>Demonstrate basic http operation</description>
+	<!-- ===================================================== -->
+	<!-- Task definition 	 	                               -->
+	<!-- ===================================================== -->
+	<taskdef resource="net/sf/antcontrib/antlib.xml">
+		<classpath>
+			<pathelement location="../lib/ant-contrib/ant-contrib-1.0b3.jar"/>
+		</classpath>
+	</taskdef>
+	<!-- ===================================================== -->
+	<!-- Example1 	 	                                       -->
+	<!-- ===================================================== -->
+	<target name="example1" description="">
+		<condition property="google.exists1">
+			<http url="http://www.google.com"/>
+		</condition>
+		<condition property="google.exists2">
+			<http url="http://www.google.com/somenonexistentpage"/>
+		</condition>
+		<echo message="Google home page running: ${google.exists1}"/>
+		<echo message="Google non-existent page running: ${google.exists2}"/>
+	</target>
+	<!-- ===================================================== -->
+	<!-- Example3 	 	                                       -->
+	<!-- ===================================================== -->
+	<target name="example3">
+		<description>Uses the HTTP GET method to upload </description>
+		<get src="http://ant.apache.org/manual/CoreTasks/get.html" dest="result/get.html" verbose="true"/>
+	</target>
+	<!-- ===================================================== -->
+	<!-- Example3a	 	                                       -->
+	<!-- ===================================================== -->
+	<target name="example3a">
+		<description>Uses the HTTP GET method to validate page</description>
+		<get src="http://validator.w3.org/check?uri=http://www.google.com" dest="result/get-validate-result.xml" verbose="true"/>
+	</target>
+	<!-- ===================================================== -->
+	<!-- Example4a 	 	                                       -->
+	<!-- ===================================================== -->
+	<target name="example4a">
+		<description>Uses Ant-contrib HTTP POST method to validate HTML </description>
+		<post to="http://validator.w3.org/check" verbose="true" logfile="result/example4a-result.html">
+			<prop name="uri" value="http://www.wikipedia.org"/>
+		</post>
+	</target>
+	<!-- ===================================================== -->
+	<!-- Example5 	 	                                       -->
+	<!-- ===================================================== -->
+	<target name="example5">
+		<description>Uses the HTTP PUT method to upload </description>
+		<http-put dir="data" url="http://test.webdav.org/dav/" user="user1" pass="user1"/>
+	</target>
+	<!-- ===================================================== -->
+	<!-- Run Target                                            -->
+	<!-- ===================================================== -->
+	<target name="run" depends="clean,example1,example3,example4a,example5" description="runs all examples"/>
+	<!-- ===================================================== -->
+	<!-- Clean Target                                          -->
+	<!-- ===================================================== -->
+	<target name="clean">
+		<delete dir="result"/>
+		<mkdir dir="result"/>
+	</target>
+	<!-- declare http put macrodef //-->
+	<macrodef name="http-put">
+		<attribute name="dir"/>
+		<attribute name="url"/>
+		<attribute name="user"/>
+		<attribute name="pass"/>
+		<sequential>
+			<property name="data.dir" location="@{dir}"/>
+			<property name="url" value="@{url}"/>
+			<property name="user" value="@{user}"/>
+			<property name="pass" value="@{pass}"/>
+			<script language="javascript"><![CDATA[
+
+							importClass(java.io.File);
+							importClass(java.io.FileInputStream);
+							importClass(Packages.org.apache.commons.httpclient.HttpClient);
+							importClass(Packages.org.apache.commons.httpclient.UsernamePasswordCredentials);
+							importClass(Packages.org.apache.commons.httpclient.methods.PutMethod);
+
+							var srcDir = new File(project.getProperty("data.dir"));
+							var files = srcDir.listFiles();
+
+							var user = project.getProperty("user");
+							var password = project.getProperty("pass");
+
+							var url = project.getProperty("url");
+
+							var client = new HttpClient();
+
+							client.getState().setCredentials(null, null, new UsernamePasswordCredentials(user, password));
+
+							for (var i = 0; i < files.length; i++) {
+							if (files[i].isFile()) {
+							var put = new PutMethod(url + files[i].getName());
+							put.setRequestBody( new FileInputStream(files[i]) );
+							client.executeMethod(put);
+
+							put = new PutMethod(url + files[i].getName());
+
+							put.setRequestBody( new FileInputStream(files[i]) );
+							client.executeMethod(put);
+							}
+							}		
+							]]></script>
+		</sequential>
+	</macrodef>
+</project>

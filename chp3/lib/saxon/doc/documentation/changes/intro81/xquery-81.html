@@ -1,0 +1,119 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--changes/intro81/xquery-81
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: Changes to XQuery</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Changes to XQuery">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>Changes to XQuery</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" test="qxmp149 xqmp150">The new syntax <code>declare variable $x := expr;</code>
+         is supported in the query prolog. For the time being the old syntax
+         <code>declare variable $x { expr };</code> is also supported.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" test="qns103">A constructed element no longer inherits the namespaces of its new
+         parent. Note that this is equivalent to <code>inherit-namespaces="no"</code> in XSLT.
+         The difference will probably not be noticeable unless the result is serialized
+         with <code>version="1.1" undeclare-namespaces="yes"</code>. (Since this change was
+         implemented, the XQuery WG has decided to add a declaration to the Query prolog
+         to control whether namespaces are inherited, with the default being "yes". Saxon has
+         not yet implemented this change.)
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" test="qxmp157">XML-like entity references and character references are now recognized in the
+         fixed text portions of attribute values within a direct element constructor, for example,
+         <code>&lt;a ampersand="&amp;amp;"/&gt;</code></p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" test="qxmp164">Attribute values within direct element constructors may now double the delimiting
+         quotation mark to represent itself, for example <code>&lt;quote phrase="She said, ""I won't"""/&gt;</code>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" test="qxmp156">The extension functions <code>saxon:evaluate</code>,
+         <code>saxon:expression</code>, and <code>saxon:eval</code> are now available under
+         XQuery as well as XSLT.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" test="qxmp158">The syntax for <code>declare ordering</code> in the Query Prolog, and
+         for the <code>ordered{}</code> and <code>unordered{}</code> expressions, is accepted. In
+         Saxon these currently have no effect on the result of the query: the result order will always be predictable.
+         (Since <code>unordered</code> allows the results to be delivered in any order, this is a conformant
+         implementation).
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" test="qxmp159">It is now possible to have two functions with the same name, provided they have
+         different arity (number of arguments).
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Values of external variables supplied on the command line are now treated as <code>untypedAtomic</code>
+         values rather than strings. This means they will automatically be cast to the required type. For example,
+         if $p has a required type of <code>xs:integer</code>, you can now specify 
+         <code>p=3</code> on the command line, whereas this
+         would previously have given a type error.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" test="qxmp165">Line endings within the character content of a direct element constructor are now normalized
+         (according to the XML 1.1 rules). In particular, the Windows line ending CRLF is treated as equivalent
+         to a single newline character.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" test="qxmp903err qxmp904err">Invalid content in a computed comment or processing instruction is now
+         a fatal error.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The default collation if none is specified in the query prolog is now the Unicode codepoint collation
+         (it was previously a collation based on the Java locale).
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" test="qxmp167 qxmp168">The query prolog may now contain the declaration <code>declare default order empty
+            greatest|least</code>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Some of the new extension functions described below, such as <code>saxon:for-each-group</code>,
+         <code>saxon:analyze-string</code>, and <code>saxon:format-date</code>  will be of particular interest
+         in XQuery as they provide capabilities missing from the W3C language specification.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="xquery-81.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../intro81.html">Up</a>&nbsp;&nbsp;<a class="nav" href="xquery-api-81.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

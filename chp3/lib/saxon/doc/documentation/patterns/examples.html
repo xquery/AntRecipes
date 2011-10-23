@@ -1,0 +1,217 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--patterns/examples
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: Examples of Patterns</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Examples of Patterns">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      
+      <h1>Examples of Patterns</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The table below gives some examples of patterns, and explains their meaning:</p>
+      
+      
+      <table xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         
+         <tr>
+            
+            <td width="50%" valign="top">
+               <p><b>Pattern</b></p>
+            </td>
+            
+            <td width="50%" valign="top">
+               <p><b>Meaning</b></p>
+            </td>
+            
+         </tr>
+         
+         <tr>
+            
+            <td width="50%" valign="top">
+               <p>XXX</p>
+            </td>
+            
+            <td width="50%" valign="top">
+               <p>Matches any element whose name (tag) is XXX</p>
+            </td>
+            
+         </tr>
+         
+         <tr>
+            
+            <td width="50%" valign="top">
+               <p><b>*</b></p>
+            </td>
+            
+            <td width="50%" valign="top">
+               <p>Matches any element</p>
+            </td>
+            
+         </tr>
+         
+         <tr>
+            
+            <td width="50%" valign="top">
+               <p>XXX/YYY</p>
+            </td>
+            
+            <td width="50%" valign="top">
+               <p>Matches any YYY element 
+                  whose parent is an XXX
+               </p>
+            </td>
+            
+         </tr>
+         
+         <tr>
+            
+            <td width="50%" valign="top">
+               <p>XXX//YYY</p>
+            </td>
+            
+            <td width="50%" valign="top">
+               <p>Matches any YYY element that has an ancestor named XXX</p>
+            </td>
+            
+         </tr>
+         
+         <tr>
+            
+            <td width="50%" valign="top">
+               <p>/*/XXX</p>
+            </td>
+            
+            <td width="50%" valign="top">
+               <p>Matches any XXX element that is immediately below
+                  the top-level element in the document
+               </p>
+            </td>
+            
+         </tr>
+         
+         <tr>
+            
+            <td width="50%" valign="top">
+               <p>*[@NAME]</p>
+            </td>
+            
+            <td width="50%" valign="top">
+               <p>Matches any element with a NAME attribute</p>
+            </td>
+            
+         </tr>
+         
+         <tr>
+            
+            <td width="50%" valign="top">
+               <p>SECTION/PARA[1]</p>
+            </td>
+            
+            <td width="50%" valign="top">
+               <p>Matches any PARA element that is the first PARA child of
+                  a SECTION element
+               </p>
+            </td>
+            
+         </tr>
+         
+         <tr>
+            
+            <td width="50%" valign="top">
+               <p>SECTION[TITLE="Contents"]</p>
+            </td>
+            
+            <td width="50%" valign="top">
+               <p>Matches any SECTION element whose first TITLE child element
+                  has the value "Contents"
+               </p>
+            </td>
+            
+         </tr>
+         
+         <tr>
+            
+            <td width="50%" valign="top">
+               <p>A/TITLE | B/TITLE | C/TITLE</p>
+            </td>
+            
+            <td width="50%" valign="top">
+               <p>Matches any TITLE element whose parent is of type A or B or C
+                  (Note that this cannot be written "(A|B|C)/TITLE", although that is a valid node-set expression.)
+               </p>
+            </td>
+            
+         </tr>
+         
+         <tr>
+            
+            <td width="50%" valign="top">
+               <p>/BOOK//*</p>
+            </td>
+            
+            <td width="50%" valign="top">
+               <p>Matches any element in a document provided the top-level element in
+                  the document is named "BOOK"
+               </p>
+            </td>
+            
+         </tr>
+         
+         <tr>
+            
+            <td width="50%" valign="top">
+               <p>A/text() </p>
+            </td>
+            
+            <td width="50%" valign="top">
+               <p>Matches the character content of an A element</p>
+            </td>
+            
+         </tr>
+         
+         <tr>
+            
+            <td width="50%" valign="top">
+               <p>A/@*</p>
+            </td>
+            
+            <td width="50%" valign="top">
+               <p>Matches any attribute of an A element</p>
+            </td>
+            
+         </tr>
+         
+      </table>
+      
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="examples.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--index/whatis
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: What is Saxon?</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: What is Saxon?">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      
+      <h1>What is Saxon?</h1>
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The Saxon package is a collection of tools for processing XML documents. The main components
+         are: 
+      </p>
+      
+      
+      <ul xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         
+         <li>
+            <p>An XSLT 2.0 processor, that can be used from the command line, or invoked from
+               a Java application by use of the standard JAXP API. Saxon can be integrated
+               with Java applications using the JAXP API, which means it is possible for a Java application
+               to switch between different XSLT processors without changing the application code.
+               As well as conforming closely with the XSLT 2.0
+               specification, Saxon offers a number of powerful extensions. 
+            </p>
+         </li>
+         
+         
+         <li>
+            <p>An XPath 2.0 processor accessible via the JAXP API to Java applications.</p>
+         </li>
+         
+         
+         <li>
+            <p>An XQuery 1.0 processor that can be used from the command line, or invoked from
+               a Java application by use of an API.
+            </p>
+         </li>
+         
+         
+         <li>
+            <p>An XML Schema 1.0 processor. This can be used on its own to validate a schema for correctness,
+               or to validate a source document against the definitions in a schema. It is also used to support the schema-aware
+               functionality of the XSLT and XQuery processors.
+            </p>
+         </li>
+         
+         
+      </ul>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">So you can use Saxon to process XML by writing XSLT stylesheets, by writing XQuery queries,
+         by writing Java applications, or by combinations of the approaches.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Saxon implements the XSLT 1.0 recommendation, including XPath 1.0, in its entirety.
+         Saxon 8.x also implements nearly all the features defined in the XSLT 2.0, XPath 2.0, and XQuery 1.0
+         working drafts. New features beyond XSLT 1.0 include:
+      </p>
+      
+      
+      <ul xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         
+         <li>
+            <p>Support for multiple output files using <code>xsl:result-document</code></p>
+         </li>
+         
+         
+         <li>
+            <p>Full processing capability on temporary trees (previously known as result tree
+               fragments)
+            </p>
+         </li>
+         
+         
+         <li>
+            <p>Support for sequences of nodes and simple values</p>
+         </li>
+         
+         
+         <li>
+            <p>Grouping facilities</p>
+         </li>
+         
+         
+         <li>
+            <p>Regular expression processing</p>
+         </li>
+         
+         
+         <li>
+            <p>Support for new XPath constructs such as <code>if</code>, <code>for</code>, 
+               <code>some</code> and <code>every</code></p>
+         </li>
+         
+         
+         <li>
+            <p>Support for named collating sequences</p>
+         </li>
+         
+         
+         <li>
+            <p>Many new functions and operators</p>
+         </li>
+         
+         
+         <li>
+            <p>Support for new data types, such as dates, times, and durations</p>
+         </li>
+         
+         
+      </ul>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The small number of features not yet supported are listed on the <a class="bodylink" href="javascript:topage('conformance', 'intro')">Conformance</a> page.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">In addition, Saxon provides an extensive library 
+         of <a class="bodylink" href="javascript:topage('extensions', 'intro')">extension elements and extension functions</a>,
+         all implemented in conformance with the XSLT Recommendation to ensure that 
+         portable stylesheets can be written. These include the <a href="http://www.exslt.org/" target="_blank" class="bodylink">EXSLT</a>
+         extension libraries <b>common</b>, <b>sets</b>, <b>math</b>, and <b>dates-and-times</b>.
+         Many of these extensions were pioneered in Saxon and have since become available
+         in other products.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">These extension functions are in general accessible from XQuery as well as XSLT,
+         except where they depend on stylesheet information.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Saxon also provides an API allowing a Java application to execute XPath expressions and
+         process the results. This API conforms to (and extends) the JAXP 1.3 API. 
+         A separate API is available for XQuery 1.0, reflecting differences in the
+         way the context is set up. This is a Saxon-specific API, since there are no
+         standards in this area yet.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="whatis.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="prerequisites.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

@@ -1,0 +1,94 @@
+
+<!DOCTYPE html
+  SYSTEM "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="it">
+   <!--time published:April 17 2010|1220-->
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      				
+      <meta name="description" content="(it)">
+      				
+      <meta name="keyword" content="(it)">
+      				
+      <meta http-equiv="Pragma" content="no-cache">
+      				
+      <meta http-equiv="Content-Language" content="it">
+      				
+      <meta name="language" content="it, italian">
+      			
+      				
+      <title>Multilingual Website (it)</title>
+      			
+      <link rel="stylesheet" type="text/css" href="../resource/css/basic.css">
+   </head>
+   <body bgcolor="#c0c0c0">
+      				
+      <!--- copyright 2009 sample company Ltd (it) //-->
+      			
+      <h1>
+         	
+         	
+         	
+         	News Page(italian)
+         
+      </h1>
+      <table border="1">
+         <tr>
+            <th>Title</th>
+            <th>Summary</th>
+         </tr>
+         <tr>
+            <td>
+               	
+               	
+               	
+               	Italian News Article Title
+               
+            </td>
+            <td>
+               	
+               	
+               	
+               	Italian summary version of news article
+               
+            </td>
+         </tr>
+         <tr>
+            <td>
+               	
+               	
+               	
+               	2nd Italian News Article Title
+               
+            </td>
+            <td>
+               	
+               	
+               	
+               	2nd Italian summary version of news article
+               
+            </td>
+         </tr>
+      </table><br><i>note: data extracted from ../data/news.html using document().</i>
+      				
+      <!---  sample footer comment (it) //-->
+      			<br>
+      				<br>
+      				
+      <hr>
+      				
+      <center>
+         					<font size="-3" color="555555">
+            						Sample Company Ltd. [ Copyright 2009, All Rights Reserved ] </font>
+         					<a href="../contact/index.html" target="main">
+            						<font size="-3" color="555555">[(+44)55555555555 ]</font>
+            					</a>
+         					<a href="mailto:jim.fuller@ruminate.co.uk" target="_new">
+            						<font size="-3" color="555555">[jim.fuller@ruminate.co.uk]</font>
+            					</a>
+         				
+      </center>
+      			
+   </body>
+</html>

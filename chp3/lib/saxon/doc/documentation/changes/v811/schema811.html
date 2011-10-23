@@ -1,0 +1,72 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--changes/v811/schema811
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: Changes in XML Schema support</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Changes in XML Schema support">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>Changes in XML Schema support</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The code for parsing and validating schema documents has been extensively refactored. It is now tree-based
+         rather than event-based, which generally makes it more robust, and makes the functional changes listed
+         below possible. There is now no residual code from Castor.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Saxon now supports <code>xs:notation</code> declarations and values of type <code>xs:NOTATION</code>. As with QName support,
+         there are still some restrictions: for example, notations cannot be used as default or fixed values, or used in
+         key and uniqueness constraints.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><i>Chameleon</i> includes and redefines are now implemented: that is, includes and redefines in which a schema document
+         with a target namespace includes or redefines one without a target namespace.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Cyclic imports (where A imports B and B imports A) are now permitted, though the coverage of this feature
+         in test cases is rather sparse (none of the W3C test cases cover it).
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Multiple inclusion (where A includes B and C, while B and C both include D) is now handled: again, test coverage
+         is sparse.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Saxon imposes limits on the values of <code>minOccurs</code> and <code>maxOccurs</code> in particles
+         of a content model. These limits are now documented; a warning is output when the limits are exceeded; and the
+         limits are now configurable by a new method on the <code>SchemaAwareConfiguration</code> class.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="schema811.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../v811.html">Up</a>&nbsp;&nbsp;<a class="nav" href="jaxp811.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

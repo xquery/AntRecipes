@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<element name="address" ns="http://www.apress.com/address" xmlns="http://relaxng.org/ns/structure/1.0">
+ <element name="first"><text/></element>
+ <element name="last"><text/></element>
+ <element name="phone"><text/></element>
+</element>

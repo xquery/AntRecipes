@@ -1,0 +1,68 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--changes/intro/schema83
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: Schema processing changes</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Schema processing changes">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>Schema processing changes</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The command line option <code>-vlax</code> now invokes lax validation: that is, elements
+         are validated if there is an element declaration available, and are not validated if there is no element
+         declaration. This option is available on the commands <code>com.saxonica.Transform</code>,
+         <code>com.saxonica.Query</code>, and <code>com.saxonica.Validate</code>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The API for the classes <code>Configuration</code> and <code>AugmentedSource</code>
+         has been changed to allow a validation mode of <code>strict</code> or <code>lax</code> to
+         be requested.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The code for schema validation has been changed in Saxon 8.3 to make binding of references
+         between schema components more robust. Component binding (or fixup) is now done 
+         in a separate phase of processing, before validation of the schema. The binding is always done at the
+         last possible moment, allowing flexibility in the use of <code>xs:import</code>, <code>xs:include</code>,
+         and <code>xs:redefine</code>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The exception that is raised when a component contains an unresolved reference to another
+         component (<code>UnresolvedReferenceException</code>) is now an unchecked exception. Once
+         a schema has been fully validated, this exception should never occur. Because this exception is
+         now unchecked, classes such as <code>ValidSchemaType</code> that were designed to mask
+         this exception are no longer required and have been removed.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="schema83.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../intro.html">Up</a>&nbsp;&nbsp;<a class="nav" href="xpath83.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

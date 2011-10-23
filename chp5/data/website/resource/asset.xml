@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<?xml-stylesheet href="asset.xsl" type="text/xsl"?>
+<resource name="asset" type="asset">
+
+	<!--css category assets-->
+	<category name="css" resourcepath="css">
+		<asset name="site_style" src="../resource/css/basic.css">  </asset>
+	</category>
+
+	<!--html category assets -->	
+	<category name="html" resourcepath="html">
+		<asset name="pagetitle">
+			<txt xml:lang="en">
+				<title>Multilingual Website (en)</title>
+			</txt>
+			<txt xml:lang="fr">
+				<title>Multilingual Website (fr)</title>
+			</txt>
+			<txt xml:lang="de">
+				<title>Multilingual Website (de)</title>
+			</txt>
+			<txt xml:lang="it">
+				<title>Multilingual Website (it)</title>
+			</txt>
+		</asset>
+		<asset name="header">
+			<txt xml:lang="en">
+				<!--- copyright 2009 sample company Ltd (en)//-->
+			</txt>
+			<txt xml:lang="fr">
+				<!--- copyright 2009 sample company Ltd (fr) //-->
+			</txt>
+			<txt xml:lang="de">
+				<!--- copyright 2009 sample company Ltd (de) //-->
+			</txt>
+			<txt xml:lang="it">
+				<!--- copyright 2009 sample company Ltd (it) //-->
+			</txt>
+		</asset>
+		<asset name="footer">
+			<txt xml:lang="en">
+				<!---  sample footer comment (en) //-->
+			</txt>
+			<txt xml:lang="fr">
+				<!---  sample footer comment (fr) //-->
+			</txt>
+			<txt xml:lang="de">
+				<!---  sample footer comment (de) //-->
+			</txt>
+			<txt xml:lang="it">
+				<!---  sample footer comment (it) //-->
+			</txt>
+		</asset>
+		<asset name="metatags">
+			<txt xml:lang="en">
+				<meta name="description" content="(en)"/>
+				<meta name="keyword" content="(en)"/>
+				<meta http-equiv="Pragma" content="no-cache"/>
+				<meta http-equiv="Content-Language" content="en"/>
+				<meta name="language" content="en, english"/>
+			</txt>
+			<txt xml:lang="fr">
+				<meta name="description" content="(fr)"/>
+				<meta name="keyword" content="(fr)"/>
+				<meta http-equiv="Pragma" content="no-cache"/>
+				<meta http-equiv="Content-Language" content="fr"/>
+				<meta name="language" content="fr, french"/>
+			</txt>
+			<txt xml:lang="de">
+				<meta name="description" content="(de)"/>
+				<meta name="keyword" content="(de)"/>
+				<meta http-equiv="Pragma" content="no-cache"/>
+				<meta http-equiv="Content-Language" content="de"/>
+				<meta name="language" content="de, deutsch"/>
+			</txt>
+			<txt xml:lang="it">
+				<meta name="description" content="(it)"/>
+				<meta name="keyword" content="(it)"/>
+				<meta http-equiv="Pragma" content="no-cache"/>
+				<meta http-equiv="Content-Language" content="it"/>
+				<meta name="language" content="it, italian"/>
+			</txt>
+		</asset>
+		<asset name="copyright">
+			<txt>
+				<br/>
+				<hr/>
+				<center>
+					<font size="-3" color="555555">
+						Sample Company Ltd. [ Copyright 2009, All Rights Reserved ] </font>
+					<a href="../contact/index.xml" target="main">
+						<font size="-3" color="555555">[(+44)55555555555 ]</font>
+					</a>
+					<a href="mailto:jim.fuller@ruminate.co.uk" target="_new">
+						<font size="-3" color="555555">[jim.fuller@ruminate.co.uk]</font>
+					</a>
+				</center>
+			</txt>
+		</asset>
+	</category>
+
+	<!--javascript category assets -->
+	<category name="javascript" resourcepath="javascript">
+		<asset name="js_sniffer" src="../resource/javascript/sniffer.js">
+		</asset>
+		
+		<!--dependent on js_sniffer -->	
+		<asset name="js_printversion">
+		var is_win,is_mac,is_ie;
+		
+		document.writeln('&lt;h3&gt;Example Javascript usage&lt;/h3&gt;');
+						
+		if (is_win) document.write('Operating System: Windows');			
+		else if (is_mac) document.write('Operating System: Mac');;
+		    				
+		document.writeln('&lt;br/&gt;');
+		    				
+		if (is_ie) document.write('Browser:IE');			
+		else if (is_nav) document.write('Browser: Navigator');;
+		
+		</asset>
+	</category>
+
+	<!--image category assets-->	
+	<category name="img" resourcepath="image">
+		<asset name="testimage" src="../resource/image/content.gif">
+			<width>400</width>
+			<height>400</height>
+			<alt>content architecture</alt>
+			<border>1</border>
+		</asset>
+	</category>
+
+	<!--flash category assets -->	
+	<category name="flash" resourcepath="flash">
+		<asset name="test_flash" src="../resource/flash/test.swf">
+			<width>550</width>
+			<height>550</height>
+		</asset>
+	</category>
+	
+</resource>

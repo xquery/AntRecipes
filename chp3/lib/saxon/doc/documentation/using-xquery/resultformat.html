@@ -1,0 +1,63 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--using-xquery/resultformat
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: Result Format</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Result Format">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      
+      
+      <h1>Result Format</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The result of a query is a sequence of nodes and atomic values - which means it is not, in general,
+         an XML document. This raises the question as to how the results should be output.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The Saxon command line processor for XQuery by default produces the output in raw format.
+         This converts the result sequence to a document following the rules of the XQuery <code>document{}</code>
+         constructor, and then serializes this document.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The alternative is wrapped format, requested using the <code>-wrap</code> argument.
+         This wraps the result sequence as an XML document,
+         and then serializes the resulting document. Each item in the result sequence is wrapped in an element
+         (such as <code>result:element</code> or <code>result:atomic-value</code>) according to its type. The sequence
+         as a whole is wrapped in a <code>result:sequence</code> element.
+      </p>
+      
+      
+      
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="resultformat.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="extensibility.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

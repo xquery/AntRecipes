@@ -1,0 +1,127 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--xsl-elements/sort
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: xsl:sort</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: xsl:sort">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>xsl:sort</h1>
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>xsl:sort</code> element is used within an <code>xsl:for-each</code> or <code>xsl:apply-templates</code>
+         or <code>saxon:group</code> element to indicate the order in which the selected elements are processed.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>select</code> attribute (default value ".") is a string expression that calculates the sort
+         key.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>order</code> attribute (values "ascending" or "descending", default "ascending") determines
+         the sort order. There is no control over language, collating sequence, or data type.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>data-type</code> attribute determines whether collating is based
+         on alphabetic sequence or numeric sequence. The permitted values are either "text" or "number", or
+         a built-in type in XML Schema, such as <code>xs:date</code> or <code>xs:decimal</code>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>collation</code> attribute is the name of a collating sequence. If present it must refer to a name
+         established using the 
+         <a class="bodylink" href="javascript:tosubpage('extensions','instructions','collation')">saxon:collation</a>
+         declaration in the stylesheet.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>case-order</code> attribute (values "upper-first" and "lower-first") is relevant only for
+         data-type="text"; it determines whether uppercase letters are sorted before their lowercase equivalents,
+         or vice-versa.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The value of the <code>lang</code> attribute can be an ISO language code such as "en" (English) or
+         "de" (German). It determines the algorithm used for alphabetic collating. The default is based on
+         the Java system locale. The only collating sequence supplied with the Saxon product is "en" (English),
+         but other values may be supported by writing a user-defined comparison class. If no comparison class
+         is found for the specified language, a default algorithm is used which simply sorts according
+         to Unicode binary character codes. The value of lang does not have to be a recognized language
+         code, it is also possible to use values such as "month" to select a data-type-specific collating
+         algorithm.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Several sort keys are allowed: they are written in major-to-minor order.</p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Example 1: sorting with xsl:apply-templates. This example shows a template for a BOOKLIST
+         element which processes all the child BOOK elements in order of their child AUTHOR elements; books
+         with the same author are in descending order of the DATE attribute.
+      </p>
+      
+      
+      <div class="codeblock" style="border: solid thin; background-color: #B1CCC7; padding: 2px"><pre><code>&lt;xsl:template match="BOOKLIST"&gt;
+    &lt;h2&gt;
+        &lt;xsl:apply-templates select="BOOK"&gt;
+            &lt;xsl:sort select="AUTHOR"/&gt;
+            &lt;xsl:sort select="@DATE" order="descending" lang="GregorianDate"/&gt;
+        &lt;/xsl:apply-templates&gt;            
+    &lt;/h2&gt;
+&lt;/xsl:template&gt;</code></pre></div>
+      
+      
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Example 2: sorting with xsl:for-each. This example also shows a template for a BOOKLIST
+         element which processes all the child BOOK elements in order of their child AUTHOR elements.
+      </p>
+      
+      
+      <div class="codeblock" style="border: solid thin; background-color: #B1CCC7; padding: 2px"><pre><code>&lt;xsl:template match="BOOKLIST"&gt;
+    &lt;h2&gt;
+        &lt;xsl:for-each select="BOOK"&gt;
+            &lt;xsl:sort select="AUTHOR"/&gt;
+            &lt;p&gt;AUTHOR: &lt;xsl:value-of select="AUTHOR"&gt;&lt;/p&gt;
+            &lt;p&gt;TITLE: &lt;xsl:value-of select="TITLE"&gt;&lt;/p&gt;
+            &lt;hr/&gt;
+        &lt;/xsl:for-each&gt;            
+    &lt;/h2&gt;
+&lt;/xsl:template&gt;</code></pre></div>
+      
+      
+      
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="sort.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="strip-space.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

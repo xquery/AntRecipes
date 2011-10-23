@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<!-- ============================================================= -->
+<!-- ANT RECIPES FOR WEB DEVELOPERS CHP 2 Web Recipe               -->
+<!-- Author: James Fuller / Webcomposite                           -->
+<!-- Email/WWW: jim.fuller@webcomposite.com /  www.antrecipes.com  -->
+<!-- ============================================================= -->
+<!--    (C) Copyright James Fuller 2009 - All Rights Reserved.     -->
+<!--  use the -debug flag for more information when running ant  //-->
+<project name="Compress JS" basedir="." default="run">
+	<description>Compress JS</description>
+	<!-- ===================================================== -->
+	<!-- Property definition                                   -->
+	<!-- ===================================================== -->
+	<property name="jar.yuicompressor" location="../../lib/yuicompressor-2.3.5/build/yuicompressor-2.3.5.jar"/>
+	<!-- ===================================================== -->
+	<!-- Example1 Target                                       -->
+	<!-- ===================================================== -->
+	<target name="example1">
+		<java jar="${jar.yuicompressor}" fork="true" output="result/test.js">
+			<arg value="data/test.js"/>
+		</java>
+	</target>
+	<!-- ===================================================== -->
+	<!-- Example2 Target                                       -->
+	<!-- ===================================================== -->
+	<target name="example2">
+		<java jar="${jar.yuicompressor}" fork="true" output="result/screen.css">
+			<arg value="data/screen.css"/>
+		</java>
+	</target>
+	<!-- ===================================================== -->
+	<!-- Example3 Target                                       -->
+	<!-- ===================================================== -->
+	<target name="example3">
+		<yuicompressor destdir="result">
+			<fileset dir="data"/>
+		</yuicompressor>
+	</target>
+	<!-- ===================================================== -->
+	<!-- Example4 Target                                       -->
+	<!-- ===================================================== -->
+	<target name="example4">
+		<concat destfile="result/concat-all.js">
+			<fileset dir="data" includes="**/*.js"/>
+		</concat>
+	</target>
+	<!-- ===================================================== -->
+	<!-- Run Target                                            -->
+	<!-- ===================================================== -->
+	<target name="run" depends="clean,example1,example2,example3,example4" description="runs all examples"/>
+	<!-- ===================================================== -->
+	<!-- Clean Target                                          -->
+	<!-- ===================================================== -->
+	<target name="clean">
+		<delete dir="result"/>
+		<mkdir dir="result"/>
+		<mkdir dir="result/js1"/>
+		<mkdir dir="result/js2"/>
+	</target>
+	<!-- ===================================================== -->
+	<!-- Macrodef                                              -->
+	<!-- ===================================================== -->
+	<macrodef name="yuicompressor">
+		<attribute name="destdir"/>
+		<element name="cc-elements" implicit="yes"/>
+		<sequential>
+			<apply executable="java" parallel="false">
+				<cc-elements/>
+				<arg line="-jar"/>
+				<arg path="${jar.yuicompressor}"/>
+				<srcfile/>
+				<arg line="-o"/>
+				<mapper type="glob" from="*.js" to="@{destdir}/*-min.js"/>
+				<targetfile/>
+			</apply>
+		</sequential>
+	</macrodef>
+</project>

@@ -1,0 +1,68 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--changes/v8.0/internal-api-80
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: Changes to internal APIs</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Changes to internal APIs">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>Changes to internal APIs</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>Receiver</code> interface has changed so it now passes a <code>Configuration</code> down
+         the pipeline rather than a <code>NamePool</code>. The <code>Configuration</code> gives access to the
+         <code>NamePool</code> and to much else besides (for example, schema information, and the ErrorListener).
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>getTypedValue()</code> method of the <code>NodeInfo</code> interface now takes a parameter,
+         the <code>Configuration</code> object. This is to provide access to schema information needed to extract the typed
+         value of the node. The schema information available in this Configuration must include definitions of the schema types
+         that were used to validate the node and give it a type annotation.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The specification (and implementation) of the <code>getURI()</code> method of the <code>NodeInfo</code> interface
+         has been tidied up: it was previously unclear when it returned null and when it returned an empty string. It now returns an
+         empty string in all cases where the node has no namespace URI (which matches the behavior of the XPath <code>namespace-uri()</code>
+         function).
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">When output is directed to a SAX <code>ContentHandler</code>, any type annotations on attributes that correspond to the basic
+         XML attribute types (such as ID and IDREFS) are now supplied to the ContentHandler.
+         Namespace undeclarations of the form <code>xmlns:p=""</code> (as permitted
+         by XML Namespaces 1.1) are now passed to the <code>startPrefixMapping()</code> method of  
+         a user-defined <code>ContentHandler</code> only if
+         <code>undeclare-namespaces="yes"</code> is specified on <code>xsl:output</code>.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="internal-api-80.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../v8.0.html">Up</a>&nbsp;&nbsp;<a class="nav" href="implementation-80.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

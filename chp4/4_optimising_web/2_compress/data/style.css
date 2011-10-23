@@ -1,0 +1,178 @@
+/* 
+Title:		screen styles
+Author: 	Ijcspam@gmail.com - Http://www.ianjamescox.com
+*/
+
+/* important controls \*/
+
+body {margin:0;
+	font-family:"Lucida Sans",Verdana, Arial, Helvetica, sans-serif;
+	font-size:72%;
+	background:#d3d1ba;
+	
+	}
+
+/* default styles \*/
+
+a {
+	color:#333;
+	text-decoration:none;
+}
+
+a:active {
+	color:#333;
+	text-decoration:none;
+}
+
+a:hover {
+	color:#333;
+	text-decoration:none;
+}
+
+
+/* quick classes \*/
+
+.floatleft {float:left;}
+.floatright {float:right;}
+
+
+/*Important classes \*/
+
+.full-stretch {
+	
+	margin:0 auto;
+	width:600px;
+	padding:0;	
+}
+
+/*Sitewide Main Id's \*/
+
+#banner {
+	background:url(../images/lab-bg.jpg) repeat-x center  top #d3d1ba;
+	float:left;
+	width:100%;
+	clear:both;
+	margin:0;
+	padding:0;
+	height:218px;
+}
+
+#banner-stage {
+	background:url(../images/banner.jpg) no-repeat left top;
+	height:218px;	
+}
+
+
+#MainMenu   {float:left;margin:0;padding:0;}
+
+
+#MainMenu li{
+	display:inline;
+	font-size:1.1em;
+	color:#328d70;
+	float:left;
+	margin:0;
+	padding:0;
+}
+
+#MainMenu a {color:#fff;text-decoration:underline;padding:18px 10px 18px 10px;float:left;margin:0;}
+
+#MainMenu a.active {background:url(../images/menu-active.gif) repeat-x center  top;color:#204359;padding:18px 17px 18px 17px;text-decoration:none;}
+
+#MainMenu a:hover.active {background:url(../images/menu-active.gif) repeat-x center  top;color:#204359;padding:18px 17px 18px 17px;text-decoration:none;}
+
+#MainMenu a:hover {background:url(../images/menu-active.gif) repeat-x center  top;color:#204359;padding:18px 10px 18px 10px;text-decoration:underline;}
+
+
+#content {
+	background:url(../images/shadow.gif) repeat-y center  bottom #d3d1ba;
+	float:left;
+	width:100%;
+	clear:both;
+}
+
+.content-full {float:left;width:554px;margin-left:22px;}
+.content-right {float:left;width:300px;margin-bottom:15px;}
+
+#content p {margin-left:22px;}
+#content p.page-desc {font-size:1.3em;margin-top:4px;margin-left:22px;margin-right:22px;}
+#content h2 {color:#369fc2;font-size:1.5em;font-weight:normal;margin-top:3px;margin-bottom:0;margin-left:22px;}
+
+#content h3 {color:#fff;font-size:1.3em;font-weight:normal;margin-top:3px;margin-bottom:0;text-transform:uppercase;letter-spacing:0.02em;background:#006ba1;padding:6px 10px;border-bottom:solid 2px #6abdff;margin-bottom:15px;clear:both;margin-left:22px;margin-right:22px;}
+h3#h3 {color:#369fc2;font-size:1.3em;font-weight:normal;margin-top:3px;margin-bottom:0;background:none;border:none;margin-left:0;padding-left:0;margin-right:0;letter-spacing:0.00em;}
+
+#content h4 {color:#fff;font-size:1.3em;font-weight:normal;margin-top:3px;margin-bottom:0;text-transform:uppercase;letter-spacing:0.02em;background:#006ba1;padding:6px 10px;border-bottom:solid 2px #6abdff;margin-bottom:15px;clear:both;}
+#content ul {padding:0;margin:10px 0 0 23px;font-size:0.9em;}
+#content ul li{color:#48473d;
+				background:url(../images/heart-icon.gif) no-repeat left 3px;
+				padding-left:20px;
+				list-style:none;
+				margin-bottom:10px;
+}
+#content ul.marginleft {margin:10px 0 0 22px;font-size:1em;}
+#content ul.marginleft li {padding-bottom:2px;}
+
+.stickeyNote {background:url(../images/sticki.gif) no-repeat left top; width:160px;height:190px;padding:6px 26px 6px 26px;margin-left:22px;float:left;margin-right:22px;display:inline;}
+.stickeyNote h3 {color:#369fc2;font-weight:normal;font-size:1.4em;margin-bottom:5px;padding-top:10px;padding-bottom:10px;}
+.stickeyNote p {color:#5c5b4f;line-height:1.4em;font-size:1.00em;letter-spacing:-0.01em;padding:0;margin:0;}
+
+#footer {
+	background:url(../images/shadow-bottom.gif) no-repeat center  top #d3d1ba;
+	color:#7d7350;
+	float:left;
+	width:100%;
+	padding:22px 0;	
+	clear:both;
+	font-size:0.9em;
+	letter-spacing:-0.02em;
+}
+
+#footer a {color:#7d7350;text-decoration:underline;}
+
+#content h2#web-error-title{	background:url(../images/web-error-title.gif) no-repeat left  top;width:500px;height:38px;margin-left:30px;margin-top:3px;}
+#content h2 span{display:none;}
+
+.content-divider {width:100%;border-top:solid 1px #ccc;clear:both;margin:10px 0;}
+.space-divider {width:100%;clear:both;margin:10px 0;}
+
+
+#buildForm {line-height:1.5em;float:left;width:554px;margin-left:22px;}
+#buildForm label{width:220px;float:left;clear:left;margin-bottom:10px;margin-right:20px;color:#838383;}
+#buildForm span {border:solid 1px #ccc;padding:1px;float:left;}
+#buildForm input {padding:6px 6px;font-size:1.1em;float:left;}
+.no-wrap {float:left;width:300px;margin-bottom:20px;}
+#buildForm strong {font-size:0.8em;background:#fff8a7;color:#a38f65;}
+#buildForm p {width:220px;float:left;clear:left;margin-bottom:10px;margin-right:20px;margin-top:0;padding-top:0;}
+
+#contactForm{line-height:1.5em;float:left;width:554px;margin-left:22px;}
+#contactForm label{width:220px;float:left;clear:left;margin-bottom:10px;margin-right:20px;color:#838383;}
+#contactForm span {border:solid 1px #ccc;padding:1px;float:left;}
+#contactForm input {padding:6px 6px;font-size:1.1em;float:left;}
+#contactForm strong {font-size:0.8em;background:#fff8a7;color:#a38f65;}
+#contactForm p {width:220px;float:left;clear:left;margin-bottom:10px;margin-right:20px;margin-top:0;padding-top:0;}
+
+#analyticsForm {line-height:1.5em;float:left;width:554px;margin-left:22px;}
+#analyticsForm label{width:220px;float:left;clear:left;margin-bottom:10px;margin-right:20px;color:#838383;}
+#analyticsForm span {border:solid 1px #ccc;padding:1px;float:left;}
+#analyticsForm input {padding:6px 6px;font-size:1.1em;float:left;}
+#analyticsForm strong {font-size:0.8em;background:#fff8a7;color:#a38f65;}
+#analyticsForm p {width:220px;float:left;clear:left;margin-bottom:10px;margin-right:20px;margin-top:0;padding-top:0;}
+
+p {color:#5c5b4f;line-height:1.4em;font-size:1.00em;letter-spacing:-0.01em;padding:0;margin:5;}
+
+
+
+#graph {padding:4px 12px 16px 0px;}
+#graph h2 {height:2em; padding: 5px 0px 0px 8px; font-weight:bold; background: url(/resource/image/bkg_graph_header.gif) repeat-x;}
+#graph h2 span {float:right; padding: 0px 8px; font-size:80%; font-family:Arial, Helvetica, sans-serif; font-weight:normal;}
+#graph #small_left {width:380px}
+#graph #small_right {width:380px; float:right;}
+#graph #big {width:789px; display:block; margin-top:12px;}
+
+#time_period {width: 555; height: 24px; margin: 0; padding: 0; margin-bottom:9px; background: #2e2e2e}
+#time_period ul {list-style-type: none; margin: 0; margin-right:0px; padding: 0}
+#time_period ul li {float: right; margin: 0; padding: 0}
+
+.banner a {text-decoration:none;}
+a {text-decoration:underline;}
+.content-right a {text-decoration:underline;}

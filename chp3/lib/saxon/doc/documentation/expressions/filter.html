@@ -1,0 +1,65 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--expressions/filter
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: Filter expressions</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Filter expressions">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>Filter expressions</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The notation <code>E[P]</code> is used to select items from the sequence obtained by evaluating
+         <code>E</code>. If the predicate <code>P</code> is numeric, the predicate selects an item if its
+         position (counting from 1) is equal to <code>P</code>; otherwise, the <i>effective boolean value</i>
+         of <code>P</code> determines whether an item is selected or not. The effective boolean value of a sequence
+         is false if the sequence is empty, or if it contains a single item that is one of: the boolean value
+         false, the zero-length string, or a numeric zero or NaN value. If the first item of the sequence is a node, or
+         if the sequence is a singleton boolean, number or string other than those listed above, the effective
+         boolean value is true. In other cases (for example, if the sequence contains two booleans or a date),
+         evaluating the effective boolean value causes an error. (This has changed in Saxon 8.3.)
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">In XPath 2.0, <code>E</code> may be any sequence, it is not restricted to a node sequence. Within
+         the predicate, the expression <code>.</code> (dot) refers to the context item, that is, the item
+         currently being tested. The XPath 1.0 concept of context node has thus been generalized, for example
+         <code>.</code> can refer to a string or a number.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Generally the order of items in the result preserves the order of items in <code>E</code>. As a 
+         special case, however, if <code>E</code> is a step using a reverse axis (e.g. preceding-sibling), the
+         position of nodes for the purpose of evaluating the predicate is in reverse document order, but the
+         result of the filter expression is in forwards document order.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="filter.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="path.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

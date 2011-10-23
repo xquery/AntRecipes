@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+
+        <meta name="published" content="@some-timestamp@"/>
+
+        <meta name="version" content="@some-version@"/>
+
+        <meta name="ROBOTS" content="ALL"/>
+
+        <meta name="author" content="James Fuller"/>
+
+        <meta name="copyright" content="Copyright 2008 James Fuller, All Rights Reserved"/>
+
+	<meta name="Expires" content="Tue, 01 Jun 1999 19:58:02 GMT"/>
+
+	<meta NAME="ROBOTS" CONTENT="NOARCHIVE"/>
+
+        <meta CONTENT="NO-CACHE" HTTP-EQUIV="CACHE-CONTROL"/>
+
+	<meta HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE"/> 
+
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+        <meta name="Description" content=""/>
+
+        <meta name="Keywords" content=""/>
+
+    </head>
+    <body/>
+</html>
+
+

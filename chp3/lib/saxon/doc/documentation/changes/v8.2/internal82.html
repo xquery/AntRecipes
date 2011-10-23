@@ -1,0 +1,112 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--changes/v8.2/internal82
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: Internal Changes</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Internal Changes">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>Internal Changes</h1>
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>Receiver</code> interface has been changed: instead of a <code>Configuration</code> and
+         a <code>LocationProvider</code> being passed down the pipeline, the context information for the pipeline is
+         now passed as a <code>PipelineConfiguration</code> object. The provides access to the <code>Configuration</code> and
+         the <code>LocationProvider</code>, as well as other information: currently an <code>ErrorListener</code> and 
+         a <code>URIResolver</code>. This means that warnings detected by receivers in the pipeline (for example, serialization
+         errors and validation warnings) can now be properly reported to the <code>ErrorListener</code> associated with a
+         transformation, rather than with the global <code>ErrorListener</code> associated with the <code>Configuration</code>.
+         This change was necessary in order to implement the JAXP <code>Validator</code> interface (which uses a local
+         <code>ErrorHandler</code>), but it has other spin-off benefits. In particular, it means that the information passed
+         down a pipeline can in future be extended by adding new fields to the <code>PipelineConfiguration</code> class,
+         with no impact on the <code>Receiver</code> interface itself.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">User-defined functions are now evaluated lazily (that is, if the function returns a sequence, each item in the sequence
+         is evaluated only when it is needed). This has required some changes to the implementation of tail call optimization.
+         There are now two kinds of Closure: the new <code>Closure</code> class is used when the results are 
+         needed only once, as when
+         evaluating a function call. The old <code>Closure</code> class is renamed <code>MemoClosure</code>, 
+         and is used when the results are likely
+         to be needed more than once, as when evaluating a variable.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Saxon now does static analysis of variable references to identify variables that are never referenced, and 
+         variables that are only referenced once. If a variable is only referenced once, then during lazy evaluation of
+         the variable the value will be discarded rather than being retained in memory for subsequent reference. There
+         are now two classes supporting lazy evaluation: <code>Closure</code> is a value that is evaluated when first
+         needed and is immediately discarded from
+         memory, while <code>MemoClosure</code> also defers evaluation, but retains each item in the evaluated sequence
+         once it is known. This analysis is currently done only for local variables and function parameters
+         (not for global variables or XSLT template parameters).
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The algorithm for type-checking (the XPath function call rules) has been rewritten to follow the specification more
+         precisely. The rules have gradually been refined over successive W3C drafts, and although the changes are very minor,
+         the implementation had got a little out of step.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The optimizer now recognizes that certain expressions cannot be moved out of a loop. A classic example is
+         the XQuery expression <code>count(./(for $i in 1 to 5 return &lt;a/&gt;))</code>, which should return 5. Previous
+         Saxon releases moved the element constructor out of the loop, and thus returned the value 1. Similar
+         constructs occur in XSLT in the case of an XPath expression that calls a stylesheet function. At present all calls
+         on user-defined functions (and XSLT templates) are treated as if they might create new nodes. This does not
+         affect expressions that create new nodes in a context where the final result cannot depend on the identity of the
+         new nodes: for example, if a node is created or a function is called within the predicate of a filter expression, 
+         this will still be extracted from the loop and evaluated only once.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The same considerations apply to path expressions in which one of the steps constructs new nodes.
+         For example the result of <code>count(a/&lt;x/&gt;)</code> should be equal to the number of <code>a</code>
+         elements selected; in previous Saxon releases it was always 1.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The TinyTree data structure now allows a single TinyTree to contain any number of trees rooted either at
+         document nodes or element nodes. Allowing multiple parentless element nodes in a single TinyTree reduces the
+         overhead involved in constructing sequences of elements.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Where appropriate, <code>xsl:copy-of</code> now creates virtual copies of nodes, using the new class
+         <code>VirtualCopy</code>. This is simply a reference to the node that was copied, together with sufficient
+         information to give the copy a different node identity from the original. This technique is used in cases where
+         the copy is not being directly written to another tree, for example where it is returned as the value of a
+         variable or function.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="internal82.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../v8.2.html">Up</a>&nbsp;&nbsp;<a class="nav" href="../v811.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

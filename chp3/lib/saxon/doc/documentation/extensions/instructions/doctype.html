@@ -1,0 +1,221 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--extensions/instructions/doctype
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: saxon:doctype</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: saxon:doctype">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>saxon:doctype</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>saxon:doctype</code> instruction is used to insert a document type declaration into the
+         current output file. It should be instantiated before the first element in the output file is written. It must be used only
+         
+         when writing a final result tree (not a temporary tree) and only when writing text nodes. The reason for these
+         restrictions is that saxon:doctype writes directly to the serialized output stream (internally it uses disable-output-escaping
+         to achieve this). It is not possible to represent a doctype declaration as a node on a temporary tree.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>saxon:doctype</code> instruction takes no attributes. The content of the element is a template-body
+         that is instantiated to create an XML document that represents the DTD to be generated; this XML
+         document is then serialized using a special output method that produces DTD syntax rather than
+         XML syntax.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">If this element is present the doctype-system and doctype-public attributes of <code>xsl:output</code> should not
+         be present.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The generated XML document uses the following elements, where the namespace prefix "dtd" is
+         used for the namespace URI "http://saxon.sf.net/dtd":
+      </p>
+      
+      
+      <table xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         
+         
+         <tr>
+            <td valign="top" width="30%">
+               <p>dtd:doctype</p>
+            </td>
+            
+            <td>
+               <p>Represents the document type declaration. This is always the top-level element. The element
+                  may contain dtd:element, dtd:attlist, dtd:entity, and dtd:notation elements. It may have the following
+                  attributes:<br>
+                  <b>name</b> (mandatory) The name of the document type<br>
+                  <b>system</b> The system ID<br>
+                  <b>public</b> The public ID
+                  
+               </p>
+            </td>
+         </tr>
+         
+         
+         <tr>
+            <td valign="top" width="30%">
+               <p>dtd:element</p>
+            </td>
+            
+            <td>
+               <p>Represents an element type declaration. This is always a child of dtd:doctype. The element
+                  is always empty. It may have the following attributes:<br>
+                  <b>name</b> (mandatory) The name of the element type<br>
+                  <b>content</b> (mandatory) The content model, exactly as it appears in a DTD, for example
+                  content="(#PCDATA)" or content="( a | b | c)*"<br>
+                  
+               </p>
+            </td>
+         </tr>
+         
+         
+         <tr>
+            <td valign="top" width="30%">
+               <p>dtd:attlist</p>
+            </td>
+            
+            <td>
+               <p>Represents an attribute list declaration. This is always a child of dtd:doctype. The element
+                  will generally have one or more dtd:attribute children. It may have the following attributes:<br>
+                  <b>element</b> (mandatory) The name of the element type<br>
+                  
+               </p>
+            </td>
+         </tr>
+         
+         
+         <tr>
+            <td valign="top" width="30%">
+               <p>dtd:attribute</p>
+            </td>
+            
+            <td>
+               <p>&gt;Represents an attribute declaration within an attribute list.
+                  This is always a child of dtd:attlist. The element
+                  will always be empty. It may have the following attributes:<br>
+                  <b>name</b> (mandatory) The name of the attribute<br>
+                  <b>type</b> (mandatory) The type of the attribute, exactly as it appears in a DTD, for example
+                  type="ID" or type="( red | green | blue)"<br>
+                  <b>value</b> (mandatory) The default value of the attribute, exactly as it appears in a DTD, for example
+                  value="#REQUIRED" or value="#FIXED 'blue'"<br>
+                  
+               </p>
+            </td>
+         </tr>
+         
+         
+         <tr>
+            <td valign="top" width="30%">
+               <p>dtd:entity</p>
+            </td>
+            
+            <td>
+               <p>Represents an entity declaration.
+                  This is always a child of dtd:doctype. The element may be empty, or it may have content. The
+                  content is a template body, which is instantiated to define the value of an internal parsed
+                  entity. Note that this value includes the delimiting quotes. The xsl:entity element
+                  may have the following attributes:<br>
+                  <b>name</b> (mandatory) The name of the entity<br>
+                  <b>system</b> The system identifier<br>
+                  <b>public</b> The public identifier<br>
+                  <b>parameter</b> Set to "yes" for a parameter entity<br>
+                  <b>notation</b> The name of a notation, for an unparsed entity<br>
+                  
+               </p>
+            </td>
+         </tr>
+         
+         
+         <tr>
+            <td valign="top" width="30%">
+               <p>dtd:notation</p>
+            </td>
+            
+            <td>
+               <p>Represents a notation declaration.
+                  This is always a child of dtd:doctype. The element will always be empty. It
+                  may have the following attributes:<br>
+                  <b>name</b> (mandatory) The name of the notation<br>
+                  <b>system</b> The system identifier<br>
+                  <b>public</b> The public identifier<br>
+                  
+               </p>
+            </td>
+         </tr>
+         
+         
+      </table>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Note that Saxon will perform only minimal validation on the DTD being generated; it will
+         output the components requested but will not check that this generates well-formed XML, let
+         alone that the output document instance is valid according to this DTD.
+      </p>
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Example:</p>
+      
+      
+      
+      
+      <div class="codeblock" style="border: solid thin; background-color: #B1CCC7; padding: 2px"><pre><code>
+&lt;xsl:template match="/"&gt;
+  &lt;saxon:doctype xsl:extension-element-prefixes="saxon"&gt;
+  &lt;dtd:doctype name="booklist"
+        xmlns:dtd="http://saxon.sf.net/dtd" xsl:exclude-result-prefixes="dtd"&gt;
+    &lt;dtd:element name="booklist" content="(book)*"/&gt;
+    &lt;dtd:element name="book" content="EMPTY"/&gt;
+    &lt;dtd:attlist element="book"&gt;
+      &lt;dtd:attribute name="isbn" type="ID" value="#REQUIRED"/&gt;
+      &lt;dtd:attribute name="title" type="CDATA" value="#IMPLIED"/&gt;
+    &lt;/dtd:attlist&gt;
+    &lt;dtd:entity name="blurb"&gt;'A &lt;i&gt;cool&lt;/i&gt; book with &amp;gt; 200 pictures!'&lt;/dtd:entity&gt;
+    &lt;dtd:entity name="cover" system="cover.gif" notation="GIF"/&gt;
+    &lt;dtd:notation name="GIF" system="http://gif.org/"/&gt;
+  &lt;/dtd:doctype&gt;
+  &lt;/saxon:doctype&gt;
+  &lt;xsl:apply-templates/&gt;
+&lt;/xsl:template&gt;</code></pre></div>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Although not shown in this example, there is nothing to stop the DTD being generated as the
+         output of a transformation, using instructions such as <code>xsl:value-of</code> and <code>xsl:call-template</code>.
+         It is also possible to use <code>xsl:text</code> with <code>disable-output-escaping="yes"</code> to output DTD constructs not
+         covered by this syntax, for example conditional sections and references to parameter entities.
+      </p>
+      
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="doctype.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../instructions.html">Up</a>&nbsp;&nbsp;<a class="nav" href="import-query.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

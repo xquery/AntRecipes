@@ -1,0 +1,56 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--extensibility/uri-resolver
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: Writing a URI Resolver for Input Files</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Writing a URI Resolver for Input Files">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      
+      <h1>Writing a URI Resolver for Input Files</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Saxon allows you to write your own <code>URIResolver</code> to handle the URIs of input documents, as
+         defined in the JAXP 1.2 specification. Such a <code>URIResolver</code> is used to process the URIs supplied to the
+         <code>doc()</code> and <code>document()</code> functions. It is also used to process the URIs supplied for the
+         source document and the stylesheet on the command line. In XSLT it is used to process the URIs used
+         in the <code>xsl:include</code> and <code>xsl:import</code> and <code>xsl:import-schema</code> declarations, 
+         and in XQuery it supports the location URIs in <code>import module</code> and <code>import schema</code>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>URIResolver</code> is called to process
+         the supplied URI, and it returns a JAXP <code>Source</code> object, which Saxon uses as the source of
+         the input. Note that the <code>Source</code> must be one of the implementations of <code>Source</code> that Saxon
+         recognizes: you cannot write your own implementations of the JAXP <code>Source</code> class.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="uri-resolver.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="output-uri-resolver.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

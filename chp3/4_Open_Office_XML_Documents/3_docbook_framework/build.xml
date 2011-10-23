@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ============================================================= -->
+<!-- ANT RECIPES FOR WEB DEVELOPERS CHP XML Recipe                 -->
+<!-- Author: James Fuller / Webcomposite                           -->
+<!-- Email/WWW: jim.fuller@webcomposite.com /  www.antrecipes.com  -->
+<!-- ============================================================= -->
+<!--    (C) Copyright James Fuller 2010 - All Rights Reserved.     -->
+<!--  use the -debug flag for more information when running ant  //-->
+<project name="dbf-docbook" default="all" basedir=".">
+	<!-- Load our properties -->
+	<property file="project.properties"/>
+	<!-- ===================================================== -->
+	<!-- Example1                                              -->
+	<!-- ===================================================== -->
+	<target name="example1">
+		<ant antfile="${dbf.basedir}/build-docbook.xml" target="all">
+			<property name="docbook.dir" value="dbf"/>
+			<property name="docbook.file" value="example"/>
+		</ant>
+	</target>
+	<!-- ===================================================== -->
+	<!-- Run Target                                            -->
+	<!-- ===================================================== -->
+	<target name="run" depends="clean, example1">
+  </target>
+	<!-- ===================================================== -->
+	<!-- Clean Target                                          -->
+	<!-- ===================================================== -->
+	<target name="clean">
+		<ant antfile="${dbf.basedir}/build-docbook.xml" target="clean"/>
+	</target>
+</project>

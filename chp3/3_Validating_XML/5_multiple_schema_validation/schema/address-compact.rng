@@ -1,0 +1,4 @@
+element address {
+element first { text },
+element last { text }, 
+element phone { text } }

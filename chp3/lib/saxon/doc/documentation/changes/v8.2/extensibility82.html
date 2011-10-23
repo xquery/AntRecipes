@@ -1,0 +1,60 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--changes/v8.2/extensibility82
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: Changes to external Java bindings</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Changes to external Java bindings">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>Changes to external Java bindings</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">When extension function calls map to polymorphic Java methods, the selection of the particular method to invoke
+         is now delayed until after the type analysis of the expression tree has been done. This gives a better chance of identifying
+         the required method from the static types of the supplied arguments.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Extension types (types returned by extension functions that do not relate to any type in the XPath type system)
+         are now analysed when binding Java methods. This also improves the chances of binding polymorphic methods
+         successfully.
+      </p> 
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The conversion of Java objects to XPath data types when supplied as stylesheet or query parameters
+         now takes account of the declared type (at least to some extent). If the type is declared using a Java class
+         for example <code>j:java.util.Date</code> where the namespace prefix <code>j</code> is bound to
+         <code>http://saxon.sf.net/java-type</code>, then no conversion will take place, only checking that the
+         supplied value is of the correct class. It is then possible to manage all conversions explicitly by calling Java methods
+         on this object (represented as extension functions).
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="extensibility82.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../v8.2.html">Up</a>&nbsp;&nbsp;<a class="nav" href="schema82.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

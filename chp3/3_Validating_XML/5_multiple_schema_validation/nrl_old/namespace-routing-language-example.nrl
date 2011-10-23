@@ -1,0 +1,17 @@
+<rules xmlns="http://www.thaiopensource.com/validate/nrl">
+  <namespace ns="http://relaxng.org/ns/structure/1.0">
+    <validate schema="RELAXNG.RNG"/>
+  </namespace>
+  <namespace ns="http://www.w3.org/1999/XSL/Transform">
+    <validate schema="XSLT.RNG"/>
+  </namespace>  
+  <namespace ns="http://www.apress.com/address">
+    <validate schema="address-xml.rng"/>
+  </namespace>
+  <namespace ns="http://www.ruminate.co.uk/address">
+      <validate schema="address-xmlschema.xsd"/>
+  </namespace>
+  <anyNamespace>
+      <allow/>
+  </anyNamespace>
+</rules>

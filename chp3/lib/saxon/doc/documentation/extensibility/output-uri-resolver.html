@@ -1,0 +1,57 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--extensibility/output-uri-resolver
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: Writing a URI Resolver for Output Files</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Writing a URI Resolver for Output Files">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      
+      
+      <h1>Writing a URI Resolver for Output Files</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Saxon also allows you to write an <code>OutputURIResolver</code>, which performs an
+         analogous role for URIs specified in the <code>href</code> attribute of <code>xsl:result-document</code>.
+         This is therefore applicable to XSLT only.
+         The <code>OutputURIResolver</code> is called when writing of the output document starts, at which point it must
+         return a JAXP <code>Result</code> object to act as the output destination. It is called again when writing of an output document
+         is complete.
+      </p> 
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">You can nominate an <code>OutputURIResolver</code> by calling 
+         <code>((Controller)transformer).setOutputURIResolver(new UserOutputResolver())</code>,
+         or by calling <code>factory.setAttribute("http://saxon.sf.net/feature/outputURIResolver", 
+            new UserOutputResolver())</code>.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="output-uri-resolver.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

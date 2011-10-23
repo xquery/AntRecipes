@@ -1,0 +1,208 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--schema-processing/commandline
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: Running Validation from the Command Line</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Running Validation from the Command Line">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      
+      
+      <h1>Running Validation from the Command Line</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The Java class <code>com.saxonica.Validate</code> allows you to validate
+         a source XML document against a given schema, or simply to check a schema for
+         internal correctness.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">To validate a source document, write:</p>
+      
+      
+      <p class="command">java&nbsp; com.saxonica.Validate 
+         &nbsp; [options]&nbsp;&nbsp;source.xml&nbsp;&nbsp;schema.xsd&nbsp;&nbsp;
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The options must come first, then the file names.</p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">To check a schema for internal correctness, write:</p>
+      
+      
+      <p class="command">java&nbsp; com.saxonica.Validate 
+         &nbsp; -s [other-options]&nbsp;&nbsp;schema.xsd&nbsp;&nbsp;
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The options are as follows (in any order): </p>
+      
+      
+      <table xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         
+         
+         
+         <tr>
+            <td valign="top">
+               <p>-r classname</p>
+            </td>
+            
+            <td>
+               <p>Use the specified URIResolver to process all URIs. The URIResolver is a user-defined class,
+                  that implements the URIResolver interface defined in JAXP, whose function is to take a URI supplied as
+                  a string, and return a SAX InputSource. It is invoked to process URIs used in the doc() function,
+                  and (if -u is also specified) to process the URI
+                  of the source file provided on the command line.
+               </p>
+            </td>
+         </tr>
+         
+         
+         <tr>
+            <td valign="top">
+               <p>-s</p>
+            </td>
+            
+            <td>
+               <p>Schema check only. In this case, the source file name should be omitted. The program reads the
+                  supplied schema, checks it for internal consistency, reports any errors, and exits.
+               </p>
+            </td>
+         </tr>
+         
+         
+         <tr>
+            <td valign="top">
+               <p>&gt;-t</p>
+            </td>
+            
+            <td>
+               <p>Requests display of version and timing information to the standard error output.</p>
+            </td>
+         </tr>
+         
+         
+         <tr>
+            <td valign="top">
+               <p>-u</p>
+            </td>
+            
+            <td>
+               <p>Indicates that the name of the source document and schema document are supplied as URIs;
+                  otherwise they are taken as filenames, unless they start with "http:" or "file:", in which
+                  case they they are taken as URLs.
+               </p>
+            </td>
+         </tr>
+         
+         
+         <tr>
+            <td valign="top">
+               <p>-vlax</p>
+            </td>
+            
+            <td>
+               <p>Invokes lax validation. This option has no effect when the -s option is also used. Lax
+                  validation validates elements only if there is an element declaration to validate them against,
+                  or if they have an xsi:type attribute.
+               </p>
+            </td>
+         </tr>
+         
+         
+         <tr>
+            <td valign="top">
+               <p>-x classname</p>
+            </td>
+            
+            <td>
+               <p>Requests use of the specified SAX parser for parsing the source file.
+                  The classname must be the fully-qualified  name
+                  of a Java class that implements the <code>org.xml.sax.XMLReader</code> interface. In the absence
+                  of this argument, the standard JAXP facilities are used to locate an XML parser. Normally this
+                  means that the Crimson parser included as standard in JDK 1.4 will be used. Note that the XML parser
+                  performs the raw XML parsing only; Saxon always does the schema validation itself.
+               </p>
+            </td>
+         </tr>
+         
+         
+         <tr>
+            <td valign="top">
+               <p>-?</p>
+            </td>
+            <td>
+               <p>Display command syntax</p>
+            </td>
+         </tr>
+         
+         
+         
+         <tr>
+            <td valign="top">
+               <p>source.xml</p>
+            </td>
+            
+            <td>
+               <p>Identifies the source file to be validated. This argument is mandatory unless the 
+                  <code>-s</code> option is present, in which case it must be omitted. The argument can be
+                  specified as "-" to read the source file from standard input.
+               </p>
+            </td>
+         </tr>
+         
+         
+         <tr>
+            <td valign="top">
+               <p>schema.xsd</p>
+            </td>
+            
+            <td>
+               <p>Identifies the schema to be used for validation. This argument is mandatory if the 
+                  <code>-s</code> option is present. In other cases it may be omitted, and the schema to be 
+                  used for validation will then be located using the <code>xsi:schemaLocation</code> and
+                  <code>xsi:noNamespaceSchemaLocation</code> attributes in the source document. The argument can be
+                  specified as "-" to read the schema from standard input.
+               </p>
+            </td>
+         </tr>
+         
+         
+      </table>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The results of processing the schema, and of validating the source document against the
+         schema, are written to the standard error output. Unless the <code>-t</code> option is
+         used, successful processing of the source document and schema results in no output.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="commandline.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="validation-api.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

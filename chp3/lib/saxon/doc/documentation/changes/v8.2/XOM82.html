@@ -1,0 +1,64 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--changes/v8.2/XOM82
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: Support for XOM Object Model</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Support for XOM Object Model">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>Support for XOM Object Model</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Saxon now supports the XOM object model (see <a href="http://www.xom.nu/" target="_blank" class="bodylink">http://www.xom.nu/</a>)
+         alongside DOM, JDOM, and the native Saxon object model.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">As with the JDOM interface, you can wrap a XOM Document node in a wrapper that makes it into a
+         Saxon <code>DocumentInfo</code> and a JAXP <code>Source</code> object, which can then be used
+         as input to methods such as the JAXP <code>transform()</code> method; it can also be returned by a
+         URIResolver in response to calls on the <code>doc()</code> and <code>document()</code> functions.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The new JAXP 1.3 XPath API also offers support for accessing XOM documents using XPath.</p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The XOM interface to Saxon was written by Wolfgang Hoschek, using the existing JDOM interface as
+         a starting point.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">To use the XOM interface, you need to instal XOM itself, and you also need to have <code>saxon-xom.jar</code>
+         on your class path.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="XOM82.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../v8.2.html">Up</a>&nbsp;&nbsp;<a class="nav" href="xslt82.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

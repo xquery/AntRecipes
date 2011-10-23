@@ -1,0 +1,6 @@
+Dear Jason,
+
+We would like to understand your opinions on using Ant 1.6.5 the open
+source Java build tool. 
+
+regards, Apache

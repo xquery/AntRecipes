@@ -1,0 +1,149 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--extensions/functions/analyze-string
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: saxon:analyze-string()</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: saxon:analyze-string()">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>saxon:analyze-string()</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><b>analyze-string($select as xs:string*, $regex as xs:string,
+            $matching as jt:net.sf.saxon.expr.UserFunction, 
+            $non-matching as jt:net.sf.saxon.expr.UserFunction) ==&gt; item()*</b></p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><b>analyze-string($select as xs:string*, $regex as xs:string,
+            $matching as jt:net.sf.saxon.expr.UserFunction, 
+            $non-matching as jt:net.sf.saxon.expr.UserFunction,
+            $flags as xs:string) ==&gt; item()*</b></p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><i>This function is available only in Saxon-SA</i></p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The action of this function is analagous to the <code>xsl:analyze-string</code> instruction
+         in XSLT 2.0. It is provided to give XQuery users access
+         to regex facilities comparable to those provided in XSLT 2.0. (The function is available in XSLT
+         also, but is unnecessary in that environment.)
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The first argument defines the string to be analyzed. The second argument is the regex itself,
+         supplied in the form of a string: it must conform to the same syntax as that defined for the
+         standard XPath 2.0 functions such as <code>matches()</code>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The third and fourth arguments are functions (created using 
+         <a class="bodylink" href="javascript:tosubpage('extensions','functions','function')">saxon:function</a>),
+         called the matching and non-matching
+         functions respectively. The matching function is called once for each substring of the input
+         string that matches the regular expression; the non-matching function is called once for each
+         substring that does not match. These functions may return any sequence. The final result of the 
+         <code>saxon:analyze-string</code> function is the result of concatenating these sequences in order.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The matching function takes two arguments. The first argument is the substring that was matched.
+         The second argument is a sequence, containing the matched subgroups within this substring. The first
+         item in this sequence corresponds to the value <code>$1</code> as supplied to the <code>replace()</code>
+         function, the second item to <code>$2</code>, and so on.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The non-matching function takes a single argument, namely the substring that was not matched.</p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The detailed rules follow <code>xsl:analyze-string</code>. The regex must not match a zero-length
+         string, and neither the matching nor non-matching functions will ever be called to process a zero-length
+         string.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The following example is a "multiple match" example. It takes input like this:</p>
+      
+      
+      <div class="codeblock" style="border: solid thin; background-color: #B1CCC7; padding: 2px"><pre><code>&lt;doc&gt;There was a young fellow called Marlowe&lt;/doc&gt;</code></pre></div>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">and produces output like this:</p>
+      
+      
+      <div class="codeblock" style="border: solid thin; background-color: #B1CCC7; padding: 2px"><pre><code>&lt;out&gt;Th[e]r[e] was a young f[e]llow call[e]d Marlow[e]&lt;/out&gt;</code></pre></div>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The XQuery code to achieve this is:</p>
+      
+      
+      <div class="codeblock" style="border: solid thin; background-color: #B1CCC7; padding: 2px"><pre><code>declare namespace f="f.uri";
+
+declare function f:match ($c, $gps) { concat("[", $c, "]") };
+
+declare function f:non-match ($c) { $c };
+
+&lt;out&gt;
+    {string-join(
+        saxon:analyze-string(doc, "e", 
+                             saxon:function('f:match', 2), 
+                             saxon:function('f:non-match', 1)), "")}
+&lt;/out&gt;
+
+</code></pre></div>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The following example is a "single match" example. Here the regex matches the entire input,
+         and the matching function uses the subgroups to rearrange the result. The input in this case is
+         the document <code>&lt;doc&gt;12 April 2004&lt;/doc&gt;</code> and the output is 
+         <code>&lt;doc&gt;2004 April 12&lt;/doc&gt;</code>. Here is the query:
+      </p>
+      
+      
+      <div class="codeblock" style="border: solid thin; background-color: #B1CCC7; padding: 2px"><pre><code>declare namespace f="f.uri";
+
+declare function f:match ($c, $gps) { string-join(($gps[3], $gps[2], $gps[1]), " ") };
+
+declare function f:non-match ($c) { error("invalid date") };
+
+&lt;out&gt; {
+        saxon:analyze-string(doc, "([0-9][0-9]) ([A-Z]*) ([0-9]{4})", 
+                             saxon:function('f:match', 2), 
+                             saxon:function('f:non-match', 1), "i")}
+&lt;/out&gt;</code></pre></div>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">This particular example could be achieved using the <code>replace()</code> function: the difference
+         is that <code>saxon:analyze-string</code> can insert markup into the result, which <code>replace()</code>
+         cannot do.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="analyze-string.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../functions.html">Up</a>&nbsp;&nbsp;<a class="nav" href="base64binarytooctets.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

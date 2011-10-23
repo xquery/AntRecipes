@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<!-- ============================================================= -->
+<!-- ANT RECIPES FOR WEB DEVELOPERS CHP 2 XML Recipe              -->
+<!-- Author: James Fuller / Webcomposite                           -->
+<!-- Email/WWW: jim.fuller@webcomposite.com /  www.antrecipes.com  -->
+<!-- ============================================================= -->
+<!--    (C) Copyright James Fuller 2009 - All Rights Reserved.     -->
+<!--  use the -debug flag for more information when running ant  //-->
+<project name="Jing Task" default="run" basedir=".">
+	<description>Validate XML with Jing</description>
+	<!-- ===================================================== -->
+	<!-- Define property                                       -->
+	<!-- ===================================================== -->
+	<property name="jar.jing" location="../../lib/jing/bin/jing.jar"/>
+	<!-- ===================================================== -->
+	<!-- Macrodef                                              -->
+	<!-- ===================================================== -->
+	<macrodef name="jing2">
+		<attribute name="schema"/>
+		<attribute name="xml"/>
+		<sequential>
+			<java jar="${jar.jing}" fork="true" failonerror="true">
+				<arg value="@{schema}"/>
+				<arg value="@{xml}"/>
+			</java>
+		</sequential>
+	</macrodef>
+	<!-- ===================================================== -->
+	<!-- Task definition	                                   -->
+	<!-- ===================================================== -->
+	<taskdef name="jing" classname="com.thaiopensource.relaxng.util.JingTask">
+		<classpath>
+			<pathelement path="${jar.jing}"/>
+		</classpath>
+	</taskdef>
+	<!-- ===================================================== -->
+	<!-- Example1 Target                                       -->
+	<!-- ===================================================== -->
+	<target name="example1" description="validate relaxng">
+		<jing rngfile="schema/address-xml.rng">
+			<fileset dir="data">
+				<include name="address-valid-sample.xml"/>
+			</fileset>
+		</jing>
+	</target>
+	<!-- ===================================================== -->
+	<!-- Example2 Target                                       -->
+	<!-- ===================================================== -->
+	<target name="example2" description="validate relaxng compact">
+		<jing rngfile="schema/address-compact.rng" compactsyntax="yes">
+			<fileset dir="data">
+				<include name="address-valid-sample.xml"/>
+			</fileset>
+		</jing>
+	</target>
+	<!-- ===================================================== -->
+	<!-- Example3 Target                                       -->
+	<!-- ===================================================== -->
+	<target name="example3" description="validate with macrodef">
+		<jing2 schema="schema/address-xml.rng" xml="data/address-valid-sample.xml"/>
+		<jing2 schema="schema/address-xmlschema.xsd" xml="data/address-valid-xmlschema-sample.xml"/>
+	</target>
+	<!-- ===================================================== -->
+	<!-- Example5 Target                                       -->
+	<!-- ===================================================== -->
+	<target name="example4" description="validate with NRL">
+		<jing2 schema="schema/all.nrl" xml="data/address-nrl-sample.xml"/>
+	</target>
+	<!-- ===================================================== -->
+	<!-- Run Target                                            -->
+	<!-- ===================================================== -->
+	<target name="run" depends="clean,example1,example2,example3" description="runs all examples"/>
+	<!-- ===================================================== -->
+	<!-- Clean Target                                          -->
+	<!-- ===================================================== -->
+	<target name="clean">
+		<delete dir="result"/>
+		<mkdir dir="result"/>
+	</target>
+</project>

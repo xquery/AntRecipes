@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ============================================================= -->
+<!-- ANT RECIPES FOR WEB DEVELOPERS CHP 3 Web Recipe               -->
+<!-- Author: James Fuller / Webcomposite                           -->
+<!-- Email/WWW: jim.fuller@webcomposite.com /  www.antrecipes.com  -->
+<!-- ============================================================= -->
+<!--    (C) Copyright James Fuller 2010 - All Rights Reserved.     -->
+<!--  use the -debug flag for more information when running ant  //-->
+<project name="apachetl" basedir="." default="run">
+	<description>control apache webserver</description>
+	<!-- ===================================================== -->
+	<!-- Start Webserver Target                                -->
+	<!-- ===================================================== -->
+	<target name="start-webserver">
+		<apachectl operation="start"/>
+	</target>
+	<!-- ===================================================== -->
+	<!-- Stop Webserver Target                                 -->
+	<!-- ===================================================== -->
+	<target name="stop-webserver">
+		<apachectl operation="stop"/>
+	</target>
+	<!-- ===================================================== -->
+	<!-- Run Target                                            -->
+	<!-- ===================================================== -->
+	<target name="run" depends="clean,stop-webserver, start-webserver" description="runs all examples"/>
+	<!-- ===================================================== -->
+	<!-- Clean Target                                          -->
+	<!-- ===================================================== -->
+	<target name="clean">
+		<delete dir="result"/>
+		<mkdir dir="result"/>
+	</target>
+    <!-- ===================================================== -->
+    <!-- Macrodef                                              -->
+    <!-- ===================================================== -->
+	<macrodef name="apachectl">
+		<attribute name="operation" default="status"/>
+		<sequential>
+			<exec command="apachectl">
+				<arg line="@{operation}"/>
+			</exec>
+		</sequential>
+	</macrodef>
+</project>

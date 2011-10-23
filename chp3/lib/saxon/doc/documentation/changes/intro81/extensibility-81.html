@@ -1,0 +1,62 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--changes/intro81/extensibility-81
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: Changes to Extension Function Calling Mechanism</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Changes to Extension Function Calling Mechanism">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>Changes to Extension Function Calling Mechanism</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Changes have been made to the rules for calling Java extension functions.</p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The rules for selecting a Java extension function have been changed to align better with
+         the standard function calling rules in XPath 2.0. The main impact is that fewer implicit
+         type conversions are supported for the arguments. For example, if the Java method expects
+         an integer, then it is not acceptable to supply a string. Similarly, if the Java method expects a
+         single item, then you cannot supply a sequence of several items.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">In addition, it must now be possible
+         to identify a Java method uniquely at compile time, based on the static types of the supplied
+         arguments. If there are several Java methods with the same name in the target class, it may 
+         be necessary to cast the supplied argument explicitly to ensure that enough information
+         about the type of the argument is available statically.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">If difficulties arise in binding extension functions, the -TJ option on the command line
+         gives useful diagnostics.
+      </p>
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="extensibility-81.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../intro81.html">Up</a>&nbsp;&nbsp;<a class="nav" href="serialization-81.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

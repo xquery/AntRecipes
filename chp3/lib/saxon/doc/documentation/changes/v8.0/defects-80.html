@@ -1,0 +1,158 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--changes/v8.0/defects-80
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: Defects cleared in Version 8.0</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Defects cleared in Version 8.0">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>Defects cleared in Version 8.0</h1>
+      
+      
+      <p><a href="http://sourceforge.net/tracker/index.php?func=detail&amp;aid=966590&amp;group_id=29872&amp;atid=397617" target="_new" class="bodylink">966590</a>&nbsp;
+         		With the HTML output method, characters in strings produced using
+         character maps are subjected to escaping
+      </p>
+      
+      
+      <p><a href="http://sourceforge.net/tracker/index.php?func=detail&amp;aid=965882&amp;group_id=29872&amp;atid=397617" target="_new" class="bodylink">965882</a>&nbsp;
+         		Applications using the Java API to access namespaced attributes in
+         a standard tree may get incorrect answers or failures
+      </p>
+      
+      
+      <p><a href="http://sourceforge.net/tracker/index.php?func=detail&amp;aid=962737&amp;group_id=29872&amp;atid=397617" target="_new" class="bodylink">962737</a>&nbsp;
+         		When non-standard prefixes are used for standard namespaces in the
+         result document (e.g. the XSLT namespace), Saxon may serialize them incorrectly.
+      </p>
+      
+      
+      <p><a href="http://sourceforge.net/tracker/index.php?func=detail&amp;aid=962068&amp;group_id=29872&amp;atid=397617" target="_new" class="bodylink">962068</a>&nbsp;
+         		Casting xs:integer to xs:long returns the original xs:integer unchanged.
+      </p>
+      
+      
+      <p><a href="http://sourceforge.net/tracker/index.php?func=detail&amp;aid=959979&amp;group_id=29872&amp;atid=397617" target="_new" class="bodylink">959979</a>&nbsp;
+         		The distinct-values() function may fail with a ClassCastException
+         when processing a heterogeous sequence.
+      </p>
+      
+      
+      <p><a href="http://sourceforge.net/tracker/index.php?func=detail&amp;aid=959940&amp;group_id=29872&amp;atid=397617" target="_new" class="bodylink">959940</a>&nbsp;
+         		In XQuery, unpredictable errors occur if global variables are declared
+         in multiple query modules.
+      </p>
+      
+      
+      <p><a href="http://sourceforge.net/tracker/index.php?func=detail&amp;aid=957362&amp;group_id=29872&amp;atid=397617" target="_new" class="bodylink">957362</a>&nbsp;
+         		In XSLT, xsl:fallback instructions within unrecognized extension
+         elements are not properly validated.
+      </p>
+      
+      
+      <p><a href="http://sourceforge.net/tracker/index.php?func=detail&amp;aid=949841&amp;group_id=29872&amp;atid=397617" target="_new" class="bodylink">949841</a>&nbsp;
+         		In XQuery, declaring a variable in the default clause of a typeswitch
+         expression does not work.
+      </p>
+      
+      
+      <p><a href="http://sourceforge.net/tracker/index.php?func=detail&amp;aid=949840&amp;group_id=29872&amp;atid=397617" target="_new" class="bodylink">949840</a>&nbsp;
+         		When objects such as variables or parameters are defined in a
+         reserved namespace, the error is not always reported correctly.
+      </p>
+      
+      
+      <p><a href="http://sourceforge.net/tracker/index.php?func=detail&amp;aid=949839&amp;group_id=29872&amp;atid=397617" target="_new" class="bodylink">949839</a>&nbsp;
+         		Space stripping (xsl:strip-space) does not work correctly when
+         input is supplied in the form of a pre-built tree (DOMSource, JDOM, etc).
+      </p>
+      
+      
+      <p><a href="http://sourceforge.net/tracker/index.php?func=detail&amp;aid=940778&amp;group_id=29872&amp;atid=397617" target="_new" class="bodylink">940778</a>&nbsp;
+         		When buiding a result tree, adjacent text nodes are not merged.
+      </p>
+      
+      
+      <p><a href="http://sourceforge.net/tracker/index.php?func=detail&amp;aid=940227&amp;group_id=29872&amp;atid=397617" target="_new" class="bodylink">940227</a>&nbsp;
+         		When using a DOMSource, unprefixed attributes are assumed to be
+         in the default namespace rather than the null namespace.
+      </p>
+      
+      
+      <p><a href="http://sourceforge.net/tracker/index.php?func=detail&amp;aid=938531&amp;group_id=29872&amp;atid=397617" target="_new" class="bodylink">938531</a>&nbsp;
+         		In XQuery, a namespace prefix declared in the prolog takes precedence
+         over one declared in an element constructor.
+      </p>
+      
+      
+      <p><a href="http://sourceforge.net/tracker/index.php?func=detail&amp;aid=938530&amp;group_id=29872&amp;atid=397617" target="_new" class="bodylink">938530</a>&nbsp;
+         		In XQuery, an element constructor of the form &lt;a&gt;{1}{2}&lt;/a&gt;
+         causes a spurious space character to be output.
+      </p>
+      
+      
+      <p><a href="http://sourceforge.net/tracker/index.php?func=detail&amp;aid=932417&amp;group_id=29872&amp;atid=397617" target="_new" class="bodylink">932417</a>&nbsp;
+         		In XQuery, the default collation specified in the prolog is ignored.
+      </p>
+      
+      
+      <p><a href="http://sourceforge.net/tracker/index.php?func=detail&amp;aid=931599&amp;group_id=29872&amp;atid=397617" target="_new" class="bodylink">931599</a>&nbsp;
+         		With xs:decimal operands, the expression <code xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">A mod B</code> gives the wrong answer
+         if A is less than B.
+      </p>
+      
+      
+      <p><a href="http://sourceforge.net/tracker/index.php?func=detail&amp;aid=930902&amp;group_id=29872&amp;atid=397617" target="_new" class="bodylink">930902</a>&nbsp;
+         		In XSLT, the checks that parameters in <code xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">xsl:call-template</code>
+         match the parameters in the template being called incorrectly take account of 
+         tunnel parameters.
+      </p>
+      
+      
+      <p><a href="http://sourceforge.net/tracker/index.php?func=detail&amp;aid=927409&amp;group_id=29872&amp;atid=397617" target="_new" class="bodylink">927409</a>&nbsp;
+         		The <code xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">saxon:evaluate()</code> function fails if the expression uses local variables
+         and is used in a context such as <code xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">xsl:for-each</code> where lazy evaluation occurs.
+      </p>
+      
+      
+      <p><a href="http://sourceforge.net/tracker/index.php?func=detail&amp;aid=927057&amp;group_id=29872&amp;atid=397617" target="_new" class="bodylink">927057</a>&nbsp;
+         		Under particular conditions an invalid type annotation (numeric zero) can
+         be attached to a node.
+      </p>
+      
+      
+      <p><a href="http://sourceforge.net/tracker/index.php?func=detail&amp;aid=926727&amp;group_id=29872&amp;atid=397617" target="_new" class="bodylink">926727</a>&nbsp;
+         		In XQuery, the "empty greatest/least" functionality in <code xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">order by</code>
+         does not work.
+      </p>
+      
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="defects-80.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../v8.0.html">Up</a>&nbsp;&nbsp;<a class="nav" href="xslt-80.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

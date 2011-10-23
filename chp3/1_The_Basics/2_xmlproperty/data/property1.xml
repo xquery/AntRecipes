@@ -1,0 +1,8 @@
+<p>
+<dir base="/usr/local">
+ <doc type="html"></doc>
+ <etc>etc</etc>
+ <htdocs>htdocs</htdocs>
+ <publish>${someotherdir}</publish>
+</dir>
+</p>

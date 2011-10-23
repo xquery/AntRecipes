@@ -1,0 +1,101 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--extensions/instructions/assign
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: saxon:assign</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: saxon:assign">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>saxon:assign</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>saxon:assign</code> instruction is used to change the value of a global variable that
+         has previously been declared using <code>xsl:variable</code> (or <code>xsl:param</code>).
+         The variable or parameter
+         must be marked as assignable by including the extra attribute
+         <code>saxon:assignable="yes"</code></p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><i>From Saxon 8.2 onwards, this instruction works only with global variables. It should be regarded as
+            deprecated, and is likely to be withdrawn completely at some time in the future.</i></p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">As with <code>xsl:variable</code>, the name of the variable is given in the mandatory <b>name</b> attribute,
+         and the new value may be given either by an expression in the <code>select</code> attribute, or by expanding
+         the content of the <code>xsl:assign</code> element.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">If the <code>xsl:variable</code> element has an <code>as</code> attribute, then the value is converted
+         to the required type of the variable in the usual way.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Example:</p>
+      
+      
+      <div class="codeblock" style="border: solid thin; background-color: #B1CCC7; padding: 2px"><pre><code>
+&lt;xsl:variable name="i" select="0" saxon:assignable="yes"/&gt;
+&lt;xsl:template name="loop"&gt;
+  &lt;saxon:while test="$i &amp;lt; 10"&gt;
+    The value of i is &lt;xsl:value-of select="$i"/&gt;
+    &lt;saxon:assign name="i" select="$i+1"/&gt;
+  &lt;/saxon:while&gt;
+&lt;/xsl:template&gt;
+</code></pre></div>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>saxon:assign</code> element itself does not allow an <code>as</code> attribute. Instead,
+         it calculates the value of the variable as if <code>as="item()*"</code> were specified. This means that
+         the result of the construct:
+      </p>
+      
+      
+      <div class="codeblock" style="border: solid thin; background-color: #B1CCC7; padding: 2px"><pre><code>&lt;saxon:assign name="a"&gt;London&lt;/saxon:assign&gt;</code></pre></div>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">is a single text node, not a document node containing a text node. If you want to create a document
+         node, use <code>xsl:document</code>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><b>Note:</b> Using <code>saxon:assign</code> is cheating. XSLT is designed as 
+         a language that is free of side-effects, which is why variables are not assignable.
+         Once assignment to variables is allowed, certain optimizations become impossible.
+         At present this doesn't affect Saxon, which generally executes the stylesheet
+         sequentially. However, there are some circumstances in which the order of execution
+         may not be quite what you expect, in which case <code>saxon:assign</code> may show
+         anomalous behavior. In principle the <code>saxon:assignable</code> attribute is designed
+         to stop Saxon doing optimizations that cause such anomalies, but you can't always rely
+         on this.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="assign.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../instructions.html">Up</a>&nbsp;&nbsp;<a class="nav" href="call-template.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

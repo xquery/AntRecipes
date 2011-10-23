@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ============================================================= -->
+<!-- ANT RECIPES FOR WEB DEVELOPERS CHP 1 Text Recipe              -->
+<!-- Author: James Fuller / Webcomposite                           -->
+<!-- Email/WWW: jim.fuller@webcomposite.com /  www.antrecipes.com  -->
+<!-- ============================================================= -->
+<!--    (C) Copyright James Fuller 2009 - All Rights Reserved.     -->
+<!--  use the -debug flag for more information when running ant  //-->
+
+<project name="Manage Unicode" basedir="." default="run">
+<description>Manage Unicode</description>
+
+<target name="process-unicode">
+<copy file="data/data-unicode.txt" tofile="result/result-unicode.txt"
+outputencoding="utf8">
+  <filterchain>
+    <escapeunicode/>
+  </filterchain>
+</copy>
+</target>
+
+<target name="process-ascII">
+<copy file="data/data-ascII.txt" tofile="result/result-ascII.txt"
+outputencoding="utf8">
+  <filterchain>
+    <escapeunicode/>
+  </filterchain>
+</copy>
+</target>
+
+<target name="process-utf8">
+<copy file="data/data-utf8.txt" tofile="result/result-utf8.txt"
+outputencoding="utf8">
+  <filterchain>
+    <escapeunicode/>
+  </filterchain>
+</copy>
+</target>
+
+<target name="native-2-ascii">
+<native2ascii encoding="ASCII" src="data" dest="result"
+   includes="**/*.txt"/>
+</target>
+
+
+    <!-- ===================================================== -->
+    <!-- Run Target                                            -->
+    <!-- ===================================================== -->
+     <target name="run" depends="process-unicode, process-ascII, process-utf8,native-2-ascii" description="runs all examples"/>
+
+     
+    <!-- ===================================================== -->
+    <!-- Clean Target                                          -->
+    <!-- ===================================================== -->     
+    <target name="clean">
+        <delete dir="result"/>
+        <mkdir dir="result"/>
+    </target>
+
+
+</project>

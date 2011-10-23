@@ -1,0 +1,64 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--extensions/functions/lowest
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: saxon:lowest()</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: saxon:lowest()">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>saxon:lowest()</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><b>lowest(node-set-1 [, stored-expression])</b></p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">This function returns (as a node-set) the node from node-set-1 that has the lowest value of
+         the supplied stored expression, evaluated as a number. If the stored expression is
+         omitted, the expression "number(.)" is evaluated: that is, the string value of the node, converted
+         to a number. A stored expression may be obtained as the result of calling
+         the <a class="bodylink" href="javascript:tosubpage('extensions','functions','expression')">saxon:expression</a> function.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The stored expression is evaluated for each node in node-set-1 in turn, with that node as the context
+         node, with the context position equal to the position of that node in node-set-1, and with the context size
+         equal to the size of node-set-1. Any NaN values are ignored. If the node-set is empty, the result
+         is an empty node-set. If several nodes have the lowest value, the result node-set contains the
+         one that is first in document order. <i>This differs from the EXSLT lowest() function, which returns
+            all the nodes that have the minimum value.</i></p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Example: saxon:lowest(sale, saxon:expression('@price * @qty')) will evaluate price times
+         quantity for each child &lt;sale&gt; element, and return the node for which this has the lowest
+         value.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="lowest.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../functions.html">Up</a>&nbsp;&nbsp;<a class="nav" href="max.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

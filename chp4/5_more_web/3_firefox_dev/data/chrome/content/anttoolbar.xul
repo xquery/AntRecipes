@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://anttoolbar/skin/anttoolbar.css" type="text/css"?>
+
+<overlay id="Firefly-Overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+<script type="application/x-javascript" src="chrome://anttoolbar/content/anttoolbar.js"/>
+		
+<toolbox id="navigator-toolbox">
+
+	<toolbar id="Test-toolbar" 
+		accesskey="T" 
+		class="chromeclass-toolbar"
+		context="toolbar-context-menu" 
+		toolbarname="Test CMS"
+		hidden="false" 
+		persist="hidden">
+
+                      <toolbarbutton id="Test-status" tooltiptext="Here is a tool tip"
+                                                           label="Put a label here"
+                                                           oncommand=""
+                                                           disabled="false"/>
+        <toolbarseparator />
+             
+                        <toolbarbutton id="Test-Site-Menu" type="menu" label="Site"
+                                                   tooltiptext="Editor toolbar">
+                                <menupopup>
+
+                                        <menuitem label="Goto Ant Recipes Website" accesskey="d"
+                                                          tooltiptext=""  type="radio"
+                                                          oncommand="go_website('www.antrecipes.com')"
+                                                          />
+
+ 							   </menupopup>
+
+                        </toolbarbutton>
+
+        <toolbarseparator />
+
+
+	<toolbarseparator />
+
+
+	<toolbarseparator />
+
+                        <toolbarbutton id="Test-Page-Menu" type="menu" label="Page Action"
+                                                   tooltiptext="Editor toolbar">
+                                <menupopup>
+
+                                        <menuitem label="Edit Page" accesskey="e"
+                                                          tooltiptext="Edit"
+                                                          oncommand="test_action('edit button')"
+                                                          />
+                                        <menuitem label="View Page" accesskey="v"
+                                                          tooltiptext="Edit"
+                                                          oncommand="test_action('view button')"
+                                                          />
+                                        <menuitem label="Info Page" accesskey="i"
+                                                          tooltiptext="Edit"
+                                                          oncommand="test_action('info button')"
+                                                          />
+
+                                </menupopup>
+
+                        </toolbarbutton>
+
+
+		<toolbarseparator />
+
+	              <toolbarbutton id="Test-status" tooltiptext="Status link"
+                        	                           label="Status"
+        	                                           oncommand="test_action('status button')" 
+							   disabled="true"/>
+		<toolbarseparator />
+
+	</toolbar>
+
+</toolbox>
+
+</overlay>

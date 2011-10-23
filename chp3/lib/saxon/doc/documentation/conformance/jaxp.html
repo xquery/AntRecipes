@@ -1,0 +1,138 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--conformance/jaxp
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: JAXP 1.3 Conformance</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: JAXP 1.3 Conformance">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      
+      
+      <h1>JAXP 1.3 Conformance</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Saxon implements the JAXP 1.3 API. This is available as
+         a standard part of JDK 1.5 (also known as J2SE SDK 5.0), and is available as an optional package for use with
+         JDK 1.4.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Saxon implements the interfaces in the <code>javax.xml.transform</code> package in full, including support for
+         SAX, DOM, and Stream input, and SAX, DOM, and Stream output.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Saxon implements the XPath API (the interfaces in the <code>javax.xml.xpath</code> package in full.
+         Note however that the <code>XPathException</code> exception used throughout Saxon is unrelated to the
+         class of the same name defined in the XPath API. The Saxon XPath API works with four object models: DOM,
+         JDOM, XOM, and the native Saxon object model. The URIs used to identify these object models are:
+      </p>
+      
+      
+      <ul xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         
+         <li>
+            <p>http://java.sun.com/jaxp/xpath/dom</p>
+         </li>
+         
+         <li>
+            <p>http://www.jdom.org/provisional</p>
+         </li>
+         
+         <li>
+            <p>http://www.xom.nu/jaxp/xpath/xom</p>
+         </li>
+         
+         <li>
+            <p>http://saxon.sf.net/jaxp/xpath/om</p>
+         </li>
+         
+      </ul>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The JAXP 1.3 XPath API is designed primarily for use with XPath 1.0. Saxon implements it with
+         XPath 2.0. This means that decisions were necessary on how to handle the richer set of return types
+         available with 2.0. If the return type requested is String, Number, or Boolean, then Saxon converts the
+         result to one of these types as if by using the XPath functions <code>string()</code>, <code>number()</code>,
+         or <code>boolean()</code>. Items after the first in the atomized sequence are discarded. If the return type
+         requested is <code>NODE</code>, Saxon returns the first item in the result sequence if it is a node, and reports
+         an error if it is an atomic value. If the result sequence is empty, it returns null. If the return type requested
+         is NODELIST, Saxon returns a Java List containing all the items in the sequence, whether they are nodes or not.
+         Nodes are returned using the native node object in the input data model, atomic values are returned using the
+         most appropriate Java class. Note that in the case of numeric results, it is not always easy to predict whether
+         the result will be a Long, a Double, or a BigDecimal, and it is advisable to cast the data to one of these types
+         within the XPath expression to make the result predictable.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Saxon-SA also implements the JAXP 1.3 validation API. This allows a schema to be parsed and validated, 
+         and provides two mechanisms for validating a document against a schema: the <code>Validator</code>
+         and the <code>ValidatorHandler</code>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">There are some minor restrictions in the Saxon implementation of this interface:</p>
+      
+      
+      <ul xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         
+         <li>
+            <p>The interface specification restricts the types of <code>Source</code> and <code>Result</code>
+               object that can be supplied to a <code>Validator</code>. Saxon does not enforce these restrictions, it
+               allows any kind of <code>Source</code> and <code>Result</code> that a <code>Transformer</code>
+               would accept.
+            </p>
+         </li>
+         
+         <li>
+            <p>Saxon's implementation of <code>ValidatorHandler</code> performs more buffering of events than
+               is permitted by the specification.
+            </p>
+         </li>
+         
+         <li>
+            <p>The method <code>isSpecified(int)</code> in the <code>TypeInfoProvider</code> always returns true.
+            </p>
+         </li>
+         
+      </ul>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">In addition, Saxon implements part of the <code>javax.xml.parsers</code> API. 
+         Saxon no longer provides its own SAX parser, 
+         however it does provide a <code>DocumentBuilder</code>.
+         The DOM interfaces are limited by the capabilities of the Saxon DOM, specifically the fact that
+         it is read-only. Nevertheless, the DocumentBuilder may be used to construct a Saxon tree, or to
+         obtain an empty Document node which can be supplied in a DOMResult to hold the result of a
+         transformation.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="jaxp.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="errorrecovery.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

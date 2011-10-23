@@ -1,0 +1,69 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--expressions/comparisons
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: Comparisons</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Comparisons">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>Comparisons</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The simplest comparison operators are <code>eq</code>, <code>ne</code>, <code>lt</code>
+         <code>le</code>, <code>gt</code>, <code>ge</code>. These compare two atomic values of the same type,
+         for example two integers, two dates, or two strings. In the case of strings, the default collation
+         is used (see 
+         <a class="bodylink" href="javascript:tosubpage('extensions','instructions','collation')">saxon:collation</a>). 
+         If the operands are not atomic values, an error is raised.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The operators <code>=</code>, <code>!=</code>, <code>&lt;</code>, <code>&lt;=</code>,
+         <code>&gt;</code>, and <code>&gt;=</code> can compare arbitrary sequences. The result is true
+         if any pair of items from the two sequences has the specified relationship, for example
+         <code>$A = $B</code> is true if there is an item in <code>$A</code> that is equal to
+         some item in <code>$B</code>. If an argument is a node, Saxon currently uses its string
+         value in the comparison, not its typed value as required by the XPath 2.0 specification.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The operators <code>is</code> and <code>isnot</code> test whether the operands represent the same
+         (identical) node. For example, <code>title[1] is *[@note][1]</code> is true if the first <code>title</code>
+         child is the first child element that has a <code>@note</code> attribute. If either operand is an
+         empty sequence the result is an empty sequence (which will usually be treated as false).
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The operators <code>&lt;&lt;</code> and <code>&gt;&gt;</code> test whether one node precedes
+         or follows another in document order.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="comparisons.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="instanceof.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

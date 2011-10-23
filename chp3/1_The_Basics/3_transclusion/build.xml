@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ============================================================= -->
+<!-- ANT RECIPES FOR WEB DEVELOPERS CHP XML Recipe                 -->
+<!-- Author: James Fuller / Webcomposite                           -->
+<!-- Email/WWW: jim.fuller@webcomposite.com /  www.antrecipes.com  -->
+<!-- ============================================================= -->
+<!--    (C) Copyright James Fuller 2010 - All Rights Reserved.     -->
+<!--  use the -debug flag for more information when running ant  //-->
+<project name="transclusion" default="run" basedir=".">
+	<description>Demonstrate how to achieve xinclude processing</description>
+	<!-- ===================================================== -->
+	<!-- Macrodef Definitions                                  -->
+	<!-- ===================================================== -->
+	<macrodef name="xinclude">
+		<attribute name="href"/>
+		<sequential>
+			<exec executable="xmllint" failonerror="false">
+				<arg line="-xinclude @{href}"/>
+			</exec>
+		</sequential>
+	</macrodef>
+	<macrodef name="xinclude-better">
+		<element name="file-elements" implicit="yes"/>
+		<sequential>
+			<apply executable="xmllint" failonerror="false">
+				<arg line="-xinclude "/>
+				<file-elements/>
+			</apply>
+		</sequential>
+	</macrodef>
+	<!-- ===================================================== -->
+	<!-- Example1                                              -->
+	<!-- ===================================================== -->
+	<target name="example1" description="using xmllint with macrodef">
+		<xinclude href="data/web/en/index.html"/>
+	</target>
+	<!-- ===================================================== -->
+	<!-- Example2                                              -->
+	<!-- ===================================================== -->
+	<target name="example2" description="using xmllint with better macrodef">
+		<xinclude-better>
+			<fileset dir="data/" includes="example.xml, web/en/index.html"/>
+		</xinclude-better>
+	</target>
+	<!-- ===================================================== -->
+	<!-- Example3                                              -->
+	<!-- ===================================================== -->
+	<!--target name="example3" description="using XERCES XML Parser technique">
+		<xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="data/test.xml"/>
+	</target-->
+	<!-- ===================================================== -->
+	<!-- Run Target                                            -->
+	<!-- ===================================================== -->
+	<target name="run" depends="clean,example1,example2" description="runs all examples"/>
+	<!-- ===================================================== -->
+	<!-- Clean Target                                          -->
+	<!-- ===================================================== -->
+	<target name="clean">
+		<delete dir="result"/>
+		<mkdir dir="result"/>
+	</target>
+</project>

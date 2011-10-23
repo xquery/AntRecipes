@@ -1,0 +1,75 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--xsl-elements/call-template
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: xsl:call-template</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: xsl:call-template">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>xsl:call-template</h1>
+      
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>xsl:call-template</code> element is used to invoke a named template.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>name</code> attribute is mandatory and must match the name defined on an <code>xsl:template</code> element.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Saxon supports an alternative instruction <code>saxon:call-template</code>. This has the same
+         effect as <code>xsl:call-template</code>, except that the <code>name</code> attribute may be written as an attribute value template, allowing
+         the called template to be decided at run-time. The string result of evaluating the attribute value
+         template must be a valid QName that identifies a named template somewhere in the stylesheet.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">To supply parameters to the called template, one or more <a href="../xsl-elements/with-param.html" target="_self" class="bodylink">xsl:with-param</a> elements
+         may be included. The values of these parameters are available to the called template. If the
+         <code>xsl:with-param</code> element specifies <code>tunnel="yes"</code>, then the parameter is passed
+         transparently through to templates called at any depth, but it can only be referenced by an
+         <code>xsl:param</code> element that also specifies <code>tunnel="yes"</code>. If the default value,
+         <code>tunnel="no"</code> is used, then the parameter value is available only in the immediately
+         called template, and only if the <code>xsl:param</code> element specifies <code>tunnel="no"</code>
+         (explicitly or by defaulting the attribute).
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The context of the called template (for example the current node and current node list) is the same as
+         that for the calling template; however the variables defined in the calling template are not accessible in
+         the called template.
+      </p>
+      
+      
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="call-template.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="character-map.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

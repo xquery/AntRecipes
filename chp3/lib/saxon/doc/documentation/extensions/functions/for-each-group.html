@@ -1,0 +1,148 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--extensions/functions/for-each-group
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: saxon:for-each-group()</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: saxon:for-each-group()">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>saxon:for-each-group()</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><b>for-each-group($population as item()*, $key as jt:net.sf.saxon.expr.UserFunction, 
+            $action as jt:net.sf.saxon.expr.UserFunction) ==&gt; item()*</b></p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><i>This function is available only in Saxon-SA</i></p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The action of this function is analagous to the <code>xsl:for-each-group</code> instruction
+         (with a <code>group-by</code> attribute) in XSLT 2.0. It is provided to give XQuery users access
+         to grouping facilities comparable to those provided in XSLT 2.0. (The function is available in XSLT
+         also, but is unnecessary in that environment.)
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The first argument defines the <i>population</i>, a collection of items to be grouped. These may
+         be any items (nodes or atomic values). The second argument is a function (created using 
+         <a class="bodylink" href="javascript:tosubpage('extensions','functions','function')">saxon:function</a>) that is called once for each item in the
+         population, to calculate a grouping key for that item. The third argument is another function
+         (also created using <a class="bodylink" href="javascript:tosubpage('extensions','functions','function')">saxon:function</a>) that is called once to
+         process each group of items from the population.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Two items in the population are in the same group if they have the same value for the grouping
+         key. Strings are compared using the default collation. If the value of the grouping key is a sequence
+         of more than one item, then an item in the population may appear in more than one group; if it is
+         an empty sequence, then the item will appear in no group.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The order in which the groups are processed is subject to change: at present it is the same as
+         the default order in <code>xsl:for-each-group</code>, namely order of first appearance. There is no
+         way to change this order; if the groups need to be sorted then it is best to sort the output afterwards.
+         Each group is passed as an argument to a call on the <i>action</i> function supplied as the third
+         argument; the values returned by these calls form the result of the <code>saxon:for-each-group</code>
+         call. The items within each group are in their original order (population order).
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The following example groups cities by country. It takes input like this:</p>
+      
+      
+      <div class="codeblock" style="border: solid thin; background-color: #B1CCC7; padding: 2px"><pre><code>&lt;doc&gt;
+&lt;city name="Paris" country="France"/&gt;
+&lt;city name="Madrid" country="Spain"/&gt;
+&lt;city name="Vienna" country="Austria"/&gt;
+&lt;city name="Barcelona" country="Spain"/&gt;
+&lt;city name="Salzburg" country="Austria"/&gt;
+&lt;city name="Bonn" country="Germany"/&gt;
+&lt;city name="Lyon" country="France"/&gt;
+&lt;city name="Hannover" country="Germany"/&gt;
+&lt;city name="Calais" country="France"/&gt;
+&lt;city name="Berlin" country="Germany"/&gt;
+&lt;/doc&gt;
+</code></pre></div>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">and produces output like this:</p>
+      
+      
+      <div class="codeblock" style="border: solid thin; background-color: #B1CCC7; padding: 2px"><pre><code>&lt;out&gt;
+   &lt;country leading="Paris" size="3" name="France"&gt;
+      &lt;city name="Calais"/&gt;
+      &lt;city name="Lyon"/&gt;
+      &lt;city name="Paris"/&gt;
+   &lt;/country&gt;
+   &lt;country leading="Madrid" size="2" name="Spain"&gt;
+      &lt;city name="Barcelona"/&gt;
+      &lt;city name="Madrid"/&gt;
+   &lt;/country&gt;
+   &lt;country leading="Vienna" size="2" name="Austria"&gt;
+      &lt;city name="Salzburg"/&gt;
+      &lt;city name="Vienna"/&gt;
+   &lt;/country&gt;
+   &lt;country leading="Bonn" size="3" name="Germany"&gt;
+      &lt;city name="Berlin"/&gt;
+      &lt;city name="Bonn"/&gt;
+      &lt;city name="Hannover"/&gt;
+   &lt;/country&gt;
+&lt;/out&gt;
+</code></pre></div>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The XQuery code to achieve this is:</p>
+      
+      
+      <div class="codeblock" style="border: solid thin; background-color: #B1CCC7; padding: 2px"><pre><code>declare namespace f="f.uri";
+
+(: Test saxon:for-each-group extension function :)
+
+declare function f:get-country ($c) { $c/@country };
+
+declare function f:put-country ($group) {
+    &lt;country name="{$group[1]/@country}" leading="{$group[1]/@name}" size="{count($group)}"&gt;
+       {for $g in $group 
+           order by $g/@name
+           return &lt;city&gt;{ $g/@name }&lt;/city&gt;
+       }
+    &lt;/country&gt;
+};    
+
+&lt;out&gt;
+    {saxon:for-each-group(/*/city, 
+                         saxon:function('f:get-country', 1), 
+                         saxon:function('f:put-country', 1))}
+&lt;/out&gt;
+</code></pre></div> 
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="for-each-group.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../functions.html">Up</a>&nbsp;&nbsp;<a class="nav" href="format-dateTime.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

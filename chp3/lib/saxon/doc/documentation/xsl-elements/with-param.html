@@ -1,0 +1,66 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--xsl-elements/with-param
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: xsl:with-param</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: xsl:with-param">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>xsl:with-param</h1>
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>xsl:with-param</code> element is used to define an actual parameter to a template. It may be used
+         within an <code>xsl:call-template</code> or an <code>xsl:apply-templates</code> or an <code>xsl:apply-imports</code> element.
+         For an example, see the <a href="../xsl-elements/template.html" target="_self" class="bodylink">xsl:template</a> section.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">There is a mandatory attribute, <code>name</code>, to define the name
+         of the parameter. The value of the parameter may be defined either by a select attribute, or by the
+         contents of the <code>xsl:param</code> element, in the same way as for <code>xsl:variable</code>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><i>The parameter has no effect unless the called template includes a matching
+            <code>xsl:param</code> element. But when using xsl:call-template, it is an error to specify 
+            a parameter that isn't declared in the target template, or to omit a parameter that's described
+            in the target template with <code>required="yes"</code>.</i></p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The attribute <code>tunnel="yes"</code> creates a tunnel parameter which is accessible to called
+         templates at any depth, whether or not they are declared in intermediate templates. However, the value
+         is only accessible if <code>tunnel="yes"</code> is also specified on the corresponding 
+         <code>xsl:param</code> element.
+      </p>
+      
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="with-param.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="lre.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

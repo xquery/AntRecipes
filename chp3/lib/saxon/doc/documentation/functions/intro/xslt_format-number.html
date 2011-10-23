@@ -1,0 +1,117 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--functions/intro/xslt_format-number
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: xslt:format-number</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: xslt:format-number">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>xslt:format-number</h1>
+      <p class="subhead">xslt:format-number(numeric $value, string $picture) &#8594; string</p>
+      <p><i>Function signature</i></p>
+      <table>
+         <tr>
+            <td width="120">
+               <p>$value</p>
+            </td>
+            <td width="150">
+               <p>xs:double ?</p>
+            </td>
+         </tr>
+         <tr>
+            <td width="120">
+               <p>$picture</p>
+            </td>
+            <td width="150">
+               <p>xs:string </p>
+            </td>
+         </tr>
+         <tr>
+            <td width="120">
+               <p><b>Result</b></p>
+            </td>
+            <td width="150">
+               <p>xs:string </p>
+            </td>
+         </tr>
+      </table>
+      <p><i>Formats a number as specified by a picture string, using the default decimal format</i></p>
+      <p><a href="http://www.w3.org/TR/xslt20/#function-format-number" target="_blank" class="bodylink">XSLT 2.0 Specification</a></p>
+      <p>Implemented. Changed in 7.4.1 to use the new XSLT 2.0 specification. This
+         creates slight incompatibilities from the previous version, which remains available
+         under the name format-number-1.0(). There is one known restriction: characters such
+         as the decimal-separator are restricted to be in the Unicode BMP, i.e. below
+         Unicode 0xFFFF. The current implementation does not attempt to cache or precompile
+         the picture string. Also it does not detect the error that occurs when the same
+         character is used in more than one role. Error checking has not been thoroughly tested.
+         		Changed in 8.2 to allow the empty sequence as the first argument; this behaves as
+         		if NaN were supplied. Changed in 8.2 to handle decimals natively, without first converting
+         them to doubles; this means that the full precision can be retained.
+      </p>
+      <p class="subhead">xslt:format-number(numeric $value, string $picture, string $decimal-format) &#8594; string</p>
+      <p><i>Function signature</i></p>
+      <table>
+         <tr>
+            <td width="120">
+               <p>$value</p>
+            </td>
+            <td width="150">
+               <p>xs:double ?</p>
+            </td>
+         </tr>
+         <tr>
+            <td width="120">
+               <p>$picture</p>
+            </td>
+            <td width="150">
+               <p>xs:string </p>
+            </td>
+         </tr>
+         <tr>
+            <td width="120">
+               <p>$decimal-format</p>
+            </td>
+            <td width="150">
+               <p>xs:string </p>
+            </td>
+         </tr>
+         <tr>
+            <td width="120">
+               <p><b>Result</b></p>
+            </td>
+            <td width="150">
+               <p>xs:string </p>
+            </td>
+         </tr>
+      </table>
+      <p><i>Formats a number as specified by a picture string, using a named decimal format</i></p>
+      <p><a href="http://www.w3.org/TR/xslt20/#function-format-number" target="_blank" class="bodylink">XSLT 2.0 Specification</a></p>
+      <p>See two-argument version of format-number().</p>
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="xslt_format-number.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../intro.html">Up</a>&nbsp;&nbsp;<a class="nav" href="xslt_format-time.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

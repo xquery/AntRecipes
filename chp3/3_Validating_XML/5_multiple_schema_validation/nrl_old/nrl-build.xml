@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<project name="Backup Web Application" default="build">
+<description>Backup web server distribution and associated database</description>
+
+<property name="nrl.document" value="namespace-routing-language-example.nrl"/>
+
+<target name="build">
+<java jar="../bin/jing.jar"
+   fork="true"
+   failonerror="false">
+<arg value="${nrl.document}"/>
+<arg value="address-valid.xml"/>
+</java>
+</target>
+
+</project>

@@ -1,0 +1,339 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--xsl-elements Menu
+			Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location = section + "_menu.html";
+                parent.frames['content'].location = section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location = section + "_menu.html";
+                parent.frames['content'].location = + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="menu">
+      <table width="164" border="0" bgcolor="#3D5B96" cellspacing="1" cellpadding="1">
+         <tr bgcolor="#f6fffb">
+            <td style="padding-left:5px"><a href="http://www.saxonica.com/" target="_top">SAXONICA</a></td>
+         </tr>
+      </table><br><table border="0" cellspacing="0" cellpadding="1">
+         <tr>
+            <td class="title" colspan="2">Saxon Documentation</td>
+         </tr>
+         <tr>
+            <td colspan="2"><img src="../img/spacer.gif" width="120" height="10" border="0" alt=""></td>
+         </tr>
+         <tr>
+            <td colspan="2"><a href="contents.html" target="content">Full Contents</a></td>
+         </tr>
+         <tr>
+            <td colspan="2"><img src="../img/text_blue_dot.gif" width="164" height="1" border="0" alt=""></td>
+         </tr>
+         <tr>
+            <td colspan="2"><a href="javascript:topage('index', 'intro')">About Saxon</a></td>
+         </tr>
+         <tr>
+            <td colspan="2"><img src="../img/text_blue_dot.gif" width="164" height="1" border="0" alt=""></td>
+         </tr>
+         <tr>
+            <td colspan="2"><a href="javascript:topage('changes', 'intro')">Changes in this Release</a></td>
+         </tr>
+         <tr>
+            <td colspan="2"><img src="../img/text_blue_dot.gif" width="164" height="1" border="0" alt=""></td>
+         </tr>
+         <tr>
+            <td colspan="2"><a href="javascript:topage('conditions', 'intro')">Conditions of Use</a></td>
+         </tr>
+         <tr>
+            <td colspan="2"><img src="../img/text_blue_dot.gif" width="164" height="1" border="0" alt=""></td>
+         </tr>
+         <tr>
+            <td colspan="2"><a href="javascript:topage('using-xsl', 'intro')">Using Stylesheets</a></td>
+         </tr>
+         <tr>
+            <td colspan="2"><img src="../img/text_blue_dot.gif" width="164" height="1" border="0" alt=""></td>
+         </tr>
+         <tr>
+            <td colspan="2"><a href="javascript:topage('using-xquery', 'intro')">Using XQuery</a></td>
+         </tr>
+         <tr>
+            <td colspan="2"><img src="../img/text_blue_dot.gif" width="164" height="1" border="0" alt=""></td>
+         </tr>
+         <tr>
+            <td colspan="2"><a href="javascript:topage('schema-processing', 'intro')">XML Schema Processing</a></td>
+         </tr>
+         <tr>
+            <td colspan="2"><img src="../img/text_blue_dot.gif" width="164" height="1" border="0" alt=""></td>
+         </tr>
+         <tr>
+            <td colspan="2"><a href="javascript:topage('xpath-api', 'intro')">The XPath API</a></td>
+         </tr>
+         <tr>
+            <td colspan="2"><img src="../img/text_blue_dot.gif" width="164" height="1" border="0" alt=""></td>
+         </tr>
+         <tr>
+            <td colspan="2"><a href="javascript:topage('conformance', 'intro')">Standards Conformance</a></td>
+         </tr>
+         <tr>
+            <td colspan="2"><img src="../img/text_blue_dot.gif" width="164" height="1" border="0" alt=""></td>
+         </tr>
+         <tr>
+            <td colspan="2"><a href="javascript:topage('extensibility', 'intro')">Extensibility</a></td>
+         </tr>
+         <tr>
+            <td colspan="2"><img src="../img/text_blue_dot.gif" width="164" height="1" border="0" alt=""></td>
+         </tr>
+         <tr>
+            <td colspan="2"><a href="javascript:topage('extensions', 'intro')">Saxon Extensions</a></td>
+         </tr>
+         <tr>
+            <td colspan="2"><img src="../img/text_blue_dot.gif" width="164" height="1" border="0" alt=""></td>
+         </tr>
+         <tr>
+            <td colspan="2"><a href="javascript:topage('samples', 'intro')">Sample Saxon Applications</a></td>
+         </tr>
+         <tr>
+            <td colspan="2"><img src="../img/text_blue_dot.gif" width="164" height="1" border="0" alt=""></td>
+         </tr>
+         <tr>
+            <td colspan="2"><a href="javascript:topage('sql-extension', 'intro')">The Saxon SQL Extension</a></td>
+         </tr>
+         <tr>
+            <td colspan="2"><img src="../img/text_blue_dot.gif" width="164" height="1" border="0" alt=""></td>
+         </tr>
+         <tr>
+            <td colspan="2"><a href="javascript:topage('xsl-elements', 'intro')">XSLT Elements</a></td>
+         </tr>
+         <tr>
+            <td><img src="../img/spacer.gif" width="10" height="5" border="0" alt="Saxonica"></td>
+            <td><a href="xsl-elements/intro.html" target="content">Introduction</a></td>
+         </tr>
+         <tr>
+            <td><img src="../img/spacer.gif" width="10" height="5" border="0" alt="Saxonica"></td>
+            <td><a href="xsl-elements/analyze-string.html" target="content">xsl:analyze-string</a></td>
+         </tr>
+         <tr>
+            <td><img src="../img/spacer.gif" width="10" height="5" border="0" alt="Saxonica"></td>
+            <td><a href="xsl-elements/apply-imports.html" target="content">xsl:apply-imports</a></td>
+         </tr>
+         <tr>
+            <td><img src="../img/spacer.gif" width="10" height="5" border="0" alt="Saxonica"></td>
+            <td><a href="xsl-elements/apply-templates.html" target="content">xsl:apply-templates</a></td>
+         </tr>
+         <tr>
+            <td><img src="../img/spacer.gif" width="10" height="5" border="0" alt="Saxonica"></td>
+            <td><a href="xsl-elements/attribute.html" target="content">xsl:attribute</a></td>
+         </tr>
+         <tr>
+            <td><img src="../img/spacer.gif" width="10" height="5" border="0" alt="Saxonica"></td>
+            <td><a href="xsl-elements/attribute-set.html" target="content">xsl:attribute-set</a></td>
+         </tr>
+         <tr>
+            <td><img src="../img/spacer.gif" width="10" height="5" border="0" alt="Saxonica"></td>
+            <td><a href="xsl-elements/call-template.html" target="content">xsl:call-template</a></td>
+         </tr>
+         <tr>
+            <td><img src="../img/spacer.gif" width="10" height="5" border="0" alt="Saxonica"></td>
+            <td><a href="xsl-elements/character-map.html" target="content">xsl:character-map</a></td>
+         </tr>
+         <tr>
+            <td><img src="../img/spacer.gif" width="10" height="5" border="0" alt="Saxonica"></td>
+            <td><a href="xsl-elements/choose.html" target="content">xsl:choose</a></td>
+         </tr>
+         <tr>
+            <td><img src="../img/spacer.gif" width="10" height="5" border="0" alt="Saxonica"></td>
+            <td><a href="xsl-elements/comment.html" target="content">xsl:comment</a></td>
+         </tr>
+         <tr>
+            <td><img src="../img/spacer.gif" width="10" height="5" border="0" alt="Saxonica"></td>
+            <td><a href="xsl-elements/copy.html" target="content">xsl:copy</a></td>
+         </tr>
+         <tr>
+            <td><img src="../img/spacer.gif" width="10" height="5" border="0" alt="Saxonica"></td>
+            <td><a href="xsl-elements/copy-of.html" target="content">xsl:copy-of</a></td>
+         </tr>
+         <tr>
+            <td><img src="../img/spacer.gif" width="10" height="5" border="0" alt="Saxonica"></td>
+            <td><a href="xsl-elements/decimal-format.html" target="content">xsl:decimal-format</a></td>
+         </tr>
+         <tr>
+            <td><img src="../img/spacer.gif" width="10" height="5" border="0" alt="Saxonica"></td>
+            <td><a href="xsl-elements/document.html" target="content">xsl:document</a></td>
+         </tr>
+         <tr>
+            <td><img src="../img/spacer.gif" width="10" height="5" border="0" alt="Saxonica"></td>
+            <td><a href="xsl-elements/element.html" target="content">xsl:element</a></td>
+         </tr>
+         <tr>
+            <td><img src="../img/spacer.gif" width="10" height="5" border="0" alt="Saxonica"></td>
+            <td><a href="xsl-elements/fallback.html" target="content">xsl:fallback</a></td>
+         </tr>
+         <tr>
+            <td><img src="../img/spacer.gif" width="10" height="5" border="0" alt="Saxonica"></td>
+            <td><a href="xsl-elements/for-each.html" target="content">xsl:for-each</a></td>
+         </tr>
+         <tr>
+            <td><img src="../img/spacer.gif" width="10" height="5" border="0" alt="Saxonica"></td>
+            <td><a href="xsl-elements/for-each-group.html" target="content">xsl:for-each-group</a></td>
+         </tr>
+         <tr>
+            <td><img src="../img/spacer.gif" width="10" height="5" border="0" alt="Saxonica"></td>
+            <td><a href="xsl-elements/function.html" target="content">xsl:function</a></td>
+         </tr>
+         <tr>
+            <td><img src="../img/spacer.gif" width="10" height="5" border="0" alt="Saxonica"></td>
+            <td><a href="xsl-elements/if.html" target="content">xsl:if</a></td>
+         </tr>
+         <tr>
+            <td><img src="../img/spacer.gif" width="10" height="5" border="0" alt="Saxonica"></td>
+            <td><a href="xsl-elements/include.html" target="content">xsl:include</a></td>
+         </tr>
+         <tr>
+            <td><img src="../img/spacer.gif" width="10" height="5" border="0" alt="Saxonica"></td>
+            <td><a href="xsl-elements/import.html" target="content">xsl:import</a></td>
+         </tr>
+         <tr>
+            <td><img src="../img/spacer.gif" width="10" height="5" border="0" alt="Saxonica"></td>
+            <td><a href="xsl-elements/import-schema.html" target="content">xsl:import-schema</a></td>
+         </tr>
+         <tr>
+            <td><img src="../img/spacer.gif" width="10" height="5" border="0" alt="Saxonica"></td>
+            <td><a href="xsl-elements/key.html" target="content">xsl:key</a></td>
+         </tr>
+         <tr>
+            <td><img src="../img/spacer.gif" width="10" height="5" border="0" alt="Saxonica"></td>
+            <td><a href="xsl-elements/matching-substring.html" target="content">xsl:matching-substring</a></td>
+         </tr>
+         <tr>
+            <td><img src="../img/spacer.gif" width="10" height="5" border="0" alt="Saxonica"></td>
+            <td><a href="xsl-elements/message.html" target="content">xsl:message</a></td>
+         </tr>
+         <tr>
+            <td><img src="../img/spacer.gif" width="10" height="5" border="0" alt="Saxonica"></td>
+            <td><a href="xsl-elements/namespace.html" target="content">xsl:namespace</a></td>
+         </tr>
+         <tr>
+            <td><img src="../img/spacer.gif" width="10" height="5" border="0" alt="Saxonica"></td>
+            <td><a href="xsl-elements/namespace-alias.html" target="content">xsl:namespace-alias</a></td>
+         </tr>
+         <tr>
+            <td><img src="../img/spacer.gif" width="10" height="5" border="0" alt="Saxonica"></td>
+            <td><a href="xsl-elements/next-match.html" target="content">xsl:next-match</a></td>
+         </tr>
+         <tr>
+            <td><img src="../img/spacer.gif" width="10" height="5" border="0" alt="Saxonica"></td>
+            <td><a href="xsl-elements/non-matching-substring.html" target="content">xsl:non-matching-substring</a></td>
+         </tr>
+         <tr>
+            <td><img src="../img/spacer.gif" width="10" height="5" border="0" alt="Saxonica"></td>
+            <td><a href="xsl-elements/number.html" target="content">xsl:number</a></td>
+         </tr>
+         <tr>
+            <td><img src="../img/spacer.gif" width="10" height="5" border="0" alt="Saxonica"></td>
+            <td><a href="xsl-elements/otherwise.html" target="content">xsl:otherwise</a></td>
+         </tr>
+         <tr>
+            <td><img src="../img/spacer.gif" width="10" height="5" border="0" alt="Saxonica"></td>
+            <td><a href="xsl-elements/output.html" target="content">xsl:output</a></td>
+         </tr>
+         <tr>
+            <td><img src="../img/spacer.gif" width="10" height="5" border="0" alt="Saxonica"></td>
+            <td><a href="xsl-elements/output-character.html" target="content">xsl:output-character</a></td>
+         </tr>
+         <tr>
+            <td><img src="../img/spacer.gif" width="10" height="5" border="0" alt="Saxonica"></td>
+            <td><a href="xsl-elements/param.html" target="content">xsl:param</a></td>
+         </tr>
+         <tr>
+            <td><img src="../img/spacer.gif" width="10" height="5" border="0" alt="Saxonica"></td>
+            <td><a href="xsl-elements/perform-sort.html" target="content">xsl:perform-sort</a></td>
+         </tr>
+         <tr>
+            <td><img src="../img/spacer.gif" width="10" height="5" border="0" alt="Saxonica"></td>
+            <td><a href="xsl-elements/preserve-space.html" target="content">xsl:preserve-space</a></td>
+         </tr>
+         <tr>
+            <td><img src="../img/spacer.gif" width="10" height="5" border="0" alt="Saxonica"></td>
+            <td><a href="xsl-elements/processing-instruction.html" target="content">xsl:processing-instruction</a></td>
+         </tr>
+         <tr>
+            <td><img src="../img/spacer.gif" width="10" height="5" border="0" alt="Saxonica"></td>
+            <td><a href="xsl-elements/result-document.html" target="content">xsl:result-document</a></td>
+         </tr>
+         <tr>
+            <td><img src="../img/spacer.gif" width="10" height="5" border="0" alt="Saxonica"></td>
+            <td><a href="xsl-elements/sequence.html" target="content">xsl:sequence</a></td>
+         </tr>
+         <tr>
+            <td><img src="../img/spacer.gif" width="10" height="5" border="0" alt="Saxonica"></td>
+            <td><a href="xsl-elements/sort.html" target="content">xsl:sort</a></td>
+         </tr>
+         <tr>
+            <td><img src="../img/spacer.gif" width="10" height="5" border="0" alt="Saxonica"></td>
+            <td><a href="xsl-elements/strip-space.html" target="content">xsl:strip-space</a></td>
+         </tr>
+         <tr>
+            <td><img src="../img/spacer.gif" width="10" height="5" border="0" alt="Saxonica"></td>
+            <td><a href="xsl-elements/stylesheet.html" target="content">xsl:stylesheet</a></td>
+         </tr>
+         <tr>
+            <td><img src="../img/spacer.gif" width="10" height="5" border="0" alt="Saxonica"></td>
+            <td><a href="xsl-elements/template.html" target="content">xsl:template</a></td>
+         </tr>
+         <tr>
+            <td><img src="../img/spacer.gif" width="10" height="5" border="0" alt="Saxonica"></td>
+            <td><a href="xsl-elements/text.html" target="content">xsl:text</a></td>
+         </tr>
+         <tr>
+            <td><img src="../img/spacer.gif" width="10" height="5" border="0" alt="Saxonica"></td>
+            <td><a href="xsl-elements/value-of.html" target="content">xsl:value-of</a></td>
+         </tr>
+         <tr>
+            <td><img src="../img/spacer.gif" width="10" height="5" border="0" alt="Saxonica"></td>
+            <td><a href="xsl-elements/variable.html" target="content">xsl:variable</a></td>
+         </tr>
+         <tr>
+            <td><img src="../img/spacer.gif" width="10" height="5" border="0" alt="Saxonica"></td>
+            <td><a href="xsl-elements/when.html" target="content">xsl:when</a></td>
+         </tr>
+         <tr>
+            <td><img src="../img/spacer.gif" width="10" height="5" border="0" alt="Saxonica"></td>
+            <td><a href="xsl-elements/with-param.html" target="content">xsl:with-param</a></td>
+         </tr>
+         <tr>
+            <td><img src="../img/spacer.gif" width="10" height="5" border="0" alt="Saxonica"></td>
+            <td><a href="xsl-elements/lre.html" target="content">Literal Result Elements</a></td>
+         </tr>
+         <tr>
+            <td colspan="2"><img src="../img/text_blue_dot.gif" width="164" height="1" border="0" alt=""></td>
+         </tr>
+         <tr>
+            <td colspan="2"><a href="javascript:topage('expressions', 'intro')">XPath 2.0 Expression Syntax</a></td>
+         </tr>
+         <tr>
+            <td colspan="2"><img src="../img/text_blue_dot.gif" width="164" height="1" border="0" alt=""></td>
+         </tr>
+         <tr>
+            <td colspan="2"><a href="javascript:topage('functions', 'intro')">Function Library</a></td>
+         </tr>
+         <tr>
+            <td colspan="2"><img src="../img/text_blue_dot.gif" width="164" height="1" border="0" alt=""></td>
+         </tr>
+         <tr>
+            <td colspan="2"><a href="javascript:topage('patterns', 'intro')">XSLT Patterns</a></td>
+         </tr>
+         <tr>
+            <td colspan="2"><img src="../img/text_blue_dot.gif" width="164" height="1" border="0" alt=""></td>
+         </tr>
+      </table><br></body>
+</html>

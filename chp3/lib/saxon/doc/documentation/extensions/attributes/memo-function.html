@@ -1,0 +1,56 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--extensions/attributes/memo-function
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: saxon:memo-function</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: saxon:memo-function">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>saxon:memo-function</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">This attribute may be set on the <code>xsl:function</code> element. The permitted values
+         are "yes" and "no". Specifying "yes" indicates that Saxon should remember the
+         results of calling the function in a cache, and if the function is called again
+         with the same arguments, the result is retrieved from the cache rather than being
+         recalculated. Don't use this if the function has side-effects (for example, if
+         it calls <code>saxon:assign</code>, or an extension function with side-effects).
+         Don't use it if the function accesses context information such as the context node
+         or <code>position()</code> or <code>last()</code>. And be careful if the function constructs and returns a
+         temporary tree: the effect will be that the function returns the same tree each
+         time, rather than a copy of the tree (this difference will only show up if you
+         compare the identity of nodes in the two trees).
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><i>In Saxon 8.0, this was working on some functions but not others, depending on the way
+            they were compiled. In 8.1, it should work on all functions.</i></p>
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="memo-function.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../attributes.html">Up</a>&nbsp;&nbsp;<a class="nav" href="../output-extras.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

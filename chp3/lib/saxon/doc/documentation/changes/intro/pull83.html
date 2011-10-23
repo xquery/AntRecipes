@@ -1,0 +1,112 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--changes/intro/pull83
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: Pull Processing</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Pull Processing">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>Pull Processing</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Saxon 8.3 contains some new classes to support a pull pipeline. At present this should be regarded as
+         preliminary and experimental; it provides some new ways of providing input to Saxon and reading results
+         from Saxon, but plays no significant role within the product architecture yet. Interfaces are likely to change.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">A new interface, <code>PullProvider</code> is included. This interface is modelled on the
+         <code>XMLStreamReader</code> interface that forms part of <code>StAX</code>, but modified
+         to use Saxon concepts such as NamePools and SequenceIterators. This interface allows a caller to
+         read an XML document by a sequence of calls on the method <code>next()</code>: each such call
+         advances the position of a cursor and makes information available about the current context. Typically,
+         <code>next()</code> reports that it has read the start of an element, a text node, a comment, the end of an element
+         node, and so on. Attributes and namespaces are not reported as events, but information about them is
+         available to the caller immediately after the <code>START_ELEMENT</code> event is notified.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>PullProvider</code> can in fact read any XPath sequence, containing nodes and atomic values.
+         When a node is encountered, the client can "drill down" to get the events within the subtree rooted at that node.
+         (Alternatively, the client can skip the node and move on). It is not possible to navigate in arbitrary directions 
+         from the node, because the node may have no real existence in memory: this is a streaming interface.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">A class <code>PullSource</code> is available that wraps a <code>PullProvider</code> as a JAXP Source
+         object. This allows any <code>PullProvider</code> to be supplied as input to a transformation or query.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">It is possible to obtain a <code>PullProvider</code> that reads the contents of an Saxon tree, starting
+         at a given node. There are two variants of this: <code>TreeWalker</code> which can handle any tree (that is,
+         any implementation of the <code>NodeInfo</code> interface), and <code>TinyTreeWalker</code>, which is
+         optimized for the TinyTree.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">It is possible to bridge between Saxon's pull and push interfaces using a <code>PullPushCopier</code>.
+         This reads events from a <code>PullProvider</code> and sends equivalent events to a <code>Receiver</code>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">A <code>PullProvider</code> is available that interfaces to a StAX pull-parser. This class is called
+         <code>StaxBridge</code>. It has been tested with pull parsers from BEA and Sun. Both these parsers are
+         currently early releases and have been found to be rather buggy: no doubt they will improve in subsequent
+         versions.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><i>The </i><code>StaxBridge</code><i> class is the only class in Saxon that depends on the presence
+            of the StAX API. For this reason, it is not bundled as part of the general <code>saxon8.jar</code> file. 
+            Instead, it is included for the time being in the <code>samples</code> directory.
+            There is no dependency on any particular StAX parser: it will pick up whatever parser is on the classpath,
+            or selected using the relevant Java system properties.</i></p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">A class <code>PullFilter</code> is available that simply joins two <code>PullProviders</code> end-to-end.
+         This can be subclassed (in the same way as the <code>XMLFilter</code> class in SAX) to provide a wide
+         variety of components that analyze or modify the event stream. This allows pull pipelines to be built in very 
+         much the same way as Saxon's existing push pipelines.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">An eventual aim of this work is to enable tree-construction expressions to be evaluated in pull mode. This will
+         allow lazy evaluation of trees in the same way as Saxon currently makes heavy use of lazy evaluation of sequences.
+         For example, given a construct such as <code>&lt;e a="{$x}"/&gt;</code> (in either XSLT or XQuery), 
+         Saxon would be able to return to the caller a sequence of events (in this case, just a start-element and
+         end-element event) without ever building a tree in memory. This is similar to what happens today using
+         the push pipeline when writing a final result tree, especially in XSLT. For XQuery, however, where it is more common
+         to construct many small intermediate trees, being able to switch between pull and push processing for such
+         expressions offers considerable advantages.
+      </p> 
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="pull83.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../intro.html">Up</a>&nbsp;&nbsp;<a class="nav" href="../v8.2.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

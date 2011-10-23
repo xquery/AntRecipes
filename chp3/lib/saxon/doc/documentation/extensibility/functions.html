@@ -1,0 +1,117 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--extensibility/functions
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: Writing extension functions</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Writing extension functions">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      
+      
+      <h1>Writing extension functions</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Extension functions must be implemented in Java.</p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">An extension function is invoked using a name such as <code>prefix:localname()</code>.
+         The prefix must be the prefix associated with a namespace declaration that is in scope. 
+         The namespace URI is used to identify a Java class, and the local name is used to identify
+         a method, field, or constructor within the class.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><b>The command line option -TJ is useful for debugging the loading of Java
+            extensions. It gives detailed information about the methods that are examined for
+            a possible match.</b></p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">There are various ways a mapping from URIs to Java classes can be established.
+         The simplest is to use a URI that identifies the Java class explicitly.
+         The namespace URI should be "java:" followed by the fully-qualified class name
+         (for example <code>xmlns:date="java:java.util.Date"</code>). 
+         The class must be on the classpath. 
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><i>For compatibility with other products and previous Saxon releases, Saxon also supports
+            certain other formats of URI. The URI may be a string containing a "/", 
+            in which the fully-qualified class name appears after the final "/".
+            (for example <code>xmlns:date="http://www.jclark.com/xt/java/java.util.Date"</code>). The part of
+            the URI before the final "/" is immaterial. 
+            The format <code>xmlns:date="java.util.Date"</code> is also supported.</i></p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The Saxon namespace URI "http://saxon.sf.net/" is recognised as a special case. In most cases it causes the
+         function to be loaded from the class <code>net.sf.saxon.functions.Extensions</code> but in a few cases,
+         such as <code>saxon:evaluate</code>, the function is recognized by the compiler as if it were a built-in function.
+         The various EXSLT namespaces are also recognized specially.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">In XSLT it is also possible to set up a mapping from a URI to a Java class using a <code>saxon:script</code>
+         declaration in the stylesheet. This declaration can also name a Java archive, which means the class does not
+         have to be on the classpath. The <code>saxon:script</code> mechanism is not widely used and may be
+         withdrawn in a future release.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The rest of this section considers how a Java method, field, or constructor is identified. This decision
+         (called binding) is always made at the time the XPath expression is compiled. (In previous Saxon releases
+         it was sometimes delayed until the actual argument values were known at run-time).
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">There are three cases to consider: static methods, constructors, and instance-level methods. In
+         addition, a public field in a class is treated as if it were a zero-argument method, so public static
+         fields can be accessed in the same way as public static methods, and public instance-level fields
+         in the same way as instance-level methods.
+      </p>
+      
+      
+      <ul>
+         <li>
+            <p><a class="bodylink" href="functions/staticmethods.html">Calling Static Methods in a Java Class</a></p>
+         </li>
+         <li>
+            <p><a class="bodylink" href="functions/constructors.html">Calling Java Constructors</a></p>
+         </li>
+         <li>
+            <p><a class="bodylink" href="functions/instance-methods.html">Calling Java Instance-Level Methods</a></p>
+         </li>
+      </ul>
+      
+      
+      
+      
+      
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="functions.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="converting-args.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--samples/shakespeare
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: Shakespeare Example</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Shakespeare Example">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      
+      <h1>Shakespeare Example</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">This example works on an input file
+         containing a Shakespeare play. You can use any of the Shakespeare plays in Jon Bosak's
+         distribution at <a href="http://metalab.unc.edu/bosak/xml/eg/shaks200.zip" target="_blank" class="bodylink">
+            http://metalab.unc.edu/bosak/xml/eg/shaks200.zip</a>,
+         but for convenience one of them, <i>Othello</i>, is included in the Saxon distribution
+         (in the samples\data directory).
+      </p>
+      
+      
+      <p class="subhead">Shakespeare stylesheet</p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">There is an XSLT stylesheet, play.xsl, which processes an input play in XML and
+         generates a set of linked HTML files (one for the play and one for each scene) in an
+         output directory. To run this, create a directory (say playhtml) and execute the following
+         from the command line:
+      </p>
+      
+      
+      <p class="command">
+         cd samples<br xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         java net.sf.saxon.Transform data\othello.xml styles\play.xsl dir=playhtml
+         
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The last parameter sets the value of the constant <b>dir</b> to the value <b>playhtml</b>;
+         this constant is referenced from the style sheet when creating output files.
+      </p>
+      
+      
+      <p class="subhead">Shakespeare XPath Sample Application</p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">In the <code>samples/java</code> directory is an example application called
+         <code>XPathExample.java</code>. This is designed to illustrate the use of Saxon's implementation of the
+         JAXP 1.3 XPath API
+         from a Java application. It searches a Shakespeare play for all occurrences of a word
+         entered from the console, displaying the lines containing that word, and the context where
+         they appear.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">To run this example, first ensure that it is on your classpath, and find the location of
+         the <code>othello.xml</code> file in the <code>samples/data</code> directory. Open a command-line
+         console, and run the application using the command:
+      </p>
+      
+      
+      <p class="command">
+         cd samples<br xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         java XPathExample data\othello.xml
+         
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The application prompts for a word. Enter the word (try "castle" or "handkerchief"). The lines
+         containing the chosen word are displayed on the console. Exit the application by entering ".".
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="shakespeare.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="bible.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

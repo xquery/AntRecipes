@@ -1,0 +1,164 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--sql-extension/example
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: Example</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Example">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      
+      <h1>Example</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">A specimen stylesheet that uses these XSL extension is <b>books-sql.xsl</b>. This loads the contents
+         of the books.xml file into a database table, To use it, you need to create a database
+         database containing a table "Book" with three character columns,
+         "Title", "Author", and "Category"
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Here is the stylesheet:</p>
+      
+      
+      <div class="codeblock" style="border: solid thin; background-color: #B1CCC7; padding: 2px"><pre><code>&lt;xsl:stylesheet
+	xmlns:sql="java:/net.sf.saxon.sql.SQLElementFactory"
+ 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"
+	xmlns:saxon="http://saxon.sf.net/"
+ 	extension-element-prefixes="saxon sql"&gt;
+
+&lt;!-- insert your database details here, or supply them in parameters --&gt;
+&lt;xsl:param name="driver" select="'sun.jdbc.odbc.JdbcOdbcDriver'"/&gt;
+&lt;xsl:param name="database" select="'jdbc:odbc:test'"/&gt;  
+&lt;xsl:param name="user"/&gt;
+&lt;xsl:param name="password"/&gt;
+
+&lt;!-- This stylesheet writes the book list to a SQL database --&gt;
+
+&lt;xsl:variable name="count" select="0" saxon:assignable="yes"/&gt;
+
+&lt;xsl:output method="xml" indent="yes"/&gt;
+
+&lt;xsl:template match="BOOKLIST"&gt;
+    &lt;xsl:if test="not(element-available('sql:connect'))"&gt;
+        &lt;xsl:message&gt;sql:connect is not available&lt;/xsl:message&gt;
+    &lt;/xsl:if&gt;
+    
+    &lt;xsl:message&gt;Connecting to &lt;xsl:value-of select="$database"/&gt;...&lt;/xsl:message&gt;
+
+    &lt;xsl:variable name="connection" 
+         as="java:java.sql.Connection" xmlns:java="http://saxon.sf.net/java-type"&gt;   
+      &lt;sql:connect driver="{$driver}" database="{$database}" 
+                 user="{$user}" password="{$password}"&gt;
+        &lt;xsl:fallback&gt;
+          &lt;xsl:message terminate="yes"&gt;SQL extensions are not installed&lt;/xsl:message&gt;
+        &lt;/xsl:fallback&gt;
+      &lt;/sql:connect&gt;
+    &lt;/xsl:variable&gt;
+    
+    &lt;xsl:message&gt;Connected...&lt;/xsl:message&gt;
+    
+    &lt;xsl:apply-templates select="BOOKS"&gt;
+      &lt;xsl:with-param name="connection" select="$connection"/&gt;
+    &lt;/xsl:apply-templates&gt;
+    
+    &lt;xsl:message&gt;Inserted &lt;xsl:value-of select="$count"/&gt; records.&lt;/xsl:message&gt;
+
+    &lt;xsl:variable name="book-table"&gt;
+      &lt;sql:query connection="$connection" table="book" column="*" row-tag="book" column-tag="col"/&gt; 
+    &lt;/xsl:variable&gt;
+    
+    &lt;xsl:message&gt;There are now &lt;xsl:value-of select="count($book-table//book)"/&gt; books.&lt;/xsl:message&gt;
+    &lt;new-book-table&gt;
+        &lt;xsl:copy-of select="$book-table"/&gt;
+    &lt;/new-book-table&gt;
+    
+    &lt;sql:close connection="$connection"/&gt;
+    
+&lt;/xsl:template&gt;
+
+&lt;xsl:template match="BOOKS"&gt;
+    &lt;xsl:param name="connection"/&gt;
+    &lt;xsl:for-each select="ITEM"&gt;
+    	&lt;sql:insert connection="$connection" table="book"&gt;
+    	    &lt;sql:column name="title" select="TITLE"/&gt;
+            &lt;sql:column name="author" select="AUTHOR"/&gt;
+            &lt;sql:column name="category" select="@CAT"/&gt;
+    	&lt;/sql:insert&gt;
+    	&lt;saxon:assign name="count" select="$count+1"/&gt;
+    &lt;/xsl:for-each&gt;
+&lt;/xsl:template&gt;
+
+&lt;/xsl:stylesheet&gt;	
+</code></pre></div>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">To run this stylesheet you will need to do the following:</p>
+      
+      
+      <ul xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         
+         <li>
+            <p>Create a database (e.g. Microsoft Access) containing a table "Book" with three character columns,
+               "Title", "Author", and "Category".
+            </p>
+         </li>
+         
+         <li>
+            <p>Register this database as a JDBC data source. (If you use Microsoft Access, register it as an
+               ODBC data source called, say, Books, and then it will automatically be available under JDBC as
+               "jdbc:odbc:Books".
+            </p>
+         </li>
+         
+         <li>
+            <p>Modify the <code>&lt;sql:connect&gt;</code> element in the stylesheet to specify the correct JDBC connection
+               name for the database, and if necessary to supply a username and password. Alternatively you can
+               supply the driver class, database name, username, and password as parameters on the command line.
+            </p>
+         </li>
+         
+         <li>
+            <p>Execute the stylesheet from the command line, as follows:</p>
+            
+            
+            
+            <p class="command">
+               java &nbsp; net.sf.saxon.Transform &nbsp; data\books.xml &nbsp; books-sql.xsl <br>
+               
+            </p>
+         </li>
+      </ul>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The database will be populated with data from the <code>books.xml</code> document.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="example.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="warning.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

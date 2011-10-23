@@ -1,0 +1,65 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--xsl-elements/text
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: xsl:text</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: xsl:text">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>xsl:text</h1>
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>xsl:text</code> element causes its content to be output.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The main reason for enclosing text within an <code>xsl:text</code> element is
+         to allow white space to be output.
+         White space nodes in the stylesheet are ignored unless they appear immediately within
+         an <code>xsl:text</code> element.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The optional <code>disable-output-escaping</code> attribute may be set to "yes" or "no"; the default is
+         "no". If set to "yes", special characters such as "&lt;" and "&amp;" will be output as themselves,
+         not as entities. Be aware that in general this can produce non-well-formed XML or HTML. It is useful,
+         however, when generating things such as ASP or JSP pages. Escaping may not be disabled when writing
+         to a result tree fragment.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><i>Saxon 7.4 has reverted to the XSLT 1.0 specification of <code>xsl:text</code>: the instruction
+            must contain only text, it cannot contain a child element.</i></p>
+      
+      
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="text.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="value-of.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

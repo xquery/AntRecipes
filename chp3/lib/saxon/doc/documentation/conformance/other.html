@@ -1,0 +1,90 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--conformance/other
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: Conformance with other specifications</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Conformance with other specifications">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      
+      <h1>Conformance with other specifications</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Saxon is dependant on the user-selected XML parser to ensure conformance with the XML 1.0 or 1.1
+         Recommendation and the XML Namespaces Recommendation. The syntax for names appearing in XPath expressions
+         follows the XML 1.0 rules.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Saxon implements the <code>&lt;?xml-stylesheet?&gt;</code> processing instruction as described in the 
+         W3C Recommendation <i>Associating StyleSheets with XML Documents</i>.
+         The <b>href</b> pseudo-attribute must be a URI identifying an XML document containing a stylesheet,
+         or a URI with a fragment identifier identifying an embedded stylesheet. The fragment must be the value
+         of an ID attribute declared as such in the DTD.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Saxon's two native tree models, the standard tree and the tiny tree, both support the <code>xml:id</code>
+         Recommendation. An attribute named <code>xml:id</code> is recognized by the <code>id()</code> function,
+         provided that its value after space-trimming is a valid <code>NCName</code>. Saxon's schema processor
+         imposes the constraint that an <code>xml:id</code> attribute, if allowed at all, must be declared as being
+         of type <code>xs:ID</code>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Saxon works with any SAX2-conformant XML parser that is configured to enable namespace 
+         processing. There is one limitation: on the startElement() call from the XMLReader to the
+         ContentHandler, the QName (that is, the third argument) must be present. According to the SAX2
+         specification, namespace-aware parsers are not obliged to supply this argument. However, all
+         commonly-used parsers appear to do so.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Saxon should work with any DOM-conformant XML parser, however, Saxon's DOM interface is tested
+         only with Crimson and Xerces, and DOM implementations are known to vary widely.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">When a DOM, JDOM, or XOM tree is supplied as the transformation input, Saxon does not combine adjacent
+         text nodes into a single node. Adjacent text nodes can occur as the result of user modifications to the
+         tree, or as a result of the presence of CDATA sections or entity references, depending on the options
+         in force when the tree was constructed.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">When a DOM, JDOM, or XOM tree is supplied as the transformation input, Saxon does not take the <code>xml:space</code>
+         attribute into consideration when deciding whether or not to strip whitespace text nodes.
+      </p>
+      
+      
+      
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="other.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="documentation.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

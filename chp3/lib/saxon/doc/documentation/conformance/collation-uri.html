@@ -1,0 +1,193 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--conformance/collation-uri
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: Collation URIs</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Collation URIs">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      
+      
+      <h1>Collation URIs</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Collations used for comparing strings can be specified by means of a URI. A collation URI may
+         be used as an argument to many of the <a class="bodylink" href="javascript:topage('functions', 'intro')">standard functions</a>, and 
+         also as an attribute of <code>xsl:sort</code> in XSLT, and in the <code>order by</code>
+         clause of a FLWOR expression in XQuery.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The W3C specifications leave the details of collation URIs entirely implementation-defined. This
+         section explains the collation URIs that can be used with Saxon.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">In Saxon XSLT stylesheets, collations may be described using a <code>saxon:collation</code>
+         element as a top-level declaration in the stylesheet. In this case the value of the <code>name</code>
+         attribute of the <code>saxon:collation</code> may be used as a collation URI. There is no constraint
+         on the form this URI takes, indeed there is no requirement that it be a legal URI. 
+         See <a class="bodylink" href="javascript:tosubpage('extensions','instructions','collation')">saxon:collation</a> for more details.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">A collation URI may also be constructed directly. This enables collation URIs to be used in
+         XPath and XQuery applications as well as in XSLT stylesheets. Such a collation URI takes the form
+         <code>http://saxon.sf.net/collation?keyword=value;keyword=value;...</code>. The query parameters
+         in the URI can be separated either by ampersands or semicolons, but semicolons are usually more
+         convenient. The keywords available are as follows:
+      </p>
+      
+      
+      <table xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         
+         <thead>
+            
+            <tr>
+               <td>
+                  <p><b>keyword</b></p>
+               </td>
+               <td>
+                  <p><b>values</b></p>
+               </td>
+               <td>
+                  <p><b>effect</b></p>
+               </td>
+            </tr>
+            
+         </thead>
+         
+         <tbody>
+            
+            
+            <tr>
+               
+               <td valign="top">
+                  <p>class</p>
+               </td>
+               
+               <td valign="top">
+                  <p>fully-qualified Java class name of a class that
+                     implements <code>java.util.Comparator</code>.
+                  </p>
+               </td>
+               
+               <td valign="top">
+                  <p>This parameter should not be combined with any other parameter.
+                     An instance of the requested class is created, and is used to perform
+                     the comparisons. Note that if the collation is to be used
+                     in functions such as contains() and starts-with(), this class must also be a
+                     <code>java.text.RuleBasedCollator</code>. This approach allows a user-defined collation
+                     to be implemented in Java.
+                  </p>
+               </td>
+               
+            </tr>
+            
+            
+            <tr>
+               
+               <td valign="top">
+                  <p>lang</p>
+               </td>
+               
+               <td valign="top">
+                  <p>any value allowed for xml:lang, for example <code>en-US</code> for US English
+                  </p>
+               </td>
+               
+               <td valign="top">
+                  <p>This is used to find the collation appropriate to a Java locale. The collation
+                     may be further tailored using the parameters <code>strength</code> and
+                     <code>decomposition</code>.
+                  </p>
+               </td>
+               
+            </tr>
+            
+            
+            <tr>
+               
+               <td valign="top">
+                  <p>strength</p>
+               </td>
+               
+               <td valign="top">
+                  <p>primary, secondary, tertiary, or identical</p>
+               </td>
+               
+               <td valign="top">
+                  <p>Indicates the differences that are considered significant when comparing
+                     two strings. A/B is a primary difference; A/a is a secondary difference;
+                     a/&#65533; is a tertiary difference (though this varies by language). So
+                     if strength=primary then A=a is true; with strength=secondary 
+                     then A=a is false but a=&#65533; is true; with strength=tertiary
+                     then a=&#65533; is false.
+                  </p>
+               </td>
+               
+            </tr>
+            
+            
+            <tr>
+               
+               <td valign="top">
+                  <p>decomposition</p>
+               </td>
+               
+               <td valign="top">
+                  <p>none, standard, full</p>
+               </td>
+               
+               <td valign="top">
+                  <p>Indicates how the collator handles Unicode composed characters. See
+                     the JDK documentation for details.
+                  </p>
+               </td>
+               
+            </tr>
+            
+            
+         </tbody>
+         
+      </table>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">It is also possible to specify the Unicode Codepoint Collation defined in the
+         W3C specifications, currently <code>http://www.w3.org/2004/10/xpath-functions/collation/codepoint</code>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">In addition, the APIs provided for executing XPath and XQuery expressions allow named collations to
+         be registered by the calling application, as part of the static context.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="collation-uri.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="jaxp.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--extensions/functions
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: Extension functions</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Extension functions">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      
+      
+      <h1>Extension functions</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">A Saxon extension function is invoked using a name such as <code>saxon:localname()</code>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>saxon</code> prefix (or whatever prefix you choose to use) must be associated with the
+         Saxon namespace URI <code>http://saxon.sf.net/</code>. 
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">For example, to invoke the <code>saxon:evaluate()</code> function in XSLT, write:
+      </p>
+      
+      
+      <div class="codeblock" style="border: solid thin; background-color: #B1CCC7; padding: 2px"><pre><code>&lt;xsl:variable name="expression"
+      select="concat('child::', $param, '[', $index, ']')"/&gt;
+..
+&lt;xsl:copy-of select="saxon:evaluate($expression)"
+     xmlns:saxon="http://saxon.sf.net/"/&gt;
+</code></pre></div>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The equivalent in XQuery is:</p>
+      
+      
+      <div class="codeblock" style="border: solid thin; background-color: #B1CCC7; padding: 2px"><pre><code>declare namespace saxon="http://saxon.sf.net/";
+declare variable $param as xs:string external;
+declare variable $index as xs:integer external;
+declare variable $expression :=
+      concat('child::', $param, '[', $index, ']');
+saxon:evaluate($expression)
+</code></pre></div>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The extension functions supplied with the Saxon product are as follows:</p>
+      
+      
+      <ul>
+         <li>
+            <p><a class="bodylink" href="functions/analyze-string.html">saxon:analyze-string()</a>: analyzes a string using a regular expression
+            </p>
+         </li>
+         <li>
+            <p><a class="bodylink" href="functions/base64binarytooctets.html">saxon:base64Binary-to-octets()</a>: converts an xs:base64Binary value to a sequence of octets
+            </p>
+         </li>
+         <li>
+            <p><a class="bodylink" href="functions/call.html">saxon:call()</a>: calls a first-class function previously created using saxon:function()
+            </p>
+         </li>
+         <li>
+            <p><a class="bodylink" href="functions/decimaldivide.html">saxon:decimal-divide()</a>: performs decimal division with user-specified precision
+            </p>
+         </li>
+         <li>
+            <p><a class="bodylink" href="functions/discarddocument.html">saxon:discard-document()</a>: marks a document as being eligible for garbage collection
+            </p>
+         </li>
+         <li>
+            <p><a class="bodylink" href="functions/eval.html">saxon:eval()</a>: evaluates a stored expression created using saxon:expression
+            </p>
+         </li>
+         <li>
+            <p><a class="bodylink" href="functions/evaluate.html">saxon:evaluate()</a>: evaluates an XPath expression supplied dynamically as a string
+            </p>
+         </li>
+         <li>
+            <p><a class="bodylink" href="functions/evaluate-node.html">saxon:evaluate-node()</a>: evaluates an XPath expression held in a node of a source document
+            </p>
+         </li>
+         <li>
+            <p><a class="bodylink" href="functions/expression.html">saxon:expression()</a>: creates a stored expression for subsequent evaluation using saxon:eval()
+            </p>
+         </li>
+         <li>
+            <p><a class="bodylink" href="functions/find.html">saxon:find()</a>: finds items that match a given key value within an indexed sequence
+            </p>
+         </li>
+         <li>
+            <p><a class="bodylink" href="functions/for-each-group.html">saxon:for-each-group()</a>: groups a set of items on the basis of a grouping key
+            </p>
+         </li>
+         <li>
+            <p><a class="bodylink" href="functions/format-dateTime.html">saxon:format-dateTime()</a>: formats a date, time, or dateTime value
+            </p>
+         </li>
+         <li>
+            <p><a class="bodylink" href="functions/format-number.html">saxon:format-number()</a>: formats a number for output
+            </p>
+         </li>
+         <li>
+            <p><a class="bodylink" href="functions/function.html">saxon:function()</a>: creates a first-class function that can be passed as an argument to other functions
+            </p>
+         </li>
+         <li>
+            <p><a class="bodylink" href="functions/getpseudoattribute.html">saxon:get-pseudo-attribute()</a>: parses the content of a processing instruction
+            </p>
+         </li>
+         <li>
+            <p><a class="bodylink" href="functions/hassamenodes.html">saxon:has-same-nodes()</a>: tests whether two sequences contain the same nodes
+            </p>
+         </li>
+         <li>
+            <p><a class="bodylink" href="functions/hexbinarytooctets.html">saxon:hexBinary-to-octets()</a>: converts an xs:hexBinary value to a sequence of octets
+            </p>
+         </li>
+         <li>
+            <p><a class="bodylink" href="functions/highest.html">saxon:highest()</a>: finds the nodes having the highest value for some expression
+            </p>
+         </li>
+         <li>
+            <p><a class="bodylink" href="functions/index.html">saxon:index()</a>: creates an indexed sequence, allowing efficient retrieval using a key value
+            </p>
+         </li>
+         <li>
+            <p><a class="bodylink" href="functions/leading.html">saxon:leading()</a>: finds the values in a sequence up to the first one that doesn't match a condition
+            </p>
+         </li>
+         <li>
+            <p><a class="bodylink" href="functions/linenumber.html">saxon:line-number(node)</a>: gets the line number of a node in the source document
+            </p>
+         </li>
+         <li>
+            <p><a class="bodylink" href="functions/lowest.html">saxon:lowest()</a>: finds the nodes having the lowest value for some expression
+            </p>
+         </li>
+         <li>
+            <p><a class="bodylink" href="functions/max.html">saxon:max()</a>: finds the maximum value of a set of nodes
+            </p>
+         </li>
+         <li>
+            <p><a class="bodylink" href="functions/min.html">saxon:min()</a>: finds the minimum value of a set of nodes
+            </p>
+         </li>
+         <li>
+            <p><a class="bodylink" href="functions/namespace-node.html">saxon:namespace-node()</a>: creates a namespace node
+            </p>
+         </li>
+         <li>
+            <p><a class="bodylink" href="functions/octetstobase64binary.html">saxon:octets-to-base64Binary()</a>: converts a sequence of octets to an xs:base64Binary value
+            </p>
+         </li>
+         <li>
+            <p><a class="bodylink" href="functions/octetstohexbinary.html">saxon:octets-to-hexBinary()</a>: converts a sequence of octets to an xs:hexBinary value
+            </p>
+         </li>
+         <li>
+            <p><a class="bodylink" href="functions/parse.html">saxon:parse()</a>: parses an XML document supplied as a string
+            </p>
+         </li>
+         <li>
+            <p><a class="bodylink" href="functions/path.html">saxon:path()</a>: returns an XPath expression that identifies the context node
+            </p>
+         </li>
+         <li>
+            <p><a class="bodylink" href="functions/serialize.html">saxon:serialize()</a>: returns the XML representation of a document or element, as a string
+            </p>
+         </li>
+         <li>
+            <p><a class="bodylink" href="functions/stringtoutf8.html">saxon:string-to-utf8()</a>: returns the UTF8 representation of a string
+            </p>
+         </li>
+         <li>
+            <p><a class="bodylink" href="functions/sum.html">saxon:sum()</a>: sums the result of computing an expression for every node in a sequence
+            </p>
+         </li>
+         <li>
+            <p><a class="bodylink" href="functions/systemid.html">saxon:system-id()</a>: returns the system ID of the document containing the context node
+            </p>
+         </li>
+         <li>
+            <p><a class="bodylink" href="functions/try.html">saxon:try()</a>: allows recovery from dynamic errors
+            </p>
+         </li>
+         <li>
+            <p><a class="bodylink" href="functions/typeannotation.html">saxon:type-annotation()</a>: returns the type annotation of a node
+            </p>
+         </li>
+      </ul>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The Java source code of these functions (which in most cases is extremely simple),
+         can be used as an example for writing
+         other user extension functions. It is found in class 
+         <code>net.sf.saxon.functions.Extensions</code>. Source code is available in the
+         download of Saxon-B from <a href="http://saxon.sf.net/" target="_blank" class="bodylink">SourceForge</a></p>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="functions.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="instructions.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

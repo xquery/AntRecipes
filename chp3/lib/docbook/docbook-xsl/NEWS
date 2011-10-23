@@ -1,0 +1,2038 @@
+Changes since the 1.69.1 release
+
+------------------------------------------------------------------------------
+
+Table of Contents
+
+Release: 1.70.0
+
+    Common
+    Extensions
+    FO
+    HTML
+    HTMLHelp
+    Lib
+    Manpages
+    Params
+    Profiling
+    Template
+    Tools
+    WordML
+
+Release: 1.70.0
+
+The following is a list of changes that have been made since the 1.69.1
+release.
+
+Common
+
+The following changes have been made to the common code since the 1.69.1
+release.
+
+  * Add the xsl:key for the kimber indexing method.
+
+  * Add support for qandaset.
+
+  * Support dbhtml/dbfo start PI for orderedlist numbering in both HTML and FO
+
+  * Added CVS header.
+
+  * Changed content model of text element to ANY rather than #PCDATA
+    because they could contain markup.
+
+  * Added refentry.meta.get.quietly param.
+
+    If zero (the default), notes and warnings about "missing" markup
+    are generated during gathering of refentry metadata. If non-zero,
+    the metadata is gathered "quietly" -- that is, the notes and
+    warnings are suppressed.
+
+    NOTE: If you are processing a large amount of refentry content,
+    you may be able to speed up processing significantly by
+    setting a non-zero value for refentry.meta.get.quietly.
+
+  * We must use file:///c:/ instead of c:/ because extension functions are
+    choking on c:/. Grrrr.
+
+  * Move xml:base fiddling to named template: add-xml-base
+
+  * Make sure entityref gets expanded when stripping (there are no entity
+    declarations in the stripped document)
+
+  * Attempt to deal with file:/c:/path correctly (c:/path)
+
+  * After namespace stripping, the source document is the temporary tree
+    created by the stripping process and it has the wrong base URI for
+    relative references. Earlier versions of this code used to try to
+    fix that by patching the elements with relative @fileref attributes.
+    That was inadequate because it calculated an absolute base URI without
+    considering that there might be xml:base attributes already in effect.
+    It seems obvious now that the right thing to do is simply to put the
+    xml:base on the root of the document. And that seems to work.
+
+  * Added missing param declarations on several templates. Lack of
+    them was causing processing with Saxon to fail. Thanks to
+    Denis Bradford for reporting the problem.
+
+  * Created a new message-logging named template, log.message, by
+    generalizing the old refentry.emit.message template and moving it
+    out of common/refentry.xsl and into common/common.xsl
+
+  * Refined XPath statements and notification messages for refentry
+    metadata handling.
+
+  * Added message-prolog and message-epilog and
+    suppress-context-node-name local params to the write.chunk and
+    write.text.chunk templates. They enable additional info to be
+    emitted before/after the "Writing..." message, and enable they
+    context-node name to be suppressed in output. The reason for
+    these additions is that the write.text.chunk template is
+    "repurposed" in manpages output for writing the names of soelim
+    stub files as well as "real" man pages, and also is used for
+    writing the manifest file, and it is useful to emit details about
+    the type of file it is writing each time.
+
+  * Added refentry.emit.message utility templated and and
+    refentry.emit.messages parameter for emitting note/warning
+    messages about missing markup.
+
+  * Fixed regression caused by recent changes to refentry metadata
+    handling. Closes #1467100. Thanks to Daniel Leidert for reporting.
+
+  * Added support for "software" and "sectdesc" class values on
+    refmiscinfo; "software" is treated identically to "source", and
+    "setdesc" is treated identically to "manual".
+
+  * Made further refinements to the code for doing Refentry metadata
+    gathering; "normalized" the formatting of notification/warning
+    messages emitted during metadata gathering.
+
+  * Simplified XPath check for refentry "source" metadata.
+
+  * Drastically reworked all of the XPath expressions used in refentry
+    metadata gathering -- completely removed $parentinfo and turned
+    $info into a set of nodes that includes the *info contents of the
+    Refentry plus the *info contents all all of its ancestor
+    elements. The basic XPath expression now used throughout is (using
+    the example of checking for a date):
+
+    (($info[//date])[last()]/date)[1].
+
+    That selects the "last" *info/date date in document order -- that
+    is, the one eitther on the Refentry itself or on the closest
+    ancestor to the Refentry.
+
+    It's likely this change may break some things; may need to pick
+    up some pieces later.
+
+    Also, changed the default value for the man.th.extra2.max.length
+    from 40 to 30.
+
+  * Handle additional case when extension functions were not unable to load
+    external resource on Windows box
+
+  * Set priority="-1" on match="/" template in stripns.xsl, to
+    suppress "Ambiguous rule match" warnings.
+
+  * Added a "string.lower" template. Does the opposite of
+    string.upper().. Used in the XSLT-based build process for
+    generating the NEWS file and release notes, where we take
+    the "display names" of subsections like "HTMLHelp", and change
+    them into the actual directory names, like "htmlhelp".
+
+  * Added support for DocBook 5 namespace-stripping in manpages
+    stylesheet. Closes request #1210692.
+
+  * Added <xsl:template match="/"> to make stripns.xsl usable as a
+    standalone stylesheet for stripping out DocBook 5/NG to DocBook 4.
+    Note that DocBook XSLT drivers that include this stylesheet all
+    override the match="/" template.
+
+  * Fixed problems with notifications generated when date found.
+
+  * Checkpointing. Still have a way to go on reworking this.
+
+  * Number figures, examples, and tables from book if there is no prefix (i.e.
+    if chapter.autolabel is set to 0). This avoids having the list of figures
+    where the figures mysteriously restart their numeration periodically when
+    chapter.autolabel is set to 0.
+
+  * Add task template in title.markup mode.
+
+  * Fixed bug #1359008. If a mediaobject contains only one object, use it
+    even if it is only a textobject.
+
+  * Fixed bug # 1364478 xml:id not recognized by olink database.
+
+  * Fixed attribute inheritance when in entrytbl.
+
+  * Clarified missing olink error message.
+
+  * Handle xml:id, version, and xlink:href better; make sure title gets copied
+    even when there's no info
+
+  * Add children (with ids) of formal objects to target data.
+
+  * Map info elements to the right *info element when stripping NS. Set
+    xml:base on external references rather than directly changing @fileref.
+    Map xml:id to id.
+
+  * Fixed test expression
+
+  * This is a standalone "utility" stylesheet (it's not imported by
+    and of the drivers). Its purpose is to transform all instances of
+    DocBook-specific "insert file" markup (e.g., <textdata
+    fileref="foo.txt) with Xinclude instances. It is mainly intended
+    as an alternative to the DocBook XSLT Java insertfile() extension.
+
+  * Move the stripns code to a common location; update @fileref and @entityref
+    attributes in an attempt to handle the fact that the base URI gets mangled
+    by the stripping copy.
+
+  * Made make-catalog.xsl general-purpose and moved to releasetools
+    dir so it can be used with other modules.
+
+  * Added support for case when personname doesn't contain specific name
+    markup (as allowed in DocBook 5.0)
+
+  * Moved olink page number reference template to xref.xsl.
+
+  * Fixed handling of %p in olink xrefstyle templates.
+
+  * Added colon to list of delimiters for parsing datetime strings
+    into tokens. Closes #1285053. Thanks to Jeroen Ruigrok for the bug
+    report, and to Mauritz Jeanson for spotting the cause.
+
+  * Removed catalog.xml from version control and updated build to
+    automatically generate it. (To ensure it always contains the
+    correct version number for the release.) Thanks to John L. Clark
+    for the suggestion.
+
+Extensions
+
+The following changes have been made to the extensions code since the 1.69.1
+release.
+
+  * Fixed imports
+
+  * Make xalan27.jar
+
+  * Support Xalan 2.7
+
+  * Applied patch from Ville Skytt. Changes to comments/javadoc only.
+    Closes patch #613993.
+
+  * An attemp to fix base URIs when profiling is done and document is not in
+    the current directory. This seems to work on my Windows machine, but I
+    would be interested how it behaves in unix environment. URL handling in
+    Java is very sensitive to such things.
+
+  * Handle the case where the imageFn is actually a URI. This still needs
+    work.
+
+FO
+
+The following changes have been made to the fo code since the 1.69.1 release.
+
+  * Adapted to the new indexing code. Now works just like a wrapper that calls
+    kosek indexing method, originally implemented here.
+
+  * Added missing and required attribute sets.
+
+  * Apparently blank-body does work with fop1.extensions.
+
+  * Turn off blank-body region name for fop1.extensions too, since apparently
+    this
+    is still not fixed.
+
+  * Added parameters for header/footer table minimum height.
+
+  * Add the index.method parameter.
+
+  * Integrate support for three indexing methods:
+    - the original English-only method.
+    - Jirka Kosek's method using EXSLT extensions.
+    - Eliot Kimber's method using Saxon extensions.
+    Use the 'index.method' parameter to select.
+
+  * Make sure sidebars get IDs so that cross references to them work
+
+  * Add support for TOC for qandaset in fo output.
+
+  * Added parameter ulink.hyphenate.chars.
+    Added parameter insert.link.page.number.
+
+  * Implemented feature request #942524 to add insert.link.page.number to
+    allow link element cross references to have a page number.
+
+  * applied patch #1143813 to check glossterm link before forming it.
+
+  * Add support for ulink.hyphenate.chars so more characters can
+    be break points in urls.
+
+  * Implemented patch #1075144 to make the url text in a ulink in FO
+    output an active link as well.
+
+  * table footnotes now have their own table.footnote.properties attribute
+    set.
+
+  * Added qandaset in support of it as a root element.
+
+  * Add support for qandaset as root element to generate a page sequence.
+
+  * Add qandaset to root.elements.
+
+  * Added mode="page.sequence" to make it easier to put content
+    into a page sequence. First used for qandaset.
+
+  * Implemented feature request #1434408 to support formatting of
+    biblioentry.
+
+  * Added biblioentry.properties.
+
+  * Fixed bug #1466816 "keep.relative.image.uris not used for FO". Now
+    if the value is 1, the fileref is not changed by xml:base attributes.
+
+  * Support PTC/Arbortext bookmarks
+
+  * Added table.footnote.properties to permit table footnotes to
+    format differently from regular footnotes.
+
+  * Refactored table templates to unify their processing and
+    support all options in all types. Now table and informaltable,
+    in both Cals and Html markup, use the same templates where
+    possible, and all support pgwide, rotation, and floats.
+    There is also a placeholder table.container template to support
+    wrapping a table in a layout table, so the XEP table title
+    "continued" extension can be more easily implemented.
+
+  * Added new attribute set toc.line.properties for controlling appearance of
+    lines in ToC/LoT
+
+  * fixed bug #1472393 fo:table-body missing from HTML informatable to FO.
+
+  * Added support for float to example and equation.
+    Added support for pgwide to figure, example, and equation
+    (the latter two via a dbfo pgwide="1" processing instruction).
+
+  * Add pgwide.properties attribute-set.
+
+  * Fixed bug #1445304 indexterm in biblioentry not handled correctly
+    in bibliography.mode.
+
+  * Removed leftover refclass.suppress cruft.
+
+  * Added refclass.suppress param.
+
+    If the value of refclass.suppress is non-zero, then display
+    refclass contents is suppressed in output. Affects HTML and FO
+    output only.
+
+  * Fixed problem with test for fop.extensions in "floater" template.
+    Closes #1475639. Thanks to Mauritz Jeanson for reporting.
+
+  * Do not break // in URL
+
+  * DocBook V5.0 uses class="comment" for both XML/SGML comments
+
+  * Improved support for task subelements
+
+  * Fix bug #1471303: Comments cause incorrect <group> processing
+
+  * Added missing anchor
+
+  * Fixed bug # 1465290. Spaces are converted fo:leader only inside DocBook
+    (non-namespaced elements). Text nodes inside different namespaces (e.g.
+    MathML, SVG) are left untouched.
+
+  * Made segtitle bold in FO output. Closes #948245. Thanks to
+    Alastair Rankine for reporting.
+
+  * Changed test expression used for determining whether a term in a
+    variablelist is the final term. Was using "position() = last()",
+    but that caused a fatal XPath error in xsltproc (though not in
+    Saxon); changed to "not(following-sibling::term)", which is
+    probably a better way of doing it anyway.
+
+  * Adjusted spacing around K&R-formatted Funcdef and Paramdef output
+    such that it can more easily be discerned where one ends and the
+    other begins. Closes #1213264.
+
+  * Made handling of paramdef/parameter in FO output consistent with
+    that in HTML and manpages output. Closes #1213259.
+
+  * Made handling of Refnamediv consistent with formatting in HTML and
+    manpages output; specifically, changed so that Refname
+    (comma-separated list of multiple instances found) is used
+    (instead of Refentrytitle as previously), then em-dash, then the
+    Refpurpose. Closes #1212562.
+
+  * Committed patch to fix problem with Title missing in Adobe Reader
+    "Document properties". Closes #1465301. Thanks to Mauritz Jeanson
+    for the patch.
+
+  * Added output of Releaseinfo to recto titlepage ("copyright" page)
+    for Book in FO output. This makes it consistent with HTML output.
+    Closes #1327034. Thanks to Paul DuBois for reporting.
+
+  * Problem:
+    When source has width="" (empty width) on imagedata, it ends up
+    getting converted to width="px" ("px" units with empty value) in
+    output.
+    Cause:
+    Stylesheets were not checking to see if width was non-empty.
+    Fix:
+    Stylesheets now check to see if value of width in source is
+    non-empty.
+    Affects:
+    This change affects FO output only. It causes width="auto"
+    output for width="" instances in source (instead of width="px").
+
+  * Added condition for setting block-progression-dimension.minimum on
+    table-row, instead of height, when fop1.extensions is non-zero.
+    For an explanation of the reason for the change, see:
+    http://wiki.apache.org/xmlgraphics-fop/Troubleshooting/CommonLogMessages
+
+  * Added new refclass.suppress param for suppressing display of
+    Refclass in HTML and FO output. Did not add it to manpages because
+    manpages stylesheet is currently just silently ignoring Refclass
+    anyway. Closes request #1461065. Thanks to Davor Ocelic (docelic)
+    for reporting.
+
+  * Fix template named 'anchor' to check @xml:id too.
+
+  * Add support for keep-together PI to informal objects.
+
+  * Add support for fop1.extensions.
+
+  * Add support for fop1 bookmarks.
+
+  * Add fop1.extentions parameter to add support for
+    fop development version.
+
+  * Start supporting fop development version, which will
+    become fop version 1.
+
+  * Add template for task in mode="xref-to".
+
+  * fixed bug #1246878, no otherwise clause for start-indent and end-indent in
+    a sidebar float.
+
+  * Fixed bug #1326440 where 'title' in generate.toc was not supported in FO.
+
+  * Added missing variable declaration
+
+  * Removed obsolete template match="legalnotice/title" mode="titlepage.
+    legalnotice.title.mode".
+
+  * table footnotes now also get footnote.properties attribute-set.
+
+  * Fixed fo:marker output on bridgehead to match current section level.
+
+  * Added index.separator named template to compute the
+    separator punctuation based on locale.
+
+  * Added normalize-space() to text values in document properties.
+    Handle author better, the same as xep.xsl.
+
+  * Added normalize-space() to text values in document properties.
+
+  * Fixed bug in startinglinenumber when programlisting
+    is inside a programlistingco.
+
+  * Added handling for cases of Methodsynopsis that have Modifier
+    instances after the Methodname. Closes #1353365; thanks to
+    Stephen Langer for reporting.
+
+  * Added support for link, olink, and xref within OO Classsynopsis
+    and children. (Because DocBook NG/5 allows it).
+
+  * Fixed 'nopage' option in xrefstyle.
+
+  * fixed bug in sidebarinfo title template match.
+
+  * Support date as an inline
+
+  * Added new parameter keep.relative.image.uris
+
+  * Make sure tfoots are bold too
+
+  * Map Unicode space characters U+2000-U+200A to fo:leaders.
+
+  * Output a real em dash for em-dash dingbat (instead of two hypens).
+
+  * Problem:
+    In a PDF generated with Passivetex, every itemizedlist (bulleted
+    list) has a linebreak after the bullet and before the listem
+    contents. That bullet should not be there.
+
+    Cause:
+    Design problem in Passivetex
+
+    Fix:
+    Added a fix that works around the problem by not wrapping the
+    listem output in an <fo:block> if passivetex.extensions=1. Closes
+    #1328348.
+
+    Affects:
+    Only affects output if passivetex.extensions=1. Otherwise,
+    follows previous code path, so behavior is exactly the same.
+
+  * Fixed bug #1315700, where glossary in part with role="auto"
+    produced invalid FO.
+
+  * Move the stripns code to a common location; update @fileref and @entityref
+    attributes in an attempt to handle the fact that the base URI gets mangled
+    by the stripping copy.
+
+  * Corrected minor copy-paste error (orderedlist template picking up
+    value of itemizedlist.label.width instead of orderedlist.label.width).
+
+  * Support default label width parameters for itemized and ordered lists
+
+  * Comment out debugging message
+
+  * Generate localized title for Refsynopsisdiv if no appropriate
+    Title descendant found in source. Closes #1212398. This change
+    makes behavior for the Synopsis title consistent with the behavior
+    of HTML and manpages output.
+
+    Also, added xsl:use-attribute-sets="normal.para.spacing" to block
+    generated for Cmdsynopsis output. Previously, that block had no
+    spacing at all specified, which resulted it being crammed up to
+    closely to the Synopsis head.
+
+  * Added parameters to support localization of index item
+    punctuation.
+
+  * Added index.number.separator, index.range.separator, and
+    index.term.separator parameters to support localization
+    of punctuation in index entries.
+
+  * Added "Cross References" section in HTML doc (for consistency with
+    the FO doc). Also, moved the existing FO "Cross References"
+    section to follow the "Linking" section.
+
+  * Added ID attribues to all Reference elements (e.g., id="tables"
+    for the doc for section on Table params). So pages for all
+    subsections of ref docs now have stable filenames instead of
+    arbitrary generated filenames.
+
+  * Removed misguided code intended for normalizing whitespace in term
+    output for HTML and FO. (It's not necessary for those, though it is
+    still needed in manpages output because we're using the .TP macro,
+    and first line following that is treated differently than the
+    subsequent lines. So we need to get rid of any embedded line
+    breaks from within the Term source.)
+
+  * Added two new parameters for handling of multi-term varlistentry
+    elements:
+
+    variablelist.term.break.after:
+    When the variablelist.term.break.after is non-zero, it will
+    generate a line break after each term multi-term varlistentry.
+
+    variablelist.term.separator:
+    When a varlistentry contains multiple term elements, the string
+    specified in the value of the variablelist.term.separator
+    parameter is placed after each term except the last. The default
+    is ", " (a comma followed by a space). To suppress rendering of
+    the separator, set the value of variablelist.term.separator to
+    the empty string ("").
+
+    These parameters are primarily intended to be useful if you have
+    multi-term varlistentries that have long terms.
+
+    Closes #1306676. Thanks to Sam Steingold for providing an example
+    "lots of long terms" doc that demonstrated the value of having
+    these options.
+
+    Also, added normalize-space() call to processing of each term.
+
+    This change affects all output formats (HTML, PDF, manpages). The
+    default behavior should pretty much remain the same as before, but
+    it is possible (as always) that the change may introduce some new
+    bugginess.
+
+  * Fixed bug #1306070 set with 2 books: wrong page numbering on 2nd book.
+
+  * Moved olink page citation template to xref.xsl.
+
+  * Add sidebar titlepage placeholder attset for styles.
+
+  * Fixed incorrect variable name.
+
+  * Fixed bug [ 1256277 ] sidebarinfo not supported, so now sidebarinfo
+    is supported.
+
+  * Add titlepage for sidebar.
+
+  * Fixed bug [ 1261896 ] Section title's footnotes in page header.
+
+  * Fixed set.flow.properties to match on draft page-masters too.
+
+  * Implemented RFE #1292615.
+
+    Added bunch of new parameters (attribute sets) that affect list
+    presentation: list.block.properties, itemizedlist.properties, orderedlist
+    .properties, itemizedlist.label.properties and orderedlist.label
+    .properties. Default behaviour of stylesheets has not been changed but
+    further customizations will be much more easier.
+
+  * Implemented RFE #1242092.
+
+    You can enable crop marks in your document by setting crop.marks=1 and
+    xep.extensions=1.
+    Appearance of crop marks can be controlled by parameters crop.mark.bleed
+    (6pt), crop.mark.offset (24pt) and crop.mark.width (0.5pt).
+
+    Also there is new named template called user-xep-pis. You can overwrite it
+    in order to produce some PIs that can control XEP as described in
+    http://www.renderx.com/reference.html#Output_Formats
+
+  * arbortext.extensions supports the url(...) syntax.
+
+  * Appendixes inside article are considered for ToC
+
+  * Process not only subelements of book, but all content including PI
+    (possibly custom).
+
+  * Fixed bug in char attribute, where text-align was being set to
+    any char value, even if the align attribute was not 'char'.
+    The CALS spec says text-align set to the value of char only
+    if the align attribute is 'char'.
+
+HTML
+
+The following changes have been made to the html code since the 1.69.1
+release.
+
+  * Adapted to the new indexing code. Now works just like a wrapper that calls
+    kosek indexing method, originally implemented here.
+
+  * implemented index.method parameter and three methods.
+
+  * added index.method parameter to support 3 indexing methods.
+
+  * Applied patch #1143814 to avoid making bad links from glossterm.
+
+  * Implemented feature request #1072510 as a processing instruction
+    to permit including external HTML content into HTML output.
+
+  * Fixed bug #1436121 problems with default.graphic.extension.
+    Moved test for $keep.relative.image.uris to the template
+    that matches on @fileref so all such processing is in
+    the same place.
+
+  * Added new parameter chunk.tocs.and.lots.has.title which controls presence
+    of title in a separate chunk with ToC/LoT. Disabling title can be very
+    useful if you are generating frameset output (well, yes those frames, but
+    some customers really want them ;-).
+
+  * Support dbhtml/dbfo start PI for orderedlist numbering in both HTML and FO
+
+  * Allow ToC without title also for set and book.
+
+  * Implemented floats uniformly for figure, example, equation and
+    informalfigure, informalexample, and informalequation.
+
+  * fixed bug #1449319 Wrong levels for bridgeheads in XHTML (and HTML).
+
+  * Added the autotoc.label.in.hyperlink param.
+
+    If the value of autotoc.label.in.hyperlink is non-zero, labels are
+    included in hyperlinked titles in the TOC. If it is instead zero,
+    labels are still displayed prior to the hyperlinked titles, but
+    are not hyperlinked along with the titles.
+
+    Closes patch #1065868. Thanks to anatoly techtonik for the patch.
+
+  * Added two new params: html.head.legalnotice.link.types and
+    html.head.legalnotice.link.multiple.
+
+    If the value of the generate.legalnotice.link is non-zero, then
+    the stylesheet generates (in the head section of the HTML source)
+    either a single HTML link element or, if the value of the
+    html.head.legalnotice.link.multiple is non-zero, one link element
+    for each link type specified. Each link has the following
+    attributes:
+
+    - a rel attribute whose value is derived from the value of
+    html.head.legalnotice.link.types
+
+    - an href attribute whose value is set to the URL of the file
+    containing the legalnotice
+
+    - a title attribute whose value is set to the title of the
+    corresponding legalnotice (or a title programatically
+    determined by the stylesheet)
+
+    For example:
+
+    <link rel="copyright" href="ln-id2524073.html" title="Legal Notice">
+
+    Closes #1476450. Thanks to Sam Steingold.
+
+  * Removed leftover refclass.suppress cruft.
+
+  * Added refclass.suppress param.
+
+    If the value of refclass.suppress is non-zero, then display
+    refclass contents is suppressed in output. Affects HTML and FO
+    output only.
+
+  * Added comment about possible hacking to deal with graphic relative URI
+    issue
+
+  * Added convenience for testing the stripped results (commented out for
+    productio)
+
+  * DocBook V5.0 uses class="comment" for both XML/SGML comments
+
+  * Improved support for task subelements
+
+  * Fix bug #1471303: Comments cause incorrect <group> processing
+
+  * Conditions for auto-generating index are aligned with the rest of
+    stylesheets.
+
+  * Added message-prolog and message-epilog and
+    suppress-context-node-name local params to the write.chunk and
+    write.text.chunk templates. They enable additional info to be
+    emitted before/after the "Writing..." message, and enable they
+    context-node name to be suppressed in output. The reason for
+    these additions is that the write.text.chunk template is
+    "repurposed" in manpages output for writing the names of soelim
+    stub files as well as "real" man pages, and also is used for
+    writing the manifest file, and it is useful to emit details about
+    the type of file it is writing each time.
+
+  * Fixed handling of punctuation for Funcparams in HTML output.
+    Closes #1213275.
+
+  * Fixed cut/paste error that was causing ID warnings to be emitted
+    for all Sect2 instances, even if they already had IDs.
+
+  * Support inheriting linkends and xlink:hrefs in imageobjectco areas
+
+  * Added call to normalize-space() to cause contents of Abstract to
+    be normalized when used as the value of the HTML "meta description".
+
+  * Added new refclass.suppress param for suppressing display of
+    Refclass in HTML and FO output. Did not add it to manpages because
+    manpages stylesheet is currently just silently ignoring Refclass
+    anyway. Closes request #1461065. Thanks to Davor Ocelic (docelic)
+    for reporting.
+
+  * Process Refpurpose/Inlinemediaobject correctly in generated ToC.
+
+    Problem:
+    Contents of Refpurpose/Inlinemediaobject do not show up ToC in
+    HTML output. DocBook 5 says that Refpurpose/Inlinemediaobject
+    is valid, so we need to handle it correctly.
+
+    Cause:
+    HTML stylesheets were doing an xsl:value-of on Refpurpose when
+    generating the ToC.
+
+    Fix:
+    Changed to xsl:apply-templates call instead. Also, removed
+    generation of hyphen character in ToC between Refname contents
+    and Refpurpose. The Refpurpose template generates an em dash
+    already, so now that apply-templates is run, that em dash gets
+    rendered in the TOC, just as it is in the main text flow.
+
+    Affects:
+    This change only affects HTML output. I did not touch the FO
+    stylesheets because they are not currently rendering a TOC for
+    Refentry in the page contents anyway. And as far as the PDF
+    bookmarks, they appear to be generated with value-select for all
+    elements, regardless. I imagine that the reason might be that
+    images are not allowed in PDF bookmark labels.
+
+    As far as other effects, not the explanation above about the
+    change from generating a hypen in the TOC to generating an em
+    dash.
+
+    Closes bug #1459977. Thanks to Davor Ocelic (docelic) for the bug
+    report.
+
+  * The Makefile.param file is generated as part of the build, so
+    doesn't need to be in source control. I thought it wasn't,
+    currently, but it was showing up in my "cvs update", so I'm
+    (re)removing it.
+
+  * Process alt text with normalize-space().
+    Replace tab indents with spaces.
+
+  * Content of citation element is automatically linked to the bibliographic
+    entry with the corresponding abbrev.
+
+  * Add template for task in mode="xref-to".
+
+  * Suppress ID warnings if the .warnings parameter is 0
+
+  * Add support for floatstyle to figure.
+
+  * Handling of xref to area/areaset need support in extensions code also. I
+    currently have no time to touch extensions code, so code is here to be
+    enabled when extension is fixed also.
+
+  * Added 3 parameters for overriding gentext for
+    index punctuation.
+
+  * Added parameters to support localization of index item
+    punctuation.
+    Added index.separator named template to compute the
+    separator punctuation based on locale.
+
+  * Added a <div class="{$class}-contents"> wrapper around output of
+    contents of all formal objects. Also, added an optional
+    <br class="{class}-break"/> linebreak after all formal objects.
+
+    WARNING: Because this change places an additional DIV between the
+    DIV wrapper for the equation and the equation contents, it may
+    break some existing CSS stylesheets that have been created with
+    the assumption that there would never be an intervening DIV there.
+
+    The following is an example of what Equation output looks like as
+    a result of the changes described above.
+
+    <div class="equation">
+    <a name="three" id="three"></a>
+
+    <p class="title"><b>(1.3)</b></p>
+
+    <div class="equation-contents">
+    <span class="mathphrase">1+1=3</span>
+    </div>
+    </div><br class="equation-break">
+
+    Rationale: These changes allow CSS control of the placement of the
+    formal-object title relative to the formal-object contents. For
+    example, using the CSS "float" property enables the title and
+    contents to be rendered on the same line. Example stylesheet:
+
+    .equation {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    }
+    .equation-contents {
+    float: left;
+    }
+
+    .equation .title {
+    margin-top: 0;
+    float: right;
+    margin-right: 200px;
+    }
+
+    .equation .title b {
+    font-weight: normal;
+    }
+
+    .equation-break {
+    clear: both;
+    }
+
+    Note that the purpose of the ".equation-break" class is to provide
+    a way to clear off the floats.
+
+    If you want to instead have the equation title rendered to the left
+    of the equation contents, you can do something like this:
+
+    .equation {
+    margin-top: 20px;
+    width: 300px;
+    margin-bottom: 20px;
+    }
+    .equation-contents {
+    float: right;
+    }
+
+    .equation .title {
+    margin-top: 0;
+    float: left;
+    margin-right: 200px;
+    }
+
+    .equation .title b {
+    font-weight: normal;
+    }
+
+    .equation-break {
+    clear: both;
+    }
+
+  * Fixed bug in startinglinenumber when context is
+    programlistingco.
+
+  * Added handling for cases of Methodsynopsis that have Modifier
+    instances after the Methodname. Closes #1353365; thanks to
+    Stephen Langer for reporting.
+
+  * Added a chunker.output.quiet top-level parameter so that the chunker can
+    be made quiet by default
+
+  * Added support for link, olink, and xref within OO Classsynopsis
+    and children. (Because DocBook NG/5 allows it).
+
+  * ends-with() isn't an XSLT 1.0 function
+
+  * Output the stripped document for debugging or if you want to process it
+    more than once
+
+  * Changed check for *info child in id.warning template from using
+    contains() to using ends-with() -- because contains() will match
+    informal* elements (informaltable, etc) too -- not just *info
+    elements.
+
+    Also added check to make sure that *info element matched actually
+    has a title (because some *info elements may not -- title is not a
+    required child of *info elements).
+
+    And FWIW, I don't think it is too aggressive to have the default
+    behavior be to have the stylesheets emit notification messages
+    about ID-less titled objects. If it were the default to have it
+    not emit those, most users would probably never take the time to
+    turn it on, including the users who it is most meant to benefit
+    (those who don't yet know why they ought to be putting IDs on
+    their titled objects).
+
+  * For case where id.warn
+
+  * New parameter: id.warnings. If non-zero, warnings are generated for titled
+    objects that don't have titles. True by default; I wonder if this will be
+    too aggressive?
+
+  * If the keep.relative.image.uris parameter is true, don't use the absolute
+    URI (as calculated from xml:base) in the img src attribute, us the value
+    the author specified. Note that we still have to calculate the absolute
+    filename for use in the image intrinsics extension.
+
+  * Support date as an inline
+
+  * Hack font bugs in funcsynopses
+
+  * Added new parameter keep.relative.image.uris
+
+  * Move the stripns code to a common location; update @fileref and @entityref
+    attributes in an attempt to handle the fact that the base URI gets mangled
+    by the stripping copy.
+
+  * Added "Cross References" section in HTML doc (for consistency with
+    the FO doc). Also, moved the existing FO "Cross References"
+    section to follow the "Linking" section.
+
+  * Added ID attribues to all Reference elements (e.g., id="tables"
+    for the doc for section on Table params). So pages for all
+    subsections of ref docs now have stable filenames instead of
+    arbitrary generated filenames.
+
+  * Removed misguided code intended for normalizing whitespace in term
+    output for HTML and FO. (It's not necessary for those, though it is
+    still needed in manpages output because we're using the .TP macro,
+    and first line following that is treated differently than the
+    subsequent lines. So we need to get rid of any embedded line
+    breaks from within the Term source.)
+
+  * Added two new parameters for handling of multi-term varlistentry
+    elements:
+
+    variablelist.term.break.after:
+    When the variablelist.term.break.after is non-zero, it will
+    generate a line break after each term multi-term varlistentry.
+
+    variablelist.term.separator:
+    When a varlistentry contains multiple term elements, the string
+    specified in the value of the variablelist.term.separator
+    parameter is placed after each term except the last. The default
+    is ", " (a comma followed by a space). To suppress rendering of
+    the separator, set the value of variablelist.term.separator to
+    the empty string ("").
+
+    These parameters are primarily intended to be useful if you have
+    multi-term varlistentries that have long terms.
+
+    Closes #1306676. Thanks to Sam Steingold for providing an example
+    "lots of long terms" doc that demonstrated the value of having
+    these options.
+
+    Also, added normalize-space() call to processing of each term.
+
+    This change affects all output formats (HTML, PDF, manpages). The
+    default behavior should pretty much remain the same as before, but
+    it is possible (as always) that the change may introduce some new
+    bugginess.
+
+  * Problem:
+    Garbage characters appear in content of Title attribute in HTML
+    output.
+
+    Cause:
+    Contents of Alt element, including line breaks, were being copied
+    over "as is" to value of Title attribute in HTML output. Line
+    breaks in Title appear a garbage characters when displayed as
+    pop-up "tool text".
+
+    Fix:
+    Added call to normalize-space() when transforming content of Alt
+    for HTML output. Closes #1254532. Thanks to Sam Steingold for
+    reporting the problem.
+
+  * Added "wrapper-name" param to inline.charseq named template,
+    enabling it to output inlines other than just "span". Acronym and
+    Abbrev templates now use inline.charseq to output HTML "acronym"
+    and "abbr" elements (instead of "span"). Closes #1305468. Thanks
+    to Sam Steingold for suggesting the change.
+
+  * Fixed bug [ 1292052 ] acronym/remark in qandaentry/question TOC.
+
+  * Fixed bug [ 1261811 ] Redundant output of b and anchor element with
+    identical id.
+
+  * Removed colspan on tr elements since it is invalid and
+    already on the td anyway. Fixes bug 1261832.
+
+  * Can you say infinite loop? I knew you could.
+
+  * Changed version attribute on xsl:stylesheet from 1.1 to 1.0
+
+  * Attempt to support @dir more effectively
+
+HTMLHelp
+
+The following changes have been made to the htmlhelp code since the 1.69.1
+release.
+
+  * We are using HTML output method, thus escaping is not necessary anymore,
+    it is done automatically by XSLT engine
+
+  * OK, prefixes that are excluded, must be also declared, otherwise saxon
+    complains
+
+  * Add namespace prefixes db and ng into the list of excluded prefixes (their
+    declarations are added when profiling stylesheets is generated).
+
+  * Fixed tertiary index appearance in index pane.
+
+  * Applied patch #1048856 from techtonik. HTML output is used instead of
+    d-o-e and text method.
+
+Lib
+
+The following changes have been made to the lib code since the 1.69.1 release.
+
+  * Move trim.text template into lib.xweb file.
+
+Manpages
+
+The following changes have been made to the manpages code since the 1.69.1
+release.
+
+  * Added the following params:
+
+    - man.indent.width (string-valued)
+    - man.indent.refsect (boolean)
+    - man.indent.blurbs (boolean)
+    - man.indent.lists (boolean)
+    - man.indent.verbatims (boolean)
+
+    Note that in earlier snapshots, man.indent.width was named
+    man.indentation.default.value and the boolean params had names
+    like man.indentation.*.adjust. Also the man.indent.blurbs param
+    was called man.indentation.authors.adjust (or something).
+
+    The behavior now is: If the value of a particular man.indent.*
+    boolean param is non-zero, the corresponding contents (refsect*,
+    list items, authorblurb/personblurb, vervatims) are displayed with
+    a left margin indented by a width equal to the value of
+    man.indent.width.
+
+  * Added man.table.footnotes.divider param.
+
+    In each table that contains footenotes, the string specified by
+    the man.table.footnotes.divider parameter is output before the
+    list of footnotes for the table.
+
+  * Added the man.output.in.separate.dir, man.output.base.dir, and
+    man.output.subdirs.enabled parameters.
+
+    The man.output.base.dir parameter specifies the base directory
+    into which man-page files are output. The
+    man.output.subdirs.enabled parameter controls whether the files
+    are output in subdirectories within the base directory.
+
+    The values of the man.output.base.dir and
+    man.output.subdirs.enabled parameters are used only if the value
+    of man.output.in.separate.dir parameter is non-zero. If the value
+    of man.output.in.separate.dir is zero, man-page files are not
+    output in a separate directory.
+
+  * Added man.font.table.headings and man.font.table.title params,
+    for controlling font in table headings and titles.
+
+  * Corrected oversight in param values.
+
+  * Added man.font.funcsynopsisinfo and man.font.funcprototype
+    params, for specifying the roff font (for example, BI, B, I) for
+    funcsynopsisinfo and funcprototype output.
+
+  * Added man.segtitle.suppress param.
+
+    If the value of man.segtitle.suppress is non-zero, then display of
+    segtitle contents is suppressed in output.
+
+  * Added man.output.manifest.enabled and man.output.manifest.filename params.
+
+    If man.output.manifest.enabled is non-zero, a list of filenames
+    for man pages generated by the stylesheet transformation is
+    written to the file named by man.output.manifest.filename
+
+  * Added refentry.meta.get.quietly param.
+
+    If zero (the default), notes and warnings about "missing" markup
+    are generated during gathering of refentry metadata. If non-zero,
+    the metadata is gathered "quietly" -- that is, the notes and
+    warnings are suppressed.
+
+    NOTE: If you are processing a large amount of refentry content,
+    you may be able to speed up processing significantly by
+    setting a non-zero value for refentry.meta.get.quietly.
+
+  * Changed names of all boolean indentation params to man.indent.*
+    Also discarded individual man.indent.*.value params and switched
+    to just using a common man.indent.width param (3n by default).
+
+  * Fixed problem with synopsis content being mis-aligned.
+
+  * Fixed problem with man.output.* name conflict (forgot to update
+    names in previous commit).
+
+  * Added boolean man.output.in.separate.dir param, to control whether
+    or not man files are output in separate directory.
+
+  * Updated table converter to include context info when logging
+    warnings about nested tables.
+
+  * Fixed small bug in new verbatim-indenting code.
+
+  * Added options for controlling indentation of verbatim output.
+    Controlled through the man.indentation.verbatims.adjust and
+    man.indentation.verbatims.value params. Closes #1242997
+
+  * Added options for controlling indentation in lists and in *blurb
+    output in the AUTHORS section. Controlled through the
+    man.indentation.lists.adjust, man.indentation.lists.value,
+    man.indentation.authors.adjust, and man.indentation.authors.value
+    parameters. Default is 3 characters (instead of the roff default
+    of 8 characters). Closes #1449369.
+
+    Also, removed the indent that was being set on informalexample
+    outuput. I will instead add an option for indenting verbatims,
+    which I think is what the informalexample indent was intended for
+    originally.
+
+  * Changed line-spacing call before synopfragment to use ".sp -1n"
+    ("n" units specified) instead of plain ".sp -1"
+
+  * Added support for rendering figure titles correctly (with a line
+    break before then and in bold).
+
+  * Added support for writing man files into a specific output
+    directory and into appropriate subdirectories within that output
+    directory. Controlled through the man.base.dir parameter (similar
+    to the base.dir support in the HTML stylesheet) and the
+    man.subdirs.enabled parameter, which automatically determines the
+    name of an appropriate subdir (for example, man/man7, man/man1,
+    etc.) based on the section number/manvolnum of the source Refentry.
+
+    Closes #1255036 and #1170317. Thanks to Denis Bradford for the
+    original feature request, and to Costin Stroie for submitting a
+    patch that was very helpful in implementing the support.
+
+  * Refined XPath statements and notification messages for refentry
+    metadata handling.
+
+  * Added message-prolog and message-epilog and
+    suppress-context-node-name local params to the write.chunk and
+    write.text.chunk templates. They enable additional info to be
+    emitted before/after the "Writing..." message, and enable they
+    context-node name to be suppressed in output. The reason for
+    these additions is that the write.text.chunk template is
+    "repurposed" in manpages output for writing the names of soelim
+    stub files as well as "real" man pages, and also is used for
+    writing the manifest file, and it is useful to emit details about
+    the type of file it is writing each time.
+
+  * Added support for copyright and legalnotice.
+    The manpages stylesheets now output a COPYRIGHT section, after the
+    AUTHORS section, if a copyright or legalnotice is found in the
+    source. The section contains the copyright contents followed by
+    the legalnotice contents. Closes #1450209.
+
+  * Drastically reworked all of the XPath expressions used in refentry
+    metadata gathering -- completely removed $parentinfo and turned
+    $info into a set of nodes that includes the *info contents of the
+    Refentry plus the *info contents all all of its ancestor
+    elements. The basic XPath expression now used throughout is (using
+    the example of checking for a date):
+
+    (($info[//date])[last()]/date)[1].
+
+    That selects the "last" *info/date date in document order -- that
+    is, the one eitther on the Refentry itself or on the closest
+    ancestor to the Refentry.
+
+    It's likely this change may break some things; may need to pick
+    up some pieces later.
+
+    Also, changed the default value for the man.th.extra2.max.length
+    from 40 to 30.
+
+  * Ensure better postcript/PDF output from "man -Tps" by doing a
+    "negative" vertical space with ".sp -1n" everywhere instead of
+    just ".sp -1".
+
+  * Removed encoding on table.xsl stylesheet.
+
+  * Did some comment cleanup on the table.xsl file.
+
+  * Added newline before .sp request in template that matches
+    verbatims, because in some cases the .sp was appearing as a
+    literal in output, because it was getting output inline without a
+    break before it.
+
+  * Added template for matching Span; noticed problems with span
+    instances appearing as-is output, possibly as a side-effect of
+    failed Olink processing -- so we need to catch it before it
+    sneaks through.
+
+  * Moved table-footnote handling to links.xsl file. Added initial
+    support for converting Thead to a "running header". Changed
+    column-separator from hard-coded tab character (default in tb(1))
+    to user-configurable character (colon by default). Changed prefix
+    on several params from "man.*" to "tbl.*".
+
+  * Removed stripns.xsl from manpages/ subdirectory. manpages now use
+    the stripns.xsl in the common/ subdirectory.
+
+  * Added support for DocBook 5 namespace-stripping in manpages
+    stylesheet. Closes request #1210692.
+
+  * Restored default indentation behavior "normal" man behavior.
+    Corrected handling of empty Address instances in author section.
+
+  * Added support for top-alignment of cell contents.
+
+  * Fixed handling of table footnotes.
+    With this checkin, the table support in the manpages stylesheet is
+    now basically feature complete. So this change closes request
+    #619532, "No support for tables" -- the oldest currently open
+    manpages feature request, submitted by Ben Secrest (blsecres) on
+    2002-10-07. Congratulations to me [patting myself on the back].
+
+  * Added handling for table titles. Also fixed handling of nested
+    tables; nest tables are now "extracted" and displayed just after
+    their parent tables.
+
+  * Added character formatting for table headings.
+
+  * Added "options line" allbox/center/expand support.
+
+  * Corrected handling for case where a cell with a rowspan is
+    preceded in the same row by a cell or cells with colspans. Added
+    step for calling trim-text() on roff-formatted contents of each
+    cell, to trim off leading/trailing whitespace from those contents.
+
+  * Fixed handling for case where table is an HTML table in the
+    DocBook source (rather than CALS). Adjusted warning message about
+    nested tables.
+
+  * Further table fine-tuning. Added handling for nested tables
+    (discard them with a warning, because tbl(1) does not support
+    nested tables). Also deal with cases where source table has
+    multiple tgroup. Only output "allbox" if border != 0.
+
+  * Checkpointing. Now works correctly with the standard test table
+    (which contains rowspan and colspan instances. Need to test
+    further to make sure it will work with other rowspan/colspan
+    tables.
+
+  * Checkpointing.
+
+  * Checkpointing. Format spec now gets written correctly, including
+    for all instances of Rowspan. Just have an issue with generating
+    one less tab than should be in instances with rowspan/colspan.
+
+  * Added support for *info gathering all the way up to root element.
+    Problem:: Existing stylesheets only gathered the *info child of
+    each Refentry, plus *info child of its parent.
+    Change:: For each Refentry, the stylesheets now contstruct a node
+    set that contains the entire contents of *info children of all
+    ancestors of that Refentry, as well as its own *info child.
+
+    Closes #1243035. Thanks to Joe Orton for the feature request.
+
+  * Added option for turning off bold formatting in Funcsynopsis.
+    Boldface formatting in function synopsis is mandated in the man(7)
+    man page and is used almost universally in existing man pages.
+    Despite that, it really does look like crap to have an entire
+    Funcsynopsis output in bold, so I added params for turning off the
+    bold formatting and/or replacing it with a different roff special
+    font (e.g., "RI" for alternating roman/italic instead of the
+    default "BI" for alternating bold/italic). The new params are
+    "man.funcprototype.font" and "man.funcsynopsisinfo.font". To be
+    documented later.
+
+    Closes #1452247. Thanks to Joe Orton for the feature request.
+
+  * Took some templates for matching inline instances of come
+    "computer" markup and moved them out of synop.xsl file and into
+    the inline.xsl file.
+
+  * Someday I'll get around to learning basic XPath. And/or common
+    sense.
+
+  * Use AUTHORS instead of AUTHOR if we have multiple people to
+    attribute. Also, fixed checking such that we generate author
+    section even if we don't have an author (as long as there is at
+    least one other person/entity we can put in the section). Also
+    adjusted assembly of content for Author metainfo field such that
+    we now not only use author, but try to find a "best match" if we
+    can't find an author name to put there.
+
+    Closes #1233592. Thanks to Sam Steingold for the request.
+
+  * Changes for request #1243027, "Impove handling of AUTHOR section."
+    This adds support for Collab, Corpauthor, Corpcredt, Orgname,
+    Publishername, and Publisher. Also adds support for output of
+    Affiliation and its children, and support for using gentext
+    strings for auto-attributing roles (Author, Editor, Publisher,
+    Translator, etc.). Also did a lot of code cleanup and
+    modularization of all the AUTHOR handling code. And fixed a bug
+    that was causing Author info to not be picked up correctly for
+    metainfo comment we embed in man-page source.
+
+  * Provide support for adjusting default indent. Problem:: By
+    default, man pages are output with a indent of 8 characters.
+    That's a lot of wasted space that might better be used --
+    especially in cases where the content verbatim stuff that has long
+    lines. Change:: Added support for customizing the roff "default
+    indentation value" (value of IN register)
+    man.indentation.default.adjust (boolean) and
+    man.indentation.default.value params (number, 3n by default).
+    Also made some adjustments to get better formatting of
+    sub-subsection titles even without adjusting default indentation.
+
+  * Formalpara, output with "run in" head.
+    Closes #1448905.
+
+  * Support bold output for "emphasis remap='B'". (because Eric
+    Raymond's doclifter(1) tool converts groff source marked up with
+    ".B" request or "\fB" escapes to DocBook "emphasis remap='B'".)
+
+  * Doh! If I only had a nickel for every time I made the mistake of
+    checking for plain following-sibling instead of *first* following
+    sibling, I would have enough money to buy... something.
+
+  * Disappearing whitespace in Para content, fixed.
+    Problem:: For a Para, in output of content of two child elements
+    separated by whitespace, the space gets eaten. Also, for adjacent
+    text nodes separated by whitespace plus a comment. Cause:: I
+    didn't realize that running normalize-space() on a node that only
+    contains space returns an empty string :) Also, did not have the
+    code checking for comment or PI nodes correctly. Fix:: Added code
+    to correctly catch whitespacespace-only nodes, comments, and PIs.
+
+    Closes #1448860 and #1448856.
+
+  * Segmentedlist, fixed character formatting within seg output.
+    Problem:: Seg content that contained bold/ital character
+    formatting was getting munged. Cause:: Existing code was running
+    trim.text() on Seg content; trim.text() is meant to be run only
+    on text nodes. Fix:: Removed call to trim.text() and replaced
+    with "apply templates and read resulting contents into a variable,
+    then run normalize-space() on that variable". That should work
+    OK, because Seg content model does not permit verbatim content or
+    any other block content as its child content.
+
+    Closes #1447578. Thanks to Daniel Leidert for reporting.
+
+  * Segmentedlist output, adjusted width of table cells.
+    Problem:: Content of table cells in segmentedlist output wraps
+    even when there's still plenty of room left for text on the
+    current line. Cause:: Behavior described is by design in tbl(1).
+    It effectively sets the maximum width of cells to 1/3 of the
+    current line length. Not sure why... Fix:: Added called to .ll
+    request that causes line length to temporarily be increased to
+    1.62 times the current line length before table output of each
+    segmentedlist, then restore it back to previous width after
+    output of the table markup. I suppose there are probably some
+    cases where that will produce some undesirable results. But for
+    now, it gives good output for all test cases I've tried.
+
+  * If multiple Refnamediv within same Refentry, put a ".br" line
+    break between them, instead of a blank line. This closes up
+    spacing between them and also makes it clear that the break is
+    intentional, not a stray.
+
+  * Funcsynopsisinfo must be handled as a verbatim.
+    Problem:: Existing code was not preserving breaks and whitespace
+    in Funcsynopsisinfo. Cause:: Lack of awareness that
+    Funcsynopsisinfo is a verbatim environment. Fix:: Handle in
+    Funcsynopsisinfo in the same way as other verbatims (that is,
+    wrap in .nf/.fi requests. Additional problem: According to man(7)
+    man page and existing man2/ pages, all parts of a funcsynopsis
+    that are not args must be in bold. But because Funcsynopsisinfo
+    is a verbatim, it needs different roff bold markup than other
+    stuff. So wrapped it in ".ft B"/ft pair. (Perhaps it might make
+    sense to wrap the whole funcsynopsis in ".ft B"/ft instead of
+    trying to bold/unbold at the word level, as we are doing now. Or
+    perhaps not.)
+
+    Closes bug #1447121. Thanks to Joe Orton for reporting.
+
+  * Itemizedlist/Orderedlist with Title, fixed handling of.
+    Also handling of paragraph text following a list.
+    Problem:: No output for Title element of Itemized/Orderedlist.
+    Cause:: Missing logic for matching Title instances in lists. Fix::
+    Added handling for Title.
+    Also fixed problem that caused text following a list within the
+    same paragraph to be indented more than expected.
+    Closes #1447042 and #1447072.
+
+  * Authorgroup handling fixed. Problem:: Content of Authorgroup was
+    not getting output. Cause:: Oversight in XPath expression caused
+    Author and friends to be found only if they were direct children
+    of *info. Fix:: Updated XPath expression to check for all Author
+    etc. descendants, not just direct children.
+
+    Closes bug #1447026. Thanks to Daniel Leidert for reporting.
+
+  * Added support for Segmentedlist.
+    Details: Output is tabular, with no option for "list" type output.
+    Output for Segtitle elements can be supressed by setting
+    man.segtitle.suppress. If Segtitle content is output, it is
+    rendered in italic type (not bold because not all terminals
+    support bold and so italic ensures the stand out on those
+    terminals). Extra space (.sp line) at end of table code ensures
+    that it gets handled correctly in the case where its source is the
+    child of a Para. Closes feature-request #1400097. Thanks to
+    Daniel Leidert for the patch and push, and to Alastair Rankine for
+    filing the original feature request.
+
+  * Corrected oversight in handling of Productname. Problem:: No
+    trademark output for Productname class="trade" instances. Cause::
+    Oversight. Fix:: Added handling for the specified case.
+
+    Closes bug #1447004. Thanks to Daniel Leidert for reporting.
+
+  * Fixed handling of admonitions that are children of Para element.
+    Previously, handling of Caution, Important, Note, Tip, Warning
+    fails if they are children of Para. The reason is that they are
+    not included in the list of elements that we check when handling
+    "mixed block" content. Fixed by adding them to the list.
+    Closes bug #1446282. Thanks to Daniel Leidert for reporting.
+
+  * Checkpointing. This still doesn't handle all rowspan/colspan
+    combinations correctly.
+
+  * Proceed each converted Pre instance with a .sp macro, to generate
+    a line of vertical space before the .nf no-fill region.
+
+  * Output dot before linebreak when transforming <br/>.
+
+    Tested and seems to work as expected. Classsynopsis et al now
+    render with breaks and spaces in correct places.
+
+  * Reverted change that caused xhtml stylesheets to be imported
+    instead of html ones.
+
+  * Changed build to generate a "html-synop.xsl" file and to have it
+    imported into the driver stylesheet. The build now uses the newly
+    added html2roff.xsl stylesheet to transform the ../xhtml/synop.xsl
+    file to generate the html-synop.xsl file. The only transformation
+    it currently does is to transform <br/> instances into line breaks
+    and to transform <pre></pre> instances into roff "no fill region"
+    markup.
+
+    This change is a cheap way to enable the manpages stylesheet to
+    correctly handle OO synopsis content, which it did not handle
+    correctly previously.
+
+  * Checkpointing. This currently does not work as-is. I added support
+    for processing Rowspan correctly and it seems to work as expected,
+    but still need to do add some handling to actually generate the
+    tbl(1) format spec.
+
+    This implementation relies on holding a big node-set in memory,
+    containing "Cell" elements store information about the nature of
+    each cell (e.g., whether it is a "normal" cell, or the result of a
+    Rowspan or Colspan). I could not figure out a way to implement
+    support for Rowspan without ending up storing multiple, duplicate,
+    Cell elements for each cell. (It gets uniq-ified later using the
+    EXSLT set:distinct function.) The duplication will probably cause
+    performance and memory issues with big tables. Maybe I will figure
+    out later how to do it properly; but for now, this will have to do.
+
+  * Fix for problem of multiple Arg instances in Group not being
+    separated by vertical bars. Closes #1346716. Thanks to Costin
+    Stroie for reporting the problem.
+
+  * Move trim.text template into lib.xweb file.
+
+  * Corrected error in generation of table "format" spec.
+
+  * Added a utility template for trimming whitespace off the beginning
+    and end of text chunks.
+
+  * First shot at implementing table support in the manpages
+    stylesheet. This works well as-is for normal span-less tables. It
+    even works for tables with colspans. But it does not yet even
+    attempt to do anything for rowspans. It will take more work to
+    add rowspan handling that. Not sure if it's worth the work, really.
+
+    Note: This table support is implemented by do a first pass to
+    process each table using the templates in the HTML stylesheet
+    (which we import). We don't override any of the <row> or <tr> or
+    <entry> or <td>, etc., table-markup templates, but we do override
+    the block and inline templates for whatever the child content of
+    the <entry> and <td> instances. So we end up with a node that has
+    "hybrid" output -- with table rows and cells marked up with HTML
+    <tr> and <td> tags, with with the <td> child content marked up in
+    roff.
+
+    So we use exsl:node-set on that node and make a second-pass
+    through all of it to replace the <tr> and <td> parts with tbl(1)
+    macros. Voila -- the end result is properly marked up tbl/roff
+    output for the table.
+
+    One nice thing about doing it this is that it supports both CALS
+    and HTML table markup, without needing any conditional logic to
+    deal with CALS separately. Because the first pass causes both the
+    CALS and HTML source markup to be "normalized" into HTML.
+
+  * Improved handling or Author/Editor/Othercredit.
+
+    Reworked content of (non-visible) comment added at top of each
+    page (metadata stuff).
+
+    Added support for generating a manifest file (useful for cleaning
+    up after builds, etc.)
+
+  * Problem::
+    In output of <xref endterm="foo"/> to top-level sections, titles
+    are not rendered in all caps.
+
+    Cause::
+    <xref endterm="foo"/> is handled in the HTML stylesheets by a
+    different mode than that used for normal Xref output.
+
+    Fix::
+    Added mode template for processing output of first-level section
+    titles when the are referred to via Endterm.
+
+    Closes #1215547. Thanks to Jens Granseuer for reporting the
+    problem.
+
+  * Problem::
+    Number generated for Synopfragref output, but no number generated
+    in Synopfragment output.
+
+    Cause::
+    manpages stylesheets import the HTML stylesheets. manpages
+    stylesheets do not include a Synopfragref template, so they were
+    just picking up the HTML one. However, the manpages stylesheet
+    did have a Synopfragment template, which overrode the HTML one.
+    Problem is that the manpages Synopfragment was not complete.
+
+    Fix::
+    Correctly "ported" Synopfragment template from HTML stylesheets
+    and added manpages-specific character markup and features. As a
+    result of these changes, in the output now:
+
+    - correct numbers a generated for Synopfragment output
+
+    - Synopfragref contentes are italicized, as they should be
+
+    - Synopfragment output is output with a hanging indent (similar
+    to the hanging indent used for Cmysynopsis output)
+
+    - for cases where there are a group of Synopfragments together,
+    a line of vertical space is generated only before first, and
+    suppressed before subsequent ones.
+
+    Closes #599439. Thanks to Dennis Grace for reporting the problem
+    (long, long ago) and for submitting a patch (which was used as-is
+    but neverthelesss provided some insights).
+
+  * Problem::
+    Extra space added before Arg output Cmdsynopsis in some cases
+    where the Arg contents appear at the beginning of a line.
+
+    bdmond [-s, --start]
+    [-k, --stop]
+    [-h, --help]
+    [-V, --version]
+
+    Cause::
+    Some other fix made around the time of v1.68.0 introduced a
+    regression in behavior for cases where an Arg is preceded by an
+    Sbr. The Sbr produces a line break as expected, but the line break
+    is followed by a space and then the contents of the following Arg.
+
+    Fix::
+    The code for processing Args now checks to see if the first
+    preceding sibling of the Arg is an Sbr. If so, it does not output
+    the additional space; otherwise, it outputs the space.
+
+    - <xsl:if test="position()>1"><xsl:value-of select="$sepchar"/></xsl:if>
+    + <xsl:if test="position()>1 and
+    + not(preceding-sibling::*[1][self::sbr])"
+    + ><xsl:value-of select="$sepchar"/></xsl:if>
+
+    Closes #1313481. Thanks to Costin Stroie for reporting the problem
+    and pointing out where the cause was in the code.
+
+  * Added two new parameters for handling of multi-term varlistentry
+    elements:
+
+    variablelist.term.break.after:
+    When the variablelist.term.break.after is non-zero, it will
+    generate a line break after each term multi-term varlistentry.
+
+    variablelist.term.separator:
+    When a varlistentry contains multiple term elements, the string
+    specified in the value of the variablelist.term.separator
+    parameter is placed after each term except the last. The default
+    is ", " (a comma followed by a space). To suppress rendering of
+    the separator, set the value of variablelist.term.separator to
+    the empty string ("").
+
+    These parameters are primarily intended to be useful if you have
+    multi-term varlistentries that have long terms.
+
+    Closes #1306676. Thanks to Sam Steingold for providing an example
+    "lots of long terms" doc that demonstrated the value of having
+    these options.
+
+    Also, added normalize-space() call to processing of each term.
+
+    This change affects all output formats (HTML, PDF, manpages). The
+    default behavior should pretty much remain the same as before, but
+    it is possible (as always) that the change may introduce some new
+    bugginess.
+
+Params
+
+The following changes have been made to the params code since the 1.69.1
+release.
+
+  * New parameters to set header/footer table minimum height.
+
+  * fixed validation bug.
+
+  * Support multiple indexing methods for different languages.
+
+  * Remove qandaset and qandadiv from generate.toc for fo output
+    because formerly it wasn't working, but now it is and the
+    default behavior should stay the same.
+
+  * add support for page number references to link element too.
+
+  * fix syntax error in text
+
+  * Add support for more characters to hyphen on when ulink.hyphenate
+    is turned on.
+
+  * New attribute-set to format biblioentry and bibliomixed.
+
+  * Added new parameter chunk.tocs.and.lots.has.title which controls presence
+    of title in a separate chunk with ToC/LoT. Disabling title can be very
+    useful if you are generating frameset output (well, yes those frames, but
+    some customers really want them ;-).
+
+  * Added new attribute set toc.line.properties for controlling appearance of
+    lines in ToC/LoT
+
+  * Allow table footnotes to have different properties from regular footnotes.
+
+  * Set different values for html (left) and fo (begin).
+
+  * Set properties for pgwide="1" objects.
+
+  * Added the autotoc.label.in.hyperlink param.
+
+    If the value of autotoc.label.in.hyperlink is non-zero, labels are
+    included in hyperlinked titles in the TOC. If it is instead zero,
+    labels are still displayed prior to the hyperlinked titles, but
+    are not hyperlinked along with the titles.
+
+    Closes patch #1065868. Thanks to anatoly techtonik for the patch.
+
+  * Added two new params: html.head.legalnotice.link.types and
+    html.head.legalnotice.link.multiple.
+
+    If the value of the generate.legalnotice.link is non-zero, then
+    the stylesheet generates (in the head section of the HTML source)
+    either a single HTML link element or, if the value of the
+    html.head.legalnotice.link.multiple is non-zero, one link element
+    for each link type specified. Each link has the following
+    attributes:
+
+    - a rel attribute whose value is derived from the value of
+    html.head.legalnotice.link.types
+
+    - an href attribute whose value is set to the URL of the file
+    containing the legalnotice
+
+    - a title attribute whose value is set to the title of the
+    corresponding legalnotice (or a title programatically
+    determined by the stylesheet)
+
+    For example:
+
+    <link rel="copyright" href="ln-id2524073.html" title="Legal Notice">
+
+    Closes #1476450. Thanks to Sam Steingold.
+
+  * Fixed borked markup.
+
+  * Added the following params:
+
+    - man.indent.width (string-valued)
+    - man.indent.refsect (boolean)
+    - man.indent.blurbs (boolean)
+    - man.indent.lists (boolean)
+    - man.indent.verbatims (boolean)
+
+    Note that in earlier snapshots, man.indent.width was named
+    man.indentation.default.value and the boolean params had names
+    like man.indentation.*.adjust. Also the man.indent.blurbs param
+    was called man.indentation.authors.adjust (or something).
+
+    The behavior now is: If the value of a particular man.indent.*
+    boolean param is non-zero, the corresponding contents (refsect*,
+    list items, authorblurb/personblurb, vervatims) are displayed with
+    a left margin indented by a width equal to the value of
+    man.indent.width.
+
+  * Added man.table.footnotes.divider param.
+
+    In each table that contains footenotes, the string specified by
+    the man.table.footnotes.divider parameter is output before the
+    list of footnotes for the table.
+
+  * Added the man.output.in.separate.dir, man.output.base.dir, and
+    man.output.subdirs.enabled parameters.
+
+    The man.output.base.dir parameter specifies the base directory
+    into which man-page files are output. The
+    man.output.subdirs.enabled parameter controls whether the files
+    are output in subdirectories within the base directory.
+
+    The values of the man.output.base.dir and
+    man.output.subdirs.enabled parameters are used only if the value
+    of man.output.in.separate.dir parameter is non-zero. If the value
+    of man.output.in.separate.dir is zero, man-page files are not
+    output in a separate directory.
+
+  * Added man.font.table.headings and man.font.table.title params,
+    for controlling font in table headings and titles.
+
+  * Added man.font.funcsynopsisinfo and man.font.funcprototype
+    params, for specifying the roff font (for example, BI, B, I) for
+    funcsynopsisinfo and funcprototype output.
+
+  * Changed to select="0" in refclass.suppress (instead of ..>0</..)
+
+  * Added man.segtitle.suppress param.
+
+    If the value of man.segtitle.suppress is non-zero, then display of
+    segtitle contents is suppressed in output.
+
+  * Added man.output.manifest.enabled and man.output.manifest.filename params.
+
+    If man.output.manifest.enabled is non-zero, a list of filenames
+    for man pages generated by the stylesheet transformation is
+    written to the file named by man.output.manifest.filename
+
+  * Fixed typo.
+
+  * Added refclass.suppress param.
+
+    If the value of refclass.suppress is non-zero, then display
+    refclass contents is suppressed in output. Affects HTML and FO
+    output only.
+
+  * Added refentry.meta.get.quietly param.
+
+    If zero (the default), notes and warnings about "missing" markup
+    are generated during gathering of refentry metadata. If non-zero,
+    the metadata is gathered "quietly" -- that is, the notes and
+    warnings are suppressed.
+
+    NOTE: If you are processing a large amount of refentry content,
+    you may be able to speed up processing significantly by
+    setting a non-zero value for refentry.meta.get.quietly.
+
+  * Minor description update.
+
+  * Added support for "software" and "sectdesc" class values on
+    refmiscinfo; "software" is treated identically to "source", and
+    "setdesc" is treated identically to "manual".
+
+  * Simplified XPath check for refentry "source" metadata.
+
+  * Drastically reworked all of the XPath expressions used in refentry
+    metadata gathering -- completely removed $parentinfo and turned
+    $info into a set of nodes that includes the *info contents of the
+    Refentry plus the *info contents all all of its ancestor
+    elements. The basic XPath expression now used throughout is (using
+    the example of checking for a date):
+
+    (($info[//date])[last()]/date)[1].
+
+    That selects the "last" *info/date date in document order -- that
+    is, the one eitther on the Refentry itself or on the closest
+    ancestor to the Refentry.
+
+    It's likely this change may break some things; may need to pick
+    up some pieces later.
+
+    Also, changed the default value for the man.th.extra2.max.length
+    from 40 to 30.
+
+  * Bibliography can set negative text-indent, so we must reset it for
+    footnotes
+
+  * Added a new substitution to man.string.subst.map, because it is
+    necessary clean-up needed for dealing with a kludge for preserving
+    tab characters (which are used by tbl(1) as cell-separators)
+
+  * Added option for turning off bold formatting in Funcsynopsis.
+    Boldface formatting in function synopsis is mandated in the man(7)
+    man page and is used almost universally in existing man pages.
+    Despite that, it really does look like crap to have an entire
+    Funcsynopsis output in bold, so I added params for turning off the
+    bold formatting and/or replacing it with a different roff special
+    font (e.g., "RI" for alternating roman/italic instead of the
+    default "BI" for alternating bold/italic). The new params are
+    "man.funcprototype.font" and "man.funcsynopsisinfo.font". To be
+    documented later.
+
+    Closes #1452247. Thanks to Joe Orton for the feature request.
+
+  * Added a couple of roff-cleanup string replacements to the
+    substitution map.
+
+  * Added "Miscellaneous Technical" block to default subset. This
+    basically just means that the LEFT- and RIGHT-POINTING ANGLE
+    BRACKET characters (&#x2329; and &#x232a;, "rang" and "lang"
+    named entities) get converted correctly.
+
+  * Added string substitution for eating extra space after .RE macro.
+
+  * Fixed copy/paste error in default value. Closes bug #1446966.
+    Thanks to Daniel Leidert for reporting.
+
+  * fop.extensions now only for FOP version 0.20.5 and earlier.
+
+  * Support for fop1 different from fop 0.20.5 and earlier.
+
+  * Reset default value to empty string so template
+    uses gentext first, then the parameter value if not empty.
+
+  * New parameter: id.warnings. If non-zero, warnings are generated for titled
+    objects that don't have titles. True by default; I wonder if this will be
+    too aggressive?
+
+  * Added new parameter keep.relative.image.uris
+
+  * xsltproc fails on the default empty definition of these params.
+    I added single quotes.
+
+  * Pick better defaults
+
+  * Support default label width parameters for itemized and ordered lists
+
+  * Support article/info/title (DocBook 5.0)
+
+  * Added parameters to localize punctuation in indexes.
+
+  * Added two new parameters for handling of multi-term varlistentry
+    elements:
+
+    variablelist.term.break.after:
+    When the variablelist.term.break.after is non-zero, it will
+    generate a line break after each term multi-term varlistentry.
+
+    variablelist.term.separator:
+    When a varlistentry contains multiple term elements, the string
+    specified in the value of the variablelist.term.separator
+    parameter is placed after each term except the last. The default
+    is ", " (a comma followed by a space). To suppress rendering of
+    the separator, set the value of variablelist.term.separator to
+    the empty string ("").
+
+    These parameters are primarily intended to be useful if you have
+    multi-term varlistentries that have long terms.
+
+    Closes #1306676. Thanks to Sam Steingold for providing an example
+    "lots of long terms" doc that demonstrated the value of having
+    these options.
+
+    Also, added normalize-space() call to processing of each term.
+
+    This change affects all output formats (HTML, PDF, manpages). The
+    default behavior should pretty much remain the same as before, but
+    it is possible (as always) that the change may introduce some new
+    bugginess.
+
+  * Convert 'no' to string in default value.
+
+  * Implemented RFE #1292615.
+
+    Added bunch of new parameters (attribute sets) that affect list
+    presentation: list.block.properties, itemizedlist.properties, orderedlist
+    .properties, itemizedlist.label.properties and orderedlist.label
+    .properties. Default behaviour of stylesheets has not been changed but
+    further customizations will be much more easier.
+
+  * Fixed handling of groff font requests output for Refsect1/Title
+    instances. Closes #1296252. Thanks to Paul DuBois for reporting.
+
+    Problem:
+    Instances of \\FB (instead of \\fB) in output for
+    Refsect1/Title.
+
+    Cause:
+    All content of Refsect1/Title gets uppercased (including any groff
+    requests that end up in the output.
+
+    Fix:
+    Added s/\\FB/\fB/, etc., matches to value of man.string.subst.map
+    param. (man.string.subst.map is basically used for "cleaning up"
+    borked groff markup output from initial formatting pass).
+
+    Affects:
+    This affects output of titles for all Refsect1-level headings in
+    manpages output.
+
+  * Implemented RFE #1242092.
+
+    You can enable crop marks in your document by setting crop.marks=1 and
+    xep.extensions=1.
+    Appearance of crop marks can be controlled by parameters crop.mark.bleed
+    (6pt), crop.mark.offset (24pt) and crop.mark.width (0.5pt).
+
+    Also there is new named template called user-xep-pis. You can overwrite it
+    in order to produce some PIs that can control XEP as described in
+    http://www.renderx.com/reference.html#Output_Formats
+
+  * Fixed typo
+
+  * Changed short descriptions in doc for *autolabel* params to match
+    new autolabel behavior.
+
+Profiling
+
+The following changes have been made to the profiling code since the 1.69.1
+release.
+
+  * Handling of @entityref added back
+
+  * Use common xml:base fixup routine
+
+  * Emit namespace declaration for prefixes db and ng that are used inside
+    XPath. Can we get rid of this f*#@ing QNames in attribute problem someday?
+    (Sorry for not being polite.)
+
+  * Profiling now works together with namespace stripping (V5 documents).
+    Namespace striping should work with all stylesheets named profile-, even
+    if they are not supporting namespace stripping in a non-profiling variant.
+
+  * Do not output !DOCTYPE for profiled content. Different users have needs
+    for different versions of DTD.
+
+  * More tweaks improving profiling of HTML Help
+
+  * Moved profiling stage out of templates. This make possible to reuse
+    profiled content by several templates and still maintaing node indentity
+    (needed for example for HTML Help where content is processed multiple
+    times).
+
+    I don't know why this was not on the top level before. Maybe some XSLT
+    processors choked on it. I hope this will be OK now.
+
+  * An attemp to fix base URIs when profiling is done and document is not in
+    the current directory. This seems to work on my Windows machine, but I
+    would be interested how it behaves in unix environment. URL handling in
+    Java is very sensitive to such things.
+
+Template
+
+The following changes have been made to the template code since the 1.69.1
+release.
+
+  * add support for blockinfo for qandaset titles.
+
+  * Xalan fails the test function-available(exsl:node-test) even though
+    it supports that function. I added a workaround.
+
+Tools
+
+The following changes have been made to the tools code since the 1.69.1
+release.
+
+  * Added man.output.manifest.enabled and man.output.manifest.filename params.
+
+    If man.output.manifest.enabled is non-zero, a list of filenames
+    for man pages generated by the stylesheet transformation is
+    written to the file named by man.output.manifest.filename
+
+  * Changed embedded manpages customization layer to use man.output.*
+    param names for controlling output directory.
+
+  * Makefile for creating wrapper files that combine source files for
+    multiple DocBook doc instances.
+
+  * Replaced "echo" with "@echo" where appropriate, to suppress echo output.
+
+  * Moved Makefile.DocBook from contrib module to xsl module.
+
+WordML
+
+The following changes have been made to the wordml code since the 1.69.1
+release.
+
+  * fixed orderedlist
+
+  * added contrib element, better handling of default paragraph style
+
+  * added doco
+
+  * added bridgehead
+
+  * added blocks stylesheet to support bibliographies, glossaries and
+    qandasets
+
+  * added mediaobject caption
+
+  * added callouts
+
+  * added Word template file
+
+  * added abstract, fixed itemizedlist, ulink
+
+  * Added wordml into doc and release build.
+
+  * fixed Makefile
+    added many features to Pages support
+    added revhistory, inlines, highlights, abstract
+
+  * fixed handling linebreaks when generating WordML
+    added Apple Pages support
+
+

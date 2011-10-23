@@ -1,0 +1,83 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--extensions/attributes
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: Extension attributes (XSLT only)</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Extension attributes (XSLT only)">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      
+      
+      <h1>Extension attributes (XSLT only)</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">An extension attribute is an extra attribute on an XSLT-defined element. Following the rules
+         of XSLT, such attributes must be in a non-default namespace. For Saxon extension elements,
+         the namespace must be the Saxon namespace URI "http://saxon.sf.net/"
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">For example, the <code>saxon:assignable</code> attribute can be set as follows:
+      </p>
+      
+      
+      <div class="codeblock" style="border: solid thin; background-color: #B1CCC7; padding: 2px"><pre><code>&lt;xsl:variable name="counter" saxon:assignable="yes" 
+    xmlns:saxon="http://saxon.sf.net/"&gt;
+</code></pre></div>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The extension attributes provided with the Saxon product are as follows:</p>
+      
+      
+      <ul>
+         <li>
+            <p><a class="bodylink" href="attributes/assignable.html">saxon:assignable</a>: marks a variable as updateable
+            </p>
+         </li>
+         <li>
+            <p><a class="bodylink" href="attributes/explain.html">saxon:explain</a>: requests display of optimized expression tree
+            </p>
+         </li>
+         <li>
+            <p><a class="bodylink" href="attributes/memo-function.html">saxon:memo-function</a>: marks a function as a memo function
+            </p>
+         </li>
+      </ul>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="attributes.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="output-extras.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

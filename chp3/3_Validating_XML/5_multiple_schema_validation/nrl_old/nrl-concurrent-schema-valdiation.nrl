@@ -1,0 +1,9 @@
+<rules xmlns="http://www.thaiopensource.com/validate/nrl">
+  <namespace ns="http://example.org/address">
+    <validate schema="address-xmlschema.xsd"/>
+    <validate schema="address-xml.rng"/>      
+  </namespace>
+  <anyNamespace>
+        <allow/>
+  </anyNamespace>
+</rules>

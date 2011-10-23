@@ -1,0 +1,67 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--changes/v8.0/xpath-80
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: XPath changes (also affecting XQuery)</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: XPath changes (also affecting XQuery)">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>XPath changes (also affecting XQuery)</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Operator precedences have changed. They are now aligned with the internal 12 January 2004
+         draft, except that unary "+" and "-" bind more tightly than anything except "/".
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The implementation of the <code>eq</code> family of operators has been brought into line
+         with the latest specifications. In particular, an untypedAtomic value is now converted to a string,
+         no longer to the type of the other operand. At compile time, a warning rather than an error is now produced
+         if the static types of the two operands are incomparable but both optional: technically, comparison of
+         <code>xs:integer?</code> to <code>xs:string?</code> is not a static error, because in the case where
+         both operands evaluate to an empty sequence, the comparison is legitimate (and returns <code>()</code>).
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The SequenceType syntax <code>empty()</code> is now implemented.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The syntax for SequenceTypes incorporates some changes agreed by the W3C Working Groups but
+         not yet published. Specifically, <code>element(N)</code> matches any element named N whether or not 
+         N is declared in a schema; <code>element(*)</code> matches any element; <code>element(N, T)</code>
+         matches any element named N whose type annotation is T, where T is a simple or global type defined in
+         a schema, or a built-in type; <code>schema-element(N)</code> matches an element
+         whose name is N, or a name in the substitution group of N, where N is a global element declaration 
+         in the schema, and whose type matches the type of this global element. And similarly for attributes.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="xpath-80.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../v8.0.html">Up</a>&nbsp;&nbsp;<a class="nav" href="xquery-80.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

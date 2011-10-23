@@ -1,0 +1,85 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--expressions/literals
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: Constants</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Constants">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      
+      
+      <h1>Constants</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><b>String literals</b> are written as "London" or 'Paris'. In each case you can use the opposite
+         kind of quotation mark within the string: 'He said "Boo"', or "That's rubbish". In a stylesheet
+         XPath expressions always appear within XML attributes, so it is usual to use one kind of delimiter for
+         the attribute and the other kind for the literal. Anything else can be written using XML character
+         entities. In XPath 2.0, string delimiters can be doubled within the string to represent the
+         delimiter itself: for example <code>&lt;xsl:value-of select='"He said, ""Go!"""'/&gt;</code></p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><b>Numeric constants</b> follow the Java rules for decimal literals: for example, <code>12</code> or <code>3.05</code>; a
+         negative number can be written as (say) <code>-93.7</code>, though technically the minus sign is not part of the
+         literal. (Also, note that you may need a space before the minus sign to avoid it being treated as
+         a hyphen within a preceding name). The numeric literal is taken as a double precision floating 
+         point number if it uses scientific notation (e.g. <code>1.0e7</code>), as fixed point decimal
+         if it includes a full stop, or as a integer otherwise. Decimal values (and integers) in Saxon have unlimited 
+         precision and range (they use the Java classes BigInteger and BigDecimal internally). Note that a value 
+         such as <code>3.5</code> was
+         handled as a double-precision floating point number in XPath 1.0, but as a decimal number in
+         XPath 2.0: this may affect the precision of arithmetic results.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">There are no boolean constants as such: instead use the function calls <code>true()</code> and 
+         <code>false()</code>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Constants of other data types can be written using constructors, which look like function calls
+         but require a string literal as their argument. For example, <code>xs:float("10.7")</code> produces
+         a single-precision floating point number. Saxon implements constructors for all of the built-in data types
+         defined in XML Schema Part 2.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">An example for <b>date</b> and <b>dateTime</b> values: 
+         you can write constants for these data types as <code>xs:date("2002-04-30")</code>
+         or <code>xs:dateTime("1966-07-31T15:00:00Z")</code>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">XPath 2.0 allows the argument to a constructor to
+         contain whitespace, as determined by the whitespace facet for the target data type.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="literals.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="variables.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

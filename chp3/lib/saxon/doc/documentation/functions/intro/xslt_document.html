@@ -1,0 +1,99 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--functions/intro/xslt_document
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: xslt:document</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: xslt:document">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>xslt:document</h1>
+      <p class="subhead">xslt:document(item* $srcval1) &#8594; node*</p>
+      <p><i>Function signature</i></p>
+      <table>
+         <tr>
+            <td width="120">
+               <p>$uri</p>
+            </td>
+            <td width="150">
+               <p>item *</p>
+            </td>
+         </tr>
+         <tr>
+            <td width="120">
+               <p><b>Result</b></p>
+            </td>
+            <td width="150">
+               <p>node() *</p>
+            </td>
+         </tr>
+      </table>
+      <p><i>Loads one or more documents identified by their URIs</i></p>
+      <p><a href="http://www.w3.org/TR/xslt20/#function-document" target="_blank" class="bodylink">XSLT 2.0 Specification</a></p>
+      <p><b>Note:</b>Saxon makes no attempt to determine the media type of the resource
+         representation (which is not available from the JAXP URIResolver). Instead, it simply
+         assumes text/xml. If the fragment identifier is a valid NCName, it is assumed to be the
+         ID of a node in the document, which is then located using the id() function: if no node is
+         found, the result is an empty sequence. If the fragment identifier is not a valid NCName,
+         it is silently ignored and the document node is returned.
+      </p>
+      <p class="subhead">xslt:document(item* $srcval1, node* $srcval2) &#8594; node*</p>
+      <p><i>Function signature</i></p>
+      <table>
+         <tr>
+            <td width="120">
+               <p>$uri</p>
+            </td>
+            <td width="150">
+               <p>item *</p>
+            </td>
+         </tr>
+         <tr>
+            <td width="120">
+               <p>$base</p>
+            </td>
+            <td width="150">
+               <p>node() *</p>
+            </td>
+         </tr>
+         <tr>
+            <td width="120">
+               <p><b>Result</b></p>
+            </td>
+            <td width="150">
+               <p>node() *</p>
+            </td>
+         </tr>
+      </table>
+      <p><i>Loads one or more documents identified by their URIs, using the base URI of the
+            node given in the second argument to resolve any relative URIs</i></p>
+      <p><a href="http://www.w3.org/TR/xslt20/#function-document" target="_blank" class="bodylink">XSLT 2.0 Specification</a></p>
+      <p><b>Note:</b>Check the type of the second argument against the latest spec.
+      </p>
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="xslt_document.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../intro.html">Up</a>&nbsp;&nbsp;<a class="nav" href="fn_document-uri.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ============================================================= -->
+<!-- ANT RECIPES FOR WEB DEVELOPERS XML Recipe                     -->
+<!-- Author: James Fuller / Webcomposite                           -->
+<!-- Email/WWW: jim.fuller@webcomposite.com /  www.antrecipes.com  -->
+<!-- ============================================================= -->
+<!--    (C) Copyright James Fuller 2010 - All Rights Reserved.     -->
+<!--  use the -debug flag for more information when running ant  //-->
+<project name="xslt_processing" default="run" basedir=".">
+	<description>Demonstrate XSLT processing within Ant</description>
+	<!-- ===================================================== -->
+	<!-- Path definition	                                   -->
+	<!-- ===================================================== -->
+	<path id="saxon.path">
+		<fileset dir="../../lib/saxon">
+			<include name="**/*.jar"/>
+		</fileset>
+	</path>
+	<!-- ===================================================== -->
+	<!-- Type definition                                       -->
+	<!-- ===================================================== -->
+	<typedef file="xslt-antlib.xml"/>
+	<!-- ===================================================== -->
+	<!-- Example1a 	 	                                       -->
+	<!-- ===================================================== -->
+	<target name="example1a" description="simplest transformation, using XSLT that ships with Ant e.g. xalan">
+		<xslt in="data/test.xml" out="result/test.xalan.out" style="test.xslt">
+			<outputproperty name="encoding" value="utf8"/>
+			<outputproperty name="indent" value="yes"/>
+		</xslt>
+	</target>
+	<!-- ===================================================== -->
+	<!-- Example1b 	 	                                       -->
+	<!-- ===================================================== -->	
+	<target name="example1b" description="simplest transformation, using XSLT that ships with Ant e.g. xalan">
+		<xslt in="data/test.xml" out="result/test.saxon.out" style="test.xslt" classpathref="saxon.path">
+			<outputproperty name="encoding" value="utf8"/>
+			<outputproperty name="indent" value="yes"/>
+		</xslt>
+	</target>
+	<!-- ===================================================== -->
+	<!-- Example2 	 	                                       -->
+	<!-- ===================================================== -->
+	<target name="example2" description="simplest transformation, using a different XSLT Processor e.g. saxon">
+		<saxon xslt="test.xslt" xml="data/test.xml" dest="result" ext=".out">
+	</saxon>
+	</target>
+	<!-- ===================================================== -->
+	<!-- Example3 	 	                                       -->
+	<!-- ===================================================== -->
+	<target name="example3" description="controlling xslt via java">
+		<saxon2 in="data/test.xml" style="test.xslt" out="result/output.xml"/>
+	</target>
+	<!-- ===================================================== -->
+	<!-- Run Target                                            -->
+	<!-- ===================================================== -->
+	<target name="run" depends="clean,example1a,example1b,example2,example3" description="runs all examples"/>
+	<!-- ===================================================== -->
+	<!-- Clean Target                                          -->
+	<!-- ===================================================== -->
+	<target name="clean">
+		<delete dir="result"/>
+		<mkdir dir="result"/>
+	</target>
+</project>

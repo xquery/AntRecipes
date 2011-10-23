@@ -1,0 +1,74 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--using-xsl/performanceanalysis
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: Performance Analysis</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Performance Analysis">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      
+      <h1>Performance Analysis</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Saxon comes with a simple tool allowing profiling of the execution time in a stylesheet.</p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">To run this tool, first execute the transformation with the <code>-TP</code> option, which 
+         sends timed tracing information to the standard error output file:
+      </p>
+      
+      
+      <p class="command">java &nbsp; -jar &nbsp; <i xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">dir</i>/saxon8.jar &nbsp;
+         -TP &nbsp; <i xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">source</i> &nbsp; <i xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">stylesheet</i> &nbsp; 2&gt;profile.xml
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Then run another transformation to create a profile report from the output of this tracing tool:</p>
+      
+      
+      <p class="command">java &nbsp; -jar &nbsp; <i xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">dir</i>/saxon8.jar &nbsp;
+         profile.xml &nbsp; timing-profile.xsl &nbsp; &gt;profile.html
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Finally,  view the resulting <code>profile.html</code> file in your browser.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The output identifies instructions in the original stylesheet by their name, line number, and the last
+         few characters of the URI of their module. For each instruction it gives the number of times the instruction
+         was executed, the average time in milliseconds of each execution, and the total time. The table is sorted
+         according to a weighting function that attempts to put the dominant instructions at the top. These will
+         not necessarily be those with the greatest time, which tend to be instructions that were only executed once
+         but remained active for the duration of the transformation.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="performanceanalysis.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

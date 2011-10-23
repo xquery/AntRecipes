@@ -1,0 +1,49 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--changes/v811/jaxp811
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: JAXP Application Programming Interface</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: JAXP Application Programming Interface">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>JAXP Application Programming Interface</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The usage of the three methods <code>warning()</code>, <code>error()</code>, and <code>fatalError()</code>
+         in the <code>ErrorListener</code> class has changed. This is in line with clarifications made to the JAXP specification,
+         and with the behavior of other products. Conditions classified in the XSLT, XQuery, or XPath specifications as errors
+         are now notified to the <code>fatalError()</code> method. Conditions described in the XSLT specification as recoverable
+         errors are notified to the <code>error()</code> method, provided that Saxon is capable of recovering from them.
+         The <code>warning()</code> method is now used only for conditions that are not errors according to the W3C language
+         specifications, but indicate that something might be wrong.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="jaxp811.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../v811.html">Up</a>&nbsp;&nbsp;<a class="nav" href="fando811.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements.  See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership.  The ASF licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied.  See the License for the
+ specific language governing permissions and limitations
+ under the License.
+-->
+<book lang="en">
+  <title>Example DocBook document</title>
+
+  <bookinfo>
+    <copyright>
+      <year>2010</year>
+
+      <holder>James Fuller</holder>
+    </copyright>
+
+    <releaseinfo>V 1.0</releaseinfo>
+
+    <productname>example</productname>
+
+    <authorgroup>
+      <corpauthor>Webcomposite s.r.o.</corpauthor>
+    </authorgroup>
+
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="images/logo.png"/>
+      </imageobject>
+    </mediaobject>
+  </bookinfo>
+
+  <toc/>
+
+  <chapter id="chapter-preface">
+    <title>Preface</title>
+
+    <section id="section-about-this-project">
+      <title>About this Project</title>
+
+      <para>This project started out as a framework to render documentation
+      for the Apache Velocity project (
+      <uri>http://velocity.apache.org/</uri>) and ended somehow up to be a
+      generic framework to render DocBook documents using Java and driven by
+      Apache ant.</para>
+
+      <para>While DocBook format seems to be ubiquitous these days, to our
+      surprise there were not many generic frameworks around that could render
+      all kinds of formats, are platform independent, do not require lots of
+      infrastructure installed and are easily customizable.</para>
+
+      <para>Projects either use heavily customized and hacked style sheets or
+      a mix of Java and other applications. Adjusting such a rendering
+      framework to the needs of the Apache Velocity project was not easy, so
+      at some point, we decided to redo this (almost) from scratch.</para>
+    </section>
+
+    <section id="section-license">
+      <title>License Information</title>
+
+      <para>Copyright © 2006-2007 The Apache Software Foundation.</para>
+
+      <para>Licensed under the Apache License, Version 2.0 (the "License") you
+      may not use this file except in compliance with the License. You may
+      obtain a copy of the License at
+      <uri>http://www.apache.org/licenses/LICENSE-2.0</uri></para>
+
+      <para>Unless required by applicable law or agreed to in writing,
+      software distributed under the License is distributed on an "AS IS"
+      BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+      implied. See the License for the specific language governing permissions
+      and limitations under the License.</para>
+    </section>
+
+    <section id="section-author-information">
+      <title>Author Information</title>
+
+      <para>This framework and documentation was written by the Apache
+      Velocity Developers. If you have questions, found a bug or have
+      enhancements, please contact us through the Apache Velocity Development
+      Mailing list at <email>dev@velocity.apache.org</email></para>
+    </section>
+  </chapter>
+
+</book>

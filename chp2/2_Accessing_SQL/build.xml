@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!-- ============================================================= -->
+<!-- ANT RECIPES FOR WEB DEVELOPERS CHP 1 Database Recipe          -->
+<!-- Author: James Fuller / Webcomposite                           -->
+<!-- Email/WWW: jim.fuller@webcomposite.com /  www.antrecipes.com  -->
+<!-- ============================================================= -->
+<!--    (C) Copyright James Fuller 2010 - All Rights Reserved.     -->
+<!--  use the -debug flag for more information when running ant  //-->
+<project name="Accessing SQL" basedir="." default="run">
+
+	<target name="example1">
+		<exec executable="mysqldump" spawn="true" output="result/result.xml">
+    		<arg line="-xml"/>
+		</exec>	
+		<xmlproperty file="result/result.xml" semanticAttributes="true"/>
+	</target>
+
+	<!-- ===================================================== -->
+	<!-- Run Target                                            -->
+	<!-- ===================================================== -->
+	<target name="run" depends="example1" description="runs all examples"/>
+	<!-- ===================================================== -->
+	<!-- Clean Target                                          -->
+	<!-- ===================================================== -->
+	<target name="clean" description="">
+		<delete dir="result"/>
+		<mkdir dir="result"/>
+	</target>
+</project>

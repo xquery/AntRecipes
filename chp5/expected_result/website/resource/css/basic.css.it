@@ -1,0 +1,27 @@
+body {
+ 
+  color: black;
+  font-family: verdana,tahoma,helvetica,arial,sans-serif;
+  font-size: small;
+  margin: 1em 1em 1em 1em
+}
+
+p {
+  text-align: left;
+  font-family: verdana,tahoma,helvetica,arial,sans-serif;
+}
+a:link, a:visited {
+
+  color: #003366;
+  text-decoration: none;
+  font-family: verdana,tahoma,helvetica,arial,sans-serif;
+
+}
+
+h1{
+  color: #003366;
+  text-decoration: none;
+  font-family: verdana,tahoma,helvetica,arial,sans-serif;
+
+}
+

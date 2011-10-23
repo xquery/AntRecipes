@@ -1,0 +1,128 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--functions/intro/fn_replace
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: fn:replace</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: fn:replace">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>fn:replace</h1>
+      <p class="subhead">fn:replace(string? $input, string $pattern, string $replacement) &#8594; string?</p>
+      <p><i>Function signature</i></p>
+      <table>
+         <tr>
+            <td width="120">
+               <p>$input</p>
+            </td>
+            <td width="150">
+               <p>xs:string ?</p>
+            </td>
+         </tr>
+         <tr>
+            <td width="120">
+               <p>$pattern</p>
+            </td>
+            <td width="150">
+               <p>xs:string </p>
+            </td>
+         </tr>
+         <tr>
+            <td width="120">
+               <p>$replacement</p>
+            </td>
+            <td width="150">
+               <p>xs:string </p>
+            </td>
+         </tr>
+         <tr>
+            <td width="120">
+               <p><b>Result</b></p>
+            </td>
+            <td width="150">
+               <p>xs:string ?</p>
+            </td>
+         </tr>
+      </table>
+      <p><i>Replaces sequences of characters within a string that match a given regular expression</i></p>
+      <p><a href="http://www.w3.org/TR/xpath-functions/#func-replace" target="_blank" class="bodylink">XPath 2.0 Specification</a></p>
+      <p><b>Note:</b>Upgraded in Saxon 7.9 to match the precise regex syntax and to support all four flags s, m, i, x.
+         Also changed to disallow a pattern that matches a zero-length string.
+      </p>
+      <p class="subhead">fn:replace(string? $input, string? $pattern, string? $replacement, string? $flags) &#8594; string?</p>
+      <p><i>Function signature</i></p>
+      <table>
+         <tr>
+            <td width="120">
+               <p>$input</p>
+            </td>
+            <td width="150">
+               <p>xs:string ?</p>
+            </td>
+         </tr>
+         <tr>
+            <td width="120">
+               <p>$pattern</p>
+            </td>
+            <td width="150">
+               <p>xs:string </p>
+            </td>
+         </tr>
+         <tr>
+            <td width="120">
+               <p>$replacement</p>
+            </td>
+            <td width="150">
+               <p>xs:string </p>
+            </td>
+         </tr>
+         <tr>
+            <td width="120">
+               <p>$flags</p>
+            </td>
+            <td width="150">
+               <p>xs:string </p>
+            </td>
+         </tr>
+         <tr>
+            <td width="120">
+               <p><b>Result</b></p>
+            </td>
+            <td width="150">
+               <p>xs:string ?</p>
+            </td>
+         </tr>
+      </table>
+      <p><i>Replaces sequences of characters within a string that match a given regular expression,
+            specifying flags to control the way the regular expression is matched</i></p>
+      <p><a href="http://www.w3.org/TR/xpath-functions/#func-replace" target="_blank" class="bodylink">XPath 2.0 Specification</a></p>
+      <p><b>Note:</b>Upgraded in Saxon 7.9 to match the precise regex syntax and to support all four flags 
+         s, m, i, x. Also changed to disallow a pattern that matches a zero-length string.
+      </p>
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="fn_replace.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../intro.html">Up</a>&nbsp;&nbsp;<a class="nav" href="fn_resolve-QName.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

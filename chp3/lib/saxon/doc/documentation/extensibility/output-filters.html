@@ -1,0 +1,130 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--extensibility/output-filters
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: Writing output filters</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Writing output filters">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      
+      
+      <h1>Writing output filters</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The output of a Saxon stylesheet or query can be directed to a user-defined output filter. This filter can be
+         defined either as a SAX2 <code>ContentHandler</code>, or
+         as a subclass of the Saxon class
+         <code>net.sf.saxon.event.Receiver</code>. One advantage of using an <code>Receiver</code> is
+         that more information is available
+         from the stylesheet, for example the attributes of the <code>xsl:output</code> element; another is
+         that (if you are using the schema-aware version of the product) type annotations are available on
+         element and attribute nodes.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">A transformation can be invoked from the Java API using the standard JAXP method 
+         <code>transformer.transform(source, result)</code>. The second argument must implement the
+         JAXP class <code>javax.xml.transform.Result</code>. To send output to a SAX <code>ContentHandler</code>,
+         you can wrap the <code>ContentHandler</code> in a JAXP <code>SAXResult</code> object. To send output
+         to a Saxon <code>Receiver</code>, you can supply the <code>Receiver</code> directly, since the
+         Saxon <code>Receiver</code> interface extends the JAXP <code>Result</code> interface.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">When running XQuery, Saxon offers a similar method on the <code>XQueryExpression</code> object:
+         the <code>run()</code> method. This also takes an argument of type <code>Result</code>, which may be
+         (among other things) a <code>SAXResult</code> or a Saxon <code>Receiver</code>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Some <code>ContentHandler</code> implementations require a sequence of events corresponding
+         to a well-formed document (that is, one whose document node has exactly one element node and no text nodes
+         among its children). If this is the case, you can specify the additional output property
+         <code>saxon:require-well-formed="yes"</code>, which will cause Saxon to report an error if the result
+         tree is not well-formed.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">As specified in the JAXP interface, requests to disable or re-enable output escaping
+         are also notified to the content handler by means of special processing instructions. The
+         names of these processing instructions are defined by the constants PI_DISABLE_OUTPUT_ESCAPING
+         and PI_ENABLE_OUTPUT_ESCAPING defined in class <code>javax.xml.transform.Result</code>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">As an alternative to specifying the destination in the <code>transform()</code> or <code>run()</code> methods,
+         the <code>Receiver</code> or <code>ContentHandler</code> to be used may be specified in the
+         <code>method</code> attribute of the <code>xsl:output</code> 
+         element, as a fully-qualified class name; for example
+         <code>method="prefix:com.acme.xml.SaxonOutputFilter"</code>. The namespace prefix is ignored, but
+         must be present to meet XSLT conformance rules.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">An abstract implementation of the <code>Receiver</code> interface is available in the <code>Emitter</code>
+         class. This class provides additional functionality useful if you want to serialize the result to a byte or character output
+         stream. If the <code>Receiver</code> that you supply as an output destination is an instance of <code>Emitter</code>,
+         then it has access to all the serialization parameters supplied in the <code>xsl:output</code> declaration, or made
+         available using the Java API.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">See the documentation of class <code>net.sf.saxon.event.Receiver</code> for details of the methods available, or
+         implementations such as HTMLEmitter and XMLEmitter and TEXTEmitter for the standard output formats
+         supported by Saxon.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">It can sometimes be useful to set up a chain of Receivers working as a pipeline. To write a filter
+         that participates in such a pipeline, the class <code>ProxyReceiver</code> is supplied. Use the class <code>XMLIndenter</code>,
+         which handles XML indentation, as an example of how to write a <code>ProxyReceiver</code>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Rather than writing an output filter in Java, Saxon also allows you to process the output through
+         another XSLT stylesheet. To do this, simply name the next stylesheet in the <code>saxon:next-in-chain</code> attribute
+         of <code>xsl:output</code>. 
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Any number of
+         user-defined attributes may be defined on  <code>xsl:output</code>. These 
+         attributes must have names in a non-null namespace, which must not be either the XSLT
+         or the Saxon namespace. These attributes are interpreted as attribute value templates.
+         The value of the attribute is inserted into the <code>Properties</code> object made available to 
+         the <code>Emitter</code> handling the output; they will be ignored by the standard output methods,
+         but can supply arbitrary information to a user-defined output method. The name of the
+         property will be the expanded name of the attribute in JAXP format, for example
+         <code>{http://my-namespace/uri}local-name</code>, and the value will be the value as given,
+         after evaluation as an attribute value template.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="output-filters.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="collation.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

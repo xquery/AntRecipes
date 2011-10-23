@@ -1,0 +1,123 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--schema-processing/saquerycmd
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: Schema-Aware XQuery from the Command Line</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Schema-Aware XQuery from the Command Line">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      
+      
+      <h1>Schema-Aware XQuery from the Command Line</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">To run a schema-aware query from the command line, use the <code>com.saxonica.Query</code> command
+         instead of the usual <code>net.sf.saxon.Query</code>. This has an additional option <code>-val</code> to
+         request validation of the source document. This applies not only to the principal source document loaded using the
+         <code>-s</code> option on the
+         command line, but to all documents loaded via the <code>doc()</code> functions, or
+         supplied as additional command line parameters in the form <code>+param=doc.xml</code>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">As an alternative to the <code>-val</code> option, you can specify <code>-vlax</code> to request lax
+         validation.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The schemas to be used to validate these source documents can be specified either by using the
+         <code>import schema</code> declaration in the query prolog, or using <code>xsi:schemaLocation</code>
+         (or <code>xsi:noNamespaceSchemaLocation</code>) attributes within the source documents themselves.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Validating the source document has several effects. Most obviously, it will cause the query to fail
+         if the document is invalid. It will also cause default values for attributes and elements to be expanded, so they
+         will appear to the query as if they were present on the source document. In addition, element and attribute nodes
+         that have been validated will be annotated with a type. This enables operations to be performed in a type-safe way.
+         This may cause error messages, for example if you try to use an xs:decimal value as an argument to a function that
+         expects a string. It may also cause some operations to produce different results: for example when using
+         elements or attributes that have been given a list type in the schema, the typed value of the node will appear
+         in the stylesheet as a sequence rather than as a single string value.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The schema-aware version of Saxon also allows you to validate result documents (both final result documents
+         and intermediate results). By default, elements constructed by the query are validated in lax mode, which means that
+         they are validated if a schema declaration is available, and are not validated otherwise. You can set a different
+         initial validation mode either using the <code>declare validation</code> declaration in the Query Prolog, or by
+         issuing a call such as <code>staticQueryContext.pushValidationMode(Validation.SKIP)</code> in the calling API.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>-vw</code> option on the command line 
+         causes validation errors encountered in processing a final result
+         tree to be treated as warnings, allowing processing to continue. This allows more than one error
+         to be reported in a single run. The result document is serialized as if validation were successful,
+         but with XML comments inserted to show where the validation errors were found. This option does
+         not necessarily recover from all validation errors, for example at present it does not recover from
+         errors in uniqueness or referential constraints.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">By default, the validation context for element constructors in the query depends on the textual nesting of the
+         element constructors as written in the query. You can change the validation context (and the validation mode) if you
+         need to, by using a <code>validate{}</code> expression within the query.  For details of this expression,
+         refer to the XQuery 1.0 specification. Validation of result documents is done on-the-fly, so if the query
+         attempts to produce invalid output, you will usually get an error message that identifies the approximate location
+         in the query where the error occurred.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><i>The use of explicit and implicit validation contexts in XQuery is likely to change in the next version of the
+            specification. However, Saxon currently implements something close to what is specified in the November 2003 draft.</i></p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">With the schema-aware version of Saxon, declarations of functions and variables can refer to schema-defined types,
+         for example you can write <code>let $a as schema-element(ipo:invoice)* := //inv</code>. You can also use
+         the <code>element()</code> and <code>attribute()</code> tests to select nodes by their schema type in path expressions.
+         See <a class="bodylink" href="javascript:topage('conformance', 'intro')">conformance.html</a> to check which parts of the syntax have
+         been implemented.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Saxon 8.2 does a certain amount of static analysis of the XQuery code based on schema information.
+         For example, if a function argument is defined with a type such as <code>as="schema-element(invoice)"</code>,
+         then it will check any path expressions used in the function body to ensure that they are valid against the schema
+         when starting from <code>invoice</code> as the context node. Similarly, if the result type of a 
+         function is declared using an <code>as</code> attribute, then Saxon will check any direct element constructors
+         in the body of the function to ensure that they are consistent with this declared type. This
+         analysis can reveal many simple user errors at compile time that would otherwise result in run-time errors or
+         simply in incorrect output. But this is only possible if the source code explicitly declares the types of variables
+         and of function arguments and results.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="saquerycmd.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="saqueryapi.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

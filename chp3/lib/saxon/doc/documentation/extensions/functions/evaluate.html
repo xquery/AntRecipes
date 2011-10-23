@@ -1,0 +1,75 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--extensions/functions/evaluate
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: saxon:evaluate()</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: saxon:evaluate()">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>saxon:evaluate()</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><b>evaluate(string [, params...])</b></p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">This function allows XPath expressions to be constructed dynamically at runtime.</p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The supplied string must contain an XPath expression. The result of the function is the result of
+         evaluating the XPath expression. This is useful where an expression needs to be constructed
+         at run-time or passed to the stylesheet as a parameter, for example where the sort key is determined
+         dynamically.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The static context for the expression includes all the in-scope namespaces, types, and functions from the
+         calling stylesheet or query. It does <b>not</b> include any variables from the calling environment. 
+         The base URI and default function namespace are inherited from the calling environment.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The expression may contain references to variables 
+         <code>$p1</code>, <code>$p2</code>, etc., and the values of these variables may be supplied in the
+         second, third, and subsequent arguments to the <code>saxon:evaluate()</code> call.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The function <code>saxon:evaluate(string)</code> is shorthand for <code>saxon:eval(saxon:expression(string))</code>.
+         For the rules governing what may and may not appear in the expression, 
+         see <a class="bodylink" href="javascript:tosubpage('extensions','functions','expression')">saxon:expression</a>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">See also <a class="bodylink" href="javascript:tosubpage('extensions','functions','evaluate-node')">saxon:evaluate-node</a>,
+         which is a similar function intended for evaluating XPath expressions contained in a source document.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="evaluate.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../functions.html">Up</a>&nbsp;&nbsp;<a class="nav" href="evaluate-node.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

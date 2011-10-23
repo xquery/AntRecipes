@@ -1,0 +1,80 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--extensions/instructions/script
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: saxon:script</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: saxon:script">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>saxon:script</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>saxon:script</code> element is a top-level element. 
+         It is used to define an implementation
+         for an extension function that will be used by Saxon. With
+         other processors, a different implementation of the same function can be selected, 
+         using mechanisms defined by that processor (for example, <code>xalan:script</code>).
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The attributes for <code>saxon:script</code> are the same as the attributes
+         of the <code>xsl:script</code> element defined in the (now withdrawn) XSLT 1.1
+         working draft.
+      </p>
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>language</code> attribute is mandatory, and must take the value "java". 
+         The values "javascript", "ecmascript", or a QName are also permitted, but in this
+         case Saxon ignores the <code>saxon:script</code> element.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>implements-prefix</code> attribute is mandatory, its value must be a namespace
+         prefix that maps to the same namespace URI as the prefix used in the extension function
+         call.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>src</code> attribute is mandatory for language="java", its value must take the
+         form "java:fully.qualified.class.Name", for example "java:java.util.Date". It defines
+         the class containing the implementation of extension functions that use this prefix.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>archive</code> attribute is optional, its value is a space-separated list of URLs
+         of folders or JAR files that will be searched to find the named class. If the attribute
+         is omitted, the class is sought on the classpath.
+      </p>
+      
+      
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="script.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../instructions.html">Up</a>&nbsp;&nbsp;<a class="nav" href="while.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

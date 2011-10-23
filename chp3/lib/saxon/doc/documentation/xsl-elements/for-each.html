@@ -1,0 +1,119 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--xsl-elements/for-each
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: xsl:for-each</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: xsl:for-each">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>xsl:for-each</h1>
+      
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>xsl:for-each</code> element causes iteration over the nodes selected by a node-set expression.
+         It can be used as an alternative to <code>xsl:apply-templates</code> where the child nodes of the
+         current node are known in advance. There is a mandatory attribute, <code>select</code>, which defines
+         the nodes over which the statement will iterate. The XSLT statements subordinate to the <code>xsl:for-each</code> element
+         are applied to each source node seleced by the node-set expression in turn.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The full syntax of node-set expressions is given in <a class="bodylink" href="javascript:topage('expressions', 'intro')">XPath Expression Syntax</a></p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>xsl:for-each</code> element may have one or more <code>xsl:sort</code> child elements to define the order of
+         sorting. The sort keys are specified in major-to-minor order.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The expression used for sorting can be any string expressions. The following are
+         particularly useful:
+      </p>
+      
+      
+      <ul xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         
+         <li>
+            <p>element-name, e.g. TITLE: sorts on the value of a child element</p>
+         </li>
+         
+         <li>
+            <p>attribute-name, e.g. @CODE: sorts on the value of an attribute</p>
+         </li>
+         
+         <li>
+            <p>".": sorts  on the character content of the element</p>
+         </li>
+         
+         <li>
+            <p>"qname(.)": sorts on the name of the element</p>
+         </li>
+         
+      </ul>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Example 1:</p>
+      
+      
+      <div class="codeblock" style="border: solid thin; background-color: #B1CCC7; padding: 2px"><pre><code>&lt;xsl:template match="BOOKLIST"&gt;
+    &lt;TABLE&gt;
+    &lt;xsl:for-each select="BOOK"&gt;
+        &lt;TR&gt;
+        &lt;TD&gt;&lt;xsl:value-of select="TITLE"/&gt;&lt;/TD&gt;
+        &lt;TD&gt;&lt;xsl:value-of select="AUTHOR"/&gt;&lt;/TD&gt;
+        &lt;TD&gt;&lt;xsl:value-of select="ISBN"/&gt;&lt;/TD&gt;
+        &lt;/TR&gt;        
+    &lt;/xsl:for-each&gt;
+    &lt;/TABLE&gt;
+&lt;/xsl:template&gt;</code></pre></div>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Example 2: sorting with xsl:for-each. This example also shows a template for a BOOKLIST
+         element which processes all the child BOOK elements in order of their child AUTHOR elements.
+      </p>
+      
+      
+      <div class="codeblock" style="border: solid thin; background-color: #B1CCC7; padding: 2px"><pre><code>&lt;xsl:template match="BOOKLIST"&gt;
+    &lt;h2&gt;
+        &lt;xsl:for-each select="BOOK"&gt;
+            &lt;xsl:sort select="AUTHOR"/&gt;
+            &lt;p&gt;AUTHOR: &lt;xsl:value-of select="AUTHOR"/&gt;&lt;/p&gt;
+            &lt;p&gt;TITLE: &lt;xsl:value-of select="TITLE"/&gt;&lt;/p&gt;
+            &lt;hr/&gt;
+        &lt;/xsl:for-each&gt;            
+    &lt;/h2&gt;
+&lt;/xsl:template&gt;</code></pre></div>
+      
+      
+      
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="for-each.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="for-each-group.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

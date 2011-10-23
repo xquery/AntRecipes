@@ -1,0 +1,113 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--extensions/instructions
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: Extension instructions</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Extension instructions">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      
+      <h1>Extension instructions</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">A Saxon extension instruction is invoked using a name such as <code>&lt;saxon:localname&gt;</code>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>saxon</code> prefix (or whatever prefix you choose to use) must be associated with the
+         Saxon namespace URI <code>http://saxon.sf.net/</code>. The prefix must also be designated as an
+         extension element prefix by including it in the
+         <code>extension-element-prefixes</code> attribute on the <code>xsl:stylesheet</code> element, or the
+         <code>xsl:extension-element-prefixes</code> attribute on any enclosing literal result element or
+         extension element.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">However, top-level elements such as <code>saxon:collation</code> and
+         <code>saxon:script</code> can be used without
+         designating the prefix as an extension element prefix.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The extension instructions and declarations are:</p>
+      
+      
+      <ul>
+         <li>
+            <p><a class="bodylink" href="instructions/assign.html">saxon:assign</a>: assigns a new value to a global variable
+            </p>
+         </li>
+         <li>
+            <p><a class="bodylink" href="instructions/call-template.html">saxon:call-template</a>: calls a template whose name is decided at run-time
+            </p>
+         </li>
+         <li>
+            <p><a class="bodylink" href="instructions/collation.html">saxon:collation</a>: names and describes a collating sequence
+            </p>
+         </li>
+         <li>
+            <p><a class="bodylink" href="instructions/doctype.html">saxon:doctype</a>: constructs a serialized DOCTYPE declaration
+            </p>
+         </li>
+         <li>
+            <p><a class="bodylink" href="instructions/import-query.html">saxon:import-query</a>: imports functions from an XQuery library module
+            </p>
+         </li>
+         <li>
+            <p><a class="bodylink" href="instructions/entity-ref.html">saxon:entity-ref</a>: creates an entity reference in the serialized output
+            </p>
+         </li>
+         <li>
+            <p><a class="bodylink" href="instructions/script.html">saxon:script</a>: declares an extension function
+            </p>
+         </li>
+         <li>
+            <p><a class="bodylink" href="instructions/while.html">saxon:while</a>: iterates until a condition becomes false
+            </p>
+         </li>
+      </ul>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="instructions.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

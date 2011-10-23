@@ -1,0 +1,71 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--changes/intro/extensions83
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: New and Changed Extension Functions</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: New and Changed Extension Functions">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>New and Changed Extension Functions</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Two new extension functions <code>saxon:index</code> and <code>saxon:find</code> are
+         available. These are particularly useful in XQuery, where they provide an equivalent to the
+         capability offered by <code>xsl:key</code> in XSLT. The functions can also be useful in XSLT, because
+         unlike <code>xsl:key</code> they allow any sequence to be indexed, even one that spans multiple
+         documents. The typical usage is first to create an indexed sequence, for example by:
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><code>declare variable $indexedTowns := saxon:index(//town, saxon:expression("@state"));</code></p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">and then to retrieve towns whose state is known by using <code>saxon:find()</code>:
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><code>{ saxon:find($indexedTowns, "MA") }</code></p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">This example finds all <code>&lt;town&gt;</code> elements whose <code>state</code> attribute
+         has the value <code>MA</code>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">These extension functions are available only in Saxon-SA.</p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">If the argument to the function <code>saxon:expression</code> is a compile-time constant
+         (typically a string literal), then
+         the XPath expression is compiled at stylesheet compile time and any errors are reported as static errors.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="extensions83.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../intro.html">Up</a>&nbsp;&nbsp;<a class="nav" href="internal83.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

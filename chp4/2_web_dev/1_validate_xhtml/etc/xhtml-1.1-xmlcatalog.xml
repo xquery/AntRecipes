@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE catalog
+  PUBLIC "-//OASIS//DTD Entity Resolution XML Catalog V1.0//EN"
+	 "http://www.oasis-open.org/committees/entity/release/1.0/catalog.dtd">
+<!-- $Id -->
+
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog"
+	 prefer="public">
+
+  <public
+	 publicId="-//WHR//DTD JINDEX 1.0//EN"
+	 uri="htdocs/dtd/jindex.dtd"/>
+  <public
+	 publicId="-//WHR//DTD PAGE 1.0//EN"
+	 uri="htdocs/dtd/page.dtd"/>
+  <public
+	 publicId="-//WHR//DTD JPAGE 1.0//EN"
+	 uri="htdocs/dtd/jpage.dtd"/>
+  <public
+	 publicId="-//W3C//DTD XHTML 1.0 Strict//EN"
+	 uri="htdocs/dtd/w3c/xhtml1/xhtml1-strict.dtd"/>
+  <public
+	 publicId="-//W3C//DTD XHTML 1.0 Transitional//EN"
+	 uri="htdocs/dtd/w3c/xhtml1/xhtml1-transitional.dtd"/>
+  <public
+	 publicId="-//W3C//DTD XHTML 1.1//EN"
+	 uri="htdocs/dtd/w3c/xhtml11/xhtml11-flat.dtd"/>
+  <public
+	 publicId="-//W3C//ENTITIES XHTML 1.1 Document Model 1.0//EN"
+	 uri="htdocs/dtd/w3c/xhtml11/xhtml11-model-1.mod"/>
+
+</catalog>

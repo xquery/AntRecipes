@@ -1,0 +1,74 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--xsl-elements/lre
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: Literal Result Elements</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Literal Result Elements">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>Literal Result Elements</h1>
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Any elements in the style sheet other than those listed above are
+         assumed to be literal result elements, and are copied to the current output stream at the
+         position in which they occur.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Attribute values within literal result elements are treated as attribute value templates:
+         they may contain string expressions enclosed between curly braces. For the syntax of 
+         string expressions, see <b><a href="../xsl-elements/value-of.html" target="_self" class="bodylink">xsl:value-of</a></b> above.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Where the output is HTML, certain formatting elements are recognised as empty
+         elements: these are AREA, BASEFONT, BR, COL, FRAME, HR, IMG, INPUT, ISINDEX,
+         LINK, META, and SYSTEM (in either upper or lower case, and optionally with attributes, of course).
+         These should be written as empty
+         XML elements in the stylesheet, and will be written to the HTML output stream without a
+         closing tag.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">With HTML output, if the attribute name is the same as its value, the abbreviated form
+         of output is used: for example if &lt;OPTION SELECTED="SELECTED"&gt; appears in the stylesheet,
+         it will be output as &lt;OPTION SELECTED&gt;.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">A simple stylesheet may be created by using a literal result element as the top-level
+         element of the stylesheet. This implicitly defines a single template with a match pattern
+         of "/". In fact, an XHTML document constitutes a valid stylesheet which will be output as a copy
+         of itself, regardless of the contents of the source XML document.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="lre.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

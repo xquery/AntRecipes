@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ============================================================= -->
+<!-- ANT RECIPES FOR WEB DEVELOPERS CHP 1 Text Recipe              -->
+<!-- Author: James Fuller / Webcomposite                           -->
+<!-- Email/WWW: jim.fuller@webcomposite.com /  www.antrecipes.com  -->
+<!-- ============================================================= -->
+<!--    (C) Copyright James Fuller 2010 - All Rights Reserved.     -->
+<!--  use the -debug flag for more information when running ant  //-->
+
+<project name="Managing Text introduction" basedir="." default="run">
+<description>Manage Text introduction</description>
+
+<target name="example1">
+	<fixcrlf srcdir="data" includes="**/*.txt" tab="remove" />
+</target>
+
+<target name="example2">
+	<fixcrlf srcdir="data/ex2" tab="asis" eof="add" eol="unix"/>
+</target>
+
+<target name="example3">
+<copy todir="result">
+	<fileset dir="data"/>
+  <filterchain>
+	<fixcrlf/>
+</filterchain>
+</copy>
+</target>
+
+<target name="example4">
+<copy file="data/crlf.txt" tofile="result/crlf.txt">
+       <filterchain>
+           <tokenfilter>
+               <ignoreblank/>
+           </tokenfilter>
+       </filterchain>
+</copy>
+</target>
+
+<target name="example5">
+<copy file="data/user.sql" tofile="result/data.sql">
+       <filterchain>
+            <striplinebreaks/>
+       </filterchain>
+</copy>
+</target>
+
+
+    <!-- ===================================================== -->
+    <!-- Run Target                                            -->
+    <!-- ===================================================== -->
+     <target name="run" depends="clean, example1,example2,example3,example4,example5" description="runs all examples"/>
+
+     
+    <!-- ===================================================== -->
+    <!-- Clean Target                                          -->
+    <!-- ===================================================== -->     
+    <target name="clean">
+        <delete dir="result"/>
+        <mkdir dir="result"/>
+    </target>
+
+
+</project>

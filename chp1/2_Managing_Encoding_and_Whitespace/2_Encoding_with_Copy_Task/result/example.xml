@@ -1,0 +1,269 @@
+<html>
+    
+<body>
+    
+    <h2>
+
+This is a test page for UNICODE UTF-8 encoding.</h2>
+
+UNICODE is a really great 2-byte encoding that gives every letter of any
+
+writing system in the world a unique code number. Therefore, on one page
+
+you can write in various writing systems - this was impossible before UNICODE
+
+existed, because you had to switch to various codepages depending on language,
+
+like &quot;Latin 1&quot;, &quot;Latin 2&quot; or &quot;Cyrillic&quot;. Now you can have it all in one
+
+single web page! Our example shows Latin letters with diacritical marks
+
+of Central European languages and Cyrillic characters.
+
+
+
+
+<p>If you can see all letters in the middle column of the table as they
+
+are in the right column your browser supports UNICODE UTF-8 encoding.
+
+<br>Your browser should automatically switch to UNICODE encoding because
+
+this page contains &quot;charset=utf-8&quot; tag in header.
+
+<p>This page covers only some subsets of UNICODE used for Central and East European languages. If you want to test another UNICODE subset try <A HREF="http://home.att.net/~jameskass/">UNICODE HTML pages by James Kass</A>.
+
+<br>&nbsp;
+
+<table BORDER COLS="3" WIDTH="100%">
+
+<tr>
+
+<td>
+
+<center><b><i>Description</i></b></center>
+
+</td>
+
+
+
+<td>
+
+<center><b><i>This is what your browser shows...</i></b></center>
+
+</td>
+
+
+
+<td>
+
+<center><b><i>...and this is what you should see</i></b></center>
+
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>Czech and Slovak characters</td>
+
+
+
+<td>&nbsp;≈°&nbsp; ≈•&nbsp; ≈æ&nbsp; ƒæ&nbsp; ƒç&nbsp; ƒõ ƒè ≈à ≈ô ≈Ø ƒ∫&nbsp;
+
+<br>&nbsp;≈† ≈§ ≈Ω ƒΩ ƒå ƒö ƒé ≈á ≈ò ≈Æ ƒπ</td>
+
+
+
+<td><img SRC="images/imageaou.jpg" HEIGHT="41" WIDTH="159"></td>
+
+</tr>
+
+
+
+<tr>
+
+<td>Polish characters</td>
+
+
+<td>&nbsp;≈Ç ƒÖ ≈º ƒô ƒá ≈Ñ ≈õ ≈∫&nbsp;
+
+<br>&nbsp;≈Å ƒÑ ≈ª ƒò ƒÜ ≈É ≈ö ≈π</td>
+
+
+
+<td><img SRC="images/imageuus.jpg" HEIGHT="42" WIDTH="118"></td>
+
+</tr>
+
+
+
+<tr>
+
+<td>Romanian characters</td>
+
+
+
+<td>&nbsp;ƒÇ ƒÉ ≈û ≈ü ≈¢ ≈£</td>
+
+
+
+<td><img SRC="images/imagelv8.jpg" HEIGHT="23" WIDTH="80"></td>
+
+</tr>
+
+
+
+<tr>
+
+<td>Croatian and Slovenian characters</td>
+
+
+
+<td>&nbsp;≈° ƒç ≈æ ƒá ƒë&nbsp;
+
+<br>&nbsp;≈† ƒå ≈Ω ƒÜ ƒê</td>
+
+
+
+<td><img SRC="images/image1ef.jpg" HEIGHT="41" WIDTH="81"></td>
+
+</tr>
+
+
+
+<tr>
+
+<td>Hungarian characters</td>
+
+
+
+<td>&nbsp;≈ê ≈ë ≈∞ ≈±</td>
+
+
+
+<td><img SRC="images/image8qf.jpg" HEIGHT="23" WIDTH="62"></td>
+
+</tr>
+
+
+
+<tr>
+
+<td>German characters</td>
+
+
+
+<td>&nbsp;√Ñ, √§, √ñ, √∂, √ú, √º, √ü</td>
+
+
+
+<td><img SRC="images/imageqcf.jpg" HEIGHT="22" WIDTH="126"></td>
+
+</tr>
+
+
+
+<tr>
+
+<td>Russian alphabet</td>
+
+
+
+<td>–∞–±–≤–≥–¥–µ—ë–∂–∑–∏–π–∫–ª–º–Ω–æ&nbsp;
+
+<br>–ø—Ä—Å—Ç—É—Ñ—Ö—Ü—á—à—á—å—ã—ä—ç—é—è&nbsp;
+
+<br>–ê–ë–í–ì–î–ï–Å–ñ–ó–ò–ô&nbsp;
+
+<br>–ö–õ–ú–ù–û–ü–†–°–¢–£–§&nbsp;
+
+<br>–•–¶–ß–®–©–¨–´–™–≠–Æ–Ø&nbsp;</td>
+
+
+
+<td><img SRC="images/cyrtest1.jpg" HEIGHT="99" WIDTH="197"></td>
+
+</tr>
+
+
+<tr>
+
+<td>Special Byelorussian and Ukrainian characters</td>
+
+
+
+<td>&nbsp;–é —û –Ñ —î “ê “ë&nbsp;</td>
+
+
+
+<td><img SRC="images/cyrtest2.jpg" HEIGHT="41" WIDTH="159"></td>
+
+</tr>
+
+
+<tr>
+
+<td>Special Serbian and Macedonian characters</td>
+
+
+
+<td>–Ç –â –ä –ã –è —í —ô —ö —õ —ü</td>
+
+
+
+<td><img SRC="images/cyrtest3.jpg" HEIGHT="40" WIDTH="194"></td>
+
+</tr>
+
+</table>
+
+&nbsp;
+
+<br>As far as I know, only Netscape Communicator (4.0 and newer) and MS
+
+Internet Explorer (4.0 and newer) support UNICODE encoding. If your browser
+
+doesn't support UNICODE you have to update to one of these programs.
+
+<ul>
+
+<li>
+
+<a HREF="http://www.unicode.org">UNICODE Web Site</a></li>
+
+<li><A HREF="http://home.att.net/~jameskass/">HTML Test Pages for Unicode</A> by James Kass
+
+<br>These test pages cover all UNICODE ranges and not only East European
+
+
+
+
+<li>
+
+<a HREF="unifonts.htm">UNICODE True Type Fonts on the Web</a></li>
+
+
+
+<li>
+
+(<i>in German language</i>): <a HREF="codep.htm">Allgemeines zu Zeichens√§tzen
+
+(Codepages)</a></li>
+
+
+
+<li>
+
+<i>(in German language): </i><a HREF="codep.htm#unicode">Informationen
+
+zu UNICODE</a></li>
+
+</ul>
+
+
+
+</body>
+</html>

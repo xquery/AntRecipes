@@ -1,0 +1,741 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: </title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: ">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="saxondocs.css" type="text/css">
+   </head>
+   <body class="main">
+      <h1>Saxon Documentation</h1>
+      <p class="subhead">About Saxon</p>
+      <ul>
+         <li><a class="toc2" href="index/intro.html">Introduction</a></li>
+         <li><a class="toc2" href="index/gettingstarted.html">Getting Started</a></li>
+         <li><a class="toc2" href="index/whatis.html">What is Saxon?</a></li>
+         <li><a class="toc2" href="index/prerequisites.html">Prerequisites</a></li>
+         <li><a class="toc2" href="index/installation.html">Installation</a></li>
+         <li><a class="toc2" href="index/historical.html">Historical Note</a></li>
+         <li><a class="toc2" href="index/support.html">Technical Support</a></li>
+      </ul>
+      <p class="subhead">Changes in this Release</p>
+      <ul>
+         <li><a class="toc2" href="changes/intro.html">Version 8.3</a><ul>
+               <li><a href="changes/intro/dom83.html">DOM Level 3 support</a></li>
+               <li><a href="changes/intro/xpathapi83.html">JAXP 1.3 support: the XPath API</a></li>
+               <li><a href="changes/intro/schema83.html">Schema processing changes</a></li>
+               <li><a href="changes/intro/xpath83.html">XPath 2.0 Changes</a></li>
+               <li><a href="changes/intro/xslt83.html">XSLT 2.0 Changes</a></li>
+               <li><a href="changes/intro/xquery83.html">XQuery 1.0 Changes</a></li>
+               <li><a href="changes/intro/functions83.html">Changes to Functions and Operators</a></li>
+               <li><a href="changes/intro/serialization83.html">Changes in Serialization</a></li>
+               <li><a href="changes/intro/extensions83.html">New and Changed Extension Functions</a></li>
+               <li><a href="changes/intro/internal83.html">Internal Changes</a></li>
+               <li><a href="changes/intro/pull83.html">Pull Processing</a></li>
+            </ul>
+         </li>
+         <li><a class="toc2" href="changes/v8.2.html">Version 8.2</a><ul>
+               <li><a href="changes/v8.2/jaxp82.html">JAXP 1.3 support</a></li>
+               <li><a href="changes/v8.2/XOM82.html">Support for XOM Object Model</a></li>
+               <li><a href="changes/v8.2/xslt82.html">Changes to XSLT 2.0 support</a></li>
+               <li><a href="changes/v8.2/xquery82.html">Changes to XQuery 1.0 support</a></li>
+               <li><a href="changes/v8.2/serialization82.html">Changes to Serialization</a></li>
+               <li><a href="changes/v8.2/extensibility82.html">Changes to external Java bindings</a></li>
+               <li><a href="changes/v8.2/schema82.html">Changes to Schema Processing</a></li>
+               <li><a href="changes/v8.2/xpath82.html">Changes in XPath 2.0 Processing</a></li>
+               <li><a href="changes/v8.2/functions82.html">Changes to Functions and Operators</a></li>
+               <li><a href="changes/v8.2/extensions82.html">Changes to Saxon Extensions</a></li>
+               <li><a href="changes/v8.2/datamodel82.html">Changes to Data Model</a></li>
+               <li><a href="changes/v8.2/internal82.html">Internal Changes</a></li>
+            </ul>
+         </li>
+         <li><a class="toc2" href="changes/v811.html">Version 8.1.1</a><ul>
+               <li><a href="changes/v811/defects811.html">Defects cleared</a></li>
+               <li><a href="changes/v811/schema811.html">Changes in XML Schema support</a></li>
+               <li><a href="changes/v811/jaxp811.html">JAXP Application Programming Interface</a></li>
+               <li><a href="changes/v811/fando811.html">Changes in Functions and Operators</a></li>
+            </ul>
+         </li>
+         <li><a class="toc2" href="changes/intro81.html">Version 8.1</a><ul>
+               <li><a href="changes/intro81/sadifference-81.html">Differences between Saxon-SA and Saxon-B</a></li>
+               <li><a href="changes/intro81/defects-81.html">Defects Cleared</a></li>
+               <li><a href="changes/intro81/xslt-81.html">XSLT changes</a></li>
+               <li><a href="changes/intro81/xquery-81.html">Changes to XQuery</a></li>
+               <li><a href="changes/intro81/xquery-api-81.html">Changes to the XQuery Java API</a></li>
+               <li><a href="changes/intro81/schema-aware-81.html">Changes to Schema-Aware XSLT and XQuery Processing</a></li>
+               <li><a href="changes/intro81/schema-81.html">Changes to Schema Processing</a></li>
+               <li><a href="changes/intro81/fando-81.html">Changes to Functions and Operators</a></li>
+               <li><a href="changes/intro81/extensions-81.html">Changes to Extension Functions</a></li>
+               <li><a href="changes/intro81/internal-81.html">Internal Changes</a></li>
+               <li><a href="changes/intro81/extensibility-81.html">Changes to Extension Function Calling Mechanism</a></li>
+               <li><a href="changes/intro81/serialization-81.html">Changes to Serialization</a></li>
+            </ul>
+         </li>
+         <li><a class="toc2" href="changes/v8.0.html">Version 8.0</a><ul>
+               <li><a href="changes/v8.0/defects-80.html">Defects cleared in Version 8.0</a></li>
+               <li><a href="changes/v8.0/xslt-80.html">XSLT changes</a></li>
+               <li><a href="changes/v8.0/xpath-80.html">XPath changes (also affecting XQuery)</a></li>
+               <li><a href="changes/v8.0/xquery-80.html">XQuery changes</a></li>
+               <li><a href="changes/v8.0/functions-80.html">Functions and Operators</a></li>
+               <li><a href="changes/v8.0/schema-80.html">Schema processing</a></li>
+               <li><a href="changes/v8.0/xpath-api-80.html">XPath API changes</a></li>
+               <li><a href="changes/v8.0/extensions-80.html">Changes to extension functions</a></li>
+               <li><a href="changes/v8.0/internal-api-80.html">Changes to internal APIs</a></li>
+               <li><a href="changes/v8.0/implementation-80.html">Implementation changes</a></li>
+               <li><a href="changes/v8.0/applet-80.html">Running Saxon as an Applet</a></li>
+            </ul>
+         </li>
+      </ul>
+      <p class="subhead">Conditions of Use</p>
+      <ul>
+         <li><a class="toc2" href="conditions/intro.html">Introduction</a></li>
+         <li><a class="toc2" href="conditions/other.html">Other components</a></li>
+      </ul>
+      <p class="subhead">Using Stylesheets</p>
+      <ul>
+         <li><a class="toc2" href="using-xsl/intro.html">Using XSLT Stylesheets</a></li>
+         <li><a class="toc2" href="using-xsl/commandline.html">Running XSLT from the Command Line</a></li>
+         <li><a class="toc2" href="using-xsl/compiling.html">Compiling a Stylesheet</a></li>
+         <li><a class="toc2" href="using-xsl/choosingmodel.html">Choosing a Tree Model</a></li>
+         <li><a class="toc2" href="using-xsl/embedding.html">Invoking XSLT from Java</a></li>
+         <li><a class="toc2" href="using-xsl/performanceanalysis.html">Performance Analysis</a></li>
+      </ul>
+      <p class="subhead">Using XQuery</p>
+      <ul>
+         <li><a class="toc2" href="using-xquery/intro.html">Using XQuery</a></li>
+         <li><a class="toc2" href="using-xquery/commandline.html">Running XQuery from the Command Line</a></li>
+         <li><a class="toc2" href="using-xquery/embedding.html">Invoking XQuery from Java</a></li>
+         <li><a class="toc2" href="using-xquery/callingfunctions.html">Calling XQuery Functions from Java</a></li>
+         <li><a class="toc2" href="using-xquery/resultformat.html">Result Format</a></li>
+         <li><a class="toc2" href="using-xquery/extensibility.html">Extensibility</a></li>
+         <li><a class="toc2" href="using-xquery/extensions.html">Extensions</a></li>
+         <li><a class="toc2" href="using-xquery/usecases.html">Use Cases</a></li>
+      </ul>
+      <p class="subhead">XML Schema Processing</p>
+      <ul>
+         <li><a class="toc2" href="schema-processing/intro.html">Introduction</a></li>
+         <li><a class="toc2" href="schema-processing/commandline.html">Running Validation from the Command Line</a></li>
+         <li><a class="toc2" href="schema-processing/validation-api.html">Controlling Validation from Java</a></li>
+         <li><a class="toc2" href="schema-processing/satransformcmd.html">Schema-Aware XSLT from the Command Line</a></li>
+         <li><a class="toc2" href="schema-processing/satransformapi.html">Schema-Aware XSLT from Java</a></li>
+         <li><a class="toc2" href="schema-processing/saquerycmd.html">Schema-Aware XQuery from the Command Line</a></li>
+         <li><a class="toc2" href="schema-processing/saqueryapi.html">Schema-Aware XQuery from Java</a></li>
+      </ul>
+      <p class="subhead">The XPath API</p>
+      <ul>
+         <li><a class="toc2" href="xpath-api/intro.html">The XPath API</a></li>
+         <li><a class="toc2" href="xpath-api/expressions.html">Using the JAXP XPath API</a></li>
+         <li><a class="toc2" href="xpath-api/standalone.html">The Standalone XPath API</a></li>
+         <li><a class="toc2" href="xpath-api/nodeinfo.html">The NodeInfo Object</a></li>
+         <li><a class="toc2" href="xpath-api/building.html">Building the Source Document</a></li>
+      </ul>
+      <p class="subhead">Standards Conformance</p>
+      <ul>
+         <li><a class="toc2" href="conformance/intro.html">Introduction</a></li>
+         <li><a class="toc2" href="conformance/xslt10.html">XSLT 1.0 and XPath 1.0 conformance</a></li>
+         <li><a class="toc2" href="conformance/xslt20.html">XSLT 2.0 conformance</a></li>
+         <li><a class="toc2" href="conformance/xpath20.html">XPath 2.0 conformance</a></li>
+         <li><a class="toc2" href="conformance/xquery.html">XQuery 1.0 Conformance</a></li>
+         <li><a class="toc2" href="conformance/schema.html">Conformance with XML Schema 1.0</a></li>
+         <li><a class="toc2" href="conformance/other.html">Conformance with other specifications</a></li>
+         <li><a class="toc2" href="conformance/documentation.html">Conformance Documentation</a></li>
+         <li><a class="toc2" href="conformance/extensions.html">Extensions</a></li>
+         <li><a class="toc2" href="conformance/encodings.html">Character Encodings Supported</a></li>
+         <li><a class="toc2" href="conformance/collation-uri.html">Collation URIs</a></li>
+         <li><a class="toc2" href="conformance/jaxp.html">JAXP 1.3 Conformance</a></li>
+         <li><a class="toc2" href="conformance/errorrecovery.html">XSLT Error Recovery Policy</a></li>
+      </ul>
+      <p class="subhead">Extensibility</p>
+      <ul>
+         <li><a class="toc2" href="extensibility/intro.html">Introduction</a></li>
+         <li><a class="toc2" href="extensibility/functions.html">Writing extension functions</a><ul>
+               <li><a href="extensibility/functions/staticmethods.html">Calling Static Methods in a Java Class</a></li>
+               <li><a href="extensibility/functions/constructors.html">Calling Java Constructors</a></li>
+               <li><a href="extensibility/functions/instance-methods.html">Calling Java Instance-Level Methods</a></li>
+            </ul>
+         </li>
+         <li><a class="toc2" href="extensibility/converting-args.html">Converting Arguments to Extension Functions</a></li>
+         <li><a class="toc2" href="extensibility/function-result.html">Converting the Result of an Extension Function</a></li>
+         <li><a class="toc2" href="extensibility/instructions.html">Writing extension instructions</a></li>
+         <li><a class="toc2" href="extensibility/input-filters.html">Writing input filters</a></li>
+         <li><a class="toc2" href="extensibility/output-filters.html">Writing output filters</a></li>
+         <li><a class="toc2" href="extensibility/collation.html">Implementing a collating sequence</a></li>
+         <li><a class="toc2" href="extensibility/localizing.html">Localizing numbers and dates</a></li>
+         <li><a class="toc2" href="extensibility/output-encoding.html">Adding an output encoding</a></li>
+         <li><a class="toc2" href="extensibility/uri-resolver.html">Writing a URI Resolver for Input Files</a></li>
+         <li><a class="toc2" href="extensibility/output-uri-resolver.html">Writing a URI Resolver for Output Files</a></li>
+      </ul>
+      <p class="subhead">Saxon Extensions</p>
+      <ul>
+         <li><a class="toc2" href="extensions/intro.html">Introduction</a></li>
+         <li><a class="toc2" href="extensions/exslt.html">EXSLT Extensions</a></li>
+         <li><a class="toc2" href="extensions/attributes.html">Extension attributes (XSLT only)</a><ul>
+               <li><a href="extensions/attributes/assignable.html">saxon:assignable</a></li>
+               <li><a href="extensions/attributes/explain.html">saxon:explain</a></li>
+               <li><a href="extensions/attributes/memo-function.html">saxon:memo-function</a></li>
+            </ul>
+         </li>
+         <li><a class="toc2" href="extensions/output-extras.html">Additional serialization parameters</a></li>
+         <li><a class="toc2" href="extensions/functions.html">Extension functions</a><ul>
+               <li><a href="extensions/functions/analyze-string.html">saxon:analyze-string()</a></li>
+               <li><a href="extensions/functions/base64binarytooctets.html">saxon:base64Binary-to-octets()</a></li>
+               <li><a href="extensions/functions/call.html">saxon:call()</a></li>
+               <li><a href="extensions/functions/decimaldivide.html">saxon:decimal-divide()</a></li>
+               <li><a href="extensions/functions/discarddocument.html">saxon:discard-document()</a></li>
+               <li><a href="extensions/functions/eval.html">saxon:eval()</a></li>
+               <li><a href="extensions/functions/evaluate.html">saxon:evaluate()</a></li>
+               <li><a href="extensions/functions/evaluate-node.html">saxon:evaluate-node()</a></li>
+               <li><a href="extensions/functions/expression.html">saxon:expression()</a></li>
+               <li><a href="extensions/functions/find.html">saxon:find()</a></li>
+               <li><a href="extensions/functions/for-each-group.html">saxon:for-each-group()</a></li>
+               <li><a href="extensions/functions/format-dateTime.html">saxon:format-dateTime()</a></li>
+               <li><a href="extensions/functions/format-number.html">saxon:format-number()</a></li>
+               <li><a href="extensions/functions/function.html">saxon:function()</a></li>
+               <li><a href="extensions/functions/getpseudoattribute.html">saxon:get-pseudo-attribute()</a></li>
+               <li><a href="extensions/functions/hassamenodes.html">saxon:has-same-nodes()</a></li>
+               <li><a href="extensions/functions/hexbinarytooctets.html">saxon:hexBinary-to-octets()</a></li>
+               <li><a href="extensions/functions/highest.html">saxon:highest()</a></li>
+               <li><a href="extensions/functions/index.html">saxon:index()</a></li>
+               <li><a href="extensions/functions/leading.html">saxon:leading()</a></li>
+               <li><a href="extensions/functions/linenumber.html">saxon:line-number(node)</a></li>
+               <li><a href="extensions/functions/lowest.html">saxon:lowest()</a></li>
+               <li><a href="extensions/functions/max.html">saxon:max()</a></li>
+               <li><a href="extensions/functions/min.html">saxon:min()</a></li>
+               <li><a href="extensions/functions/namespace-node.html">saxon:namespace-node()</a></li>
+               <li><a href="extensions/functions/octetstobase64binary.html">saxon:octets-to-base64Binary()</a></li>
+               <li><a href="extensions/functions/octetstohexbinary.html">saxon:octets-to-hexBinary()</a></li>
+               <li><a href="extensions/functions/parse.html">saxon:parse()</a></li>
+               <li><a href="extensions/functions/path.html">saxon:path()</a></li>
+               <li><a href="extensions/functions/serialize.html">saxon:serialize()</a></li>
+               <li><a href="extensions/functions/stringtoutf8.html">saxon:string-to-utf8()</a></li>
+               <li><a href="extensions/functions/sum.html">saxon:sum()</a></li>
+               <li><a href="extensions/functions/systemid.html">saxon:system-id()</a></li>
+               <li><a href="extensions/functions/try.html">saxon:try()</a></li>
+               <li><a href="extensions/functions/typeannotation.html">saxon:type-annotation()</a></li>
+            </ul>
+         </li>
+         <li><a class="toc2" href="extensions/instructions.html">Extension instructions</a><ul>
+               <li><a href="extensions/instructions/assign.html">saxon:assign</a></li>
+               <li><a href="extensions/instructions/call-template.html">saxon:call-template</a></li>
+               <li><a href="extensions/instructions/collation.html">saxon:collation</a></li>
+               <li><a href="extensions/instructions/doctype.html">saxon:doctype</a></li>
+               <li><a href="extensions/instructions/import-query.html">saxon:import-query</a></li>
+               <li><a href="extensions/instructions/entity-ref.html">saxon:entity-ref</a></li>
+               <li><a href="extensions/instructions/script.html">saxon:script</a></li>
+               <li><a href="extensions/instructions/while.html">saxon:while</a></li>
+            </ul>
+         </li>
+      </ul>
+      <p class="subhead">Sample Saxon Applications</p>
+      <ul>
+         <li><a class="toc2" href="samples/intro.html">Introduction</a></li>
+         <li><a class="toc2" href="samples/tour.html">Knight's Tour</a></li>
+         <li><a class="toc2" href="samples/trax.html">JAXP Transformation Examples</a></li>
+         <li><a class="toc2" href="samples/servlet.html">SaxonServlet</a></li>
+         <li><a class="toc2" href="samples/books.html">The Book List Stylesheet</a></li>
+         <li><a class="toc2" href="samples/shakespeare.html">Shakespeare Example</a></li>
+         <li><a class="toc2" href="samples/bible.html">The Bible</a></li>
+         <li><a class="toc2" href="samples/jdom.html">JDOM Example</a></li>
+      </ul>
+      <p class="subhead">The Saxon SQL Extension</p>
+      <ul>
+         <li><a class="toc2" href="sql-extension/intro.html">Introduction</a></li>
+         <li><a class="toc2" href="sql-extension/connect.html">sql:connect</a></li>
+         <li><a class="toc2" href="sql-extension/query.html">sql:query</a></li>
+         <li><a class="toc2" href="sql-extension/insert.html">sql:insert and sql:column</a></li>
+         <li><a class="toc2" href="sql-extension/close.html">sql:close</a></li>
+         <li><a class="toc2" href="sql-extension/example.html">Example</a></li>
+         <li><a class="toc2" href="sql-extension/warning.html">A Warning about Side-Effects</a></li>
+      </ul>
+      <p class="subhead">XSLT Elements</p>
+      <ul>
+         <li><a class="toc2" href="xsl-elements/intro.html">Introduction</a></li>
+         <li><a class="toc2" href="xsl-elements/analyze-string.html">xsl:analyze-string</a></li>
+         <li><a class="toc2" href="xsl-elements/apply-imports.html">xsl:apply-imports</a></li>
+         <li><a class="toc2" href="xsl-elements/apply-templates.html">xsl:apply-templates</a></li>
+         <li><a class="toc2" href="xsl-elements/attribute.html">xsl:attribute</a></li>
+         <li><a class="toc2" href="xsl-elements/attribute-set.html">xsl:attribute-set</a></li>
+         <li><a class="toc2" href="xsl-elements/call-template.html">xsl:call-template</a></li>
+         <li><a class="toc2" href="xsl-elements/character-map.html">xsl:character-map</a></li>
+         <li><a class="toc2" href="xsl-elements/choose.html">xsl:choose</a></li>
+         <li><a class="toc2" href="xsl-elements/comment.html">xsl:comment</a></li>
+         <li><a class="toc2" href="xsl-elements/copy.html">xsl:copy</a></li>
+         <li><a class="toc2" href="xsl-elements/copy-of.html">xsl:copy-of</a></li>
+         <li><a class="toc2" href="xsl-elements/decimal-format.html">xsl:decimal-format</a></li>
+         <li><a class="toc2" href="xsl-elements/document.html">xsl:document</a></li>
+         <li><a class="toc2" href="xsl-elements/element.html">xsl:element</a></li>
+         <li><a class="toc2" href="xsl-elements/fallback.html">xsl:fallback</a></li>
+         <li><a class="toc2" href="xsl-elements/for-each.html">xsl:for-each</a></li>
+         <li><a class="toc2" href="xsl-elements/for-each-group.html">xsl:for-each-group</a></li>
+         <li><a class="toc2" href="xsl-elements/function.html">xsl:function</a></li>
+         <li><a class="toc2" href="xsl-elements/if.html">xsl:if</a></li>
+         <li><a class="toc2" href="xsl-elements/include.html">xsl:include</a></li>
+         <li><a class="toc2" href="xsl-elements/import.html">xsl:import</a></li>
+         <li><a class="toc2" href="xsl-elements/import-schema.html">xsl:import-schema</a></li>
+         <li><a class="toc2" href="xsl-elements/key.html">xsl:key</a></li>
+         <li><a class="toc2" href="xsl-elements/matching-substring.html">xsl:matching-substring</a></li>
+         <li><a class="toc2" href="xsl-elements/message.html">xsl:message</a></li>
+         <li><a class="toc2" href="xsl-elements/namespace.html">xsl:namespace</a></li>
+         <li><a class="toc2" href="xsl-elements/namespace-alias.html">xsl:namespace-alias</a></li>
+         <li><a class="toc2" href="xsl-elements/next-match.html">xsl:next-match</a></li>
+         <li><a class="toc2" href="xsl-elements/non-matching-substring.html">xsl:non-matching-substring</a></li>
+         <li><a class="toc2" href="xsl-elements/number.html">xsl:number</a></li>
+         <li><a class="toc2" href="xsl-elements/otherwise.html">xsl:otherwise</a></li>
+         <li><a class="toc2" href="xsl-elements/output.html">xsl:output</a></li>
+         <li><a class="toc2" href="xsl-elements/output-character.html">xsl:output-character</a></li>
+         <li><a class="toc2" href="xsl-elements/param.html">xsl:param</a></li>
+         <li><a class="toc2" href="xsl-elements/perform-sort.html">xsl:perform-sort</a></li>
+         <li><a class="toc2" href="xsl-elements/preserve-space.html">xsl:preserve-space</a></li>
+         <li><a class="toc2" href="xsl-elements/processing-instruction.html">xsl:processing-instruction</a></li>
+         <li><a class="toc2" href="xsl-elements/result-document.html">xsl:result-document</a></li>
+         <li><a class="toc2" href="xsl-elements/sequence.html">xsl:sequence</a></li>
+         <li><a class="toc2" href="xsl-elements/sort.html">xsl:sort</a></li>
+         <li><a class="toc2" href="xsl-elements/strip-space.html">xsl:strip-space</a></li>
+         <li><a class="toc2" href="xsl-elements/stylesheet.html">xsl:stylesheet</a></li>
+         <li><a class="toc2" href="xsl-elements/template.html">xsl:template</a></li>
+         <li><a class="toc2" href="xsl-elements/text.html">xsl:text</a></li>
+         <li><a class="toc2" href="xsl-elements/value-of.html">xsl:value-of</a></li>
+         <li><a class="toc2" href="xsl-elements/variable.html">xsl:variable</a></li>
+         <li><a class="toc2" href="xsl-elements/when.html">xsl:when</a></li>
+         <li><a class="toc2" href="xsl-elements/with-param.html">xsl:with-param</a></li>
+         <li><a class="toc2" href="xsl-elements/lre.html">Literal Result Elements</a></li>
+      </ul>
+      <p class="subhead">XPath 2.0 Expression Syntax</p>
+      <ul>
+         <li><a class="toc2" href="expressions/intro.html">Introduction</a></li>
+         <li><a class="toc2" href="expressions/literals.html">Constants</a></li>
+         <li><a class="toc2" href="expressions/variables.html">Variable References</a></li>
+         <li><a class="toc2" href="expressions/functioncalls.html">Function Calls</a></li>
+         <li><a class="toc2" href="expressions/axissteps.html">Axis steps</a></li>
+         <li><a class="toc2" href="expressions/parentheses.html">Parentheses and operator precedence</a></li>
+         <li><a class="toc2" href="expressions/filter.html">Filter expressions</a></li>
+         <li><a class="toc2" href="expressions/path.html">Path expressions</a></li>
+         <li><a class="toc2" href="expressions/cast.html">Cast as, Treat as</a></li>
+         <li><a class="toc2" href="expressions/except.html">Set difference and intersection</a></li>
+         <li><a class="toc2" href="expressions/union.html">Union</a></li>
+         <li><a class="toc2" href="expressions/arithmetic.html">Arithmetic expressions"</a><ul>
+               <li><a href="expressions/arithmetic/unary.html">Unary plus and minus</a></li>
+               <li><a href="expressions/arithmetic/multiplication.html">Multiplication and division</a></li>
+               <li><a href="expressions/arithmetic/addition.html">Addition and subtraction</a></li>
+            </ul>
+         </li>
+         <li><a class="toc2" href="expressions/range.html">Range expressions</a></li>
+         <li><a class="toc2" href="expressions/comparisons.html">Comparisons</a></li>
+         <li><a class="toc2" href="expressions/instanceof.html">Instance of and Castable as</a></li>
+         <li><a class="toc2" href="expressions/conditionals.html">Conditional Expressions</a></li>
+         <li><a class="toc2" href="expressions/quantified.html">Quantified Expressions</a></li>
+         <li><a class="toc2" href="expressions/for.html">For Expressions</a></li>
+         <li><a class="toc2" href="expressions/boolean.html">Boolean expressions: AND and OR</a></li>
+         <li><a class="toc2" href="expressions/sequence.html">Sequence expressions</a></li>
+      </ul>
+      <p class="subhead"></p>
+      <ul>
+         <li>
+            <p><a href="functions/intro/fn_abs.html">fn:abs</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_adjust-dateTime-to-timezone.html">fn:adjust-dateTime-to-timezone</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_adjust-date-to-timezone.html">fn:adjust-date-to-timezone</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_adjust-time-to-timezone.html">fn:adjust-time-to-timezone</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_avg.html">fn:avg</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_base-uri.html">fn:base-uri</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_boolean.html">fn:boolean</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_ceiling.html">fn:ceiling</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_codepoints-to-string.html">fn:codepoints-to-string</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_collection.html">fn:collection</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_compare.html">fn:compare</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_concat.html">fn:concat</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_contains.html">fn:contains</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_count.html">fn:count</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/xslt_current.html">xslt:current</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_current-date.html">fn:current-date</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_current-dateTime.html">fn:current-dateTime</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/xslt_current-group.html">xslt:current-group</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/xslt_current-grouping-key.html">xslt:current-grouping-key</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_current-time.html">fn:current-time</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_data.html">fn:data</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_dateTime.html">fn:dateTime</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_day-from-date.html">fn:day-from-date</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_day-from-dateTime.html">fn:day-from-dateTime</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_days-from-duration.html">fn:days-from-duration</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_deep-equal.html">fn:deep-equal</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_default-collation.html">fn:default-collation</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_distinct-values.html">fn:distinct-values</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_doc.html">fn:doc</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/xslt_document.html">xslt:document</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_document-uri.html">fn:document-uri</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/xslt_element-available.html">xslt:element-available</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_empty.html">fn:empty</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_ends-with.html">fn:ends-with</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_error.html">fn:error</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_escape-uri.html">fn:escape-uri</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_exactly-one.html">fn:exactly-one</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_exists.html">fn:exists</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_expanded-QName.html">fn:expanded-QName</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_false.html">fn:false</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_floor.html">fn:floor</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/xslt_format-date.html">xslt:format-date</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/xslt_format-dateTime.html">xslt:format-dateTime</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/xslt_format-number.html">xslt:format-number</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/xslt_format-time.html">xslt:format-time</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/xslt_function-available.html">xslt:function-available</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/xslt_generate-id.html">xslt:generate-id</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_hours-from-dateTime.html">fn:hours-from-dateTime</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_hours-from-duration.html">fn:hours-from-duration</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_hours-from-time.html">fn:hours-from-time</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_id.html">fn:id</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_idref.html">fn:idref</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_implicit-timezone.html">fn:implicit-timezone</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_index-of.html">fn:index-of</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_input.html">fn:input</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_in-scope-prefixes.html">fn:in-scope-prefixes</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_insert-before.html">fn:insert-before</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/xslt_key.html">xslt:key</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_lang.html">fn:lang</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_last.html">fn:last</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_local-name.html">fn:local-name</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_local-name-from-QName.html">fn:local-name-from-QName</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_lower-case.html">fn:lower-case</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_matches.html">fn:matches</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_max.html">fn:max</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_min.html">fn:min</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_minutes-from-dateTime.html">fn:minutes-from-dateTime</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_minutes-from-duration.html">fn:minutes-from-duration</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_minutes-from-time.html">fn:minutes-from-time</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_month-from-date.html">fn:month-from-date</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_month-from-dateTime.html">fn:month-from-dateTime</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_months-from-duration.html">fn:months-from-duration</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_name.html">fn:name</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_namespace-uri.html">fn:namespace-uri</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_namespace-uri-for-prefix.html">fn:namespace-uri-for-prefix</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_namespace-uri-from-QName.html">fn:namespace-uri-from-QName</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_node-kind.html">fn:node-kind</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_node-name.html">fn:node-name</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_normalize-space.html">fn:normalize-space</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_normalize-unicode.html">fn:normalize-unicode</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_not.html">fn:not</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_number.html">fn:number</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_one-or-more.html">fn:one-or-more</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_position.html">fn:position</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_prefix-from-QName.html">fn:prefix-from-QName</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_QName.html">fn:QName</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/xslt_regex-group.html">xslt:regex-group</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_remove.html">fn:remove</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_replace.html">fn:replace</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_resolve-QName.html">fn:resolve-QName</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_resolve-uri.html">fn:resolve-uri</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_reverse.html">fn:reverse</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_root.html">fn:root</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_round.html">fn:round</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_round-half-to-even.html">fn:round-half-to-even</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_seconds-from-dateTime.html">fn:seconds-from-dateTime</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_seconds-from-duration.html">fn:seconds-from-duration</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_seconds-from-time.html">fn:seconds-from-time</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_sequence-node-identical.html">fn:sequence-node-identical</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_starts-with.html">fn:starts-with</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_static-base-uri.html">fn:static-base-uri</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_string.html">fn:string</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_string-join.html">fn:string-join</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_string-length.html">fn:string-length</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_string-to-codepoints.html">fn:string-to-codepoints</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_subsequence.html">fn:subsequence</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_substring.html">fn:substring</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_substring-after.html">fn:substring-after</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_substring-before.html">fn:substring-before</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_subtract-dates-yielding-dayTimeDuration.html">fn:subtract-dates-yielding-dayTimeDuration</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_subtract-dates-yielding-yearMonthDuration.html">fn:subtract-dates-yielding-yearMonthDuration</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_subtract-dateTimes-yielding-dayTimeDuration.html">fn:subtract-dateTimes-yielding-dayTimeDuration</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_subtract-dateTimes-yielding-yearMonthDuration.html">fn:subtract-dateTimes-yielding-yearMonthDuration</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_sum.html">fn:sum</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/xslt_system-property.html">xslt:system-property</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_timezone-from-date.html">fn:timezone-from-date</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_timezone-from-dateTime.html">fn:timezone-from-dateTime</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_timezone-from-time.html">fn:timezone-from-time</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_tokenize.html">fn:tokenize</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_trace.html">fn:trace</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_translate.html">fn:translate</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_true.html">fn:true</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_unordered.html">fn:unordered</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/xslt_unparsed-entity-public-id.html">xslt:unparsed-entity-public-id</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/xslt_unparsed-entity-uri.html">xslt:unparsed-entity-uri</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/xslt_unparsed-text.html">xslt:unparsed-text</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_upper-case.html">fn:upper-case</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_year-from-date.html">fn:year-from-date</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_year-from-dateTime.html">fn:year-from-dateTime</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_years-from-duration.html">fn:years-from-duration</a></p>
+         </li>
+         <li>
+            <p><a href="functions/intro/fn_zero-or-one.html">fn:zero-or-one</a></p>
+         </li>
+      </ul>
+      <p class="subhead">XSLT Patterns</p>
+      <ul>
+         <li><a class="toc2" href="patterns/intro.html">XSLT Patterns</a></li>
+         <li><a class="toc2" href="patterns/syntax.html">Pattern syntax</a></li>
+         <li><a class="toc2" href="patterns/examples.html">Examples of Patterns</a></li>
+      </ul>
+   </body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--expressions/arithmetic/multiplication
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: Multiplication and division</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Multiplication and division">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>Multiplication and division</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The operator <code>*</code> multiplies two numbers. If the operands are of different types, one
+         of them is promoted to the type of the other (for example, an integer is promoted to a decimal, a
+         decimal to a double). The result is the same type as the operands after promotion.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The operator <code>div</code> divides two numbers. Dividing two integers produces a double; in other
+         cases the result is the same type as the operands, after promotion. In the case of decimal division,
+         the precision is the sum of the precisions of the two operands, plus six.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The operator <code>idiv</code> performs integer division. For example, the result of
+         <code>10 idiv 3</code> is <code>3</code>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>mod</code> operator returns the modulus (or remainder) after division. See the XPath 2.0
+         specification for details of the way that negative numbers are handled.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The operators <code>*</code> and <code>div</code> may also be used to multiply or divide
+         a duration by a number. For example, <code>fn:dayTimeDuration('PT12H') * 4</code> returns the duration
+         two days.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="multiplication.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../arithmetic.html">Up</a>&nbsp;&nbsp;<a class="nav" href="addition.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

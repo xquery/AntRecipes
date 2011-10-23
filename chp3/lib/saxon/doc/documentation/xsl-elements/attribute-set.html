@@ -1,0 +1,87 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--xsl-elements/attribute-set
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: xsl:attribute-set</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: xsl:attribute-set">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>xsl:attribute-set</h1>
+      
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>xsl:attribute-set</code> element is used to declare a named collection of attributes, which will often
+         be used together to define an output style. It is declared at the top level (subordinate to <code>xsl:stylesheet</code>).
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">An attribute-set contains a collection of <code>xsl:attribute</code> elements.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The attributes in an attribute-set can be used in several ways:</p>
+      
+      <ul xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         
+         <li>
+            <p>They can be added to a literal result element by specifying <code>xsl:use-attribute-sets</code> in the list of attributes
+               for the element. The value is a space-separated list of attribute-set names. Attributes specified explicitly on
+               the literal result element, or added using <code>xsl:attribute</code>, override any that are specified in the attribute-set
+               definition.
+            </p>
+         </li>
+         
+         <li>
+            <p>They can be added to an element created using <code>xsl:element</code>, by specifying use-attribute-sets in the list of attributes
+               for the xsl:element element. The value is a space-separated list of attribute-set names. Attributes specified explicitly on
+               the literal result element, or added using <code>xsl:attribute</code>, override any that are specified in the attribute-set
+               definition.
+            </p>
+         </li>
+         
+         <li>
+            <p>One attribute set can be based on another by specifying <code>use-attribute-sets</code> in the list of attributes
+               for the <code>xsl:attribute-set</code> element. Again, attributes defined explicitly in the attribute set override any that
+               are included implicitly from another attribute set.
+            </p>
+         </li>
+         
+      </ul>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Attribute sets named in the <code>xsl:use-attribute-sets</code> or <code>use-attribute-sets</code> attribute 
+         are applied in the order given: if the same attribute is generated more than once, the later value always takes
+         precedence.
+      </p>
+      
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="attribute-set.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="call-template.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

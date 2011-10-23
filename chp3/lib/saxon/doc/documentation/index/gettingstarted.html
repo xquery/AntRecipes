@@ -1,0 +1,116 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--index/gettingstarted
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: Getting Started</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Getting Started">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      
+      <h1>Getting Started</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">If you are new to Saxon or to Java or to XML, XSLT, and XQuery, here is a quick checklist:</p>
+      
+      
+      <ol xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         
+         <li>
+            <p>Download the software (you will typically start with the open-source version) from
+               <a href="http://sourceforge.net/project/showfiles.php?group_id=29872" target="_blank" class="bodylink">SourceForge</a>.
+               It will run on any machine that supports Java.
+            </p>
+         </li>
+         
+         
+         <li>
+            <p>The software comes as a zip file. Unzip it into a suitable directory, for example
+               <code>c:\saxon</code>.
+            </p>
+         </li>
+         
+         
+         <li>
+            <p>Make sure that a suitable Java JDK is installed on your machine. If necessary, download
+               and install J2SE 5.0 from <a href="http://java.sun.com/j2se/1.5.0/download.jsp " target="_blank" class="bodylink">http://java.sun.com/j2se/1.5.0/download.jsp</a></p>
+         </li>
+         
+         
+         <li>
+            <p>Make sure that all the necessary files are on your classpath - this is the list of resource
+               available to the Java VM. For details, see <a href="../index/installation.html" target="_self" class="bodylink">Installation</a>.
+            </p>
+         </li>
+         
+         
+         <li>
+            <p>If you are using Saxon-SA, the commercial schema-aware version of Saxon, you will need
+               to obtain a file containing a licence key. This file, called <code>saxon-license.lic</code>,
+               must be placed in a directory that is listed on the Java classpath. Note that it is the directory
+               that must be on the classpath, not the <code>saxon-license.lic</code> file itself.
+            </p>
+         </li>
+         
+         
+         <li>
+            <p>Saxon doesn't come with a graphical user interface: it's designed to be integrated into
+               other tools and applications. You will therefore start by using it from the operating system
+               command line. On Windows, you may want to install a text editor such as <code>jEdit</code>
+               that offers a more friendly command line than the standard DOS console provided by Microsoft.
+            </p>
+         </li>
+         
+         
+      </ol>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">You can now run one of the sample stylesheets or queries that comes with the product.
+         Assuming you installed into <code>c:\saxon</code>, make this your current directory, and type:
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><i>for XSLT:</i></p>
+      
+      
+      <div class="codeblock" style="border: solid thin; background-color: #B1CCC7; padding: 2px"><pre><code>java -jar saxon8.jar -t samples\data\books.xml samples\styles\books.xsl &gt;c:\temp.html</code></pre></div>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><i>for XQuery:</i></p>
+      
+      
+      <div class="codeblock" style="border: solid thin; background-color: #B1CCC7; padding: 2px"><pre><code>java -cp saxon8.jar net.sf.saxon.Query -t samples\styles\books.xq &gt;c:\temp.html</code></pre></div>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Now open <code>c:\temp.html</code> in your browser to check that it worked.
+      </p>
+      
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="gettingstarted.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="whatis.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

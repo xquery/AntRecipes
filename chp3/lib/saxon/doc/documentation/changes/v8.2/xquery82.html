@@ -1,0 +1,85 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--changes/v8.2/xquery82
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: Changes to XQuery 1.0 support</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Changes to XQuery 1.0 support">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>Changes to XQuery 1.0 support</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">When the type of a variable is declared in an <code>as</code> clause in the <code>for</code> or
+         <code>let</code> clause of a FLWOR expression, the actual type of the value must now match exactly;
+         the implicit conversions allowed when doing function calls (notably atomization and numeric promotion)
+         are no longer permitted. This also applies to global variable declarations in the Query prolog.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The performance of FLWR expressions has been improved, by moving conditions in the <code>where</code>
+         clause up to the innermost <code>let</code> or <code>for</code> clause on which they depend.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>as</code> clause in <code>some</code> and <code>every</code> expressions has been
+         implemented.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">An <code>encoding</code> is now accepted as part of the XQuery version declaration; however, the
+         information is ignored. Saxon assumes that the encoding of the query is the default encoding for the platform.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The rules for the use of namespaces in function names have been tightened up to align with the 
+         current language specification.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The parser now checks for duplicated declarations in the query prolog. More generally,
+         the parser is more thorough in checking for static errors, and many more of the errors are now reported
+         using the error codes defined in the XQuery specification. The rules for <code>import module</code>
+         are now checked much more thoroughly: for example, module imports cannot now be cyclic.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>inherit-namespaces</code> option in the query prolog is implemented. (Note, however, that
+         this syntax is expected to change again in the next W3C working draft.)
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">In <code>import module</code>, a list of URIs can now be supplied. Each one is loaded separately.
+         If the list is empty, then the effect of <code>import module</code> is to make all the modules for the
+         relevant namespace that have previously been loaded available within the calling module; if there are no
+         such modules, an error is reported.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="xquery82.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../v8.2.html">Up</a>&nbsp;&nbsp;<a class="nav" href="serialization82.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

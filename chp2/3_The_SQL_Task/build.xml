@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!-- ============================================================= -->
+<!-- ANT RECIPES FOR WEB DEVELOPERS CHP 1 Database Recipe          -->
+<!-- Author: James Fuller / Webcomposite                           -->
+<!-- Email/WWW: jim.fuller@webcomposite.com /  www.antrecipes.com  -->
+<!-- ============================================================= -->
+<!--    (C) Copyright James Fuller 2010 - All Rights Reserved.     -->
+<!--  use the -debug flag for more information when running ant  //-->
+<project name="SQL Task Example" basedir="." default="run">
+	<description>Example of using SQL with Ant</description>
+	<target name="example1">
+		<sql
+    		driver="com.mysql.jdbc.Driver"
+    		url="jdbc:mysql://127.0.0.1/mysql"
+    		userid="root"
+    		print="true"
+    		password=""
+    		output="result/test.out">
+  		<transaction>
+     		select * from user;
+  		</transaction>
+		<classpath>
+    		<pathelement location="/wherever/your/jdbc/connector/jar/is/">
+		</classpath>
+	</sql>	
+	</target>
+	<!-- ===================================================== -->
+	<!-- Run Target                                            -->
+	<!-- ===================================================== -->
+	<target name="run" depends="example1" description="runs all examples"/>
+	<!-- ===================================================== -->
+	<!-- Clean Target                                          -->
+	<!-- ===================================================== -->
+	<target name="clean" description="">
+		<delete dir="result"/>
+		<mkdir dir="result"/>
+	</target>
+</project>

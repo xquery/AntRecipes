@@ -1,0 +1,73 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--samples/bible
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: The Bible</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: The Bible">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      
+      <h1>The Bible</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The stylesheet <b>bible.xsl</b> takes as input an XML file containing the text of the Old
+         or New Testament. These files are not included in the Saxon distribution for space
+         reasons, but can be downloaded from
+         <a href="http://metalab.unc.edu/bosak/xml/eg/rel200.zip" target="_blank" class="bodylink">
+            http://metalab.unc.edu/bosak/xml/eg/rel200.zip</a>
+         or from various mirror sites. They were prepared by Jon Bosak.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The output of the stylesheet is a set of 292 HTML files in a single
+         directory, which together provide a frames-oriented rendition of the text. 
+         The application also works with the Old Testament text, but not with the other religious
+         texts included in Jon Bosak's distribution.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">To run the stylesheet first create an output
+         directory (say htmldir), then execute the following from the command line:
+      </p>
+      
+      
+      <p class="command">
+         java&nbsp; net.sf.saxon.Transform&nbsp; data\nt.xml&nbsp; styles\bible.xsl&nbsp; dir=htmldir
+         
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The final parameter sets the value of the XSLT parameter "dir" to
+         the value "htmldir", which is referenced within the stylesheet to select a
+         directory for output files.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="bible.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="jdom.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--extensions/functions/function
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: saxon:function()</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: saxon:function()">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>saxon:function()</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><b>function($arg1 as xs:string, $arg2 as xs:integer) ==&gt; jt:net.sf.saxon.expr.UserFunction</b></p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><i>This function is available only in Saxon-SA</i></p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">This function takes as its arguments the name and arity of a user-defined function (a function declared using
+         "declare function" in XQuery, or &lt;xsl:function&gt; in XSLT), and returns a value that represents the function and
+         can be used to invoke the function using 
+         <a class="bodylink" href="javascript:tosubpage('extensions','functions','call')">saxon:call</a>. This allows higher-order
+         functions to be implemented in XSLT and XQuery, that is, functions that take other functions as arguments. An
+         example of such a higher-order function is 
+         <a class="bodylink" href="javascript:tosubpage('extensions','functions','for-each-group')">saxon:for-each-group</a>, which
+         provides grouping capability in XQuery similar to that of the <code>xsl:for-each-group</code> instruction in XSLT.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The arguments must be specified as literals.</p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Here is an example, the textbook <code>fold</code> function in XSLT:
+      </p>
+      
+      
+      <div class="codeblock" style="border: solid thin; background-color: #B1CCC7; padding: 2px"><pre><code>&lt;xsl:function name="f:fold"&gt;
+  &lt;xsl:param name="sequence"/&gt;
+  &lt;xsl:param name="operation"/&gt;
+  &lt;xsl:param name="start-value"/&gt;
+  &lt;xsl:sequence select="if (empty($sequence))
+                        then $start-value
+                        else f:fold(remove($sequence, 1), 
+                                    $operation,
+                                    saxon:call($operation, $start-value, $sequence[1])"/&gt;
+&lt;/xsl:function&gt;
+
+&lt;xsl:function name="f:plus"&gt;
+  &lt;xsl:param name="a"/&gt;
+  &lt;xsl:param name="b"/&gt;
+  &lt;xsl:sequence select="$a + $b"/&gt;
+&lt;/xsl:function&gt;
+
+&lt;xsl:function name="f:times"&gt;
+  &lt;xsl:param name="a"/&gt;
+  &lt;xsl:param name="b"/&gt;
+  &lt;xsl:sequence select="$a * $b"/&gt;
+&lt;/xsl:function&gt;
+
+&lt;xsl:function name="f:sum"&gt;
+  &lt;xsl:param name="sequence"/&gt;
+  &lt;xsl:sequence select="f:fold($sequence, saxon:function('f:plus'), 0)"/&gt;
+&lt;/xsl:function&gt;
+
+&lt;xsl:function name="f:product"&gt;
+  &lt;xsl:param name="sequence"/&gt;
+  &lt;xsl:sequence select="f:fold($sequence, saxon:function('f:times'), 0)"/&gt;
+&lt;/xsl:function&gt;                                    
+
+</code></pre></div>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Here is the same example in XQuery:</p>
+      
+      
+      <div class="codeblock" style="border: solid thin; background-color: #B1CCC7; padding: 2px"><pre><code>declare function f:fold ($sequence as xs:double*, $operation, $start-value as xs:double) {
+     if (empty($sequence))
+     then $start-value
+     else f:fold(remove($sequence, 1), 
+                 $operation,
+                 saxon:call($operation, $start-value, $sequence[1]))
+};
+
+declare function f:plus ($a as xs:double, $b as xs:double) {$a + $b};
+
+declare function f:times ($a as xs:double, $b as xs:double) {$a * $b};
+
+declare function f:sum ($sequence as xs:double*) as xs:double {
+   f:fold($sequence, saxon:function('f:plus', 2), 0)
+};
+
+declare function f:product ($sequence as xs:double*) as xs:double {
+   f:fold($sequence, saxon:function('f:times', 2), 1)
+};
+
+&lt;p&gt;The result of &lt;code&gt;f:sum(1 to 4)&lt;/code&gt; is 10, while the result of &lt;code&gt;f:product(1 to 4)&lt;/code&gt;
+is 24.&lt;/p&gt;                                    
+
+</code></pre></div>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Higher-order functions allow many generic functions such as <code>fold</code> to 
+         be written, and their availability in Saxon-SA turns XSLT and XQuery into fully-fledged
+         functional programming languages.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The type of the result of saxon:function is <code>jt:net.sf.saxon.expr.UserFunctionCall</code>,
+         where the prefix <code>jt</code> represents the URI <code>http://net.sf.saxon/java-type</code>.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="function.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../functions.html">Up</a>&nbsp;&nbsp;<a class="nav" href="getpseudoattribute.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

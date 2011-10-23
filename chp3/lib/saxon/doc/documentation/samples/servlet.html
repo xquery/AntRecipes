@@ -1,0 +1,94 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--samples/servlet
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: SaxonServlet</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: SaxonServlet">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      
+      
+      <h1>SaxonServlet</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">This is a general-purpose servlet that takes the name of a source document and XSLT stylesheet
+         as URL parameters, and uses the stylesheet to process the source document, creating a result
+         document which is sent back to the browser for display. 
+         The result document may have any media type, though HTML and XML are the most likely.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The servlet maintains a cache of prepared stylesheets; if the same stylesheet is used repeatedly,
+         it is only parsed and validated once, which will often greatly improve performance. Prepared style
+         sheets are thread-safe so they can be used to serve documents to several users concurrently.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The URLs for the source document and the stylesheet document are supplied in the URL,
+         which will typically take the form:
+      </p>
+      
+      
+      <p class="command">
+         http://server.com/servlets/SaxonServlet?source=doc.xml&amp;style=sheet.xsl
+         
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><i>Note: Internet Explorer assumes that if the URL ends with ".xml" or ".xsl", as in
+            the above example, then the returned file will be XML - even if the media type in the HTTP header
+            is set to "text/html". You can prevent this behaviour by adding an extra dummy parameter, for example
+            "&amp;x=y".</i></p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The source and style parameters identify the source document and stylesheet by URL.
+         These are interpreted relative to the servlet context. This means that specifying
+         say "style=/styles/styleone.xsl" in the URL will locate the stylesheet in this file relative to the
+         root directory for the web server.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The stylesheet is prepared the first time it is used, and held in memory in a cache. The cache may
+         be cleared (for example, if a stylesheet has been changed) using a URL such as:
+      </p>
+      
+      
+      <p class="command">
+         http://server.com/servlets/SaxonServlet?clear-stylesheet-cache=yes
+         
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">This code is provided purely as a sample, in the expectation that you will customise it to your
+         particular site requirements.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="servlet.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="books.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

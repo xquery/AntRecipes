@@ -1,0 +1,62 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--extensions/instructions/while
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: saxon:while</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: saxon:while">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>saxon:while</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>saxon:while</code> element is used to iterate while some condition is true.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The condition is given as a boolean expression in the mandatory test attribute. Because
+         this expression must change its value if the loop is to terminate, the condition will generally
+         reference a variable that is updated somewhere in the loop using an <code>saxon:assign</code> element.
+         Alternatively, it may test a condition that is changed by means of a call on an extension function
+         that has side-effects. 
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Example:</p>
+      
+      
+      <div class="codeblock" style="border: solid thin; background-color: #B1CCC7; padding: 2px"><pre><code>&lt;xsl:variable name="i" expr="0"/&gt;
+&lt;saxon:while test="$i &amp;lt; 10"&gt;
+    The value of i is &lt;xsl:value-of select="$i"/&gt;
+    &lt;saxon:assign name="i" expr="$i+1"/&gt;
+&lt;/saxon:while&gt;</code></pre></div>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="while.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../instructions.html">Up</a>&nbsp;&nbsp;
+               </p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--extensibility/function-result
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: Converting the Result of an Extension Function</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Converting the Result of an Extension Function">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      
+      
+      <h1>Converting the Result of an Extension Function</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">This section explains how the value returned by a Java extension function is converted
+         to an XPath value. The same rules are used in converting a Java object supplied as a parameter
+         to a stylesheet or query.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The result type of the method is converted to an XPath value as follows.</p>
+      
+      
+      <ul xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         
+         <li>
+            <p>If the method returns void, the XPath value is an empty sequence.</p>
+         </li>
+         
+         <li>
+            <p>If the method returns null, the XPath value is an empty sequence.</p>
+         </li>
+         
+         <li>
+            <p>If the method is a constructor, the XPath value is of type "wrapped Java object". The only way of
+               using this is by passing it to another external function, or by converting it to one of the standard
+               XPath data types as described above.
+            </p>
+         </li>
+         
+         <li>
+            <p>If the returned value is a Java boolean or Boolean, the XPath result is a boolean.</p>
+         </li>
+         
+         <li>
+            <p>If the returned value is a Java double or Double, the XPath result is a double.</p>
+         </li>
+         
+         <li>
+            <p>If the returned value is a Java float or Float, the XPath result is a float.</p>
+         </li>
+         
+         <li>
+            <p>If the returned value is a Java int, short, long, character, or byte, or one of their object wrapper
+               equivalents, the XPath result is an integer.
+            </p>
+         </li>
+         
+         <li>
+            <p>If the returned value is a Java String, the XPath result is a string.</p>
+         </li>
+         
+         
+         <li>
+            <p>If the returned value is an instance of the Saxon class <code>net.sf.saxon.om.NodeInfo</code>
+               (a node in a Saxon tree), the XPath value will be a sequence containing a single node.
+            </p>
+         </li>
+         
+         
+         <li>
+            <p>If the returned value is an instance of <code>javax.xml.transform.Source</code> 
+               (other than a <code>NodeInfo</code>), 
+               a tree is built from the specified <code>Source</code> object, and the root node of this tree is returned as
+               the result of the function.
+            </p>
+         </li>
+         
+         
+         <li>
+            <p>If the returned value is an instance of the Saxon class <code>net.sf.saxon.value.Value</code>,
+               the returned value is used unchanged.
+            </p>
+         </li>
+         
+         
+         
+         
+         <li>
+            <p>If the returned value is is an instance of the Saxon class <code>net.sf.saxon.om.SequenceIterator</code>
+               (an iterator over a sequence), the XPath
+               value will be the sequence represented by this iterator. It is essential that this iterator
+               properly implements the method <code>getAnother()</code> which returns a new iterator over the
+               same sequence of nodes or values, positioned at the start of the sequence.
+            </p>
+         </li>
+         
+         
+         <li>
+            <p>If the returned value is an instance of the Java class <code>java.util.List</code>, or if it is an array,
+               the XPath value will be the
+               sequence represented by the contents of this <code>List</code> or array. The members of the list or array
+               will each be converted
+               to an XPath value, as if each member was supplied from a separate function call. An error is reported if
+               the result contains a list or array nested within another list or array. 
+               The contents of the list or array are copied immediately on return from the
+               function, so the original <code>List</code> or array object itself may be safely re-used.
+            </p>
+         </li>
+         
+         
+         <li>
+            <p>If the returned value is a DOM Node, and it is recognized as a wrapper around a Saxon node, then the node
+               is unwrapped and the underlying Saxon node is returned. If the returned value is some other kind of DOM Node, then
+               a Saxon wrapper is added. (This is an imperfect solution, since it can lead to problems with node identity and document
+               order.) 
+            </p>
+         </li>
+         
+         
+         <li>
+            <p>If the returned value is a DOM <code>NodeList</code>, the list of nodes is returned as a Saxon node-set. 
+               Each node is handled in the same way as a Node that is returned directly as the result.
+            </p>
+         </li>
+         
+         
+         <li>
+            <p>If the result is any other Java object (including null), it is returned as a "wrapped Java object".</p>
+         </li>
+         
+      </ul>
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">In XSLT, the system function <code>function-available(String name)</code> returns true if there appears
+         to be a method available with the right name. The function also has an optional second argument to test whether
+         there is a method with the appropriate
+         number of arguments. However, it is not possible to test whether the arguments are of appropriate types.
+         If the function name is "new" it
+         returns true so long as the class is not an abstract class or interface, and so long as it has at least
+         one constructor.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">There are a number of extension functions supplied with the Saxon product: for details, see
+         <a class="bodylink" href="javascript:topage('extensions', 'intro')">extensions.html</a>. The source code of these methods, which
+         in most cases is extremely simple, can be used as an example for writing
+         other user extension functions. It is found in class <code>net.sf.saxon.functions.Extensions</code>.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="function-result.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="instructions.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--using-xsl/compiling
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: Compiling a Stylesheet</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Compiling a Stylesheet">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      
+      <h1>Compiling a Stylesheet</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Saxon allows a compiled stylesheet (a Templates object) 
+         to be saved to disk as a file.
+         The transformation can then be run using this compiled stylesheet by using the -c option
+         to the command <code>java net.sf.saxon.Transform</code>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The actual compilation of the stylesheet can be achieved using the command
+         <code>java net.sf.saxon.Compile</code>. The format of the command is:
+      </p>
+      
+      
+      <p class="command">java&nbsp; net.sf.saxon.Compile 
+         &nbsp; [options]&nbsp;&nbsp; stylesheet&nbsp;&nbsp; output&nbsp;&nbsp; [ <i xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">params&#133;</i>]
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The options available are a subset of the options for running a transformation, described above. The
+         relevant options are -t (give progress messages), -u (stylesheet argument is a URI, not a filename), -r
+         (specify a URIResolver for use at compile time), -y (specify an XML parser for parsing the source 
+         stylesheet).
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Stylesheet compilation is not currently supported for schema-aware stylesheets.</p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">You can use any file extension for the compiled stylesheet, I generally use .sxx (Saxon XSLT executable).
+         The file actually contains the Java serialization of a data structure that is then used at run-time to
+         drive the transformation process. As an alternative to using the <code>net.sf.saxon.Compile</code> command
+         from the command line, you can use the Java serialization API directly, to write the net.sf.saxon.Templates
+         object to an ObjectOutputStream.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><i>Stylesheet compilation remains a little fragile. It has proved difficult to test it
+            comprehensively. One known restriction is that stylesheets containing <code>saxon:collation</code> declarations
+            cannot be compiled (because it uses Java classes that are not serializable). There may be other restrictions:
+            please let me know if you find any.</i></p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><i>The term "compile" is stretching a point. The executable that is produced does not contain
+            machine instructions, or even interpreted Java bytecode. It contains instructions in the form of 
+            a data structure that Saxon itself can interpret. Note that the format of compiled stylesheets is
+            unlikely to be stable from one Saxon release to the next.</i></p> 
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="compiling.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="choosingmodel.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

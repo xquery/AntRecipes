@@ -1,0 +1,184 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--extensions/output-extras
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: Additional serialization parameters</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Additional serialization parameters">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      
+      
+      <h1>Additional serialization parameters</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Saxon provides a number of additional serialization parameters: these have names
+         in the Saxon namespace. These can be specified as attributes on the <code>xsl:output</code>
+         and <code>xsl:result-document</code> elements (XSLT-only), in the Query prolog (XQuery only),
+         or as extra parameters on the
+         Query or Transform command line. They can also be specified in the query or transformation API.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">For example, to request an indentation depth of on column, specify
+         <code>!{http://saxon.sf.net/}indent-spaces=1</code> on the command line.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">In XQuery, Saxon allows both standard serialization options and Saxon-specific
+         serialization parameters to be specified by means of an option declaration in the
+         query prolog. For example:
+      </p>
+      
+      
+      <div class="codeblock" style="border: solid thin; background-color: #B1CCC7; padding: 2px"><pre><code>declare namespace saxon="http://saxon.sf.net/";
+declare option "saxon:output indent=yes";
+declare option "saxon:output saxon:indent-spaces=3";</code></pre></div>
+      
+      
+      
+      <p class="subhead">The method parameter</p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>method</code> attribute of <code>xsl:output</code> 
+         can take the standard values "xml",
+         "html", "xhtml", or "text", or a <i>QName</i>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">If a QName is specified, the local name must be the fully-qualified
+         class name of a class that implements either the 
+         SAX2 <code>org.xml.sax.ContentHandler</code> interface, or the
+         <code>net.sf.saxon.event.Receiver</code> interface. If such a value is specified,
+         output is directed to a newly-created instance of the user-supplied class.
+         You can pass additional information to this class by means of extra user-defined attributes
+         on the <code>xsl:output</code> element.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> The prefix of the <i>QName</i> must correspond to a valid
+         namespace URI. It is recommended to use the Saxon URI "http://saxon.sf.net/",
+         but this is not enforced.
+      </p>
+      
+      
+      
+      <p class="subhead">The saxon:indent-spaces attribute</p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">When the output is XML or HTML with indent="yes", the saxon:indent-spaces attribute may
+         be used to control the amount of indentation. The value must be an integer.
+      </p>
+      
+      
+      <p class="subhead">The saxon:character-representation attribute</p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">This attribute allows greater control
+         over how non-ASCII characters will be represented on output.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">With method="xml", two values are supported: "decimal" and "hex". These control whether
+         numeric character references are output in decimal or hexadecimal when the character
+         is not available in the selected encoding. 
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">With HTML, the value
+         may hold two strings, separated by a semicolon. The first string defines how non-ASCII
+         characters within the character encoding will be represented, the values being "native",
+         "entity", "decimal", or "hex". The second string defines how characters outside the
+         encoding will be represented, the values being "entity", "decimal", or "hex". Here "native"
+         means output the character as itself; "entity" means use a defined entity reference (such
+         as "&amp;eacute;") if known; "decimal" and "hex" refer to numeric character references.
+         For example "entity;decimal" (the default) means that with encoding="iso-8859-1",
+         characters in the range 160-255 will be represented using standard HTML entity
+         references, while Unicode characters above 255 will be represented as decimal character
+         references.
+      </p>
+      
+      
+      <p class="subhead">The saxon:byte-order-mark attribute</p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">This has been replaced (since Saxon 8.2) with the standard serialization attribute
+         <code>byte-order-mark="yes|no"</code>.
+      </p>
+      
+      
+      <p class="subhead">The saxon:next-in-chain attribute</p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>saxon:next-in-chain</code> attribute (XSLT-only) is used to direct the output to another stylesheet. The
+         value is the URL of a stylesheet that should be used to process the output stream. In this case
+         the output stream must always be pure XML, and attributes that control the format of the output
+         (e.g. method, cdata-section-elements, etc) will have no effect. The output of the second stylesheet
+         will be directed to the destination that would have been used for the first stylesheet if
+         no <code>saxon:next-in-chain</code> attribute were not present.
+      </p>
+      
+      
+      <p class="subhead">The saxon:require-well-formed attribute</p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The attribute <code>saxon:require-well-formed</code> is available, with
+         values "yes" or "no". The default is "no". If the value is set to "yes", and a user-written
+         <code>ContentHandler</code> is supplied to receive the results of the transformation, then Saxon will report an
+         error rather than sending a non-well-formed stream of SAX events to the <code>ContentHandler</code>.
+         This attribute is useful when the output of the stylesheet is sent to a component (for example an XSL-FO
+         rendering engine) that is not designed to accept non-well-formed XML result trees.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Note also that namespace undeclarations of the form <code>xmlns:p=""</code> (as permitted
+         by XML Namespaces 1.1) are passed to the <code>startPrefixMapping()</code> method of  
+         a user-defined <code>ContentHandler</code> only if
+         <code>undeclare-namespaces="yes"</code> is specified on <code>xsl:output</code>.
+      </p>
+      
+      
+      <p class="subhead">User defined attributes</p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Any number of
+         user-defined attributes may be defined on <code>xsl:output</code>. These 
+         attributes must have names in a non-null namespace, which must not be either the XSLT
+         or the Saxon namespace. These attributes are interpreted as attribute value templates.
+         The value of the attribute is inserted into the Properties object made available to 
+         the Emitter handling the output; they will be ignored by the standard output methods,
+         but can supply arbitrary information to a user-defined output method. The name of the
+         property will be the expanded name of the attribute in JAXP format, for example
+         "{http://my-namespace/uri}local-name", and the value will be the value as given,
+         after evaluation as an attribute value template.
+      </p>
+      
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="output-extras.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="functions.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--extensibility/input-filters
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: Writing input filters</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Writing input filters">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      
+      
+      <h1>Writing input filters</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Saxon can take its input from a JAXP <code>SAXSource</code> object, which essentially represents a sequence
+         of SAX events representing the output of an XML parser. A very useful technique is to
+         interpose a <i>filter</i> between the parser and Saxon. The filter will typically be an
+         instance of the SAX2 <b>XMLFilter</b> class.
+         
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">There are a number of ways of using a Saxon XSLT transformation as part of a pipeline of filters.
+         Some of these techniques also work with XQuery. The techniques include:
+      </p>
+      
+      
+      <ul xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         
+         <li>
+            <p>Generate the transformation as an <code>XMLFilter</code> using the <code>newXMLFilter()</code>
+               method of the <code>TransformerFactory</code>. This works with XSLT only. A drawback of this approach
+               is that it is not possible to supply parameters to the transformation using standard JAXP facilities. It
+               is possible, however, by casting the <code>XMLFilter</code> to a <code>net.sf.saxon.Filter</code>, and calling
+               its <code>getTransformer()</code> method, which returns a <code>Transformer</code> object offering the usual
+               <code>addParameter()</code> method.
+            </p>
+         </li>
+         
+         
+         <li>
+            <p>Generate the transformation as a SAX <code>ContentHandler</code> using the <code>newTransformerHandler()</code>
+               method. The pipelines stages after the transformation can be added by giving the transformation a <code>SAXResult</code>
+               as its destination. This again is XSLT only.
+            </p>
+         </li>
+         
+         
+         <li>
+            <p>Implement the pipeline step before the transformation or query as an <code>XMLFilter</code>, and
+               use this as the <code>XMLReader</code> part of a <code>SAXSource</code>, pretending to be an XML parser.
+               This technique works with both XSLT and XQuery, and it can even be used from the command line, by nominating
+               the <code>XMLFilter</code> as the source parser using the <code>-x</code> option on the command line.
+            </p>
+         </li>
+         
+         
+      </ul>  
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>-x</code> option on the Saxon command line specifies the parser that Saxon will
+         use to process the source files. This class must implement the SAX2 XMLReader interface, but it
+         is not required to be a real XML parser; it can take the input from any kind of source file,
+         so long as it presents it in the form of a stream of SAX events. When using the JAXP API, the
+         equivalent to the <code>-x</code> option is to call <code>transformerFactory.setAttribute(
+            net.sf.saxon.FeatureKeys.SOURCE_PARSER_CLASS, 'com.example.package.Parser')</code></p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="input-filters.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="output-filters.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

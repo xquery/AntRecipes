@@ -1,0 +1,79 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--extensions/functions/expression
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: saxon:expression()</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: saxon:expression()">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>saxon:expression()</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><b>expression(string)</b></p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">This function creates a stored expression that can be evaluated repeatedly with different
+         argument values and a different dynamic context.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The supplied string must contain an XPath expression. The result of the function is a <i>stored
+            expression</i>, which may be supplied as an argument to other extension functions such as
+         <a class="bodylink" href="javascript:tosubpage('extensions','functions','eval')">saxon:eval</a>, 
+         <a class="bodylink" href="javascript:tosubpage('extensions','functions','sum')">saxon:sum</a> and
+         <a class="bodylink" href="javascript:tosubpage('extensions','functions','distinct')">saxon:distinct</a>. The result of
+         the expression will usually depend on the current node. The context for the expression includes the namespaces in scope at
+         this point in the
+         stylesheet. The expression may contain references to the nine variables <code>$p1</code>, <code>$p2</code>, ...
+         <code>$p9</code> only. It may contain calls on Java extension functions, including Saxon and EXSLT-defined
+         functions (other than those which are restricted to use within stylesheets, for example the saxon:evaluate()
+         function itself). But it does not allow access to stylesheet variables, stylesheet functions, or 
+         functions defined in the XSLT specification such as <code>key()</code> or <code>format-number()</code>.
+         If the expression contains namespace prefixes, these are interpreted
+         in terms of the namespace declarations in scope at the point where the 
+         <code>saxon:expression()</code> function is
+         called, not those in scope where the stored expression is evaluated.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The stored expression (if it is to be evaluated using <code>saxon:eval()</code>) may contain
+         references to variables named <code>$p1</code>, <code>$p2</code>, ... <code>$p9</code>. The values of
+         these variables can be supplied when the expression is evaluated using <code>saxon:eval</code>. The
+         second argument of <code>saxon:eval</code> supplies the value of <code>$p1</code>, the third
+         argument supplies the value of <code>$p2</code>, and so on.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">For example, following <code>&lt;xsl:variable name="add" select="saxon:expression('$p1 + $p2')"/&gt;</code>,
+         the instruction <code>&lt;xsl:value-of select="saxon:eval($add, 6, 7)"/&gt;</code> will output <code>13</code>.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="expression.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../functions.html">Up</a>&nbsp;&nbsp;<a class="nav" href="find.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ============================================================= -->
+<!-- ANT RECIPES FOR WEB DEVELOPERS CHP 3 Web Recipe               -->
+<!-- Author: James Fuller / Webcomposite                           -->
+<!-- Email/WWW: jim.fuller@webcomposite.com /  www.antrecipes.com  -->
+<!-- ============================================================= -->
+<!--    (C) Copyright James Fuller 2009 - All Rights Reserved.     -->
+<!--  use the -debug flag for more information when running ant  //-->
+<project name="spellchecking" basedir="." default="run">
+	<description>SpellChecking using ispell Recipe</description>
+	<!-- ===================================================== -->
+	<!-- Property definition                                   -->
+	<!-- ===================================================== -->
+	<property name="docs.dir" location="data"/>
+	<property name="spellcheck.log" location="result/spellcheck.log"/>
+	<!-- ===================================================== -->
+	<!-- Example1 Target                                       -->
+	<!-- ===================================================== -->
+	<target name="example1" description="execute ispell command">
+		<apply executable="ispell" error="result/error.txt" output="result/output.txt">
+			<arg value="-l"/>
+			<arg value="-H"/>
+			<fileset dir="data">
+				<include name="**/*.html"/>
+			</fileset>
+		</apply>
+	</target>
+	<!-- ===================================================== -->
+	<!-- Example2 Target                                       -->
+	<!-- ===================================================== -->
+	<target name="example2" description="execute ispell command">
+		<checkspell dir="${docs.dir}" log="${spellcheck.log}"/>
+	</target>
+	<!-- ===================================================== -->
+	<!-- Run Target                                            -->
+	<!-- ===================================================== -->
+	<target name="run" depends="clean,example1,example2" description="runs all examples"/>
+	<!-- ===================================================== -->
+	<!-- Clean Target                                          -->
+	<!-- ===================================================== -->
+	<target name="clean">
+		<delete dir="result"/>
+		<mkdir dir="result"/>
+	</target>
+	<macrodef name="checkspell">
+		<attribute name="dir"/>
+		<attribute name="log"/>
+		<sequential>
+			<echo message="spellchecking @{dir}"/>
+			<apply executable="ispell">
+				<arg value="-l"/>
+				<arg value="-H"/>
+				<fileset dir="@{dir}">
+					<include name="**/*.*"/>
+				</fileset>
+				<redirector append="true">
+					<outputmapper type="merge" to="@{log}"/>
+				</redirector>
+			</apply>
+		</sequential>
+	</macrodef>
+</project>

@@ -1,0 +1,1276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<article>
+<title>Changes since the 1.69.1 release</title>
+<sect1 xml:id="V1700">
+<title>Release: 1.70.0</title>
+<para>The following is a list of changes that have been made
+        since the 1.69.1 release.</para>
+
+<sect2 xml:id="V1700_Common">
+<title>Common</title>
+<para>The following changes have been made to the
+        <filename>common</filename> code
+        since the 1.69.1 release.</para>
+<itemizedlist>
+<listitem>
+<para><phrase role="commit-message">Add the xsl:key for the kimber indexing method.<alt>common/autoidx-ng.xsl,1.2 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Add support for <tag>qandaset</tag>.<alt>common/labels.xsl,1.37; common/subtitles.xsl,1.7; common/titles.xsl,1.35 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Support dbhtml/dbfo start PI for <tag>orderedlist</tag> numbering in both HTML and FO<alt>common/common.xsl,1.61; html/lists.xsl,1.50 - Norman Walsh</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added CVS header.<alt>common/stripns.xsl,1.12 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Changed content model of text element to ANY rather than #PCDATA<sbr/>because they could contain markup.<alt>common/targetdatabase.dtd,1.7 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added <tag>refentry</tag>.meta.get.quietly param.<sbr/><sbr/>If zero (the default), notes and warnings about "missing" markup<sbr/>are generated during gathering of <tag>refentry</tag> metadata. If non-zero,<sbr/>the metadata is gathered "quietly" -- that is, the notes and<sbr/>warnings are suppressed.<sbr/><sbr/>NOTE: If you are processing a large amount of <tag>refentry</tag> content,<sbr/>      you may be able to speed up processing significantly by<sbr/>      setting a non-zero value for <tag>refentry</tag>.meta.get.quietly.<alt>common/refentry.xsl,1.17; manpages/param.ent,1.15; manpages/param.xweb,1.17; params/refentry.meta.get.quietly.xml,1.1 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">We must use file:///c:/ instead of c:/ because extension functions are choking on c:/. Grrrr.<alt>common/stripns.xsl,1.11 - Jirka Kosek</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Move xml:base fiddling to named template: add-xml-base<alt>common/stripns.xsl,1.10 - Norman Walsh</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Make sure entityref gets expanded when stripping (there are no entity declarations in the stripped document)<alt>common/stripns.xsl,1.9 - Norman Walsh</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Attempt to deal with file:/c:/path correctly (c:/path)<alt>common/stripns.xsl,1.8 - Norman Walsh</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">After namespace stripping, the source document is the temporary tree<sbr/>created by the stripping process and it has the wrong base <tag>URI</tag> for<sbr/>relative references. Earlier versions of this code used to try to<sbr/>fix that by patching the elements with relative @fileref attributes.<sbr/>That was inadequate because it calculated an absolute base <tag>URI</tag> without<sbr/>considering that there might be xml:base attributes already in effect.<sbr/>It seems obvious now that the right thing to do is simply to put the<sbr/>xml:base on the root of the document. And that seems to work.<alt>common/stripns.xsl,1.7 - Norman Walsh</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added missing param declarations on several templates. Lack of<sbr/>them was causing processing with Saxon to fail. Thanks to<sbr/>Denis Bradford for reporting the problem.<alt>common/refentry.xsl,1.16 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Created a new message-logging named template, log.message, by<sbr/>generalizing the old <tag>refentry</tag>.emit.message template and moving it<sbr/>out of common/refentry.xsl and into common/common.xsl<alt>common/common.xsl,1.60; common/refentry.xsl,1.15 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Refined XPath statements and notification messages for <tag>refentry</tag><sbr/>metadata handling.<alt>common/common.xsl,1.59; common/refentry.xsl,1.14; manpages/docbook.xsl,1.61; manpages/other.xsl,1.17 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added message-prolog and message-epilog and<sbr/>suppress-context-node-name local params to the write.chunk and<sbr/>write.text.chunk templates. They enable additional <tag>info</tag> to be<sbr/>emitted before/after the "Writing..." message, and enable they<sbr/>context-node name to be suppressed in output. The reason for<sbr/>these additions is that the write.text.chunk template is<sbr/>"repurposed" in manpages output for writing the names of soelim<sbr/>stub files as well as "real" man pages, and also is used for<sbr/>writing the <parameter>manifest</parameter> file, and it is useful to emit details about<sbr/>the type of file it is writing each time.<alt>common/refentry.xsl,1.13; html/chunker.xsl,1.27; manpages/docbook.xsl,1.60; manpages/other.xsl,1.16 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added <tag>refentry</tag>.emit.message utility templated and and<sbr/><tag>refentry</tag>.emit.messages parameter for emitting note/warning<sbr/>messages about missing markup.<alt>common/refentry.xsl,1.12 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Fixed regression caused by recent changes to <tag>refentry</tag> metadata<sbr/>handling. Closes #1467100. Thanks to Daniel Leidert for reporting.<alt>common/refentry.xsl,1.11 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added support for "software" and "sectdesc" class values on<sbr/><tag>refmiscinfo</tag>; "software" is treated identically to "source", and<sbr/>"setdesc" is treated identically to "manual".<alt>common/refentry.xsl,1.10; params/man.th.extra2.max.length.xml,1.3; params/refentry.source.name.profile.xml,1.4 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Made further refinements to the code for doing <tag>Refentry</tag> metadata<sbr/>gathering; "normalized" the formatting of notification/warning<sbr/>messages emitted during metadata gathering.<alt>common/refentry.xsl,1.9 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Simplified XPath check for <tag>refentry</tag> "source" metadata.<alt>common/refentry.xsl,1.8; params/refentry.source.name.profile.xml,1.3 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Drastically reworked all of the XPath expressions used in <tag>refentry</tag><sbr/>metadata gathering -- completely removed $parentinfo and turned<sbr/>$info into a set of nodes that includes the *info contents of the<sbr/><tag>Refentry</tag> plus the *info contents all all of its ancestor<sbr/>elements. The basic XPath expression now used throughout is (using<sbr/>the example of checking for a <tag>date</tag>):<sbr/><sbr/>  (($info[//date])[last()]/date)[1].<sbr/><sbr/>That selects the "last" *info/date <tag>date</tag> in document order -- that<sbr/>is, the one eitther on the <tag>Refentry</tag> itself or on the closest<sbr/>ancestor to the <tag>Refentry</tag>.<sbr/><sbr/>It's likely this change may break some things; may need to pick<sbr/>up some pieces later.<sbr/><sbr/>Also, changed the default value for the <parameter>man.th.extra2.max.length</parameter><sbr/>from 40 to 30.<alt>common/common.xsl,1.58; common/refentry.xsl,1.7; params/man.th.extra2.max.length.xml,1.2; params/refentry.date.profile.xml,1.2; params/refentry.manual.profile.xml,1.2; params/refentry.source.name.profile.xml,1.2; params/refentry.version.profile.xml,1.2; manpages/docbook.xsl,1.58; manpages/other.xsl,1.15 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Handle additional case when extension functions were not unable to load external resource on Windows box<alt>common/stripns.xsl,1.6 - Jirka Kosek</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Set priority="-1" on match="/" template in stripns.xsl, to<sbr/>suppress "Ambiguous rule match" warnings.<alt>common/stripns.xsl,1.5 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added a "string.lower" template. Does the opposite of<sbr/>string.upper().. Used in the XSLT-based build process for<sbr/>generating the NEWS file and release notes, where we take<sbr/>the "display names" of subsections like "HTMLHelp", and change<sbr/>them into the actual directory names, like "htmlhelp".<alt>common/common.xsl,1.57 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added support for DocBook 5 namespace-stripping in manpages<sbr/>stylesheet. Closes request #1210692.<alt>common/common.xsl,1.56; manpages/docbook.xsl,1.57 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added &lt;xsl:template match="/"&gt; to make stripns.xsl usable as a<sbr/>standalone stylesheet for stripping out DocBook 5/NG to DocBook 4.<sbr/>Note that DocBook XSLT drivers that include this stylesheet all<sbr/>override the match="/" template.<alt>common/stripns.xsl,1.4 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Fixed problems with notifications generated when <tag>date</tag> found.<alt>common/refentry.xsl,1.6 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Checkpointing. Still have a way to go on reworking this.<alt>common/refentry.xsl,1.5 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Number figures, examples, and tables from <tag>book</tag> if there is no prefix (i.e. if <parameter>chapter.autolabel</parameter> is set to 0). This avoids having the list of figures where the figures mysteriously restart their numeration periodically when <parameter>chapter.autolabel</parameter> is set to 0.<alt>common/labels.xsl,1.36 - David Cramer</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Add <tag>task</tag> template in <tag>title</tag>.markup mode.<alt>common/titles.xsl,1.34 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Fixed bug #1359008.  If a <tag>mediaobject</tag> contains only one object, use it<sbr/>even if it is only a <tag>textobject</tag>.<alt>common/common.xsl,1.55 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Fixed bug # 1364478 xml:id not recognized by <tag>olink</tag> <tag>database</tag>.<alt>common/targets.xsl,1.11 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Fixed attribute inheritance when in <tag>entrytbl</tag>.<alt>common/table.xsl,1.18 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Clarified missing <tag>olink</tag> error message.<alt>common/olink.xsl,1.10 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Handle xml:id, version, and xlink:href better; make sure <tag>title</tag> gets copied even when there's no <tag>info</tag><alt>common/stripns.xsl,1.3 - Norman Walsh</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Add children (with ids) of formal objects to target data.<alt>common/targets.xsl,1.10 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Map <tag>info</tag> elements to the right *info element when stripping NS. Set xml:base on external references rather than directly changing @fileref. Map xml:id to id.<alt>common/stripns.xsl,1.2 - Norman Walsh</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Fixed test expression<alt>common/olink.xsl,1.9 - Norman Walsh</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">This is a standalone "utility" stylesheet (it's not imported by<sbr/>and of the drivers). Its purpose is to transform all instances of<sbr/>DocBook-specific "insert file" markup (e.g., &lt;<tag>textdata</tag><sbr/>fileref="foo.txt) with Xinclude instances. It is mainly intended<sbr/>as an alternative to the DocBook XSLT Java insertfile() extension.<alt>common/insertfile.xsl,1.1 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Move the stripns code to a common location; update @fileref and @entityref attributes in an attempt to handle the fact that the base <tag>URI</tag> gets mangled by the stripping copy.<alt>common/stripns.xsl,1.1; fo/docbook.xsl,1.37; html/docbook.xsl,1.39 - Norman Walsh</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Made make-catalog.xsl general-purpose and moved to releasetools<sbr/>dir so it can be used with other modules.<alt>Makefile,1.23.2.3; common/make-catalog.xsl,1.2 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added support for case when <tag>personname</tag> doesn't contain specific name markup (as allowed in DocBook 5.0)<alt>common/common.xsl,1.54 - Jirka Kosek</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Moved <tag>olink</tag> page number <tag>reference</tag> template to <tag>xref</tag>.xsl.<alt>common/olink.xsl,1.8 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Fixed handling of %p in <tag>olink</tag> xrefstyle templates.<alt>common/olink.xsl,1.7 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added colon to list of delimiters for parsing datetime strings<sbr/>into tokens. Closes #1285053. Thanks to Jeroen Ruigrok for the bug<sbr/>report, and to Mauritz Jeanson for spotting the cause.<alt>common/pi.xsl,1.10 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Removed catalog.xml from version control and updated build to<sbr/>automatically generate it. (To ensure it always contains the<sbr/>correct version number for the release.) Thanks to John L. Clark<sbr/>for the suggestion.<alt>.cvsignore,1.11; Makefile,1.23.2.2; catalog.xml,1.2; common/make-catalog.xsl,1.1 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+</itemizedlist>
+</sect2><!--end of Common changes for 1.70.0-->
+
+<sect2 xml:id="V1700_Extensions">
+<title>Extensions</title>
+<para>The following changes have been made to the
+        <filename>extensions</filename> code
+        since the 1.69.1 release.</para>
+<itemizedlist>
+<listitem>
+<para><phrase role="commit-message">Fixed imports<alt>extensions/xalan27/src/com/nwalsh/xalan/Func.java,1.2; extensions/xalan27/src/com/nwalsh/xalan/Table.java,1.2; extensions/xalan27/src/com/nwalsh/xalan/Text.java,1.2; extensions/xalan27/src/com/nwalsh/xalan/Verbatim.java,1.2 - Norman Walsh</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Make xalan27.jar<alt>extensions/Makefile,1.12 - Norman Walsh</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Support Xalan 2.7<alt>extensions/xalan27/.cvsignore,1.1; extensions/xalan27/build.xml,1.1; extensions/xalan27/nbproject/.cvsignore,1.1; extensions/xalan27/nbproject/build-impl.xml,1.1; extensions/xalan27/nbproject/genfiles.properties,1.1; extensions/xalan27/nbproject/project.properties,1.1; extensions/xalan27/nbproject/project.xml,1.1; extensions/xalan27/src/com/nwalsh/xalan/CVS.java,1.1; extensions/xalan27/src/com/nwalsh/xalan/Callout.java,1.1; extensions/xalan27/src/com/nwalsh/xalan/FormatCallout.java,1.1; extensions/xalan27/src/com/nwalsh/xalan/FormatDingbatCallout.java,1.1; extensions/xalan27/src/com/nwalsh/xalan/FormatGraphicCallout.java,1.1; extensions/xalan27/src/com/nwalsh/xalan/FormatTextCallout.java,1.1; extensions/xalan27/src/com/nwalsh/xalan/FormatUnicodeCallout.java,1.1; extensions/xalan27/src/com/nwalsh/xalan/Func.java,1.1; extensions/xalan27/src/com/nwalsh/xalan/ImageIntrinsics.java,1.1; extensions/xalan27/src/com/nwalsh/xalan/Params.java,1.1; extensions/xalan27/src/com/nwalsh/xalan/Table.java,1.1; extensions/xalan27/src/com/nwalsh/xalan/Text.java,1.1; extensions/xalan27/src/com/nwalsh/xalan/Verbatim.java,1.1 - Norman Walsh</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Applied patch from Ville Skytt. Changes to comments/javadoc only.<sbr/>Closes patch #613993.<alt>extensions/build.xml,1.2; extensions/saxon643/com/nwalsh/saxon/CVS.java,1.2; extensions/saxon643/com/nwalsh/saxon/CalloutEmitter.java,1.3; extensions/saxon643/com/nwalsh/saxon/ColumnScanEmitter.java,1.3; extensions/saxon643/com/nwalsh/saxon/ColumnUpdateEmitter.java,1.2; extensions/saxon643/com/nwalsh/saxon/CopyEmitter.java,1.2; extensions/saxon643/com/nwalsh/saxon/LineCountEmitter.java,1.2; extensions/saxon643/com/nwalsh/saxon/NumberLinesEmitter.java,1.4; extensions/saxon643/com/nwalsh/saxon/Table.java,1.3; extensions/saxon643/com/nwalsh/saxon/Text.java,1.5; extensions/saxon643/com/nwalsh/saxon/TextFactory.java,1.2; extensions/saxon643/com/nwalsh/saxon/UnwrapLinks.java,1.2; extensions/saxon643/com/nwalsh/saxon/Verbatim.java,1.4; extensions/xalan2/com/nwalsh/xalan/CVS.java,1.2; extensions/xalan2/com/nwalsh/xalan/ImageIntrinsics.java,1.3; extensions/xalan2/com/nwalsh/xalan/Table.java,1.6; extensions/xalan2/com/nwalsh/xalan/Text.java,1.3; extensions/xalan2/com/nwalsh/xalan/Verbatim.java,1.6 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">An attemp to fix base URIs when profiling is done and document is not in the current directory. This seems to work on my Windows machine, but I would be interested how it behaves in unix environment. URL handling in Java is very sensitive to such things.<alt>extensions/saxon643/com/nwalsh/saxon/ImageIntrinsics.java,1.5; profiling/profile-mode.xsl,1.3; profiling/profile.xsl,1.3 - Jirka Kosek</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Handle the case where the imageFn is actually a <tag>URI</tag>. This still needs work.<alt>extensions/saxon643/com/nwalsh/saxon/ImageIntrinsics.java,1.4 - Norman Walsh</alt></phrase></para>
+</listitem>
+</itemizedlist>
+</sect2><!--end of Extensions changes for 1.70.0-->
+
+<sect2 xml:id="V1700_FO">
+<title>FO</title>
+<para>The following changes have been made to the
+        <filename>fo</filename> code
+        since the 1.69.1 release.</para>
+<itemizedlist>
+<listitem>
+<para><phrase role="commit-message">Adapted to the new indexing code. Now works just like a wrapper that calls kosek indexing method, originally implemented here.<alt>fo/autoidx-ng.xsl,1.5 - Jirka Kosek</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added missing and required attribute sets.<alt>fo/titlepage.xsl,1.39 - Jirka Kosek</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Apparently blank-body does work with <parameter>fop1.extensions</parameter>.<alt>fo/pagesetup.xsl,1.62 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Turn off blank-body region name for <parameter>fop1.extensions</parameter> too, since apparently this<sbr/>is still not fixed.<alt>fo/pagesetup.xsl,1.61 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added parameters for header/footer <tag>table</tag> minimum height.<alt>fo/pagesetup.xsl,1.60; fo/param.ent,1.100; fo/param.xweb,1.113 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Add the <tag>index</tag>.method parameter.<alt>fo/param.ent,1.99; fo/param.xweb,1.112 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Integrate support for three indexing methods:<sbr/>- the original English-only method.<sbr/>- Jirka Kosek's method using EXSLT extensions.<sbr/>- Eliot Kimber's method using Saxon extensions.<sbr/>Use the '<tag>index</tag>.method' parameter to select.<alt>fo/autoidx.xsl,1.38 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Make sure sidebars get IDs so that cross references to them work<alt>fo/block.xsl,1.32 - Norman Walsh</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Add support for <tag>TOC</tag> for <tag>qandaset</tag> in fo output.<alt>fo/autotoc.xsl,1.30; fo/qandaset.xsl,1.20 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added parameter <parameter>ulink.hyphenate</parameter>.chars.<sbr/>Added parameter insert.<tag>link</tag>.page.number.<alt>fo/param.ent,1.98; fo/param.xweb,1.111 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Implemented feature request #942524 to add insert.<tag>link</tag>.page.number to<sbr/>allow link element cross references to have a page number.<alt>fo/xref.xsl,1.67 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">applied patch #1143813 to check <tag>glossterm</tag> <tag>link</tag> before forming it.<alt>fo/inline.xsl,1.45 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Add support for <parameter>ulink.hyphenate</parameter>.chars so more characters can<sbr/>be break points in urls.<alt>fo/xref.xsl,1.66 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Implemented patch #1075144 to make the url text in a ulink in FO<sbr/>output an active <tag>link</tag> as well.<alt>fo/xref.xsl,1.65 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message"><tag>table</tag> footnotes now have their own <tag>table</tag>.<tag>footnote</tag>.properties attribute set.<alt>fo/footnote.xsl,1.23 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added <tag>qandaset</tag> in support of it as a root element.<alt>fo/titlepage.templates.xml,1.29 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Add support for <tag>qandaset</tag> as root element to generate a page sequence.<alt>fo/qandaset.xsl,1.19 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Add <tag>qandaset</tag> to root.elements.<alt>fo/docbook.xsl,1.41 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added mode="page.sequence" to make it easier to put content<sbr/>into a page sequence.  First used for <tag>qandaset</tag>.<alt>fo/component.xsl,1.37 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Implemented feature request #1434408 to support formatting of<sbr/><tag>biblioentry</tag>.<alt>fo/biblio.xsl,1.35 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added <tag>biblioentry</tag>.properties.<alt>fo/param.ent,1.97; fo/param.xweb,1.110 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Fixed bug #1466816 "<parameter>keep.relative.image.uris</parameter> not used for FO".  Now<sbr/>if the value is 1, the fileref is not changed by xml:base attributes.<alt>fo/graphics.xsl,1.46 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Support PTC/Arbortext bookmarks<alt>fo/docbook.xsl,1.40; fo/ptc.xsl,1.1 - Norman Walsh</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added <tag>table</tag>.<tag>footnote</tag>.properties to permit <tag>table</tag> footnotes to<sbr/>format differently from regular footnotes.<alt>fo/param.ent,1.96; fo/param.xweb,1.109 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Refactored <tag>table</tag> templates to unify their processing and<sbr/>support all options in all types.  Now <tag>table</tag> and <tag>informaltable</tag>,<sbr/>in both Cals and Html markup, use the same templates where<sbr/>possible, and all support pgwide, rotation, and floats.<sbr/>There is also a placeholder <tag>table</tag>.container template to support<sbr/>wrapping a <tag>table</tag> in a layout <tag>table</tag>, so the XEP <tag>table</tag> <tag>title</tag><sbr/>"continued" extension can be more easily implemented.<alt>fo/formal.xsl,1.52; fo/htmltbl.xsl,1.9; fo/table.xsl,1.48 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added new attribute set <tag>toc</tag>.line.properties for controlling appearance of lines in ToC/LoT<alt>fo/autotoc.xsl,1.29; fo/param.ent,1.95; fo/param.xweb,1.108 - Jirka Kosek</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">fixed bug #1472393 fo:table-body missing from HTML informatable to FO.<alt>fo/htmltbl.xsl,1.8 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added support for float to example and <tag>equation</tag>.<sbr/>Added support for pgwide to <tag>figure</tag>, example, and <tag>equation</tag><sbr/>(the latter two via a dbfo pgwide="1" processing instruction).<alt>fo/formal.xsl,1.51 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Add pgwide.properties attribute-set.<alt>fo/param.ent,1.94; fo/param.xweb,1.107 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Fixed bug #1445304 <tag>indexterm</tag> in <tag>biblioentry</tag> not handled correctly<sbr/>in <tag>bibliography</tag>.mode.<alt>fo/biblio.xsl,1.34 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Removed leftover <tag>refclass</tag>.suppress cruft.<alt>fo/refentry.xsl,1.31; html/refentry.xsl,1.24 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added <tag>refclass</tag>.suppress param.<sbr/><sbr/>If the value of <tag>refclass</tag>.suppress is non-zero, then display<sbr/><tag>refclass</tag> contents is suppressed in output. Affects HTML and FO<sbr/>output only.<alt>fo/param.ent,1.93; fo/param.xweb,1.106; html/param.ent,1.90; html/param.xweb,1.99; params/refclass.suppress.xml,1.1 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Fixed problem with test for <parameter>fop.extensions</parameter> in "floater" template.<sbr/>Closes #1475639. Thanks to Mauritz Jeanson for reporting.<alt>fo/block.xsl,1.31 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Do not break // in URL<alt>fo/xref.xsl,1.64 - Jirka Kosek</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">DocBook V5.0 uses class="comment" for both XML/SGML comments<alt>fo/inline.xsl,1.44; html/inline.xsl,1.48 - Jirka Kosek</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Improved support for <tag>task</tag> subelements<alt>fo/task.xsl,1.3; html/task.xsl,1.3 - Jirka Kosek</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Fix bug #1471303: Comments cause incorrect &lt;<tag>group</tag>&gt; processing<alt>fo/synop.xsl,1.20; html/synop.xsl,1.22 - Norman Walsh</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added missing <tag>anchor</tag><alt>fo/synop.xsl,1.19 - Jirka Kosek</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Fixed bug # 1465290. Spaces are converted fo:leader only inside DocBook (non-namespaced elements). Text nodes inside different namespaces (e.g. MathML, SVG) are left untouched.<alt>fo/spaces.xsl,1.2 - Jirka Kosek</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Made <tag>segtitle</tag> bold in FO output. Closes #948245. Thanks to<sbr/>Alastair Rankine for reporting.<alt>fo/lists.xsl,1.68 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Changed test expression used for determining whether a <tag>term</tag> in a<sbr/><tag>variablelist</tag> is the final <tag>term</tag>. Was using "position() = last()",<sbr/>but that caused a fatal XPath error in xsltproc (though not in<sbr/>Saxon); changed to "not(following-sibling::<tag>term</tag>)", which is<sbr/>probably a better way of doing it anyway.<alt>fo/lists.xsl,1.67 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Adjusted spacing around K&amp;R-formatted <tag>Funcdef</tag> and <tag>Paramdef</tag> output<sbr/>such that it can more easily be discerned where one ends and the<sbr/>other begins. Closes #1213264.<alt>fo/synop.xsl,1.18 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Made handling of paramdef/parameter in FO output consistent with<sbr/>that in HTML and manpages output. Closes #1213259.<alt>fo/synop.xsl,1.17 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Made handling of <tag>Refnamediv</tag> consistent with formatting in HTML and<sbr/>manpages output; specifically, changed so that <tag>Refname</tag><sbr/>(comma-separated list of multiple instances found) is used<sbr/>(instead of <tag>Refentrytitle</tag> as previously), then em-dash, then the<sbr/><tag>Refpurpose</tag>. Closes #1212562.<alt>fo/refentry.xsl,1.30 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Committed patch to fix problem with <tag>Title</tag> missing in Adobe Reader<sbr/>"Document properties". Closes #1465301. Thanks to Mauritz Jeanson<sbr/>for the patch.<alt>fo/axf.xsl,1.3 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added output of <tag>Releaseinfo</tag> to recto titlepage ("<tag>copyright</tag>" page)<sbr/>for <tag>Book</tag> in FO output. This makes it consistent with HTML output.<sbr/>Closes #1327034. Thanks to Paul DuBois for reporting.<alt>fo/titlepage.templates.xml,1.28 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Problem:<sbr/>  When source has width="" (empty width) on <tag>imagedata</tag>, it ends up<sbr/>  getting converted to width="px" ("px" units with empty value) in<sbr/>  output.<sbr/>Cause:<sbr/>  Stylesheets were not checking to <tag>see</tag> if width was non-empty.<sbr/>Fix:<sbr/>  Stylesheets now check to <tag>see</tag> if value of width in source is<sbr/>  non-empty.<sbr/>Affects:<sbr/>  This change affects FO output only. It causes width="auto"<sbr/>  output for width="" instances in source (instead of width="px").<alt>fo/graphics.xsl,1.45 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added condition for setting block-progression-dimension.minimum on<sbr/>table-row, instead of height, when <parameter>fop1.extensions</parameter> is non-zero.<sbr/>For an explanation of the reason for the change, <tag>see</tag>:<sbr/>http://wiki.apache.org/xmlgraphics-fop/Troubleshooting/CommonLogMessages<alt>fo/pagesetup.xsl,1.59 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added new <tag>refclass</tag>.suppress param for suppressing display of<sbr/><tag>Refclass</tag> in HTML and FO output. Did not add it to manpages because<sbr/>manpages stylesheet is currently just silently ignoring <tag>Refclass</tag><sbr/>anyway. Closes request #1461065. Thanks to Davor Ocelic (docelic)<sbr/>for reporting.<alt>fo/refentry.xsl,1.29; html/refentry.xsl,1.23 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Fix template named '<tag>anchor</tag>' to check @xml:id too.<alt>fo/fo.xsl,1.8 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Add support for keep-together PI to informal objects.<alt>fo/formal.xsl,1.50 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Add support for <parameter>fop1.extensions</parameter>.<alt>fo/formal.xsl,1.49; fo/graphics.xsl,1.44; fo/table.xsl,1.47 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Add support for fop1 bookmarks.<alt>fo/docbook.xsl,1.39 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Add fop1.extentions parameter to add support for<sbr/>fop development version.<alt>fo/param.ent,1.92; fo/param.xweb,1.105 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Start supporting fop development version, which will<sbr/>become fop version 1.<alt>fo/fop1.xsl,1.1 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Add template for <tag>task</tag> in mode="xref-to".<alt>fo/xref.xsl,1.63; html/xref.xsl,1.57 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">fixed bug #1246878, no otherwise clause for start-indent and end-indent in a <tag>sidebar</tag> float.<alt>fo/block.xsl,1.30 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Fixed bug #1326440 where '<tag>title</tag>' in <parameter>generate.toc</parameter> was not supported in FO.<alt>fo/autotoc.xsl,1.28; fo/component.xsl,1.36; fo/division.xsl,1.30; fo/sections.xsl,1.43 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added missing variable declaration<alt>fo/autoidx.xsl,1.37 - Jirka Kosek</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Removed obsolete template match="legalnotice/title" mode="titlepage.<tag>legalnotice</tag>.<tag>title</tag>.mode".<alt>fo/titlepage.xsl,1.38 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message"><tag>table</tag> footnotes now also get <tag>footnote</tag>.properties attribute-set.<alt>fo/footnote.xsl,1.22 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Fixed fo:marker output on <tag>bridgehead</tag> to match current <tag>section</tag> level.<alt>fo/sections.xsl,1.42 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added <tag>index</tag>.separator named template to compute the<sbr/>separator punctuation based on locale.<alt>fo/autoidx.xsl,1.36 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added normalize-space() to text values in document properties.<sbr/>Handle <tag>author</tag> better, the same as xep.xsl.<alt>fo/axf.xsl,1.2 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added normalize-space() to text values in document properties.<alt>fo/xep.xsl,1.24 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Fixed bug in startinglinenumber when <tag>programlisting</tag><sbr/>is inside a <tag>programlistingco</tag>.<alt>fo/verbatim.xsl,1.19 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added handling for cases of <tag>Methodsynopsis</tag> that have <tag>Modifier</tag><sbr/>instances after the <tag>Methodname</tag>. Closes #1353365; thanks to<sbr/>Stephen Langer for reporting.<alt>fo/synop.xsl,1.16; html/synop.xsl,1.20 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added support for <tag>link</tag>, <tag>olink</tag>, and <tag>xref</tag> within OO <tag>Classsynopsis</tag><sbr/>and children. (Because DocBook NG/5 allows it).<alt>fo/synop.xsl,1.15; html/synop.xsl,1.19 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Fixed 'nopage' option in xrefstyle.<alt>fo/xref.xsl,1.62 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">fixed bug in sidebarinfo <tag>title</tag> template match.<alt>fo/block.xsl,1.29 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Support <tag>date</tag> as an inline<alt>fo/inline.xsl,1.43; html/inline.xsl,1.46 - Norman Walsh</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added new parameter <parameter>keep.relative.image.uris</parameter><alt>fo/param.ent,1.91; fo/param.xweb,1.104; html/param.ent,1.87; html/param.xweb,1.96; params/keep.relative.image.uris.xml,1.1 - Norman Walsh</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Make sure tfoots are bold too<alt>fo/table.xsl,1.46 - Norman Walsh</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Map Unicode space characters U+2000-U+200A to fo:leaders.<alt>fo/docbook.xsl,1.38; fo/passivetex.xsl,1.4; fo/spaces.xsl,1.1 - Jirka Kosek</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Output a real em dash for em-dash dingbat (instead of two hypens).<alt>fo/fo.xsl,1.7 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Problem:<sbr/>In a PDF generated with Passivetex, every <tag>itemizedlist</tag> (bulleted<sbr/>list) has a linebreak after the bullet and before the listem<sbr/>contents. That bullet should not be there.<sbr/><sbr/>Cause:<sbr/>Design problem in Passivetex<sbr/><sbr/>Fix:<sbr/>Added a fix that works around the problem by not wrapping the<sbr/>listem output in an &lt;fo:block&gt; if passivetex.extensions=1. Closes<sbr/>#1328348.<sbr/><sbr/>Affects:<sbr/>Only affects output if passivetex.extensions=1. Otherwise,<sbr/>follows previous code path, so behavior is exactly the same.<alt>fo/lists.xsl,1.66 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Fixed bug #1315700, where <tag>glossary</tag> in part with role="auto"<sbr/>produced invalid FO.<alt>fo/glossary.xsl,1.31 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Move the stripns code to a common location; update @fileref and @entityref attributes in an attempt to handle the fact that the base <tag>URI</tag> gets mangled by the stripping copy.<alt>common/stripns.xsl,1.1; fo/docbook.xsl,1.37; html/docbook.xsl,1.39 - Norman Walsh</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Corrected minor copy-paste error (<tag>orderedlist</tag> template picking up<sbr/>value of <parameter>itemizedlist.label.width</parameter> instead of <parameter>orderedlist.label.width</parameter>).<alt>fo/lists.xsl,1.65 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Support default <tag>label</tag> width parameters for itemized and ordered lists<alt>fo/lists.xsl,1.64; fo/param.ent,1.90; fo/param.xweb,1.103; params/itemizedlist.label.width.xml,1.1; params/orderedlist.label.width.xml,1.1 - Norman Walsh</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Comment out debugging message<alt>fo/synop.xsl,1.14 - Norman Walsh</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Generate localized <tag>title</tag> for <tag>Refsynopsisdiv</tag> if no appropriate<sbr/><tag>Title</tag> descendant found in source. Closes #1212398. This change<sbr/>makes behavior for the <tag>Synopsis</tag> <tag>title</tag> consistent with the behavior<sbr/>of HTML and manpages output.<sbr/><sbr/>Also, added xsl:use-attribute-sets="normal.<tag>para</tag>.spacing" to block<sbr/>generated for <tag>Cmdsynopsis</tag> output. Previously, that block had no<sbr/>spacing at all specified, which resulted it being crammed up to<sbr/>closely to the <tag>Synopsis</tag> head.<alt>fo/refentry.xsl,1.28; fo/synop.xsl,1.13 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added parameters to support localization of <tag>index</tag> item<sbr/>punctuation.<alt>fo/autoidx.xsl,1.35 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added <parameter>index.number.separator</parameter>, <parameter>index.range.separator</parameter>, and<sbr/><parameter>index.term.separator</parameter> parameters to support localization<sbr/>of punctuation in <tag>index</tag> entries.<alt>fo/param.ent,1.89; fo/param.xweb,1.102 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added "Cross References" <tag>section</tag> in HTML doc (for consistency with<sbr/>the FO doc). Also, moved the existing FO "Cross References"<sbr/><tag>section</tag> to follow the "Linking" <tag>section</tag>.<alt>fo/param.xweb,1.101; html/param.xweb,1.95 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added ID attribues to all <tag>Reference</tag> elements (e.g., id="tables"<sbr/>for the doc for <tag>section</tag> on <tag>Table</tag> params). So pages for all<sbr/>subsections of ref docs now have stable filenames instead of<sbr/>arbitrary generated filenames.<alt>fo/param.xweb,1.100; html/param.xweb,1.94 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Removed misguided code intended for normalizing whitespace in <tag>term</tag><sbr/>output for HTML and FO. (It's not necessary for those, though it is<sbr/>still needed in manpages output because we're using the .TP macro,<sbr/>and first line following that is treated differently than the<sbr/>subsequent lines. So we need to get rid of any embedded line<sbr/>breaks from within the <tag>Term</tag> source.)<alt>fo/lists.xsl,1.63; html/lists.xsl,1.49 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added two new parameters for handling of multi-term <tag>varlistentry</tag><sbr/>elements:<sbr/><sbr/><parameter>variablelist.term.break.after</parameter>:<sbr/>  When the <parameter>variablelist.term.break.after</parameter> is non-zero, it will<sbr/>  generate a line break after each <tag>term</tag> multi-term <tag>varlistentry</tag>.<sbr/><sbr/><parameter>variablelist.term.separator</parameter>:<sbr/>  When a <tag>varlistentry</tag> contains multiple <tag>term</tag> elements, the string<sbr/>  specified in the value of the <parameter>variablelist.term.separator</parameter><sbr/>  parameter is placed after each <tag>term</tag> except the last. The default<sbr/>  is ", " (a comma followed by a space). To suppress rendering of<sbr/>  the separator, set the value of <parameter>variablelist.term.separator</parameter> to<sbr/>  the empty string ("").<sbr/><sbr/>These parameters are primarily intended to be useful if you have<sbr/>multi-term varlistentries that have long terms.<sbr/><sbr/>Closes #1306676. Thanks to Sam Steingold for providing an example<sbr/>"lots of long terms" doc that demonstrated the value of having<sbr/>these options.<sbr/><sbr/>Also, added normalize-space() call to processing of each <tag>term</tag>.<sbr/><sbr/>This change affects all output formats (HTML, PDF, manpages). The<sbr/>default behavior should pretty much remain the same as before, but<sbr/>it is possible (as always) that the change may introduce some new<sbr/>bugginess.<alt>fo/lists.xsl,1.62; fo/param.ent,1.88; fo/param.xweb,1.99; html/lists.xsl,1.48; html/param.ent,1.86; html/param.xweb,1.93; manpages/lists.xsl,1.22; manpages/param.ent,1.14; manpages/param.xweb,1.16; params/variablelist.term.break.after.xml,1.1; params/variablelist.term.separator.xml,1.1 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Fixed bug #1306070 set with 2 books: wrong page numbering on 2nd <tag>book</tag>.<alt>fo/pagesetup.xsl,1.58 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Moved <tag>olink</tag> page <tag>citation</tag> template to <tag>xref</tag>.xsl.<alt>fo/xref.xsl,1.61 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Add <tag>sidebar</tag> titlepage placeholder attset for styles.<alt>fo/titlepage.xsl,1.37 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Fixed incorrect variable name.<alt>fo/sections.xsl,1.41 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Fixed bug [ 1256277 ] sidebarinfo not supported, so now sidebarinfo<sbr/>is supported.<alt>fo/block.xsl,1.28 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Add titlepage for <tag>sidebar</tag>.<alt>fo/titlepage.templates.xml,1.27 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Fixed bug [ 1261896 ] <tag>Section</tag> <tag>title</tag>'s footnotes in page header.<alt>fo/sections.xsl,1.40 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Fixed set.flow.properties to match on draft page-masters too.<alt>fo/pagesetup.xsl,1.57 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Implemented RFE #1292615.<sbr/><sbr/>Added bunch of new parameters (attribute sets) that affect list presentation: list.block.properties, <tag>itemizedlist</tag>.properties, <tag>orderedlist</tag>.properties, <tag>itemizedlist</tag>.<tag>label</tag>.properties and <tag>orderedlist</tag>.<tag>label</tag>.properties. Default behaviour of stylesheets has not been changed but further customizations will be much more easier.<alt>fo/lists.xsl,1.61; fo/param.ent,1.87; fo/param.xweb,1.98; params/itemizedlist.label.properties.xml,1.1; params/itemizedlist.properties.xml,1.1; params/list.block.properties.xml,1.1; params/orderedlist.label.properties.xml,1.1; params/orderedlist.properties.xml,1.1 - Jirka Kosek</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Implemented RFE #1242092.<sbr/><sbr/>You can enable crop marks in your document by setting crop.marks=1 and xep.extensions=1.<sbr/>Appearance of crop marks can be controlled by parameters <parameter>crop.mark.bleed</parameter> (6pt), <parameter>crop.mark.offset</parameter> (24pt) and <parameter>crop.mark.width</parameter> (0.5pt).<sbr/><sbr/>Also there is new named template called user-xep-pis. You can overwrite it in order to produce some PIs that can control XEP as described in http://www.renderx.com/reference.html#Output_Formats<alt>fo/docbook.xsl,1.36; fo/param.ent,1.86; fo/param.xweb,1.97; fo/xep.xsl,1.23; params/crop.mark.bleed.xml,1.1; params/crop.mark.offset.xml,1.1; params/crop.mark.width.xml,1.1; params/crop.marks.xml,1.1 - Jirka Kosek</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message"><parameter>arbortext.extensions</parameter> supports the url(...) syntax.<alt>fo/graphics.xsl,1.43 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Appendixes inside <tag>article</tag> are considered for <tag>ToC</tag><alt>fo/autotoc.xsl,1.27 - Jirka Kosek</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Process not only subelements of <tag>book</tag>, but all content including PI (possibly custom).<alt>fo/division.xsl,1.29 - Jirka Kosek</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Fixed bug in char attribute, where text-align was being set to<sbr/>any char value, even if the align attribute was not 'char'.<sbr/>The CALS spec says text-align set to the value of char only<sbr/>if the align attribute is 'char'.<alt>fo/table.xsl,1.45 - Robert Stayton</alt></phrase></para>
+</listitem>
+</itemizedlist>
+</sect2><!--end of FO changes for 1.70.0-->
+
+<sect2 xml:id="V1700_HTML">
+<title>HTML</title>
+<para>The following changes have been made to the
+        <filename>html</filename> code
+        since the 1.69.1 release.</para>
+<itemizedlist>
+<listitem>
+<para><phrase role="commit-message">Adapted to the new indexing code. Now works just like a wrapper that calls kosek indexing method, originally implemented here.<alt>html/autoidx-ng.xsl,1.5 - Jirka Kosek</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">implemented <tag>index</tag>.method parameter and three methods.<alt>html/autoidx.xsl,1.28 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">added <tag>index</tag>.method parameter to support 3 indexing methods.<alt>html/param.ent,1.94; html/param.xweb,1.103 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Applied patch #1143814 to avoid making bad links from <tag>glossterm</tag>.<alt>html/inline.xsl,1.49 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Implemented feature request #1072510 as a processing instruction<sbr/>to permit including external HTML content into HTML output.<alt>html/pi.xsl,1.9 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Fixed bug #1436121 problems with default.graphic.extension.<sbr/>Moved test for $keep.relative.image.uris to the template<sbr/>that matches on @fileref so all such processing is in<sbr/>the same place.<alt>html/graphics.xsl,1.60 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added new parameter <parameter>chunk.tocs.and.lots</parameter>.has.<tag>title</tag> which controls presence of <tag>title</tag> in a separate chunk with ToC/LoT. Disabling <tag>title</tag> can be very useful if you are generating frameset output (well, yes those frames, but some customers really want them ;-).<alt>html/chunk-code.xsl,1.15; html/param.ent,1.93; html/param.xweb,1.102; params/chunk.tocs.and.lots.has.title.xml,1.1 - Jirka Kosek</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Support dbhtml/dbfo start PI for <tag>orderedlist</tag> numbering in both HTML and FO<alt>common/common.xsl,1.61; html/lists.xsl,1.50 - Norman Walsh</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Allow <tag>ToC</tag> without <tag>title</tag> also for set and <tag>book</tag>.<alt>html/autotoc.xsl,1.37; html/division.xsl,1.12 - Jirka Kosek</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Implemented floats uniformly for <tag>figure</tag>, example, <tag>equation</tag> and<sbr/><tag>informalfigure</tag>, <tag>informalexample</tag>, and <tag>informalequation</tag>.<alt>html/formal.xsl,1.22 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">fixed bug #1449319 Wrong levels for bridgeheads in XHTML (and HTML).<alt>html/sections.xsl,1.32 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added the autotoc.<tag>label</tag>.in.hyperlink param.<sbr/><sbr/>If the value of autotoc.<tag>label</tag>.in.hyperlink is non-zero, labels are<sbr/>included in hyperlinked titles in the <tag>TOC</tag>. If it is instead zero,<sbr/>labels are still displayed prior to the hyperlinked titles, but<sbr/>are not hyperlinked along with the titles.<sbr/><sbr/>Closes patch #1065868. Thanks to anatoly techtonik for the patch.<alt>html/autotoc.xsl,1.36; html/param.ent,1.92; html/param.xweb,1.101; params/autotoc.label.in.hyperlink.xml,1.1 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added two new params: html.head.<tag>legalnotice</tag>.<tag>link</tag>.types and<sbr/>html.head.<tag>legalnotice</tag>.<tag>link</tag>.multiple.<sbr/><sbr/>If the value of the <parameter>generate.legalnotice.link</parameter> is non-zero, then<sbr/>the stylesheet generates (in the head <tag>section</tag> of the HTML source)<sbr/>either a single HTML <tag>link</tag> element or, if the value of the<sbr/>html.head.<tag>legalnotice</tag>.<tag>link</tag>.multiple is non-zero, one <tag>link</tag> element<sbr/>for each <tag>link</tag> type specified. Each <tag>link</tag> has the following<sbr/>attributes:<sbr/><sbr/>  - a rel attribute whose value is derived from the value of<sbr/>    html.head.<tag>legalnotice</tag>.<tag>link</tag>.types<sbr/><sbr/>  - an href attribute whose value is set to the URL of the file<sbr/>    containing the <tag>legalnotice</tag><sbr/><sbr/>  - a <tag>title</tag> attribute whose value is set to the <tag>title</tag> of the<sbr/>    corresponding <tag>legalnotice</tag> (or a <tag>title</tag> programatically<sbr/>    determined by the stylesheet)<sbr/><sbr/>For example:<sbr/><sbr/>  &lt;<tag>link</tag> rel="<tag>copyright</tag>" href="ln-id2524073.html" title="Legal Notice"&gt;<sbr/><sbr/>Closes #1476450. Thanks to Sam Steingold.<alt>html/chunk-common.xsl,1.45; html/param.ent,1.91; html/param.xweb,1.100; params/generate.legalnotice.link.xml,1.4; params/html.head.legalnotice.link.multiple.xml,1.1; params/html.head.legalnotice.link.types.xml,1.1 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Removed leftover <tag>refclass</tag>.suppress cruft.<alt>fo/refentry.xsl,1.31; html/refentry.xsl,1.24 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added <tag>refclass</tag>.suppress param.<sbr/><sbr/>If the value of <tag>refclass</tag>.suppress is non-zero, then display<sbr/><tag>refclass</tag> contents is suppressed in output. Affects HTML and FO<sbr/>output only.<alt>fo/param.ent,1.93; fo/param.xweb,1.106; html/param.ent,1.90; html/param.xweb,1.99; params/refclass.suppress.xml,1.1 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added comment about possible hacking to deal with graphic relative <tag>URI</tag> issue<alt>html/graphics.xsl,1.59 - Norman Walsh</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added convenience for testing the stripped results (commented out for productio)<alt>html/docbook.xsl,1.41 - Norman Walsh</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">DocBook V5.0 uses class="comment" for both XML/SGML comments<alt>fo/inline.xsl,1.44; html/inline.xsl,1.48 - Jirka Kosek</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Improved support for <tag>task</tag> subelements<alt>fo/task.xsl,1.3; html/task.xsl,1.3 - Jirka Kosek</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Fix bug #1471303: Comments cause incorrect &lt;<tag>group</tag>&gt; processing<alt>fo/synop.xsl,1.20; html/synop.xsl,1.22 - Norman Walsh</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Conditions for auto-generating <tag>index</tag> are aligned with the rest of stylesheets.<alt>html/chunk-common.xsl,1.44 - Jirka Kosek</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added message-prolog and message-epilog and<sbr/>suppress-context-node-name local params to the write.chunk and<sbr/>write.text.chunk templates. They enable additional <tag>info</tag> to be<sbr/>emitted before/after the "Writing..." message, and enable they<sbr/>context-node name to be suppressed in output. The reason for<sbr/>these additions is that the write.text.chunk template is<sbr/>"repurposed" in manpages output for writing the names of soelim<sbr/>stub files as well as "real" man pages, and also is used for<sbr/>writing the <parameter>manifest</parameter> file, and it is useful to emit details about<sbr/>the type of file it is writing each time.<alt>common/refentry.xsl,1.13; html/chunker.xsl,1.27; manpages/docbook.xsl,1.60; manpages/other.xsl,1.16 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Fixed handling of punctuation for <tag>Funcparams</tag> in HTML output.<sbr/>Closes #1213275.<alt>html/synop.xsl,1.21 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Fixed cut/paste error that was causing ID warnings to be emitted<sbr/>for all <tag>Sect2</tag> instances, even if they already had IDs.<alt>html/sections.xsl,1.31 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Support inheriting linkends and xlink:hrefs in <tag>imageobjectco</tag> areas<alt>html/graphics.xsl,1.58 - Norman Walsh</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added call to normalize-space() to cause contents of <tag>Abstract</tag> to<sbr/>be normalized when used as the value of the HTML "meta description".<alt>html/docbook.xsl,1.40 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added new <tag>refclass</tag>.suppress param for suppressing display of<sbr/><tag>Refclass</tag> in HTML and FO output. Did not add it to manpages because<sbr/>manpages stylesheet is currently just silently ignoring <tag>Refclass</tag><sbr/>anyway. Closes request #1461065. Thanks to Davor Ocelic (docelic)<sbr/>for reporting.<alt>fo/refentry.xsl,1.29; html/refentry.xsl,1.23 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Process Refpurpose/Inlinemediaobject correctly in generated <tag>ToC</tag>.<sbr/><sbr/>Problem:<sbr/>  Contents of Refpurpose/Inlinemediaobject do not show up <tag>ToC</tag> in<sbr/>  HTML output. DocBook 5 says that Refpurpose/Inlinemediaobject<sbr/>  is valid, so we need to handle it correctly.<sbr/><sbr/>Cause:<sbr/>  HTML stylesheets were doing an xsl:value-of on <tag>Refpurpose</tag> when<sbr/>  generating the <tag>ToC</tag>.<sbr/><sbr/>Fix:<sbr/>  Changed to xsl:apply-templates call instead. Also, removed<sbr/>  generation of hyphen character in <tag>ToC</tag> between <tag>Refname</tag> contents<sbr/>  and <tag>Refpurpose</tag>. The <tag>Refpurpose</tag> template generates an em dash<sbr/>  already, so now that apply-templates is run, that em dash gets<sbr/>  rendered in the <tag>TOC</tag>, just as it is in the main text flow.<sbr/><sbr/>Affects:<sbr/>  This change only affects HTML output. I did not touch the FO<sbr/>  stylesheets because they are not currently rendering a <tag>TOC</tag> for<sbr/>  <tag>Refentry</tag> in the page contents anyway. And as far as the PDF<sbr/>  bookmarks, they appear to be generated with value-select for all<sbr/>  elements, regardless. I imagine that the reason might be that<sbr/>  images are not allowed in PDF bookmark labels.<sbr/><sbr/>  As far as other effects, not the explanation above about the<sbr/>  change from generating a hypen in the <tag>TOC</tag> to generating an em<sbr/>  dash.<sbr/><sbr/>Closes bug #1459977. Thanks to Davor Ocelic (docelic) for the bug<sbr/>report.<alt>html/autotoc.xsl,1.35 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">The Makefile.param file is generated as part of the build, so<sbr/>doesn't need to be in source control. I thought it wasn't,<sbr/>currently, but it was showing up in my "cvs update", so I'm<sbr/>(re)removing it.<alt>html/Makefile.param,1.27 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Process <tag>alt</tag> text with normalize-space().<sbr/>Replace tab indents with spaces.<alt>html/graphics.xsl,1.57 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Content of <tag>citation</tag> element is automatically linked to the bibliographic <tag>entry</tag> with the corresponding <tag>abbrev</tag>.<alt>html/biblio.xsl,1.26; html/inline.xsl,1.47; html/xref.xsl,1.58 - Jirka Kosek</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Add template for <tag>task</tag> in mode="xref-to".<alt>fo/xref.xsl,1.63; html/xref.xsl,1.57 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Suppress ID warnings if the .warnings parameter is 0<alt>html/html.xsl,1.17 - Norman Walsh</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Add support for floatstyle to <tag>figure</tag>.<alt>html/formal.xsl,1.21 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Handling of <tag>xref</tag> to area/areaset need support in extensions code also. I currently have no time to touch extensions code, so code is here to be enabled when extension is fixed also.<alt>html/xref.xsl,1.56 - Jirka Kosek</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added 3 parameters for overriding gentext for<sbr/><tag>index</tag> punctuation.<alt>html/param.ent,1.89; html/param.xweb,1.98 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added parameters to support localization of <tag>index</tag> item<sbr/>punctuation.<sbr/>Added <tag>index</tag>.separator named template to compute the<sbr/>separator punctuation based on locale.<alt>html/autoidx.xsl,1.27 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added a &lt;div class="{$class}-contents"&gt; wrapper around output of<sbr/>contents of all formal objects. Also, added an optional<sbr/>&lt;br class="{class}-break"/&gt; linebreak after all formal objects.<sbr/><sbr/>WARNING: Because this change places an additional DIV between the<sbr/>DIV wrapper for the <tag>equation</tag> and the <tag>equation</tag> contents, it may<sbr/>break some existing CSS stylesheets that have been created with<sbr/>the assumption that there would never be an intervening DIV there.<sbr/><sbr/>The following is an example of what <tag>Equation</tag> output looks like as<sbr/>a result of the changes described above.<sbr/><sbr/>  &lt;div class="<tag>equation</tag>"&gt;<sbr/>    &lt;a name="three" id="three"&gt;&lt;/a&gt;<sbr/><sbr/>    &lt;p class="<tag>title</tag>"&gt;&lt;b&gt;(1.3)&lt;/b&gt;&lt;/p&gt;<sbr/><sbr/>    &lt;div class="equation-contents"&gt;<sbr/>      &lt;span class="<tag>mathphrase</tag>"&gt;1+1=3&lt;/span&gt;<sbr/>    &lt;/div&gt;<sbr/>  &lt;/div&gt;&lt;br class="equation-break"&gt;<sbr/><sbr/>Rationale: These changes allow CSS control of the placement of the<sbr/>formal-object <tag>title</tag> relative to the formal-object contents. For<sbr/>example, using the CSS "float" <tag>property</tag> enables the <tag>title</tag> and<sbr/>contents to be rendered on the same line. Example stylesheet:<sbr/><sbr/>  .<tag>equation</tag> {<sbr/>    margin-top: 20px;<sbr/>    margin-bottom: 20px;<sbr/>  }<sbr/>  .equation-contents {<sbr/>    float: left;<sbr/>  }<sbr/><sbr/>  .<tag>equation</tag> .<tag>title</tag> {<sbr/>    margin-top: 0;<sbr/>    float: right;<sbr/>    margin-right: 200px;<sbr/>  }<sbr/><sbr/>  .<tag>equation</tag> .<tag>title</tag> b {<sbr/>    font-weight: normal;<sbr/>  }<sbr/><sbr/>  .equation-break {<sbr/>    clear: both;<sbr/>  }<sbr/><sbr/>Note that the purpose of the ".equation-break" class is to provide<sbr/>a way to clear off the floats.<sbr/><sbr/>If you want to instead have the <tag>equation</tag> <tag>title</tag> rendered to the left<sbr/>of the <tag>equation</tag> contents, you can do something like this:<sbr/><sbr/>  .<tag>equation</tag> {<sbr/>    margin-top: 20px;<sbr/>    width: 300px;<sbr/>    margin-bottom: 20px;<sbr/>  }<sbr/>  .equation-contents {<sbr/>    float: right;<sbr/>  }<sbr/><sbr/>  .<tag>equation</tag> .<tag>title</tag> {<sbr/>    margin-top: 0;<sbr/>    float: left;<sbr/>    margin-right: 200px;<sbr/>  }<sbr/><sbr/>  .<tag>equation</tag> .<tag>title</tag> b {<sbr/>    font-weight: normal;<sbr/>  }<sbr/><sbr/>  .equation-break {<sbr/>    clear: both;<sbr/>  }<alt>html/formal.xsl,1.20 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Fixed bug in startinglinenumber when context is<sbr/><tag>programlistingco</tag>.<alt>html/verbatim.xsl,1.14 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added handling for cases of <tag>Methodsynopsis</tag> that have <tag>Modifier</tag><sbr/>instances after the <tag>Methodname</tag>. Closes #1353365; thanks to<sbr/>Stephen Langer for reporting.<alt>fo/synop.xsl,1.16; html/synop.xsl,1.20 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added a chunker.output.quiet top-level parameter so that the chunker can be made quiet by default<alt>html/chunker.xsl,1.26 - Norman Walsh</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added support for <tag>link</tag>, <tag>olink</tag>, and <tag>xref</tag> within OO <tag>Classsynopsis</tag><sbr/>and children. (Because DocBook NG/5 allows it).<alt>fo/synop.xsl,1.15; html/synop.xsl,1.19 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">ends-with() isn't an XSLT 1.0 <tag>function</tag><alt>html/html.xsl,1.16 - Norman Walsh</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Output the stripped document for debugging or if you want to process it more than once<alt>html/db5strip.xsl,1.1 - Norman Walsh</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Changed check for *info child in id.warning template from using<sbr/>contains() to using ends-with() -- because contains() will match<sbr/>informal* elements (<tag>informaltable</tag>, etc) too -- not just *info<sbr/>elements.<sbr/><sbr/>Also added check to make sure that *info element matched actually<sbr/>has a <tag>title</tag> (because some *info elements may not -- <tag>title</tag> is not a<sbr/>required child of *info elements).<sbr/><sbr/>And FWIW, I don't think it is too aggressive to have the default<sbr/>behavior be to have the stylesheets emit notification messages<sbr/>about ID-less titled objects. If it were the default to have it<sbr/>not emit those, most users would probably never take the time to<sbr/>turn it on, including the users who it is most meant to benefit<sbr/>(those who don't yet know why they ought to be putting IDs on<sbr/>their titled objects).<alt>html/html.xsl,1.15 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">For case where id.warn<alt>html/html.xsl,1.14 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">New parameter: <parameter>id.warnings</parameter>. If non-zero, warnings are generated for titled objects that don't have titles. True by default; I wonder if this will be too aggressive?<alt>html/biblio.xsl,1.25; html/component.xsl,1.27; html/division.xsl,1.11; html/formal.xsl,1.19; html/glossary.xsl,1.20; html/html.xsl,1.13; html/index.xsl,1.16; html/param.ent,1.88; html/param.xweb,1.97; html/refentry.xsl,1.22; html/sections.xsl,1.30; params/id.warnings.xml,1.1 - Norman Walsh</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">If the <parameter>keep.relative.image.uris</parameter> parameter is true, don't use the absolute <tag>URI</tag> (as calculated from xml:base) in the img src attribute, us the value the <tag>author</tag> specified. Note that we still have to calculate the absolute <tag>filename</tag> for use in the image intrinsics extension.<alt>html/graphics.xsl,1.56 - Norman Walsh</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Support <tag>date</tag> as an inline<alt>fo/inline.xsl,1.43; html/inline.xsl,1.46 - Norman Walsh</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Hack font bugs in funcsynopses<alt>html/synop.xsl,1.18 - Norman Walsh</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added new parameter <parameter>keep.relative.image.uris</parameter><alt>fo/param.ent,1.91; fo/param.xweb,1.104; html/param.ent,1.87; html/param.xweb,1.96; params/keep.relative.image.uris.xml,1.1 - Norman Walsh</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Move the stripns code to a common location; update @fileref and @entityref attributes in an attempt to handle the fact that the base <tag>URI</tag> gets mangled by the stripping copy.<alt>common/stripns.xsl,1.1; fo/docbook.xsl,1.37; html/docbook.xsl,1.39 - Norman Walsh</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added "Cross References" <tag>section</tag> in HTML doc (for consistency with<sbr/>the FO doc). Also, moved the existing FO "Cross References"<sbr/><tag>section</tag> to follow the "Linking" <tag>section</tag>.<alt>fo/param.xweb,1.101; html/param.xweb,1.95 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added ID attribues to all <tag>Reference</tag> elements (e.g., id="tables"<sbr/>for the doc for <tag>section</tag> on <tag>Table</tag> params). So pages for all<sbr/>subsections of ref docs now have stable filenames instead of<sbr/>arbitrary generated filenames.<alt>fo/param.xweb,1.100; html/param.xweb,1.94 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Removed misguided code intended for normalizing whitespace in <tag>term</tag><sbr/>output for HTML and FO. (It's not necessary for those, though it is<sbr/>still needed in manpages output because we're using the .TP macro,<sbr/>and first line following that is treated differently than the<sbr/>subsequent lines. So we need to get rid of any embedded line<sbr/>breaks from within the <tag>Term</tag> source.)<alt>fo/lists.xsl,1.63; html/lists.xsl,1.49 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added two new parameters for handling of multi-term <tag>varlistentry</tag><sbr/>elements:<sbr/><sbr/><parameter>variablelist.term.break.after</parameter>:<sbr/>  When the <parameter>variablelist.term.break.after</parameter> is non-zero, it will<sbr/>  generate a line break after each <tag>term</tag> multi-term <tag>varlistentry</tag>.<sbr/><sbr/><parameter>variablelist.term.separator</parameter>:<sbr/>  When a <tag>varlistentry</tag> contains multiple <tag>term</tag> elements, the string<sbr/>  specified in the value of the <parameter>variablelist.term.separator</parameter><sbr/>  parameter is placed after each <tag>term</tag> except the last. The default<sbr/>  is ", " (a comma followed by a space). To suppress rendering of<sbr/>  the separator, set the value of <parameter>variablelist.term.separator</parameter> to<sbr/>  the empty string ("").<sbr/><sbr/>These parameters are primarily intended to be useful if you have<sbr/>multi-term varlistentries that have long terms.<sbr/><sbr/>Closes #1306676. Thanks to Sam Steingold for providing an example<sbr/>"lots of long terms" doc that demonstrated the value of having<sbr/>these options.<sbr/><sbr/>Also, added normalize-space() call to processing of each <tag>term</tag>.<sbr/><sbr/>This change affects all output formats (HTML, PDF, manpages). The<sbr/>default behavior should pretty much remain the same as before, but<sbr/>it is possible (as always) that the change may introduce some new<sbr/>bugginess.<alt>fo/lists.xsl,1.62; fo/param.ent,1.88; fo/param.xweb,1.99; html/lists.xsl,1.48; html/param.ent,1.86; html/param.xweb,1.93; manpages/lists.xsl,1.22; manpages/param.ent,1.14; manpages/param.xweb,1.16; params/variablelist.term.break.after.xml,1.1; params/variablelist.term.separator.xml,1.1 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Problem:<sbr/>Garbage characters appear in content of <tag>Title</tag> attribute in HTML<sbr/>output.<sbr/><sbr/>Cause:<sbr/>Contents of <tag>Alt</tag> element, including line breaks, were being copied<sbr/>over "as is" to value of <tag>Title</tag> attribute in HTML output. Line<sbr/>breaks in <tag>Title</tag> appear a garbage characters when displayed as<sbr/>pop-up "tool text".<sbr/><sbr/>Fix:<sbr/>Added call to normalize-space() when transforming content of <tag>Alt</tag><sbr/>for HTML output. Closes #1254532. Thanks to Sam Steingold for<sbr/>reporting the problem.<alt>html/html.xsl,1.12 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added "wrapper-name" param to inline.charseq named template,<sbr/>enabling it to output inlines other than just "span". <tag>Acronym</tag> and<sbr/><tag>Abbrev</tag> templates now use inline.charseq to output HTML "<tag>acronym</tag>"<sbr/>and "abbr" elements (instead of "span"). Closes #1305468. Thanks<sbr/>to Sam Steingold for suggesting the change.<alt>html/inline.xsl,1.45 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Fixed bug [ 1292052 ] acronym/remark in qandaentry/question <tag>TOC</tag>.<alt>html/qandaset.xsl,1.22 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Fixed bug [ 1261811 ] Redundant output of b and <tag>anchor</tag> element with identical id.<alt>html/qandaset.xsl,1.21 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Removed colspan on <tag>tr</tag> elements since it is invalid and<sbr/>already on the <tag>td</tag> anyway.  Fixes bug 1261832.<alt>html/qandaset.xsl,1.20 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Can you say infinite loop? I knew you could.<alt>html/table.xsl,1.39 - Norman Walsh</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Changed version attribute on xsl:stylesheet from 1.1 to 1.0<alt>html/chunker.xsl,1.25 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Attempt to support @dir more effectively<alt>html/block.xsl,1.22; html/component.xsl,1.26; html/division.xsl,1.10; html/html.xsl,1.11; html/inline.xsl,1.44; html/refentry.xsl,1.21; html/sections.xsl,1.29 - Norman Walsh</alt></phrase></para>
+</listitem>
+</itemizedlist>
+</sect2><!--end of HTML changes for 1.70.0-->
+
+<sect2 xml:id="V1700_HTMLHelp">
+<title>HTMLHelp</title>
+<para>The following changes have been made to the
+        <filename>htmlhelp</filename> code
+        since the 1.69.1 release.</para>
+<itemizedlist>
+<listitem>
+<para><phrase role="commit-message">We are using HTML output method, thus escaping is not necessary anymore, it is done automatically by XSLT engine<alt>htmlhelp/htmlhelp-common.xsl,1.36 - Jirka Kosek</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">OK, prefixes that are excluded, must be also declared, otherwise saxon complains<alt>htmlhelp/htmlhelp-common.xsl,1.35 - Jirka Kosek</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Add namespace prefixes db and ng into the list of excluded prefixes (their declarations are added when profiling stylesheets is generated).<alt>htmlhelp/htmlhelp-common.xsl,1.34 - Jirka Kosek</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Fixed <tag>tertiary</tag> <tag>index</tag> appearance in index pane.<alt>htmlhelp/htmlhelp-common.xsl,1.33 - Jirka Kosek</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Applied patch #1048856 from techtonik. HTML output is used instead of d-o-e and text method.<alt>htmlhelp/htmlhelp-common.xsl,1.32 - Jirka Kosek</alt></phrase></para>
+</listitem>
+</itemizedlist>
+</sect2><!--end of HTMLHelp changes for 1.70.0-->
+
+<sect2 xml:id="V1700_Lib">
+<title>Lib</title>
+<para>The following changes have been made to the
+        <filename>lib</filename> code
+        since the 1.69.1 release.</para>
+<itemizedlist>
+<listitem>
+<para><phrase role="commit-message">Move trim.text template into lib.xweb file.<alt>lib/lib.xweb,1.14; manpages/table.xsl,1.3; manpages/utility.xsl,1.8 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+</itemizedlist>
+</sect2><!--end of Lib changes for 1.70.0-->
+
+<sect2 xml:id="V1700_Manpages">
+<title>Manpages</title>
+<para>The following changes have been made to the
+        <filename>manpages</filename> code
+        since the 1.69.1 release.</para>
+<itemizedlist>
+<listitem>
+<para><phrase role="commit-message">Added the following params:<sbr/><sbr/>  - man.indent.width (string-valued)<sbr/>  - man.indent.refsect (boolean)<sbr/>  - man.indent.blurbs (boolean)<sbr/>  - man.indent.lists (boolean)<sbr/>  - man.indent.verbatims (boolean)<sbr/><sbr/>Note that in earlier snapshots, man.indent.width was named<sbr/>man.indentation.default.value and the boolean params had names<sbr/>like man.indentation.*.adjust. Also the man.indent.blurbs param<sbr/>was called man.indentation.authors.adjust (or something).<sbr/><sbr/>The behavior now is: If the value of a particular man.indent.*<sbr/>boolean param is non-zero, the corresponding contents (refsect*,<sbr/>list items, authorblurb/personblurb, vervatims) are displayed with<sbr/>a left margin indented by a width equal to the value of<sbr/>man.indent.width.<alt>params/man.indent.blurbs.xml,1.1; manpages/docbook.xsl,1.74; manpages/info.xsl,1.20; manpages/lists.xsl,1.30; manpages/other.xsl,1.20; manpages/param.ent,1.22; manpages/param.xweb,1.24; manpages/refentry.xsl,1.14; params/man.indent.lists.xml,1.1; params/man.indent.refsect.xml,1.1; params/man.indent.verbatims.xml,1.1; params/man.indent.width.xml,1.1 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added man.<tag>table</tag>.footnotes.divider param.<sbr/><sbr/>In each <tag>table</tag> that contains footenotes, the string specified by<sbr/>the man.<tag>table</tag>.footnotes.divider parameter is output before the<sbr/>list of footnotes for the <tag>table</tag>.<alt>manpages/docbook.xsl,1.73; manpages/links.xsl,1.6; manpages/param.ent,1.21; manpages/param.xweb,1.23; params/man.table.footnotes.divider.xml,1.1 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added the man.output.in.separate.dir, man.output.<parameter>base.dir</parameter>, and<sbr/>man.output.subdirs.enabled parameters.<sbr/><sbr/>The man.output.<parameter>base.dir</parameter> parameter specifies the base directory<sbr/>into which man-page files are output. The<sbr/>man.output.subdirs.enabled parameter controls whether the files<sbr/>are output in subdirectories within the base directory.<sbr/><sbr/>The values of the man.output.<parameter>base.dir</parameter> and<sbr/>man.output.subdirs.enabled parameters are used only if the value<sbr/>of man.output.in.separate.dir parameter is non-zero. If the value<sbr/>of man.output.in.separate.dir is zero, man-page files are not<sbr/>output in a separate directory.<alt>manpages/docbook.xsl,1.72; manpages/param.ent,1.20; manpages/param.xweb,1.22; params/man.output.base.dir.xml,1.1; params/man.output.in.separate.dir.xml,1.1; params/man.output.subdirs.enabled.xml,1.1 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added man.font.<tag>table</tag>.headings and man.font.<tag>table</tag>.<tag>title</tag> params,<sbr/>for controlling font in <tag>table</tag> headings and titles.<alt>manpages/docbook.xsl,1.71; manpages/param.ent,1.19; manpages/param.xweb,1.21; params/man.font.table.headings.xml,1.1; params/man.font.table.title.xml,1.1 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Corrected oversight in param values.<alt>manpages/docbook.xsl,1.70 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added man.font.<tag>funcsynopsisinfo</tag> and man.font.<tag>funcprototype</tag><sbr/>params, for specifying the roff font (for example, BI, B, I) for<sbr/><tag>funcsynopsisinfo</tag> and <tag>funcprototype</tag> output.<alt>manpages/block.xsl,1.19; manpages/docbook.xsl,1.69; manpages/param.ent,1.18; manpages/param.xweb,1.20; manpages/synop.xsl,1.29; manpages/table.xsl,1.21; params/man.font.funcprototype.xml,1.1; params/man.font.funcsynopsisinfo.xml,1.1 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added man.<tag>segtitle</tag>.suppress param.<sbr/><sbr/>If the value of man.<tag>segtitle</tag>.suppress is non-zero, then display of<sbr/><tag>segtitle</tag> contents is suppressed in output.<alt>manpages/docbook.xsl,1.68; manpages/param.ent,1.17; manpages/param.xweb,1.19; params/man.segtitle.suppress.xml,1.1 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added man.output.<parameter>manifest</parameter>.enabled and man.output.manifest.<tag>filename</tag> params.<sbr/><sbr/>If man.output.<parameter>manifest</parameter>.enabled is non-zero, a list of filenames<sbr/>for man pages generated by the stylesheet transformation is<sbr/>written to the file named by man.output.<parameter>manifest</parameter>.<tag>filename</tag><alt>manpages/docbook.xsl,1.67; manpages/other.xsl,1.19; manpages/param.ent,1.16; manpages/param.xweb,1.18; params/man.output.manifest.enabled.xml,1.1; params/man.output.manifest.filename.xml,1.1; tools/make/Makefile.DocBook,1.4 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added <tag>refentry</tag>.meta.get.quietly param.<sbr/><sbr/>If zero (the default), notes and warnings about "missing" markup<sbr/>are generated during gathering of <tag>refentry</tag> metadata. If non-zero,<sbr/>the metadata is gathered "quietly" -- that is, the notes and<sbr/>warnings are suppressed.<sbr/><sbr/>NOTE: If you are processing a large amount of <tag>refentry</tag> content,<sbr/>      you may be able to speed up processing significantly by<sbr/>      setting a non-zero value for <tag>refentry</tag>.meta.get.quietly.<alt>common/refentry.xsl,1.17; manpages/param.ent,1.15; manpages/param.xweb,1.17; params/refentry.meta.get.quietly.xml,1.1 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Changed names of all boolean indentation params to man.indent.*<sbr/>Also discarded individual man.indent.*.value params and switched<sbr/>to just using a common man.indent.width param (3n by default).<alt>manpages/docbook.xsl,1.66; manpages/info.xsl,1.19; manpages/lists.xsl,1.29; manpages/other.xsl,1.18; manpages/refentry.xsl,1.13 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Fixed problem with <tag>synopsis</tag> content being mis-aligned.<alt>manpages/block.xsl,1.18 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Fixed problem with man.output.* name conflict (forgot to update<sbr/>names in previous commit).<alt>manpages/utility.xsl,1.15 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added boolean man.output.in.separate.dir param, to control whether<sbr/>or not man files are output in separate directory.<alt>manpages/docbook.xsl,1.65; manpages/utility.xsl,1.14 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Updated <tag>table</tag> converter to include context <tag>info</tag> when logging<sbr/>warnings about nested tables.<alt>manpages/block.xsl,1.17; manpages/table.xsl,1.20 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Fixed small bug in new verbatim-indenting code.<alt>manpages/block.xsl,1.16 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added options for controlling indentation of verbatim output.<sbr/>Controlled through the man.indentation.verbatims.adjust and<sbr/>man.indentation.verbatims.value params. Closes #1242997<alt>manpages/block.xsl,1.15; manpages/docbook.xsl,1.64 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added options for controlling indentation in lists and in *blurb<sbr/>output in the AUTHORS <tag>section</tag>. Controlled through the<sbr/>man.indentation.lists.adjust, man.indentation.lists.value,<sbr/>man.indentation.authors.adjust, and man.indentation.authors.value<sbr/>parameters. Default is 3 characters (instead of the roff default<sbr/>of 8 characters). Closes #1449369.<sbr/><sbr/>Also, removed the indent that was being set on <tag>informalexample</tag><sbr/>outuput. I will instead add an option for indenting verbatims,<sbr/>which I think is what the <tag>informalexample</tag> indent was intended for<sbr/>originally.<alt>manpages/block.xsl,1.14; manpages/docbook.xsl,1.63; manpages/info.xsl,1.18; manpages/lists.xsl,1.28 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Changed line-spacing call before <tag>synopfragment</tag> to use ".sp -1n"<sbr/>("n" units specified) instead of plain ".sp -1"<alt>manpages/synop.xsl,1.28 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added support for rendering <tag>figure</tag> titles correctly (with a line<sbr/>break before then and in bold).<alt>manpages/block.xsl,1.13 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added support for writing man files into a specific output<sbr/>directory and into appropriate subdirectories within that output<sbr/>directory. Controlled through the man.<parameter>base.dir</parameter> parameter (similar<sbr/>to the <parameter>base.dir</parameter> support in the HTML stylesheet) and the<sbr/>man.subdirs.enabled parameter, which automatically determines the<sbr/>name of an appropriate subdir (for example, man/man7, man/man1,<sbr/>etc.) based on the <tag>section</tag> number/manvolnum of the source <tag>Refentry</tag>.<sbr/><sbr/>Closes #1255036 and #1170317. Thanks to Denis Bradford for the<sbr/>original feature request, and to Costin Stroie for submitting a<sbr/>patch that was very helpful in implementing the support.<alt>manpages/docbook.xsl,1.62; manpages/utility.xsl,1.13 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Refined XPath statements and notification messages for <tag>refentry</tag><sbr/>metadata handling.<alt>common/common.xsl,1.59; common/refentry.xsl,1.14; manpages/docbook.xsl,1.61; manpages/other.xsl,1.17 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added message-prolog and message-epilog and<sbr/>suppress-context-node-name local params to the write.chunk and<sbr/>write.text.chunk templates. They enable additional <tag>info</tag> to be<sbr/>emitted before/after the "Writing..." message, and enable they<sbr/>context-node name to be suppressed in output. The reason for<sbr/>these additions is that the write.text.chunk template is<sbr/>"repurposed" in manpages output for writing the names of soelim<sbr/>stub files as well as "real" man pages, and also is used for<sbr/>writing the <parameter>manifest</parameter> file, and it is useful to emit details about<sbr/>the type of file it is writing each time.<alt>common/refentry.xsl,1.13; html/chunker.xsl,1.27; manpages/docbook.xsl,1.60; manpages/other.xsl,1.16 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added support for <tag>copyright</tag> and <tag>legalnotice</tag>.<sbr/>The manpages stylesheets now output a <tag>COPYRIGHT</tag> <tag>section</tag>, after the<sbr/>AUTHORS <tag>section</tag>, if a <tag>copyright</tag> or <tag>legalnotice</tag> is found in the<sbr/>source. The <tag>section</tag> contains the <tag>copyright</tag> contents followed by<sbr/>the <tag>legalnotice</tag> contents. Closes #1450209.<alt>manpages/docbook.xsl,1.59; manpages/info.xsl,1.17 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Drastically reworked all of the XPath expressions used in <tag>refentry</tag><sbr/>metadata gathering -- completely removed $parentinfo and turned<sbr/>$info into a set of nodes that includes the *info contents of the<sbr/><tag>Refentry</tag> plus the *info contents all all of its ancestor<sbr/>elements. The basic XPath expression now used throughout is (using<sbr/>the example of checking for a <tag>date</tag>):<sbr/><sbr/>  (($info[//date])[last()]/date)[1].<sbr/><sbr/>That selects the "last" *info/date <tag>date</tag> in document order -- that<sbr/>is, the one eitther on the <tag>Refentry</tag> itself or on the closest<sbr/>ancestor to the <tag>Refentry</tag>.<sbr/><sbr/>It's likely this change may break some things; may need to pick<sbr/>up some pieces later.<sbr/><sbr/>Also, changed the default value for the <parameter>man.th.extra2.max.length</parameter><sbr/>from 40 to 30.<alt>common/common.xsl,1.58; common/refentry.xsl,1.7; params/man.th.extra2.max.length.xml,1.2; params/refentry.date.profile.xml,1.2; params/refentry.manual.profile.xml,1.2; params/refentry.source.name.profile.xml,1.2; params/refentry.version.profile.xml,1.2; manpages/docbook.xsl,1.58; manpages/other.xsl,1.15 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Ensure better postcript/PDF output from "man -Tps" by doing a<sbr/>"negative" vertical space with  ".sp -1n" everywhere instead of<sbr/>just ".sp -1".<alt>manpages/info.xsl,1.16 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Removed encoding on <tag>table</tag>.xsl stylesheet.<alt>manpages/table.xsl,1.19 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Did some comment cleanup on the <tag>table</tag>.xsl file.<alt>manpages/table.xsl,1.18 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added newline before .sp request in template that matches<sbr/>verbatims, because in some cases the .sp was appearing as a<sbr/><tag>literal</tag> in output, because it was getting output inline without a<sbr/>break before it.<alt>manpages/block.xsl,1.12 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added template for matching Span; noticed problems with span<sbr/>instances appearing as-is output, possibly as a side-effect of<sbr/>failed <tag>Olink</tag> processing -- so we need to catch it before it<sbr/>sneaks through.<alt>manpages/inline.xsl,1.17 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Moved table-footnote handling to links.xsl file. Added initial<sbr/>support for converting <tag>Thead</tag> to a "running header". Changed<sbr/>column-separator from hard-coded tab character (default in tb(1))<sbr/>to user-configurable character (colon by default). Changed prefix<sbr/>on several params from "man.*" to "tbl.*".<alt>manpages/links.xsl,1.5; manpages/table.xsl,1.17 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Removed stripns.xsl from manpages/ subdirectory. manpages now use<sbr/>the stripns.xsl in the common/ subdirectory.<alt>manpages/stripns.xsl,1.3 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added support for DocBook 5 namespace-stripping in manpages<sbr/>stylesheet. Closes request #1210692.<alt>common/common.xsl,1.56; manpages/docbook.xsl,1.57 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Restored default indentation behavior "normal" man behavior.<sbr/>Corrected handling of empty <tag>Address</tag> instances in <tag>author</tag> <tag>section</tag>.<alt>manpages/docbook.xsl,1.56; manpages/info.xsl,1.15 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added support for top-alignment of cell contents.<alt>manpages/table.xsl,1.16 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Fixed handling of <tag>table</tag> footnotes.<sbr/>With this checkin, the <tag>table</tag> support in the manpages stylesheet is<sbr/>now basically feature complete. So this change closes request<sbr/>#619532, "No support for tables" -- the oldest currently open<sbr/>manpages feature request, submitted by Ben Secrest (blsecres) on<sbr/>2002-10-07. Congratulations to me [patting myself on the back].<alt>manpages/block.xsl,1.11; manpages/docbook.xsl,1.55; manpages/table.xsl,1.15 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added handling for <tag>table</tag> titles. Also fixed handling of nested<sbr/>tables; nest tables are now "extracted" and displayed just after<sbr/>their parent tables.<alt>manpages/docbook.xsl,1.54; manpages/table.xsl,1.14 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added character formatting for <tag>table</tag> headings.<alt>manpages/docbook.xsl,1.53; manpages/table.xsl,1.13 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added "options line" allbox/center/expand support.<alt>manpages/table.xsl,1.12 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Corrected handling for case where a cell with a rowspan is<sbr/>preceded in the same <tag>row</tag> by a cell or cells with colspans. Added<sbr/>step for calling trim-text() on roff-formatted contents of each<sbr/>cell, to trim off leading/trailing whitespace from those contents.<alt>manpages/table.xsl,1.11 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Fixed handling for case where <tag>table</tag> is an HTML <tag>table</tag> in the<sbr/>DocBook source (rather than CALS). Adjusted warning message about<sbr/>nested tables.<alt>manpages/table.xsl,1.10 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Further <tag>table</tag> fine-tuning. Added handling for nested tables<sbr/>(discard them with a warning, because tbl(1) does not support<sbr/>nested tables). Also deal with cases where source <tag>table</tag> has<sbr/>multiple <tag>tgroup</tag>. Only output "allbox" if border != 0.<alt>manpages/table.xsl,1.9 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Checkpointing. Now works correctly with the standard test <tag>table</tag><sbr/>(which contains rowspan and colspan instances. Need to test<sbr/>further to make sure it will work with other rowspan/colspan<sbr/>tables.<alt>manpages/table.xsl,1.8 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Checkpointing.<alt>manpages/table.xsl,1.7 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Checkpointing. Format spec now gets written correctly, including<sbr/>for all instances of Rowspan. Just have an issue with generating<sbr/>one less tab than should be in instances with rowspan/colspan.<alt>manpages/table.xsl,1.6 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added support for *info gathering all the way up to root element.<sbr/>Problem:: Existing stylesheets only gathered the *info child of<sbr/>each <tag>Refentry</tag>, plus *info child of its parent.<sbr/>Change:: For each <tag>Refentry</tag>, the stylesheets now contstruct a node<sbr/>set that contains the entire contents of *info children of all<sbr/>ancestors of that <tag>Refentry</tag>, as well as its own *info child.<sbr/><sbr/>Closes #1243035. Thanks to Joe Orton for the feature request.<alt>manpages/docbook.xsl,1.52; manpages/info.xsl,1.14; manpages/other.xsl,1.14 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added option for turning off bold formatting in <tag>Funcsynopsis</tag>.<sbr/>Boldface formatting in <tag>function</tag> <tag>synopsis</tag> is mandated in the man(7)<sbr/>man page and is used almost universally in existing man pages.<sbr/>Despite that, it really does look like crap to have an entire<sbr/><tag>Funcsynopsis</tag> output in bold, so I added params for turning off the<sbr/>bold formatting and/or replacing it with a different roff special<sbr/>font (e.g., "RI" for alternating roman/italic instead of the<sbr/>default "BI" for alternating bold/italic). The new params are<sbr/>"man.<tag>funcprototype</tag>.font" and "man.<tag>funcsynopsisinfo</tag>.font". To be<sbr/>documented later.<sbr/><sbr/>Closes #1452247. Thanks to Joe Orton for the feature request.<alt>params/man.string.subst.map.xml,1.16; manpages/block.xsl,1.10; manpages/docbook.xsl,1.51; manpages/inline.xsl,1.16; manpages/synop.xsl,1.27 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Took some templates for matching inline instances of come<sbr/>"computer" markup and moved them out of synop.xsl file and into<sbr/>the inline.xsl file.<alt>manpages/inline.xsl,1.15; manpages/synop.xsl,1.26 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Someday I'll get around to learning basic XPath. And/or common<sbr/>sense.<alt>manpages/info.xsl,1.13 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Use AUTHORS instead of <tag>AUTHOR</tag> if we have multiple people to<sbr/>attribute. Also, fixed checking such that we generate <tag>author</tag><sbr/><tag>section</tag> even if we don't have an <tag>author</tag> (as long as there is at<sbr/>least one other person/entity we can put in the <tag>section</tag>). Also<sbr/>adjusted assembly of content for <tag>Author</tag> metainfo field such that<sbr/>we now not only use <tag>author</tag>, but try to find a "best match" if we<sbr/>can't find an <tag>author</tag> name to put there.<sbr/><sbr/>Closes #1233592. Thanks to Sam Steingold for the request.<alt>manpages/info.xsl,1.12 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Changes for request #1243027, "Impove handling of <tag>AUTHOR</tag> <tag>section</tag>."<sbr/>This adds support for <tag>Collab</tag>, Corpauthor, Corpcredt, <tag>Orgname</tag>,<sbr/><tag>Publishername</tag>, and <tag>Publisher</tag>. Also adds support for output of<sbr/><tag>Affiliation</tag> and its children, and support for using gentext<sbr/>strings for auto-attributing roles (<tag>Author</tag>, <tag>Editor</tag>, <tag>Publisher</tag>,<sbr/>Translator, etc.). Also did a lot of code cleanup and<sbr/>modularization of all the <tag>AUTHOR</tag> handling code. And fixed a bug<sbr/>that was causing <tag>Author</tag> <tag>info</tag> to not be picked up correctly for<sbr/>metainfo comment we embed in man-page source.<alt>manpages/info.xsl,1.11 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Provide support for adjusting default indent.  Problem:: By<sbr/>default, man pages are output with a indent of 8 characters.<sbr/>That's a lot of wasted space that might better be used --<sbr/>especially in cases where the content verbatim stuff that has long<sbr/>lines. Change:: Added support for customizing the roff "default<sbr/>indentation value" (value of IN register)<sbr/>man.indentation.default.adjust (boolean) and<sbr/>man.indentation.default.value params (number, 3n by default).<sbr/>Also made some adjustments to get better formatting of<sbr/>sub-subsection titles even without adjusting default indentation.<alt>manpages/docbook.xsl,1.50; manpages/lists.xsl,1.27; manpages/other.xsl,1.13; manpages/refentry.xsl,1.12 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message"><tag>Formalpara</tag>, output with "run in" head.<sbr/>Closes #1448905.<alt>manpages/block.xsl,1.9 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Support bold output for "<tag>emphasis</tag> remap='B'". (because Eric<sbr/>Raymond's doclifter(1) tool converts groff source marked up with<sbr/>".B" request or "\fB" escapes to DocBook "<tag>emphasis</tag> remap='B'".)<alt>manpages/inline.xsl,1.14 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Doh! If I only had a nickel for every time I made the mistake of<sbr/>checking for plain following-sibling instead of *first* following<sbr/>sibling, I would have enough money to buy... something.<alt>manpages/utility.xsl,1.12 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Disappearing whitespace in <tag>Para</tag> content, fixed.<sbr/>Problem:: For a <tag>Para</tag>, in output of content of two child elements<sbr/>separated by whitespace, the space gets eaten. Also, for adjacent<sbr/>text nodes separated by whitespace plus a comment. Cause:: I<sbr/>didn't realize that running normalize-space() on a node that only<sbr/>contains space returns an empty string :) Also, did not have the<sbr/>code checking for comment or PI nodes correctly. Fix:: Added code<sbr/>to correctly catch whitespacespace-only nodes, comments, and PIs.<sbr/><sbr/>Closes #1448860 and #1448856.<alt>manpages/utility.xsl,1.11 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message"><tag>Segmentedlist</tag>, fixed character formatting within <tag>seg</tag> output.<sbr/>Problem:: <tag>Seg</tag> content that contained bold/ital character<sbr/>formatting was getting munged. Cause:: Existing code was running<sbr/>trim.text() on <tag>Seg</tag> content; trim.text() is meant to be run only<sbr/>on text nodes. Fix:: Removed call to trim.text() and replaced<sbr/>with "apply templates and read resulting contents into a variable,<sbr/>then run normalize-space() on that variable". That should work<sbr/>OK, because <tag>Seg</tag> content model does not permit verbatim content or<sbr/>any other block content as its child content.<sbr/><sbr/>Closes #1447578. Thanks to Daniel Leidert for reporting.<alt>manpages/lists.xsl,1.26 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message"><tag>Segmentedlist</tag> output, adjusted width of <tag>table</tag> cells.<sbr/>Problem:: Content of <tag>table</tag> cells in <tag>segmentedlist</tag> output wraps<sbr/>even when there's still plenty of room left for text on the<sbr/>current line. Cause:: Behavior described is by design in tbl(1).<sbr/>It effectively sets the maximum width of cells to 1/3 of the<sbr/>current line length. Not sure why... Fix:: Added called to .ll<sbr/>request that causes line length to temporarily be increased to<sbr/>1.62 times the current line length before <tag>table</tag> output of each<sbr/><tag>segmentedlist</tag>, then restore it back to previous width after<sbr/>output of the <tag>table</tag> markup. I suppose there are probably some<sbr/>cases where that will produce some undesirable results. But for<sbr/>now, it gives good output for all test cases I've tried.<alt>manpages/lists.xsl,1.25 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">If multiple <tag>Refnamediv</tag> within same <tag>Refentry</tag>, put a ".br" line<sbr/>break between them, instead of a blank line. This closes up<sbr/>spacing between them and also makes it clear that the break is<sbr/>intentional, not a stray.<alt>manpages/refentry.xsl,1.11 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message"><tag>Funcsynopsisinfo</tag> must be handled as a verbatim.<sbr/>Problem:: Existing code was not preserving breaks and whitespace<sbr/>in <tag>Funcsynopsisinfo</tag>. Cause:: Lack of awareness that<sbr/><tag>Funcsynopsisinfo</tag> is a verbatim environment. Fix:: Handle in<sbr/><tag>Funcsynopsisinfo</tag> in the same way as other verbatims (that is,<sbr/>wrap in .nf/.fi requests. Additional problem: According to man(7)<sbr/>man page and existing man2/ pages, all parts of a <tag>funcsynopsis</tag><sbr/>that are not args must be in bold. But because <tag>Funcsynopsisinfo</tag><sbr/>is a verbatim, it needs different roff bold markup than other<sbr/>stuff. So wrapped it in ".ft B"/ft pair. (Perhaps it might make<sbr/>sense to wrap the whole <tag>funcsynopsis</tag> in ".ft B"/ft instead of<sbr/>trying to bold/unbold at the word level, as we are doing now. Or<sbr/>perhaps not.)<sbr/><sbr/>Closes bug #1447121. Thanks to Joe Orton for reporting.<alt>manpages/block.xsl,1.8; manpages/synop.xsl,1.25 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Itemizedlist/Orderedlist with <tag>Title</tag>, fixed handling of.<sbr/>Also handling of paragraph text following a list.<sbr/>Problem:: No output for <tag>Title</tag> element of Itemized/Orderedlist.<sbr/>Cause:: Missing logic for matching <tag>Title</tag> instances in lists. Fix::<sbr/>Added handling for <tag>Title</tag>.<sbr/>Also fixed problem that caused text following a list within the<sbr/>same paragraph to be indented more than expected.<sbr/>Closes #1447042 and #1447072.<alt>manpages/lists.xsl,1.24 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message"><tag>Authorgroup</tag> handling fixed. Problem:: Content of <tag>Authorgroup</tag> was<sbr/>not getting output. Cause:: Oversight in XPath expression caused<sbr/><tag>Author</tag> and friends to be found only if they were direct children<sbr/>of *info. Fix:: Updated XPath expression to check for all <tag>Author</tag><sbr/>etc. descendants, not just direct children.<sbr/><sbr/>Closes bug #1447026. Thanks to Daniel Leidert for reporting.<alt>manpages/info.xsl,1.10 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added support for <tag>Segmentedlist</tag>.<sbr/>Details: Output is tabular, with no option for "list" type output.<sbr/>Output for <tag>Segtitle</tag> elements can be supressed by setting<sbr/>man.<tag>segtitle</tag>.suppress. If <tag>Segtitle</tag> content is output, it is<sbr/>rendered in italic type (not bold because not all terminals<sbr/>support bold and so italic ensures the stand out on those<sbr/>terminals). Extra space (.sp line) at end of <tag>table</tag> code ensures<sbr/>that it gets handled correctly in the case where its source is the<sbr/>child of a <tag>Para</tag>.  Closes feature-request #1400097. Thanks to<sbr/>Daniel Leidert for the patch and push, and to Alastair Rankine for<sbr/>filing the original feature request.<alt>manpages/lists.xsl,1.23; manpages/utility.xsl,1.10 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Corrected oversight in handling of <tag>Productname</tag>. Problem:: No<sbr/><tag>trademark</tag> output for <tag>Productname</tag> class="trade" instances. Cause::<sbr/>Oversight. Fix:: Added handling for the specified case.<sbr/><sbr/>Closes bug #1447004. Thanks to Daniel Leidert for reporting.<alt>manpages/inline.xsl,1.13 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Fixed handling of admonitions that are children of <tag>Para</tag> element.<sbr/>Previously, handling of <tag>Caution</tag>, <tag>Important</tag>, Note, <tag>Tip</tag>, Warning<sbr/>fails if they are children of <tag>Para</tag>. The reason is that they are<sbr/>not included in the list of elements that we check when handling<sbr/>"mixed block" content. Fixed by adding them to the list.<sbr/>Closes bug #1446282. Thanks to Daniel Leidert for reporting.<alt>manpages/utility.xsl,1.9 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Checkpointing. This still doesn't handle all rowspan/colspan<sbr/>combinations correctly.<alt>manpages/table.xsl,1.5 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Proceed each converted Pre instance with a .sp macro, to generate<sbr/>a line of vertical space before the .nf no-fill region.<alt>manpages/html2roff.xsl,1.3 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Output dot before linebreak when transforming &lt;br/&gt;.<sbr/><sbr/>Tested and seems to work as expected. <tag>Classsynopsis</tag> et al now<sbr/>render with breaks and spaces in correct places.<alt>manpages/html2roff.xsl,1.2 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Reverted change that caused xhtml stylesheets to be imported<sbr/>instead of html ones.<alt>manpages/Makefile,1.6; manpages/docbook.xsl,1.49 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Changed build to generate a "html-synop.xsl" file and to have it<sbr/>imported into the driver stylesheet. The build now uses the newly<sbr/>added html2roff.xsl stylesheet to transform the ../xhtml/synop.xsl<sbr/>file to generate the html-synop.xsl file. The only transformation<sbr/>it currently does is to transform &lt;br/&gt; instances into line breaks<sbr/>and to transform &lt;pre&gt;&lt;/pre&gt; instances into roff "no fill region"<sbr/>markup.<sbr/><sbr/>This change is a cheap way to enable the manpages stylesheet to<sbr/>correctly handle OO <tag>synopsis</tag> content, which it did not handle<sbr/>correctly previously.<alt>manpages/.cvsignore,1.4; manpages/Makefile,1.5; manpages/docbook.xsl,1.48; manpages/html2roff.xsl,1.1 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Checkpointing. This currently does not work as-is. I added support<sbr/>for processing Rowspan correctly and it seems to work as expected,<sbr/>but still need to do add some handling to actually generate the<sbr/>tbl(1) format spec.<sbr/><sbr/>This implementation relies on holding a big node-set in memory,<sbr/>containing "Cell" elements store information about the nature of<sbr/>each cell (e.g., whether it is a "normal" cell, or the result of a<sbr/>Rowspan or Colspan). I could not <tag>figure</tag> out a way to implement<sbr/>support for Rowspan without ending up storing multiple, duplicate,<sbr/>Cell elements for each cell. (It gets uniq-ified later using the<sbr/>EXSLT set:distinct <tag>function</tag>.) The duplication will probably cause<sbr/>performance and memory issues with big tables. Maybe I will <tag>figure</tag><sbr/>out later how to do it properly; but for now, this will have to do.<alt>manpages/table.xsl,1.4 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Fix for problem of multiple <tag>Arg</tag> instances in <tag>Group</tag> not being<sbr/>separated by vertical bars. Closes #1346716. Thanks to Costin<sbr/>Stroie for reporting the problem.<alt>manpages/synop.xsl,1.24 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Move trim.text template into lib.xweb file.<alt>lib/lib.xweb,1.14; manpages/table.xsl,1.3; manpages/utility.xsl,1.8 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Corrected error in generation of <tag>table</tag> "format" spec.<alt>manpages/table.xsl,1.2 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added a utility template for trimming whitespace off the beginning<sbr/>and end of text chunks.<alt>manpages/utility.xsl,1.7 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">First shot at implementing <tag>table</tag> support in the manpages<sbr/>stylesheet. This works well as-is for normal span-less tables. It<sbr/>even works for tables with colspans. But it does not yet even<sbr/>attempt to do anything for rowspans. It will take more work to<sbr/>add rowspan handling that. Not sure if it's worth the work, really.<sbr/><sbr/>Note: This <tag>table</tag> support is implemented by do a first pass to<sbr/>process each <tag>table</tag> using the templates in the HTML stylesheet<sbr/>(which we import). We don't override any of the &lt;<tag>row</tag>&gt; or &lt;<tag>tr</tag>&gt; or<sbr/>&lt;<tag>entry</tag>&gt; or &lt;<tag>td</tag>&gt;, etc., table-markup templates, but we do override<sbr/>the block and inline templates for whatever the child content of<sbr/>the &lt;<tag>entry</tag>&gt; and &lt;<tag>td</tag>&gt; instances. So we end up with a node that has<sbr/>"hybrid" output -- with <tag>table</tag> rows and cells marked up with HTML<sbr/>&lt;<tag>tr</tag>&gt; and &lt;<tag>td</tag>&gt; tags, with with the &lt;<tag>td</tag>&gt; child content marked up in<sbr/>roff.<sbr/><sbr/>So we use exsl:node-set on that node and make a second-pass<sbr/>through all of it to replace the &lt;<tag>tr</tag>&gt; and &lt;<tag>td</tag>&gt; parts with tbl(1)<sbr/>macros. Voila -- the end result is properly marked up tbl/roff<sbr/>output for the <tag>table</tag>.<sbr/><sbr/>One nice thing about doing it this is that it supports both CALS<sbr/>and HTML <tag>table</tag> markup, without needing any conditional logic to<sbr/>deal with CALS separately. Because the first pass causes both the<sbr/>CALS and HTML source markup to be "normalized" into HTML.<alt>manpages/docbook.xsl,1.47; manpages/table.xsl,1.1 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Improved handling or Author/Editor/Othercredit.<sbr/><sbr/>Reworked content of (non-visible) comment added at top of each<sbr/>page (metadata stuff).<sbr/><sbr/>Added support for generating a <parameter>manifest</parameter> file (useful for cleaning<sbr/>up after builds, etc.)<alt>manpages/docbook.xsl,1.46; manpages/info.xsl,1.9; manpages/other.xsl,1.12; manpages/utility.xsl,1.6 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Problem::<sbr/>In output of &lt;<tag>xref</tag> endterm="foo"/&gt; to top-level sections, titles<sbr/>are not rendered in all caps.<sbr/><sbr/>Cause::<sbr/>&lt;<tag>xref</tag> endterm="foo"/&gt; is handled in the HTML stylesheets by a<sbr/>different mode than that used for normal <tag>Xref</tag> output.<sbr/><sbr/>Fix::<sbr/>Added mode template for processing output of first-level <tag>section</tag><sbr/>titles when the are referred to via Endterm.<sbr/><sbr/>Closes #1215547. Thanks to Jens Granseuer for reporting the<sbr/>problem.<alt>manpages/refentry.xsl,1.10 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Problem::<sbr/>Number generated for Synopfragref output, but no number generated<sbr/>in <tag>Synopfragment</tag> output.<sbr/><sbr/>Cause::<sbr/>manpages stylesheets import the HTML stylesheets. manpages<sbr/>stylesheets do not include a Synopfragref template, so they were<sbr/>just picking up the HTML one. However, the manpages stylesheet<sbr/>did have a <tag>Synopfragment</tag> template, which overrode the HTML one.<sbr/>Problem is that the manpages <tag>Synopfragment</tag> was not complete.<sbr/><sbr/>Fix::<sbr/>Correctly "ported" <tag>Synopfragment</tag> template from HTML stylesheets<sbr/>and added manpages-specific character markup and features. As a<sbr/>result of these changes, in the output now:<sbr/><sbr/>  - correct numbers a generated for <tag>Synopfragment</tag> output<sbr/><sbr/>  - Synopfragref contentes are italicized, as they should be<sbr/><sbr/>  - <tag>Synopfragment</tag> output is output with a hanging indent (similar<sbr/>    to the hanging indent used for Cmysynopsis output)<sbr/><sbr/>  - for cases where there are a <tag>group</tag> of Synopfragments together,<sbr/>    a line of vertical space is generated only before first, and<sbr/>    suppressed before subsequent ones.<sbr/><sbr/>Closes #599439. Thanks to Dennis Grace for reporting the problem<sbr/>(long, long ago) and for submitting a patch (which was used as-is<sbr/>but neverthelesss provided some insights).<alt>manpages/synop.xsl,1.23 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Problem::<sbr/>Extra space added before <tag>Arg</tag> output <tag>Cmdsynopsis</tag> in some cases<sbr/>where the <tag>Arg</tag> contents appear at the beginning of a line.<sbr/><sbr/>  bdmond [-s, --start]<sbr/>          [-k, --stop]<sbr/>          [-h, --help]<sbr/>          [-V, --version]<sbr/><sbr/>Cause::<sbr/>Some other fix made around the time of v1.68.0 introduced a<sbr/>regression in behavior for cases where an <tag>Arg</tag> is preceded by an<sbr/><tag>Sbr</tag>. The <tag>Sbr</tag> produces a line break as expected, but the line break<sbr/>is followed by a space and then the contents of the following <tag>Arg</tag>.<sbr/><sbr/>Fix::<sbr/>The code for processing Args now checks to <tag>see</tag> if the first<sbr/>preceding sibling of the <tag>Arg</tag> is an <tag>Sbr</tag>. If so, it does not output<sbr/>the additional space; otherwise, it outputs the space.<sbr/><sbr/>-  &lt;xsl:if test="position()&gt;1"&gt;&lt;xsl:value-of select="$sepchar"/&gt;&lt;/xsl:if&gt;<sbr/>+  &lt;xsl:if test="position()&gt;1 and<sbr/>+                not(preceding-sibling::*[1][self::<tag>sbr</tag>])"<sbr/>+          &gt;&lt;xsl:value-of select="$sepchar"/&gt;&lt;/xsl:if&gt;<sbr/><sbr/>Closes #1313481. Thanks to Costin Stroie for reporting the problem<sbr/>and pointing out where the cause was in the code.<alt>manpages/synop.xsl,1.22 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added two new parameters for handling of multi-term <tag>varlistentry</tag><sbr/>elements:<sbr/><sbr/><parameter>variablelist.term.break.after</parameter>:<sbr/>  When the <parameter>variablelist.term.break.after</parameter> is non-zero, it will<sbr/>  generate a line break after each <tag>term</tag> multi-term <tag>varlistentry</tag>.<sbr/><sbr/><parameter>variablelist.term.separator</parameter>:<sbr/>  When a <tag>varlistentry</tag> contains multiple <tag>term</tag> elements, the string<sbr/>  specified in the value of the <parameter>variablelist.term.separator</parameter><sbr/>  parameter is placed after each <tag>term</tag> except the last. The default<sbr/>  is ", " (a comma followed by a space). To suppress rendering of<sbr/>  the separator, set the value of <parameter>variablelist.term.separator</parameter> to<sbr/>  the empty string ("").<sbr/><sbr/>These parameters are primarily intended to be useful if you have<sbr/>multi-term varlistentries that have long terms.<sbr/><sbr/>Closes #1306676. Thanks to Sam Steingold for providing an example<sbr/>"lots of long terms" doc that demonstrated the value of having<sbr/>these options.<sbr/><sbr/>Also, added normalize-space() call to processing of each <tag>term</tag>.<sbr/><sbr/>This change affects all output formats (HTML, PDF, manpages). The<sbr/>default behavior should pretty much remain the same as before, but<sbr/>it is possible (as always) that the change may introduce some new<sbr/>bugginess.<alt>fo/lists.xsl,1.62; fo/param.ent,1.88; fo/param.xweb,1.99; html/lists.xsl,1.48; html/param.ent,1.86; html/param.xweb,1.93; manpages/lists.xsl,1.22; manpages/param.ent,1.14; manpages/param.xweb,1.16; params/variablelist.term.break.after.xml,1.1; params/variablelist.term.separator.xml,1.1 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+</itemizedlist>
+</sect2><!--end of Manpages changes for 1.70.0-->
+
+<sect2 xml:id="V1700_Params">
+<title>Params</title>
+<para>The following changes have been made to the
+        <filename>params</filename> code
+        since the 1.69.1 release.</para>
+<itemizedlist>
+<listitem>
+<para><phrase role="commit-message">New parameters to set header/footer <tag>table</tag> minimum height.<alt>params/footer.table.height.xml,1.1; params/header.table.height.xml,1.1 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">fixed validation bug.<alt>params/index.method.xml,1.2 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Support multiple indexing methods for different languages.<alt>params/index.method.xml,1.1 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Remove <tag>qandaset</tag> and <tag>qandadiv</tag> from <parameter>generate.toc</parameter> for fo output<sbr/>because formerly it wasn't working, but now it is and the<sbr/>default behavior should stay the same.<alt>params/generate.toc.xml,1.8 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">add support for page number references to <tag>link</tag> element too.<alt>params/insert.link.page.number.xml,1.1 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">fix syntax error in text<alt>params/ulink.hyphenate.chars.xml,1.2 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Add support for more characters to hyphen on when <parameter>ulink.hyphenate</parameter><sbr/>is turned on.<alt>params/ulink.hyphenate.chars.xml,1.1; params/ulink.hyphenate.xml,1.3 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">New attribute-set to format <tag>biblioentry</tag> and <tag>bibliomixed</tag>.<alt>params/biblioentry.properties.xml,1.1 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added new parameter <parameter>chunk.tocs.and.lots</parameter>.has.<tag>title</tag> which controls presence of <tag>title</tag> in a separate chunk with ToC/LoT. Disabling <tag>title</tag> can be very useful if you are generating frameset output (well, yes those frames, but some customers really want them ;-).<alt>html/chunk-code.xsl,1.15; html/param.ent,1.93; html/param.xweb,1.102; params/chunk.tocs.and.lots.has.title.xml,1.1 - Jirka Kosek</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added new attribute set <tag>toc</tag>.line.properties for controlling appearance of lines in ToC/LoT<alt>params/toc.line.properties.xml,1.1 - Jirka Kosek</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Allow <tag>table</tag> footnotes to have different properties from regular footnotes.<alt>params/table.footnote.properties.xml,1.1 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Set different values for html (left) and fo (begin).<alt>params/default.float.class.xml,1.2 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Set properties for pgwide="1" objects.<alt>params/pgwide.properties.xml,1.1 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added the autotoc.<tag>label</tag>.in.hyperlink param.<sbr/><sbr/>If the value of autotoc.<tag>label</tag>.in.hyperlink is non-zero, labels are<sbr/>included in hyperlinked titles in the <tag>TOC</tag>. If it is instead zero,<sbr/>labels are still displayed prior to the hyperlinked titles, but<sbr/>are not hyperlinked along with the titles.<sbr/><sbr/>Closes patch #1065868. Thanks to anatoly techtonik for the patch.<alt>html/autotoc.xsl,1.36; html/param.ent,1.92; html/param.xweb,1.101; params/autotoc.label.in.hyperlink.xml,1.1 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added two new params: html.head.<tag>legalnotice</tag>.<tag>link</tag>.types and<sbr/>html.head.<tag>legalnotice</tag>.<tag>link</tag>.multiple.<sbr/><sbr/>If the value of the <parameter>generate.legalnotice.link</parameter> is non-zero, then<sbr/>the stylesheet generates (in the head <tag>section</tag> of the HTML source)<sbr/>either a single HTML <tag>link</tag> element or, if the value of the<sbr/>html.head.<tag>legalnotice</tag>.<tag>link</tag>.multiple is non-zero, one <tag>link</tag> element<sbr/>for each <tag>link</tag> type specified. Each <tag>link</tag> has the following<sbr/>attributes:<sbr/><sbr/>  - a rel attribute whose value is derived from the value of<sbr/>    html.head.<tag>legalnotice</tag>.<tag>link</tag>.types<sbr/><sbr/>  - an href attribute whose value is set to the URL of the file<sbr/>    containing the <tag>legalnotice</tag><sbr/><sbr/>  - a <tag>title</tag> attribute whose value is set to the <tag>title</tag> of the<sbr/>    corresponding <tag>legalnotice</tag> (or a <tag>title</tag> programatically<sbr/>    determined by the stylesheet)<sbr/><sbr/>For example:<sbr/><sbr/>  &lt;<tag>link</tag> rel="<tag>copyright</tag>" href="ln-id2524073.html" title="Legal Notice"&gt;<sbr/><sbr/>Closes #1476450. Thanks to Sam Steingold.<alt>html/chunk-common.xsl,1.45; html/param.ent,1.91; html/param.xweb,1.100; params/generate.legalnotice.link.xml,1.4; params/html.head.legalnotice.link.multiple.xml,1.1; params/html.head.legalnotice.link.types.xml,1.1 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Fixed borked markup.<alt>params/man.indent.lists.xml,1.2 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added the following params:<sbr/><sbr/>  - man.indent.width (string-valued)<sbr/>  - man.indent.refsect (boolean)<sbr/>  - man.indent.blurbs (boolean)<sbr/>  - man.indent.lists (boolean)<sbr/>  - man.indent.verbatims (boolean)<sbr/><sbr/>Note that in earlier snapshots, man.indent.width was named<sbr/>man.indentation.default.value and the boolean params had names<sbr/>like man.indentation.*.adjust. Also the man.indent.blurbs param<sbr/>was called man.indentation.authors.adjust (or something).<sbr/><sbr/>The behavior now is: If the value of a particular man.indent.*<sbr/>boolean param is non-zero, the corresponding contents (refsect*,<sbr/>list items, authorblurb/personblurb, vervatims) are displayed with<sbr/>a left margin indented by a width equal to the value of<sbr/>man.indent.width.<alt>params/man.indent.blurbs.xml,1.1; manpages/docbook.xsl,1.74; manpages/info.xsl,1.20; manpages/lists.xsl,1.30; manpages/other.xsl,1.20; manpages/param.ent,1.22; manpages/param.xweb,1.24; manpages/refentry.xsl,1.14; params/man.indent.lists.xml,1.1; params/man.indent.refsect.xml,1.1; params/man.indent.verbatims.xml,1.1; params/man.indent.width.xml,1.1 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added man.<tag>table</tag>.footnotes.divider param.<sbr/><sbr/>In each <tag>table</tag> that contains footenotes, the string specified by<sbr/>the man.<tag>table</tag>.footnotes.divider parameter is output before the<sbr/>list of footnotes for the <tag>table</tag>.<alt>manpages/docbook.xsl,1.73; manpages/links.xsl,1.6; manpages/param.ent,1.21; manpages/param.xweb,1.23; params/man.table.footnotes.divider.xml,1.1 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added the man.output.in.separate.dir, man.output.<parameter>base.dir</parameter>, and<sbr/>man.output.subdirs.enabled parameters.<sbr/><sbr/>The man.output.<parameter>base.dir</parameter> parameter specifies the base directory<sbr/>into which man-page files are output. The<sbr/>man.output.subdirs.enabled parameter controls whether the files<sbr/>are output in subdirectories within the base directory.<sbr/><sbr/>The values of the man.output.<parameter>base.dir</parameter> and<sbr/>man.output.subdirs.enabled parameters are used only if the value<sbr/>of man.output.in.separate.dir parameter is non-zero. If the value<sbr/>of man.output.in.separate.dir is zero, man-page files are not<sbr/>output in a separate directory.<alt>manpages/docbook.xsl,1.72; manpages/param.ent,1.20; manpages/param.xweb,1.22; params/man.output.base.dir.xml,1.1; params/man.output.in.separate.dir.xml,1.1; params/man.output.subdirs.enabled.xml,1.1 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added man.font.<tag>table</tag>.headings and man.font.<tag>table</tag>.<tag>title</tag> params,<sbr/>for controlling font in <tag>table</tag> headings and titles.<alt>manpages/docbook.xsl,1.71; manpages/param.ent,1.19; manpages/param.xweb,1.21; params/man.font.table.headings.xml,1.1; params/man.font.table.title.xml,1.1 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added man.font.<tag>funcsynopsisinfo</tag> and man.font.<tag>funcprototype</tag><sbr/>params, for specifying the roff font (for example, BI, B, I) for<sbr/><tag>funcsynopsisinfo</tag> and <tag>funcprototype</tag> output.<alt>manpages/block.xsl,1.19; manpages/docbook.xsl,1.69; manpages/param.ent,1.18; manpages/param.xweb,1.20; manpages/synop.xsl,1.29; manpages/table.xsl,1.21; params/man.font.funcprototype.xml,1.1; params/man.font.funcsynopsisinfo.xml,1.1 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Changed to select="0" in <tag>refclass</tag>.suppress (instead of ..&gt;0&lt;/..)<alt>params/refclass.suppress.xml,1.3 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added man.<tag>segtitle</tag>.suppress param.<sbr/><sbr/>If the value of man.<tag>segtitle</tag>.suppress is non-zero, then display of<sbr/><tag>segtitle</tag> contents is suppressed in output.<alt>manpages/docbook.xsl,1.68; manpages/param.ent,1.17; manpages/param.xweb,1.19; params/man.segtitle.suppress.xml,1.1 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added man.output.<parameter>manifest</parameter>.enabled and man.output.manifest.<tag>filename</tag> params.<sbr/><sbr/>If man.output.<parameter>manifest</parameter>.enabled is non-zero, a list of filenames<sbr/>for man pages generated by the stylesheet transformation is<sbr/>written to the file named by man.output.<parameter>manifest</parameter>.<tag>filename</tag><alt>manpages/docbook.xsl,1.67; manpages/other.xsl,1.19; manpages/param.ent,1.16; manpages/param.xweb,1.18; params/man.output.manifest.enabled.xml,1.1; params/man.output.manifest.filename.xml,1.1; tools/make/Makefile.DocBook,1.4 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Fixed typo.<alt>params/refclass.suppress.xml,1.2 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added <tag>refclass</tag>.suppress param.<sbr/><sbr/>If the value of <tag>refclass</tag>.suppress is non-zero, then display<sbr/><tag>refclass</tag> contents is suppressed in output. Affects HTML and FO<sbr/>output only.<alt>fo/param.ent,1.93; fo/param.xweb,1.106; html/param.ent,1.90; html/param.xweb,1.99; params/refclass.suppress.xml,1.1 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added <tag>refentry</tag>.meta.get.quietly param.<sbr/><sbr/>If zero (the default), notes and warnings about "missing" markup<sbr/>are generated during gathering of <tag>refentry</tag> metadata. If non-zero,<sbr/>the metadata is gathered "quietly" -- that is, the notes and<sbr/>warnings are suppressed.<sbr/><sbr/>NOTE: If you are processing a large amount of <tag>refentry</tag> content,<sbr/>      you may be able to speed up processing significantly by<sbr/>      setting a non-zero value for <tag>refentry</tag>.meta.get.quietly.<alt>common/refentry.xsl,1.17; manpages/param.ent,1.15; manpages/param.xweb,1.17; params/refentry.meta.get.quietly.xml,1.1 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Minor description update.<alt>params/xref.properties.xml,1.4 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added support for "software" and "sectdesc" class values on<sbr/><tag>refmiscinfo</tag>; "software" is treated identically to "source", and<sbr/>"setdesc" is treated identically to "manual".<alt>common/refentry.xsl,1.10; params/man.th.extra2.max.length.xml,1.3; params/refentry.source.name.profile.xml,1.4 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Simplified XPath check for <tag>refentry</tag> "source" metadata.<alt>common/refentry.xsl,1.8; params/refentry.source.name.profile.xml,1.3 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Drastically reworked all of the XPath expressions used in <tag>refentry</tag><sbr/>metadata gathering -- completely removed $parentinfo and turned<sbr/>$info into a set of nodes that includes the *info contents of the<sbr/><tag>Refentry</tag> plus the *info contents all all of its ancestor<sbr/>elements. The basic XPath expression now used throughout is (using<sbr/>the example of checking for a <tag>date</tag>):<sbr/><sbr/>  (($info[//date])[last()]/date)[1].<sbr/><sbr/>That selects the "last" *info/date <tag>date</tag> in document order -- that<sbr/>is, the one eitther on the <tag>Refentry</tag> itself or on the closest<sbr/>ancestor to the <tag>Refentry</tag>.<sbr/><sbr/>It's likely this change may break some things; may need to pick<sbr/>up some pieces later.<sbr/><sbr/>Also, changed the default value for the <parameter>man.th.extra2.max.length</parameter><sbr/>from 40 to 30.<alt>common/common.xsl,1.58; common/refentry.xsl,1.7; params/man.th.extra2.max.length.xml,1.2; params/refentry.date.profile.xml,1.2; params/refentry.manual.profile.xml,1.2; params/refentry.source.name.profile.xml,1.2; params/refentry.version.profile.xml,1.2; manpages/docbook.xsl,1.58; manpages/other.xsl,1.15 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message"><tag>Bibliography</tag> can set negative text-indent, so we must reset it for footnotes<alt>params/footnote.properties.xml,1.2 - Jirka Kosek</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added a new substitution to <parameter>man.string.subst.map</parameter>, because it is<sbr/>necessary clean-up needed for dealing with a kludge for preserving<sbr/>tab characters (which are used by tbl(1) as cell-separators)<alt>params/man.string.subst.map.xml,1.17 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added option for turning off bold formatting in <tag>Funcsynopsis</tag>.<sbr/>Boldface formatting in <tag>function</tag> <tag>synopsis</tag> is mandated in the man(7)<sbr/>man page and is used almost universally in existing man pages.<sbr/>Despite that, it really does look like crap to have an entire<sbr/><tag>Funcsynopsis</tag> output in bold, so I added params for turning off the<sbr/>bold formatting and/or replacing it with a different roff special<sbr/>font (e.g., "RI" for alternating roman/italic instead of the<sbr/>default "BI" for alternating bold/italic). The new params are<sbr/>"man.<tag>funcprototype</tag>.font" and "man.<tag>funcsynopsisinfo</tag>.font". To be<sbr/>documented later.<sbr/><sbr/>Closes #1452247. Thanks to Joe Orton for the feature request.<alt>params/man.string.subst.map.xml,1.16; manpages/block.xsl,1.10; manpages/docbook.xsl,1.51; manpages/inline.xsl,1.16; manpages/synop.xsl,1.27 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added a couple of roff-cleanup string replacements to the<sbr/>substitution map.<alt>params/man.string.subst.map.xml,1.15 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added "Miscellaneous Technical" block to default subset. This<sbr/>basically just means that the LEFT- and RIGHT-POINTING ANGLE<sbr/>BRACKET characters (&amp;#x2329; and &amp;#x232a;, "rang" and "lang"<sbr/>named entities) get converted correctly.<alt>params/man.charmap.subset.profile.xml,1.7 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added string substitution for eating extra space after .RE macro.<alt>params/man.string.subst.map.xml,1.14 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Fixed copy/paste error in default value. Closes bug #1446966.<sbr/>Thanks to Daniel Leidert for reporting.<alt>params/variablelist.term.break.after.xml,1.2 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message"><parameter>fop.extensions</parameter> now only for FOP version 0.20.5 and earlier.<alt>params/fop.extensions.xml,1.4 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Support for fop1 different from fop 0.20.5 and earlier.<alt>params/fop1.extensions.xml,1.1 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Reset default value to empty string so template<sbr/>uses gentext first, then the parameter value if not empty.<alt>params/index.number.separator.xml,1.2; params/index.range.separator.xml,1.2; params/index.term.separator.xml,1.2 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">New parameter: <parameter>id.warnings</parameter>. If non-zero, warnings are generated for titled objects that don't have titles. True by default; I wonder if this will be too aggressive?<alt>html/biblio.xsl,1.25; html/component.xsl,1.27; html/division.xsl,1.11; html/formal.xsl,1.19; html/glossary.xsl,1.20; html/html.xsl,1.13; html/index.xsl,1.16; html/param.ent,1.88; html/param.xweb,1.97; html/refentry.xsl,1.22; html/sections.xsl,1.30; params/id.warnings.xml,1.1 - Norman Walsh</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added new parameter <parameter>keep.relative.image.uris</parameter><alt>fo/param.ent,1.91; fo/param.xweb,1.104; html/param.ent,1.87; html/param.xweb,1.96; params/keep.relative.image.uris.xml,1.1 - Norman Walsh</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">xsltproc fails on the default empty definition of these params.<sbr/>I added single quotes.<alt>params/pages.template.xml,1.2; params/wordml.template.xml,1.2 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Pick better defaults<alt>params/itemizedlist.label.width.xml,1.2; params/orderedlist.label.width.xml,1.2 - Norman Walsh</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Support default <tag>label</tag> width parameters for itemized and ordered lists<alt>fo/lists.xsl,1.64; fo/param.ent,1.90; fo/param.xweb,1.103; params/itemizedlist.label.width.xml,1.1; params/orderedlist.label.width.xml,1.1 - Norman Walsh</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Support article/info/title (DocBook 5.0)<alt>params/component.title.properties.xml,1.13 - Jirka Kosek</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added parameters to localize punctuation in indexes.<alt>params/index.number.separator.xml,1.1; params/index.range.separator.xml,1.1; params/index.term.separator.xml,1.1 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added two new parameters for handling of multi-term <tag>varlistentry</tag><sbr/>elements:<sbr/><sbr/><parameter>variablelist.term.break.after</parameter>:<sbr/>  When the <parameter>variablelist.term.break.after</parameter> is non-zero, it will<sbr/>  generate a line break after each <tag>term</tag> multi-term <tag>varlistentry</tag>.<sbr/><sbr/><parameter>variablelist.term.separator</parameter>:<sbr/>  When a <tag>varlistentry</tag> contains multiple <tag>term</tag> elements, the string<sbr/>  specified in the value of the <parameter>variablelist.term.separator</parameter><sbr/>  parameter is placed after each <tag>term</tag> except the last. The default<sbr/>  is ", " (a comma followed by a space). To suppress rendering of<sbr/>  the separator, set the value of <parameter>variablelist.term.separator</parameter> to<sbr/>  the empty string ("").<sbr/><sbr/>These parameters are primarily intended to be useful if you have<sbr/>multi-term varlistentries that have long terms.<sbr/><sbr/>Closes #1306676. Thanks to Sam Steingold for providing an example<sbr/>"lots of long terms" doc that demonstrated the value of having<sbr/>these options.<sbr/><sbr/>Also, added normalize-space() call to processing of each <tag>term</tag>.<sbr/><sbr/>This change affects all output formats (HTML, PDF, manpages). The<sbr/>default behavior should pretty much remain the same as before, but<sbr/>it is possible (as always) that the change may introduce some new<sbr/>bugginess.<alt>fo/lists.xsl,1.62; fo/param.ent,1.88; fo/param.xweb,1.99; html/lists.xsl,1.48; html/param.ent,1.86; html/param.xweb,1.93; manpages/lists.xsl,1.22; manpages/param.ent,1.14; manpages/param.xweb,1.16; params/variablelist.term.break.after.xml,1.1; params/variablelist.term.separator.xml,1.1 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Convert 'no' to string in default value.<alt>params/olink.doctitle.xml,1.4 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Implemented RFE #1292615.<sbr/><sbr/>Added bunch of new parameters (attribute sets) that affect list presentation: list.block.properties, <tag>itemizedlist</tag>.properties, <tag>orderedlist</tag>.properties, <tag>itemizedlist</tag>.<tag>label</tag>.properties and <tag>orderedlist</tag>.<tag>label</tag>.properties. Default behaviour of stylesheets has not been changed but further customizations will be much more easier.<alt>fo/lists.xsl,1.61; fo/param.ent,1.87; fo/param.xweb,1.98; params/itemizedlist.label.properties.xml,1.1; params/itemizedlist.properties.xml,1.1; params/list.block.properties.xml,1.1; params/orderedlist.label.properties.xml,1.1; params/orderedlist.properties.xml,1.1 - Jirka Kosek</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Fixed handling of groff font requests output for Refsect1/Title<sbr/>instances. Closes #1296252. Thanks to Paul DuBois for reporting.<sbr/><sbr/>Problem:<sbr/>Instances of \\FB (instead of \\fB) in output for<sbr/>Refsect1/Title.<sbr/><sbr/>Cause:<sbr/>All content of Refsect1/Title gets uppercased (including any groff<sbr/>requests that end up in the output.<sbr/><sbr/>Fix:<sbr/>Added s/\\FB/\fB/, etc., matches to value of <parameter>man.string.subst.map</parameter><sbr/>param. (<parameter>man.string.subst.map</parameter> is basically used for "cleaning up"<sbr/>borked groff markup output from initial formatting pass).<sbr/><sbr/>Affects:<sbr/>This affects output of titles for all Refsect1-level headings in<sbr/>manpages output.<alt>params/man.string.subst.map.xml,1.13 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Implemented RFE #1242092.<sbr/><sbr/>You can enable crop marks in your document by setting crop.marks=1 and xep.extensions=1.<sbr/>Appearance of crop marks can be controlled by parameters <parameter>crop.mark.bleed</parameter> (6pt), <parameter>crop.mark.offset</parameter> (24pt) and <parameter>crop.mark.width</parameter> (0.5pt).<sbr/><sbr/>Also there is new named template called user-xep-pis. You can overwrite it in order to produce some PIs that can control XEP as described in http://www.renderx.com/reference.html#Output_Formats<alt>fo/docbook.xsl,1.36; fo/param.ent,1.86; fo/param.xweb,1.97; fo/xep.xsl,1.23; params/crop.mark.bleed.xml,1.1; params/crop.mark.offset.xml,1.1; params/crop.mark.width.xml,1.1; params/crop.marks.xml,1.1 - Jirka Kosek</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Fixed typo<alt>params/chapter.autolabel.xml,1.5 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Changed short descriptions in doc for *autolabel* params to match<sbr/>new autolabel behavior.<alt>params/appendix.autolabel.xml,1.5; params/chapter.autolabel.xml,1.4; params/part.autolabel.xml,1.5; params/preface.autolabel.xml,1.4 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+</itemizedlist>
+</sect2><!--end of Params changes for 1.70.0-->
+
+<sect2 xml:id="V1700_Profiling">
+<title>Profiling</title>
+<para>The following changes have been made to the
+        <filename>profiling</filename> code
+        since the 1.69.1 release.</para>
+<itemizedlist>
+<listitem>
+<para><phrase role="commit-message">Handling of @entityref added back<alt>profiling/profile-mode.xsl,1.6 - Jirka Kosek</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Use common xml:base fixup routine<alt>profiling/profile-mode.xsl,1.5 - Jirka Kosek</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Emit namespace declaration for prefixes db and ng that are used inside XPath. Can we get rid of this f*#@ing QNames in attribute problem someday? (Sorry for not being polite.)<alt>profiling/xsl2profile.xsl,1.8 - Jirka Kosek</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Profiling now works together with namespace stripping (V5 documents). Namespace striping should work with all stylesheets named profile-, even if they are not supporting namespace stripping in a non-profiling variant.<alt>profiling/profile-mode.xsl,1.4; profiling/xsl2profile.xsl,1.7 - Jirka Kosek</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Do not output !DOCTYPE for profiled content. Different users have needs for different versions of DTD.<alt>profiling/profile.xsl,1.4 - Jirka Kosek</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">More tweaks improving profiling of HTML Help<alt>profiling/xsl2profile.xsl,1.6 - Jirka Kosek</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Moved profiling stage out of templates. This make possible to reuse profiled content by several templates and still maintaing node indentity (needed for example for HTML Help where content is processed multiple times).<sbr/><sbr/>I don't know why this was not on the top level before. Maybe some XSLT processors choked on it. I hope this will be OK now.<alt>profiling/xsl2profile.xsl,1.5 - Jirka Kosek</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">An attemp to fix base URIs when profiling is done and document is not in the current directory. This seems to work on my Windows machine, but I would be interested how it behaves in unix environment. URL handling in Java is very sensitive to such things.<alt>extensions/saxon643/com/nwalsh/saxon/ImageIntrinsics.java,1.5; profiling/profile-mode.xsl,1.3; profiling/profile.xsl,1.3 - Jirka Kosek</alt></phrase></para>
+</listitem>
+</itemizedlist>
+</sect2><!--end of Profiling changes for 1.70.0-->
+
+<sect2 xml:id="V1700_Template">
+<title>Template</title>
+<para>The following changes have been made to the
+        <filename>template</filename> code
+        since the 1.69.1 release.</para>
+<itemizedlist>
+<listitem>
+<para><phrase role="commit-message">add support for blockinfo for <tag>qandaset</tag> titles.<alt>template/titlepage.xsl,1.10 - Robert Stayton</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Xalan fails the test function-available(exsl:node-test) even though<sbr/>it supports that <tag>function</tag>.  I added a workaround.<alt>template/titlepage.xsl,1.9 - Robert Stayton</alt></phrase></para>
+</listitem>
+</itemizedlist>
+</sect2><!--end of Template changes for 1.70.0-->
+
+<sect2 xml:id="V1700_Tools">
+<title>Tools</title>
+<para>The following changes have been made to the
+        <filename>tools</filename> code
+        since the 1.69.1 release.</para>
+<itemizedlist>
+<listitem>
+<para><phrase role="commit-message">Added man.output.<parameter>manifest</parameter>.enabled and man.output.manifest.<tag>filename</tag> params.<sbr/><sbr/>If man.output.<parameter>manifest</parameter>.enabled is non-zero, a list of filenames<sbr/>for man pages generated by the stylesheet transformation is<sbr/>written to the file named by man.output.<parameter>manifest</parameter>.<tag>filename</tag><alt>manpages/docbook.xsl,1.67; manpages/other.xsl,1.19; manpages/param.ent,1.16; manpages/param.xweb,1.18; params/man.output.manifest.enabled.xml,1.1; params/man.output.manifest.filename.xml,1.1; tools/make/Makefile.DocBook,1.4 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Changed embedded manpages customization layer to use man.output.*<sbr/>param names for controlling output directory.<alt>tools/make/Makefile.DocBook,1.3 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Makefile for creating wrapper files that combine source files for<sbr/>multiple DocBook doc instances.<alt>tools/make/Makefile.combine,1.1 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Replaced "echo" with "@echo" where appropriate, to suppress echo output.<alt>tools/make/Makefile.DocBook,1.2 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Moved Makefile.DocBook from <tag>contrib</tag> module to xsl module.<alt>tools/make/Makefile.DocBook,1.1 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+</itemizedlist>
+</sect2><!--end of Tools changes for 1.70.0-->
+
+<sect2 xml:id="V1700_WordML">
+<title>WordML</title>
+<para>The following changes have been made to the
+        <filename>wordml</filename> code
+        since the 1.69.1 release.</para>
+<itemizedlist>
+<listitem>
+<para><phrase role="commit-message">fixed <tag>orderedlist</tag><alt>wordml/template.dot,1.5; wordml/template.xml,1.15; wordml/wordml-final.xsl,1.15 - Steve Ball</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">added <tag>contrib</tag> element, better handling of default paragraph style<alt>wordml/pages-normalise.xsl,1.6; wordml/supported.xml,1.2; wordml/wordml-final.xsl,1.14 - Steve Ball</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">added doco<alt>wordml/supported.xml,1.1 - Steve Ball</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">added <tag>bridgehead</tag><alt>wordml/docbook-pages.xsl,1.6; wordml/docbook.xsl,1.17; wordml/pages-normalise.xsl,1.5; wordml/template-pages.xml,1.7; wordml/template.dot,1.4; wordml/template.xml,1.14; wordml/wordml-final.xsl,1.13 - Steve Ball</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">added blocks stylesheet to support bibliographies, glossaries and qandasets<alt>wordml/Makefile,1.4; wordml/README,1.3; wordml/blocks-spec.xml,1.1; wordml/docbook-pages.xsl,1.5; wordml/docbook.xsl,1.16; wordml/pages-normalise.xsl,1.4; wordml/sections-spec.xml,1.3; wordml/specifications.xml,1.13; wordml/template-pages.xml,1.6; wordml/template.dot,1.3; wordml/template.xml,1.13; wordml/wordml-blocks.xsl,1.1; wordml/wordml-final.xsl,1.12; wordml/wordml-sections.xsl,1.3 - Steve Ball</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">added <tag>mediaobject</tag> <tag>caption</tag><alt>wordml/docbook-pages.xsl,1.4; wordml/docbook.xsl,1.15; wordml/specifications.xml,1.12; wordml/template-pages.xml,1.5; wordml/template.dot,1.2; wordml/template.xml,1.12; wordml/wordml-final.xsl,1.11 - Steve Ball</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">added callouts<alt>wordml/docbook-pages.xsl,1.3; wordml/docbook.xsl,1.14; wordml/pages-normalise.xsl,1.3; wordml/specifications.xml,1.11; wordml/template-pages.xml,1.4; wordml/wordml-final.xsl,1.10 - Steve Ball</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">added Word template file<alt>wordml/template.dot,1.1 - Steve Ball</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">added <tag>abstract</tag>, fixed <tag>itemizedlist</tag>, ulink<alt>wordml/specifications.xml,1.10; wordml/wordml-final.xsl,1.9 - Steve Ball</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">Added wordml into doc and release build.<alt>Makefile,1.23.2.6; doc/Makefile,1.18; doc/wordml/Makefile,1.1; docsrc/Makefile,1.12; docsrc/make-xsl-params.pl,1.4; docsrc/reference.xml,1.10; docsrc/xsl-param-link.xsl,1.3; docsrc/wordml/Makefile,1.1; wordml/.cvsignore,1.1; wordml/Makefile,1.3; wordml/param.xweb,1.3 - Michael(tm) Smith</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">fixed Makefile<sbr/>added many features to Pages support<sbr/>added <tag>revhistory</tag>, inlines, highlights, <tag>abstract</tag><alt>wordml/Makefile,1.2; wordml/docbook-pages.xsl,1.2; wordml/pages-normalise.xsl,1.2; wordml/sections-spec.xml,1.2; wordml/specifications.xml,1.9; wordml/template-pages.xml,1.3; wordml/template.xml,1.11; wordml/wordml-final.xsl,1.8; wordml/wordml-sections.xsl,1.2 - Steve Ball</alt></phrase></para>
+</listitem>
+<listitem>
+<para><phrase role="commit-message">fixed handling linebreaks when generating WordML<sbr/>added Apple Pages support<alt>wordml/docbook.xsl,1.13; wordml/template-pages.xml,1.2 - Steve Ball</alt></phrase></para>
+</listitem>
+</itemizedlist>
+</sect2><!--end of WordML changes for 1.70.0-->
+
+</sect1>
+</article>

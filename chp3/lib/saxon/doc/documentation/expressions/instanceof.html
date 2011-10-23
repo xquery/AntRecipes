@@ -1,0 +1,71 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--expressions/instanceof
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: Instance of and Castable as</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Instance of and Castable as">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>Instance of and Castable as</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The expression <code>E instance of T</code> tests whether the value of expression <code>E</code>
+         is an instance of type T, or of a subtype of T. For example, <code>$p instance of attribute+</code> is
+         true if the value of <code>$p</code> is a sequence of one or more attribute nodes. It returns false if the
+         sequence is empty or if it contains an item that is not an attribute node. The detailed rules for
+         defining types, and for matching values against a type, are given in the XPath 2.0 specification.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Saxon 7.3 implements only a subset of this syntax. It allows testing of a value against any built-in
+         simple type defined in XML Schema, except that some of the types are not yet implemented: see 
+         <a class="bodylink" href="javascript:topage('conformance', 'intro')">conformance.html</a>. The type can also be a <i>node-kind</i> such as
+         <code>element</code>, <code>attribute</code>, etc; or it can be one of the keywords <code>item</code>
+         or <code>node</code>. The type can be optionally followed by the occurrence indicator <code>*</code>, 
+         <code>+</code>, or <code>?</code>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Saxon also allows testing of the type annotation of an element or attribute node using tests of the
+         form <code>element(*, T)</code>, <code>attribute(*, T)</code>. This is of limited value at this
+         release, however, since the only way a node can acquire a type annotation is (a) if the node is 
+         part of a temporary tree created within the stylesheet itself, or (b) if the node is an attribute with
+         a DTD-based type, for example ID.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The expression <code>E castable as T</code> tests whether the expression <code>E cast as T</code>
+         would succeed. It is useful, for example, for testing whether a string contains a valid date before attempting
+         to cast it to a date. This is because XPath and XSLT currently provide no way of trapping the error if
+         the cast is attempted and fails.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="instanceof.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="conditionals.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

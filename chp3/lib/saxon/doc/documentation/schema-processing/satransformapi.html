@@ -1,0 +1,93 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--schema-processing/satransformapi
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: Schema-Aware XSLT from Java</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Schema-Aware XSLT from Java">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      
+      
+      <h1>Schema-Aware XSLT from Java</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">When transformations are controlled using the Java JAXP interfaces, the equivalent to the <code>-val</code>
+         option is to set the attribute "http://saxon.sf.net/feature/schema-validation" on the TransformerFactory to the
+         value <code>net.sf.saxon.om.Validation.STRICT</code>. Alternatively, you can set the value to
+         <code>Validation.LAX</code>.
+         This attribute name is available as the constant <code>FeatureKeys.SCHEMA_VALIDATION</code>.
+      </p>
+      
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">This option switches validation on for all source documents used by any transformation under the control of this
+         TransformerFactory. If you want finer control, so that some documents are validated and others are not, you can
+         achieve this by using the <code>AugmentedSource</code> object. An <code>AugmentedSource</code> is a wrapper around
+         a normal JAXP <code>Source</code> object, in which additional properties can be set: for example, a property to
+         request validation of the document. The <code>AugmentedSource</code> itself implements the JAXP <code>Source</code>
+         interface, so it can be used anywhere that an ordinary <code>Source</code> object can be used, notably as the
+         first argument to the <code>transform</code> method of the <code>Transformer</code>, and as the return value from
+         a user-written <code>URIResolver</code>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The attribute <code>FeatureKeys.VALIDATION_WARNINGS</code> has the same effect as the <code>-vw</code>
+         option on the command line: validation errors encountered when processing the final result tree are
+         reported to the <code>ErrorListener</code> as warnings, not as fatal errors.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Schemas can be loaded using either of the techniques used with the command-line interface: that is, by specifying
+         them in the <code>xsl:import-schema</code> directive in the stylesheet, or by including them in an <code>xsi:schemaLocation</code>
+         attribute in a source document. In addition, they can be loaded using the <code>addSchema()</code> method on the
+         <code>SchemaAwareTransformerFactory</code> class.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">All schemas that are loaded are cached as part of the <code>TransformerFactory</code> (or more specifically, as
+         part of the <code>Configuration</code> object owned by the <code>TransformerFactory</code>). This is true whether the
+         schema is loaded explicitly using the Java API, whether it is loaded as a result of <code>xsl:import-schema</code>,
+         or whether it is referenced in an <code>xsi:schemaLocation</code> attribute in a source document. There can only
+         be one schema document loaded for each namespace: any further attempts to load a schema for a given target namespace
+         will return the existing loaded schema, rather than loading a new one. Note in particular that this means there
+         can only be one loaded no-namespace schema document. If you want to force loading of a different schema document
+         for an existing namespace, the only way to do it is to create a new <code>TransformerFactory</code>.
+      </p>  
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">If you are validating the result tree, and you want your application to have access to the type annotations
+         in the validated tree, then you should specify as the result of the transformation either a user-written 
+         <code>Receiver</code>, or a <code>DOMResult</code> that wraps a Saxon <code>DocumentInfo</code> object. Note that
+         type annotations are supported only with the TinyTree implementation.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="satransformapi.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="saquerycmd.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

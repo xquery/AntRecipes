@@ -1,0 +1,60 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--sql-extension/intro
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: Introduction</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Introduction">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      
+      <h1>Introduction</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The Saxon distribution includes a set of extension elements providing access to
+         SQL databases. These are not intended as being necessarily a production-quality piece
+         of software (there are many limitations in the design), but more as an illustration of
+         how extension elements can be used to enhance the capability of the processor.
+      </p>
+      
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">To use the SQL extension elements in a stylesheet, you need to define a namespace prefix
+         (for example "sql") in the extension-element-prefixes attribute of the xsl:stylesheet element,
+         and to map this prefix to namespace URI that ends in "/net.sf.saxon.sql.SQLElementFactory".
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">This extension defines five new stylesheet elements: <code>sql:connect</code>, <code>sql:query</code>, 
+         <code>sql:insert</code>, <code>sql:column</code>, and <code>sql:close</code>, described in the following sections.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="intro.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="connect.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

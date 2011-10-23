@@ -1,0 +1,280 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--extensibility/converting-args
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: Converting Arguments to Extension Functions</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Converting Arguments to Extension Functions">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      
+      <h1>Converting Arguments to Extension Functions</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">This section describes how XPath values supplied in a call to an extension function are converted to
+         Java values.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The following conversions are supported between the static type of the supplied value of the argument, 
+         and the declared
+         Java class of the argument. The mappings are given in order of preference; a class that appears earlier
+         in the list has smaller "conversion distance" than one appearing later. These priorities are used to decide
+         which method to call when the class has several methods of the same name. Simple classes (such as boolean)
+         are acceptable wherever the corresponding wrapper class (Boolean) is allowed. Class names shown in
+         italics are Saxon-specific classes.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">If the static type of the supplied value allows a sequence of more than one item, then Saxon looks for a method
+         that expects a <code>SequenceIterator</code>, a <code>SequenceValue</code>, a <code>Collection</code>, or
+         a DOM <code>NodeList</code>, in that order. (The first two classes are Saxon-specific). In these cases the item
+         type of the supplied value plays no role.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Nodes in the supplied sequence are atomized only if the Java method requires an atomic type such as an integer
+         or string. If the method requires a Collection, then the contents of the sequence will be supplied <i>as is</i>. The objects in
+         the List will typically be Saxon <code>Item</code> objects. (Saxon does not yet recognize the generic types in JDK 1.5, 
+         which allow the item type of a collection to be declared). If atomization is required, you can force it by calling the 
+         <code>data()</code> function.
+      </p> 
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">If the required type is an array, Saxon will attempt to create an array of the required type. This will not always succeed,
+         for example if the array has type <code>X[]</code> where X is an interface rather than a concrete class. If it is an array of items
+         or nodes, the nodes in the supplied sequence will be inserted into the array directly; if it is an array of a type such as
+         integer or
+         double, the sequence will first be atomized.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">If the supplied value is a singleton (a sequence of one item) then the type of that item is decisive. If
+         it is a sequence of length zero or more than one, then the general rules for a sequence are applied, and the
+         types of the items within the sequence are irrelevant.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">If the supplied value contains more than item and only a single item is expected, an error is reported. There is no
+         implicit extraction of the first value (as happened in earlier releases).
+      </p>
+      
+      
+      <table xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         
+         <tr>
+            <td valign="top" width="30%">
+               <p><b>Supplied type</b></p>
+            </td>
+            <td valign="top">
+               <p><b>Required type</b></p>
+            </td>
+         </tr>
+         
+         <tr>
+            <td valign="top">
+               <p>boolean</p>
+            </td>
+            <td>
+               <p><i>BooleanValue</i>, Boolean
+               </p>
+            </td>
+         </tr>
+         
+         <tr>
+            <td valign="top">
+               <p>dateTime</p>
+            </td>
+            <td>
+               <p><i>DateTimeValue</i>, Date
+               </p>
+            </td>
+         </tr>   
+         
+         <tr>
+            <td valign="top">
+               <p>date</p>
+            </td>
+            <td>
+               <p><i>DateValue</i>, Date
+               </p>
+            </td>
+         </tr>
+         
+         <tr>
+            <td valign="top">
+               <p>decimal</p>
+            </td>
+            <td>
+               <p><i>DecimalValue</i>, BigDecimal, Double, Float
+               </p>
+            </td>
+         </tr>
+         
+         <tr>
+            <td valign="top">
+               <p>double</p>
+            </td>
+            <td>
+               <p><i>DoubleValue</i>, Double
+               </p>
+            </td>
+         </tr>
+         
+         <tr>
+            <td valign="top">
+               <p>duration</p>
+            </td>
+            <td>
+               <p><i>DurationValue</i></p>
+            </td>
+         </tr>
+         
+         <tr>
+            <td valign="top">
+               <p>float</p>
+            </td>
+            <td>
+               <p><i>FloatValue</i>, Float, Double
+               </p>
+            </td>
+         </tr>
+         
+         <tr>
+            <td valign="top">
+               <p>integer</p>
+            </td>
+            <td>
+               <p><i>IntegerValue</i>, BigInteger, BigDecimal, Long, Integer, Short, Byte, Double, Float
+               </p>
+            </td>
+         </tr>
+         
+         <tr>
+            <td valign="top">
+               <p>string</p>
+            </td>
+            <td>
+               <p><i>StringValue</i>, (String, CharSequence)
+               </p>
+            </td>
+         </tr>
+         
+         <tr>
+            <td valign="top">
+               <p>anyURI</p>
+            </td>
+            <td>
+               <p><i>AnyURIValue</i>, java.net.URI, java.net.URL, (String, CharSequence)
+               </p>
+            </td>
+         </tr> 
+         
+         <tr>
+            <td valign="top">
+               <p>QName</p>
+            </td>
+            <td>
+               <p><i>QNameValue</i>, javax.xml.namespace.QName
+               </p>
+            </td>
+         </tr> 
+         
+         <tr>
+            <td valign="top">
+               <p>node</p>
+            </td>
+            <td>
+               <p><i>SingletonNodeSet</i>, NodeList, (Element, Attr, Document, DocumentFragment, 
+                  Comment, Text, ProcessingInstruction, CharacterData), Node, Boolean, 
+                  Byte, Character, Double, Float, Integer, Long, Short, (String, CharSequence), Object
+               </p>
+            </td>
+         </tr>
+         
+         <tr>
+            <td valign="top">
+               <p>sequence</p>
+            </td>
+            <td>
+               <p><i>SequenceIterator</i>, <i>SequenceValue</i>, List, NodeList, <i>NodeInfo</i>, Node, (String, CharSequence), Boolean, 
+                  Byte, Character, Double, Float, Integer, Long, Short, Object
+               </p>
+            </td>
+         </tr>
+         
+      </table>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Saxon tries to select the appropriate method based on the <i>static type</i> of the arguments
+         to the function call. If there are several candidate methods, and there is insufficient information available to decide
+         which is most appropriate, an error is reported. The remedy is to cast the arguments to a more specific type.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">When the required type is a DOM Node or NodeList, and the supplied value is a sequence containing nodes, Saxon creates
+         a wrapper around each supplied node so that it implements the <code>org.w3.dom.Node</code> interface. (However, if the
+         Saxon node is already a wrapper for a DOM Node, then the underlying DOM node is supplied.) Note that this is a read-only
+         DOM implementation: any attempt to update nodes through the wrapper interface will throw an exception. 
+         A consequence of the way the
+         wrapping works is that it's not safe to rely on object identity when testing node identity - the same node can be represented
+         by 
+         more than one Java object. Use the DOM method <code>isSameNode()</code> instead.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">If the supplied value is a wrapped Java object, which typically happens when it is itself the result of another extension
+         function, then it may be converted to another data type as follows.
+      </p>
+      
+      
+      <ul xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         
+         <li>
+            <p>It is converted to a string by using its toString() method; if the object is null, the result is
+               the empty string "".
+            </p>
+         </li>
+         
+         <li>
+            <p>It is converted to a number by converting it first to a string, and then applying the
+               XPath number() conversion. If it is null, the result is NaN.
+            </p>
+         </li>
+         
+         <li>
+            <p>It is converted to a boolean as follows: if it is null, the result is false, otherwise
+               it is converted to a string and the result is true if and only if the string is non-empty.
+            </p>
+         </li>
+         
+      </ul> 
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="converting-args.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="function-result.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--extensions/instructions/import-query
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: saxon:import-query</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: saxon:import-query">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>saxon:import-query</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The saxon:import-query element is a top-level declaration that causes an XQuery library module
+         to be imported into the stylesheet.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The effect is that the functions defined in the library module become available for calling from
+         any XPath expression in the stylesheet, as extension functions. 
+         They are available in all modules of the stylesheet.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Only the functions actually defined in the given XQuery module are imported. Functions that the
+         specified module imports from other XQuery modules are not imported. This follows the semantics of 
+         XQuery's <code>import module</code> declaration. Variables defined in an imported module are not
+         (currently) imported into the stylesheet.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The imported functions do not have any specific import precedence. If a stylesheet contains two
+         <code>saxon:import-query</code> declarations importing the same namespace, then they are assumed to
+         refer to the same library module, and all but the first are ignored. As with other extension functions,
+         the <code>override="yes|no"</code> attribute on <code>xsl:function</code> can be used to determine whether
+         a stylesheet function overrides an imported XQuery function of the same name.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>saxon:import-xquery</code> function has two optional arguments. The <code>href</code>
+         argument is the (absolute or relative) URI of the XQuery module. The <code>namespace</code> argument
+         identifies the module namespace of the imported module. If href alone is specified, then the module is
+         loaded from the given location. If namespace alone is specified, then the module must already be present
+         in Saxon's <code>Configuration</code> object (you can share a Configuration between multiple stylesheets,
+         which means that imported XQuery modules will not need to be recompiled for each one). If both attributes
+         are specified, then Saxon uses an already-loaded module for the namespace if it can, otherwise it fetches
+         it from the specified location, and checks that the namespace is correct. I would recommend specifying
+         both attributes.
+      </p> 
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="import-query.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../instructions.html">Up</a>&nbsp;&nbsp;<a class="nav" href="entity-ref.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

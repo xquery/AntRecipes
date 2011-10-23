@@ -1,0 +1,79 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--changes/v8.0/xslt-80
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: XSLT changes</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: XSLT changes">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>XSLT changes</h1>
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>as</code> attribute in <code>xsl:sequence</code> has been dropped.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>unparsed-text()</code> function returns an empty sequence if the first argument
+         is an empty sequence.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>xsl:number</code> instruction now handles numbers that are too large or too small,
+         or values that cannot be converted to integers, as recoverable errors, as described in the
+         current XSLT 2.0 specification. The range of values that can be formatted using the requested
+         format picture is from 1 to 2^63; other values are output as if the string() function were used.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The rules for handling types in <code>xsl:key</code> have been brought into line with the current
+         rules in the specification. Because of the way that <code>eq</code> is now defined in XPath, a numeric
+         argument to the <code>key()</code> function will no longer match an untypedAtomic key value.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The use of a separate name pool for use at compile time has been discontinued. Since standard
+         element and attribute names are no longer stored in the name pool, this technique is no longer needed.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>xsl:for-each-group</code> instruction now handles heterogeneous grouping keys as defined
+         in the current specification. Non-comparable grouping key values (for example an integer and a string) are treated
+         as being distinct values.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">In backwards compatibility mode (that is, with <code>version="1.0"</code>), attribute value
+         templates now observe the first-item rule. That is, <code>&lt;a val="{1,2,3}"/&gt;</code> outputs
+         <code>&lt;a val="1 2 3"/&gt;</code> in 2.0 mode, but <code>&lt;a val="1"/&gt;</code> in 1.0 mode.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="xslt-80.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../v8.0.html">Up</a>&nbsp;&nbsp;<a class="nav" href="xpath-80.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

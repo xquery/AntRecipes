@@ -1,0 +1,20 @@
+<fileset date="2009/12/29">
+<file name="sample1.xml">
+<svrl:schematron-output title="House" schemaVersion="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:iso="http://purl.oclc.org/dsdl/schematron" xmlns:svrl="http://purl.oclc.org/dsdl/svrl" xmlns:sch="http://www.ascc.net/xml/schematron">
+<svrl:active-pattern/>
+</svrl:schematron-output>
+
+</file>
+<file name="sample3.xml">
+<svrl:schematron-output title="House" schemaVersion="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:iso="http://purl.oclc.org/dsdl/schematron" xmlns:svrl="http://purl.oclc.org/dsdl/svrl" xmlns:sch="http://www.ascc.net/xml/schematron">
+<svrl:active-pattern/>
+</svrl:schematron-output>
+
+</file>
+<file name="sample2.xml">
+<svrl:schematron-output title="House" schemaVersion="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:iso="http://purl.oclc.org/dsdl/schematron" xmlns:svrl="http://purl.oclc.org/dsdl/svrl" xmlns:sch="http://www.ascc.net/xml/schematron">
+<svrl:active-pattern/>
+</svrl:schematron-output>
+
+</file>
+</fileset>

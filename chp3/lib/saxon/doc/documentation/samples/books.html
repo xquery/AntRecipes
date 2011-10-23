@@ -1,0 +1,93 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--samples/books
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: The Book List Stylesheet</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: The Book List Stylesheet">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      
+      
+      <h1>The Book List Stylesheet</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">This is a very simple sample stylesheet to illustrate several Saxon extensions.
+         It uses the XML file <b>books.xml</b> (derived from a file issued originally by Microsoft).
+         You will find this in the samples\data directory. The DTD is in <b>books.dtd</b></p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> There is a style sheet <b>books.xsl</b> that can be used to display the data: run this as
+         follows, with the samples directory as the current directory:
+      </p>
+      
+      
+      <p class="command">
+         java net.sf.saxon.Transform data\books.xml styles\books.xsl &gt;<i xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">output.html</i><br xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">This produces an HTML page showing the data. (The output isn't very pretty, if you have
+         time to write an improved version, please send it in).
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The stylesheet takes a parameter named "top-author". This is the name of the "author of the week",
+         and the default value is "Bonner". To run the stylesheet with a different top author, try:
+      </p>
+      
+      
+      <p class="command">
+         java net.sf.saxon.Transform data\books.xml styles\books.xsl top-author=Danzig &gt;<i xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">output.html</i><br xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">It is possible (under those operating systems I know of) to write the author's name in quotes if
+         it contains spaces, e.g. top-author="A. A. Milne".
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">There is another style sheet, books-csv.xsl, which
+         converts the data into a comma-separated-values file.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">A query that runs with this data is also supplied. The equivalent command is:</p>
+      
+      
+      <p class="command">
+         java net.sf.saxon.Query -s data\books.xml query\books.xq &gt;<i xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">output.html</i><br xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         
+      </p>
+      
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="books.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="shakespeare.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

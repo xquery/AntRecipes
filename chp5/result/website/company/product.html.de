@@ -1,0 +1,69 @@
+
+<!DOCTYPE html
+  SYSTEM "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="de">
+   <!--time published:April 17 2010|1220-->
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      				
+      <meta name="description" content="(de)">
+      				
+      <meta name="keyword" content="(de)">
+      				
+      <meta http-equiv="Pragma" content="no-cache">
+      				
+      <meta http-equiv="Content-Language" content="de">
+      				
+      <meta name="language" content="de, deutsch">
+      			
+      				
+      <title>Multilingual Website (de)</title>
+      			
+      <link rel="stylesheet" type="text/css" href="../resource/css/basic.css">
+   </head>
+   <body bgcolor="#C0C0C0">
+      				
+      <!--- copyright 2009 sample company Ltd (de) //-->
+      			
+      <h1>
+         	
+         	
+         	Product Page(deutsch)
+         	
+         
+      </h1><script language="JavaScript" TYPE="text/javascript" src="../resource/javascript/sniffer.js"></script><script language="JavaScript" TYPE="text/javascript">
+		var is_win,is_mac,is_ie;
+		
+		document.writeln('<h3>Example Javascript usage</h3>');
+						
+		if (is_win) document.write('Operating System: Windows');			
+		else if (is_mac) document.write('Operating System: Mac');;
+		    				
+		document.writeln('<br/>');
+		    				
+		if (is_ie) document.write('Browser:IE');			
+		else if (is_nav) document.write('Browser: Navigator');;
+		
+		</script><br>
+      				<br>
+      				
+      <hr>
+      				
+      <center>
+         					<font size="-3" color="555555">
+            						Sample Company Ltd. [ Copyright 2009, All Rights Reserved ] </font>
+         					<a href="../contact/index.html" target="main">
+            						<font size="-3" color="555555">[(+44)55555555555 ]</font>
+            					</a>
+         					<a href="mailto:jim.fuller@ruminate.co.uk" target="_new">
+            						<font size="-3" color="555555">[jim.fuller@ruminate.co.uk]</font>
+            					</a>
+         				
+      </center>
+      			
+      				
+      <!---  sample footer comment (de) //-->
+      			
+   </body>
+</html>

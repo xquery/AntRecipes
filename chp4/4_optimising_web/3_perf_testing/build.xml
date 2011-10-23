@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!-- ============================================================= -->
+<!-- ANT RECIPES FOR WEB DEVELOPERS CHP 2 Web Recipe               -->
+<!-- Author: James Fuller / Webcomposite                           -->
+<!-- Email/WWW: jim.fuller@webcomposite.com /  www.antrecipes.com  -->
+<!-- ============================================================= -->
+<!--    (C) Copyright James Fuller 2009 - All Rights Reserved.     -->
+<!--  use the -debug flag for more information when running ant  //-->
+<project name="measure website performance" basedir="." default="run">
+	<description>Measure website performance</description>
+	<!-- ===================================================== -->
+	<!-- Property definition                                   -->
+	<!-- ===================================================== -->
+	<property name="ab.executable" location="/usr/sbin/ab"/>
+	<!-- ===================================================== -->
+	<!-- Example1 Target                                       -->
+	<!-- ===================================================== -->
+	<target name="example1">
+		<benchmark url="http://www.webcomposite.com/index.html" requests="10" concurrent="4" result="result/webcomposite-test.txt"/>
+	</target>
+	<!-- ===================================================== -->
+	<!-- Run Target                                            -->
+	<!-- ===================================================== -->
+	<target name="run" depends="clean,example1" description="runs all examples"/>
+	<!-- ===================================================== -->
+	<!-- Clean Target                                          -->
+	<!-- ===================================================== -->
+	<target name="clean">
+		<delete dir="result"/>
+		<mkdir dir="result"/>
+	</target>
+	<!-- declare apache benchmark macrodef //-->
+	<macrodef name="benchmark">
+		<attribute name="url"/>
+		<attribute name="requests"/>
+		<attribute name="concurrent"/>
+		<attribute name="result"/>
+		<sequential>
+			<exec executable="ab" output="@{result}">
+				<arg value="-n @{requests}"/>
+				<arg value="-c @{concurrent}"/>
+				<arg value="@{url}"/>
+			</exec>
+		</sequential>
+	</macrodef>
+</project>

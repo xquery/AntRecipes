@@ -1,0 +1,7 @@
+<p>
+<dir>
+ <xslt location="xslt"/>
+ <xml id="testid">xml</xml>
+ <bin location="bin"/>
+</dir>
+</p>

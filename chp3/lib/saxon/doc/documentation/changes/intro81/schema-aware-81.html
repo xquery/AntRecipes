@@ -1,0 +1,67 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--changes/intro81/schema-aware-81
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: Changes to Schema-Aware XSLT and XQuery Processing</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Changes to Schema-Aware XSLT and XQuery Processing">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>Changes to Schema-Aware XSLT and XQuery Processing</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">A new option <code>-vw</code> is added to the schema-aware versions of the command
+         line interfaces for XSLT and XQuery processing, with an equivalent option <code>VALIDATION_WARNINGS</code>
+         in the Java API. This option causes validation errors encountered in processing a final result
+         tree to be treated as warnings, allowing processing to continue. This allows more than one error
+         to be reported in a single run. The result document is serialized as if validation were successful,
+         but with XML comments inserted to show where the validation errors were found. This option does
+         not necessarily recover from all validation errors, for example at present it does not recover from
+         errors in uniqueness or referential constraints. In the case of XSLT it applies only to result trees
+         validated using the <code>validation</code> attribute of <code>xsl:result-document</code>.
+      </p> 
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The syntax for <code>declare validation</code> in the Query prolog is replaced by
+         <code>declare construction</code>, as defined in the July 2004 draft specification. The syntax
+         for the <code>validate{}</code> expression has also been updated to the latest draft. This removes
+         the ability to validate any element other than one having a global element declaration in the schema.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">DTD-defined attribute types are no longer retained automatically as type annotations in the data model. 
+         They will only be retained if the method <code>setRetainDTDAttributeTypes</code> is called on the
+         <code>Configuration</code> object. This setting is available only in the schema-aware product, which means
+         that with the basic product, nodes will always be annotated as untyped or untypedAtomic. ID attributes marked
+         as such are still recognized for the purposes of the <code>id()</code> function, but they will be annotated as 
+         untypedAtomic.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="schema-aware-81.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../intro81.html">Up</a>&nbsp;&nbsp;<a class="nav" href="schema-81.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--expressions/parentheses
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: Parentheses and operator precedence</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Parentheses and operator precedence">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      
+      
+      <h1>Parentheses and operator precedence</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">In general an expression may be enclosed in parentheses without changing its meaning.</p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">If parentheses are not used, operator precedence follows the sequence below, starting with the
+         operators that bind most tightly. Within each group the operators are evaluated left-to-right
+      </p>
+      
+      
+      
+      
+      <table xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         
+         <tr>
+            <td width="200">
+               <p><b>Operator</b></p>
+            </td>
+            <td>
+               <p><b>Meaning</b></p>
+            </td>
+         </tr>
+         
+         <tr>
+            <td>
+               <p>[]</p>
+            </td>
+            <td>
+               <p>predicate</p>
+            </td>
+         </tr>
+         
+         <tr>
+            <td>
+               <p>/, //</p>
+            </td>
+            <td>
+               <p>path operator</p>
+            </td>
+         </tr>
+         
+         <tr>
+            <td>
+               <p>unary -, unary +</p>
+            </td>
+            <td>
+               <p>unary plus and minus</p>
+            </td>
+         </tr>
+         
+         <tr>
+            <td>
+               <p>cast as</p>
+            </td>
+            <td>
+               <p>dynamic type conversion</p>
+            </td>
+         </tr>
+         
+         <tr>
+            <td>
+               <p>castable as</p>
+            </td>
+            <td>
+               <p>type test</p>
+            </td>
+         </tr>
+         
+         <tr>
+            <td>
+               <p>treat as</p>
+            </td>
+            <td>
+               <p>static type conversion</p>
+            </td>
+         </tr>
+         
+         <tr>
+            <td>
+               <p>instance of</p>
+            </td>
+            <td>
+               <p>type test</p>
+            </td>
+         </tr>
+         
+         <tr>
+            <td>
+               <p>except, intersect</p>
+            </td>
+            <td>
+               <p>set difference and intersection</p>
+            </td>
+         </tr>
+         
+         <tr>
+            <td>
+               <p>|, union</p>
+            </td>
+            <td>
+               <p>union operation on sets</p>
+            </td>
+         </tr>
+         
+         <tr>
+            <td>
+               <p>*, div, idiv, mod</p>
+            </td>
+            <td>
+               <p>multiply, divide, integer divide, modulo</p>
+            </td>
+         </tr>
+         
+         <tr>
+            <td>
+               <p>+, -</p>
+            </td>
+            <td>
+               <p>plus, minus</p>
+            </td>
+         </tr>
+         
+         <tr>
+            <td>
+               <p>to</p>
+            </td>
+            <td>
+               <p>range expression</p>
+            </td>
+         </tr>
+         
+         <tr>
+            <td>
+               <p>=, !=, is, isnot, &lt;, &lt;=;, &gt;, &gt;=, eq, ne, lt, le, gt, ge</p>
+            </td>
+            <td>
+               <p>comparisons</p>
+            </td>
+         </tr>
+         
+         <tr>
+            <td>
+               <p>and</p>
+            </td>
+            <td>
+               <p>Boolean and</p>
+            </td>
+         </tr>
+         
+         <tr>
+            <td>
+               <p>or</p>
+            </td>
+            <td>
+               <p>Boolean or</p>
+            </td>
+         </tr>
+         
+         <tr>
+            <td>
+               <p>if</p>
+            </td>
+            <td>
+               <p>conditional expressions</p>
+            </td>
+         </tr>
+         
+         <tr>
+            <td>
+               <p>some, every</p>
+            </td>
+            <td>
+               <p>quantified expressions</p>
+            </td>
+         </tr>
+         
+         <tr>
+            <td>
+               <p>for</p>
+            </td>
+            <td>
+               <p>iteration (mapping) over a sequence</p>
+            </td>
+         </tr>
+         
+         <tr>
+            <td>
+               <p>, (comma)</p>
+            </td>
+            <td>
+               <p>Sequence concatenation</p>
+            </td>
+         </tr>
+         
+      </table>
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The various operators are described, in roughly the above order, in the sections that follow.</p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="parentheses.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="filter.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

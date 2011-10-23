@@ -1,0 +1,114 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--changes/intro/xquery83
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: XQuery 1.0 Changes</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: XQuery 1.0 Changes">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>XQuery 1.0 Changes</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The prolog declaration <code>declare xmlspace</code> is changed to 
+         <code>declare boundary-space</code>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The syntax for the <code>inherit-namespaces</code> prolog declaration has been
+         changed to align with the February 2005 specification. However, the <code>no-preserve</code>
+         option is not yet implemented.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>import schema</code> declaration now allows a list of schema locations to be
+         specified. The processor attempts to read them all, and to combine the contents of the various
+         schema documents found; if one of the locations cannot be read, this is treated as a warning, 
+         but if any location contains an invalid schema, or if there are conflicts across the schema documents,
+         this is an error.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The old syntax for <code>declare variable</code> (using curly braces rather than <code>:=</code>)
+         is no longer recognized.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Saxon supports the new syntax for option declarations in the query prolog:
+         <code>declare option QName "string-literal";</code>. The declaration is ignored unless the
+         namespace of the QName is the Saxon namespace <code>http://saxon.sf.net/".</code></p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Serialization parameters can be set using the option declaration <code>declare option
+            saxon:output "keyword = value"</code>, for example <code>declare option saxon:output "method=html"</code>.
+         All serialization parameters defined in the serialization specification are available (with the exception
+         of <code>normalize-unicode</code>), as well as additional Saxon serialization parameters, for example
+         <code>saxon:indent-spaces = 2</code>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Default values for external variables can be set using the option declaration
+         <code>declare option saxon:default "expression"</code>. This default applies to all following external
+         variable declarations until the next <code>saxon:default</code> declaration. The value is an XPath
+         expression: if the default value is a string literal, then two sets of quotation marks are needed.
+         Since this expression is written within quotes, any use of the delimiting quotes within the
+         expression must be doubled. For example: <code>declare option saxon:default "'Did you say ""boo""?'";</code>
+         sets the default value to the string <code>Did you say "boo"?</code>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Support for the old syntax for pragmas and must-understand extensions 
+         written in the form <code>(:: pragma ::)</code> has been dropped. This means that
+         any pragmas in existing queries will now be treated as comments and ignored.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Saxon now permits the new syntax for extension expressions <code>(# QName pragma #){ expr }</code>.
+         At present Saxon does not define or recognize any specific extensions, so the pragma is always
+         ignored (in fact, the QName is not even validated.)
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">If the function name in a function declaration is unprefixed, it is now taken to be in the default
+         namespace for functions. This is an error if the default namespace for functions has not been changed,
+         that is, if it is the system namespace <code>http://www.w3.org/2005/02/xpath-functions</code>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">When query results are output in wrapped format (the -wrap option on the command line), the way
+         atomic values are presented has changed. The <code>type</code> attribute is renamed <code>xsi:type</code>,
+         and its value is always a QName whose namespace prefix is properly declared. If the type is an anonymous
+         type (which will happen when the value is obtained by taking the typed value of a node annotated with an
+         anonymous type) then the anonymous type name allocated by Saxon is exposed - if this happens then
+         the wrapped result file will not actually validate against any schema, because the schema processor
+         will not recognize these QNames as valid names of types.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="xquery83.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../intro.html">Up</a>&nbsp;&nbsp;<a class="nav" href="functions83.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

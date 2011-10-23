@@ -1,0 +1,123 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--index/prerequisites
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: Prerequisites</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Prerequisites">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      
+      <h1>Prerequisites</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The following software must be installed separately, it is not included with the Saxon download.</p>
+      
+      
+      <ul xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         
+         <li>
+            <p>To run Saxon you need at least a Java VM, and preferably a Java development environment. 
+               Saxon 8.3 will run with either JDK 1.4 (properly the Java 2 platform, Standard Edition, v 1.4)
+               or JDK 1.5 (properly Java 2 Platform, Standard Edition 5.0).
+            </p>
+         </li>
+         
+         
+         <li>
+            <p>Saxon will no longer work with the Microsoft Java VM.</p>
+         </li>
+         
+         
+         <li>
+            <p>Saxon implements APIs defined in JAXP 1.3 (JAXP is the Java API for XML Processing). JAXP 1.3
+               is a standard component in JDK 1.5, but if you are using JDK 1.4, it must be installed separately.
+               For licensing reasons the JAXP package is not included in the Saxon distribution; instead you must
+               download it separately from <a href="https://jaxp.dev.java.net/">https://jaxp.dev.java.net/</a>.
+               This download includes two JAR files, <code>jaxp-api.jar</code> and <code>dom.jar</code>, which
+               must be present on the classpath when running Saxon. Note that this means you cannot invoke Saxon
+               using the <code>-jar</code> option, since this requires all files to be present in a single JAR archive,
+               and ignores the CLASSPATH setting.
+            </p>
+            
+            
+            <p>Most XSLT and XQuery functionality in Saxon will work without installing JAXP 1.3. You need
+               to install it if you are using DOM interfaces; if you are using the XPath API; or if you are using
+               the schema validation API (applies to Saxon-SA only).
+            </p>
+            
+            
+            <p><i>It is likely that at some time in the future, Saxon will require J2SE 5.0</i></p>
+         </li>
+         
+         
+         <li>
+            <p>Saxon has an option to work with a source tree constructed using
+               <a href="http://www.jdom.org/" target="_blank" class="bodylink">JDOM</a>. Saxon 8.3 is validated with
+               JDOM 1.0; it probably also works with other recent releases. To use Saxon with JDOM,
+               you need to add <code>saxon8-jdom.jar</code> to your CLASSPATH.
+            </p>
+         </li>
+         
+         
+         <li>
+            <p>Saxon now also has an option to work with a source tree constructed using
+               <a href="http://www.cafeconleche.org/XOM/" target="_blank" class="bodylink">XOM</a>. Saxon 8.3 is tested with XOM 1.0b7.
+               To use Saxon with XOM,
+               you need to add <code>saxon8-xom.jar</code> to your CLASSPATH.
+            </p>
+         </li>  
+         
+      </ul>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Saxon has been tested successfully in the past with a wide variety of XML parsers including
+         Xerces, Lark, SUN Project X, Crimson, Piccolo, Oracle XML, xerces, xml4j, and xp. Use of a SAX2-compliant
+         parser is now mandatory. All the relevant classes must be installed on your Java CLASSPATH.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Earlier releases of Saxon included a version of the &AElig;lfred XML parser. This is no longer bundled with the
+         Saxon distribution, because JDK 1.4 now includes an XML parser as standard, but the &AElig;lfred XML parser remains
+         available as a separate download from
+         <a href="http://sourceforge.net/project/showfiles.php?group_id=29872&amp;package_id=66578" target="_blank" class="bodylink">the Saxon site at SourceForge.</a></p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Saxon's DOM interface has been tested with the Crimson parser included as standard in
+         Sun's JDK 1.4 platform and with the Xerces 2.5.0 DOM implementation.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Because Saxon is run from the command line, you might find it useful (under Microsoft Windows)
+         to have a text editor
+         with better command-line support than the standard DOS window. I use <a href="http://www.jedit.org" target="_blank" class="bodylink">jEdit</a>, 
+         which is an open source product with a wide-selection of optional plug-ins, including one for editing XQuery.
+      </p>
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="prerequisites.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="installation.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

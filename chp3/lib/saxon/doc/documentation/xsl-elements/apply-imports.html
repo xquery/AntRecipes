@@ -1,0 +1,75 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--xsl-elements/apply-imports
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: xsl:apply-imports</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: xsl:apply-imports">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>xsl:apply-imports</h1>
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>xsl:apply-imports</code> element is used in conjunction with imported stylesheets. There
+         are no attributes. The element may contain zero or more <code>xsl:with-param</code> elements (as permitted
+         in XSLT 2.0).
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">At run-time, there must be a <i>current template</i>. A current template is established when
+         a template is activated as a result of a call on <code>xsl:apply-templates</code>. 
+         Calling <code>xsl:call-template</code>
+         does not change the current template. Calling 
+         <a href="../xsl-elements/for-each.html" target="_self" class="bodylink">xsl:for-each</a> or <a href="../xsl-elements/for-each-group.html" target="_self" class="bodylink">xsl:for-each-group</a>
+         causes the current template to become null.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The effect is to search for a template that matches the current node and that is defined in
+         a stylesheet that was imported (directly or indirectly, possibly via <code>xsl:include</code>) from the
+         stylesheet containing the current template, and whose mode matches the current mode.
+         If there is such a template, it is activated using the current node. If not, the call on
+         <code>xsl:apply-imports</code> has no effect.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">To supply parameters to the called template, one or more <a href="../xsl-elements/with-param.html" target="_self" class="bodylink">xsl:with-param</a> elements
+         may be included. The values of these parameters are available to the called template. If the
+         <code>xsl:with-param</code> element specifies <code>tunnel="yes"</code>, then the parameter is passed
+         transparently through to templates called at any depth, but it can only be referenced by an
+         <code>xsl:param</code> element that also specifies <code>tunnel="yes"</code>. If the default value,
+         <code>tunnel="no"</code> is used, then the parameter value is available only in the immediately
+         called template, and only if the <code>xsl:param</code> element specifies <code>tunnel="no"</code>
+         (explicitly or by defaulting the attribute).
+      </p>
+      
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="apply-imports.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="apply-templates.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

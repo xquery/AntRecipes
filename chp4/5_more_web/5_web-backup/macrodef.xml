@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ============================================================= --> 
+<!-- APRESS ANT GEMS CHAPTER 3 WORKER ANT    			           -->
+<!-- Author: James Fuller / Webcomposite   		   	               --> 
+<!-- Email/WWW: jim.fuller@ruminate.co.uk /  www.webcomposites.com --> 
+<!-- ============================================================= --> 
+<!--    (C) Copyright James Fuller 2009 - All Rights Reserved.     -->
+<antlib>
+    
+    <!-- ===================================================== -->
+    <!-- Define Ant-Contrib Tasks                              -->
+    <!-- ===================================================== -->
+    <taskdef resource="net/sf/antcontrib/antlib.xml">
+        <classpath>
+            <pathelement location="../../lib/ant-contrib/lib/ant-contrib-1.0b1.jar"/>
+        </classpath>
+    </taskdef>
+    
+    <!-- ===================================================== -->
+    <!-- Backup Mysql Macrodef Task                            -->
+    <!-- ===================================================== -->
+    <macrodef name="backup-sql">
+        <attribute name="datasource" description="mysql datasource"/>
+        <attribute name="target" description="target directory to write tar.gz file to"/>
+        <attribute name="prefix" description="prefix to add to tar.gz file"/>
+        <attribute name="compression" default="gzip"
+            description="we want gzip compression by default"/>
+        <sequential>
+            <tstamp>
+                <format property="datetime" pattern="mm-dd-yyyy-hhmmaa"/>
+            </tstamp>
+            <exec command="mysqldump @{datasource}" output="@{target}\@{prefix}-@{datetime}.sql"/>
+            <tar compression="@{compression}" tarfile="@{target}/@{prefix}${datetime}.tar.gz"
+                basedir="@{target}\@{prefix}-@{datetime}.sql" longfile="omit"/>
+            <delete file="@{target}\@{prefix}-@{datetime}.sql"/>
+        </sequential>
+    </macrodef>
+    <!-- ===================================================== -->
+    <!-- Backup web dir/files Macrodef Task                    -->
+    <!-- ===================================================== -->
+    <macrodef name="backup-dir">
+        <element name="filter" 
+            description="element is nested in tarfileset"/>
+        <attribute name="source" 
+            description="target directory to write tar.gz file to"/>
+        <attribute name="target" 
+            description="target directory to write tar.gz file to"/>
+        <attribute name="prefix" 
+            description="prefix to add to tar.gz file"/>
+        <attribute name="compression" default="gzip"
+            description="we want gzip compression by default"/>
+        <sequential>
+            <tstamp>
+                <format property="datetime" pattern="mm-dd-yyyy-hhmmaa"/>
+            </tstamp>
+            <tar compression="@{compression}" tarfile="@{target}/@{prefix}${datetime}.tar.gz"
+                longfile="omit">
+                <tarfileset dir="@{source}" mode="755" username="ant" group="ant">
+                    <filter/>
+                </tarfileset>
+            </tar>
+        </sequential>
+    </macrodef>
+</antlib>

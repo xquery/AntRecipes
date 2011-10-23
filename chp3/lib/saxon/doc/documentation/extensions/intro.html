@@ -1,0 +1,90 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--extensions/intro
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: Introduction</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Introduction">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      
+      <h1>Introduction</h1>
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">This section describes the extensions and implementation-defined features provided with the
+         Saxon product.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">If you want to implement your own extensions,
+         see <a class="bodylink" href="javascript:topage('extensibility', 'intro')">extensibility.html</a>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">These extensions have been provided because there are things that are difficult
+         to achieve, or inefficient, using standard XSLT/XQuery facilities alone. As always, it is best to stick to the
+         standard if you possibly can: and most things <i>are</i> possible, even if it's not obvious at first
+         sight.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">All Saxon extensions require a namespace declaration such
+         <code>xmlns:saxon="http://saxon.sf.net/"</code> to appear. In XSLT this is typically 
+         declared on the <code>xsl:stylesheet</code>
+         element; it is also useful to write <code>exclude-result-prefixes="saxon"</code> to prevent
+         the Saxon namespace appearing in the reuslt tree. In XQuery the namespace is declared by writing
+         <code>declare namespace saxon="http://saxon.sf.net/"</code> in the Query prolog.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">If you use XSLT extension instructions such as <code>saxon:doctype</code>, it is also necessary to include
+         the attribute <code>extension-element-prefixes="saxon"</code>.
+      </p>
+      
+      
+      
+      <div class="boxed" style="border: solid thin; background-color: #B1CCC7; padding: 2px">
+         Before using a Saxon extension, check whether there is an equivalent <a xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" href="../extensions/exslt.html" target="_self" class="bodylink">EXSLT</a>
+         extension available. EXSLT extensions are more likely to be portable across XSLT processors.
+         
+      </div>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">For details of additional extensions available in Query only, see 
+         <a class="bodylink" href="javascript:topage('using-xquery', 'extensions')">Query Extensions</a>.
+      </p>
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Saxon also provides a set of extension elements providing access to SQL databases.
+         These are described <a class="bodylink" href="javascript:topage('sql-extension', 'intro')">here</a>.
+      </p>
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="intro.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="exslt.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

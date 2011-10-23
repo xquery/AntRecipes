@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ============================================================= -->
+<!-- ANT RECIPES FOR WEB DEVELOPERS CHP 3 Web Recipe               -->
+<!-- Author: James Fuller / Webcomposite                           -->
+<!-- Email/WWW: jim.fuller@webcomposite.com /  www.antrecipes.com  -->
+<!-- ============================================================= -->
+<!--    (C) Copyright James Fuller 2009 - All Rights Reserved.     -->
+<!--  use the -debug flag for more information when running ant  //-->
+<project name="dirlayout" basedir="." default="run">
+	<description>Demonstrate how to test directory structure</description>
+	<!-- ===================================================== -->
+	<!-- Example1 Target                                       -->
+	<!-- ===================================================== -->
+	<target name="example1" description="rudimentary testing with available task">
+		<available property="direxists" file="data" type="dir"/>
+		<echo message="direxists: ${direxists}"/>
+	</target>
+	<!-- ===================================================== -->
+	<!-- Example2 Target                                       -->
+	<!-- ===================================================== -->
+	<target name="example2" description="using Ant conditions">
+		<condition property="layout.ok">
+			<and>
+				<available file="build.xml"/>
+				<available file="data" type="dir"/>
+				<available file="result" type="dir"/>
+				<available file="data/test.html"/>
+			</and>
+		</condition>
+		<echo message="layout.ok: ${layout.ok}"/>
+	</target>
+	<!-- ===================================================== -->
+	<!-- Example3 Target                                       -->
+	<!-- ===================================================== -->
+	<target name="example3" description="more sophisticated conditions with selectors">
+		<condition property="layout.ok">
+			<isfileselected file="data/test.html">
+				<contains text="Test Distro" casesensitive="no"/>
+			</isfileselected>
+		</condition>
+		<echo message="layout.ok: ${layout.ok}"/>
+	</target>
+	<!-- ===================================================== -->
+	<!-- Run Target                                            -->
+	<!-- ===================================================== -->
+	<target name="run" depends="clean,example1,example2,example3" description="runs all examples"/>
+	<!-- ===================================================== -->
+	<!-- Clean Target                                          -->
+	<!-- ===================================================== -->
+	<target name="clean">
+		<delete dir="result"/>
+		<mkdir dir="result"/>
+	</target>
+</project>

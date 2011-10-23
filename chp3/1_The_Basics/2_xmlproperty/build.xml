@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ============================================================= -->
+<!-- ANT RECIPES FOR WEB DEVELOPERS CHP XML Recipe                 -->
+<!-- Author: James Fuller / Webcomposite                           -->
+<!-- Email/WWW: jim.fuller@webcomposite.com /  www.antrecipes.com  -->
+<!-- ============================================================= -->
+<!--    (C) Copyright James Fuller 2010 - All Rights Reserved.     -->
+<!--  use the -debug flag for more information when running ant  //-->
+<project name="xmlproperty" default="run" basedir=".">
+	<description>Demonstrate the capabilities of xmlproperty Task</description>
+	<!-- ============================================================ -->
+	<!-- TASK DEFINITION                                              -->
+	<!-- ============================================================ -->
+	<taskdef resource="net/sf/antcontrib/antlib.xml">
+		<classpath>
+			<pathelement location="../../lib/ant-contrib/lib/ant-contrib.jar"/>
+		</classpath>
+	</taskdef>
+	<!-- ============================================================ -->
+	<!-- Example1		                                              -->
+	<!-- ============================================================ -->
+	<target name="example1">
+		<xmlproperty file="data/example.xml"/>
+		<echo message="ip address = ${p.ip}"/>
+  		<echoproperties destfile="result/set.example1.properties"/>
+	</target>
+	<!-- ============================================================ -->
+	<!-- Example2		                                              -->
+	<!-- ============================================================ -->
+	<target name="example2">
+		<property name="someotherdir" value="c:\apache\htdocs"/>
+		<xmlproperty file="data/property1.xml"/>
+		<echo>
+          p.dir(base): ${p.dir(base)}
+          p.dir.publish: ${p.dir.publish}
+     </echo>
+	</target>
+	<!-- ============================================================ -->
+	<!-- Example3		                                              -->
+	<!-- ============================================================ -->
+	<target name="example3">
+		<xmlproperty file="data/property2.xml" semanticAttributes="true"/>
+  		<echoproperties destfile="result/set.example3.properties"/>
+	</target>
+	<!-- ============================================================ -->
+	<!-- Example4		                                              -->
+	<!-- ============================================================ -->
+	<target name="example4">
+		<xmlproperty file="property3.xml"/>
+  		<echoproperties/>
+	</target>
+	<!-- ============================================================ -->
+	<!-- Example5		                                              -->
+	<!-- ============================================================ -->
+	<target name="example5">
+		<xmlproperty file="data/property3.xml"/>
+		<for list="${p.log(file)}" param="srcfile">
+			<sequential>
+				<echoxml file="result/@{srcfile}">
+					<html>
+						<body>
+	    					Title:@{srcfile}
+	    				</body>
+					</html>
+				</echoxml>
+			</sequential>
+		</for>
+	</target>
+	<!-- ===================================================== -->
+	<!-- Run Target                                            -->
+	<!-- ===================================================== -->
+	<target name="run" depends="clean,example1,example2,example3,example4,example5" description="runs all examples"/>
+	<!-- ===================================================== -->
+	<!-- Clean Target                                          -->
+	<!-- ===================================================== -->
+	<target name="clean">
+		<delete dir="result"/>
+		<mkdir dir="result"/>
+	</target>
+</project>

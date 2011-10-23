@@ -1,0 +1,304 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--xsl-elements/output
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: xsl:output</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: xsl:output">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>xsl:output</h1>
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>xsl:output</code> element is used to control the format of serial output files resulting
+         from the transformation. It is always a top-level element immediately below the<code>xsl:stylesheet</code> element.
+         There may be multiple <code>xsl:output</code> elements; their values are accumulated as described in the
+         XSLT specification.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The following attributes may be specified:</p>
+      
+      
+      <table xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         
+         
+         <tr>
+            
+            <td valign="top" width="20%">
+               <p>name</p>
+            </td>
+            
+            <td>
+               <p>This provides a name for this output format, which may be referenced
+                  in the <code>xsl:result-document</code> elements.
+                  By default, the unnamed output format is used.
+               </p>
+            </td>
+         </tr>
+         
+         
+         <tr>
+            
+            <td valign="top" width="20%">
+               <p>method</p>
+            </td>
+            
+            <td>
+               <p>This indicates the format or destination of the output. The value "xml" indicates
+                  XML output (though if disable-output-escaping is used there is no guarantee that it is well-formed).
+                  A value of "html" is used for HTML output. The value "text" indicates plain text output: in this case
+                  no markup may be written to the file using constructs such as literal result elements, xsl:element,
+                  xsl:attribute, or xsl:comment.
+               </p>
+               
+               <p><i>The value "xhtml" is supported, however, the output of this method doesn't follow all the rules
+                     defined in the XSLT 2.0 specification, for example, no META element is created in the output.</i></p> 
+                
+               
+               <p>Alternatively output can be directed
+                  to a user-defined
+                  Java program by specifying the name of the class as the value of the method attribute, prefixed by
+                  a namespace prefix, for example "xx:com.me.myjava.MyEmitter". The class must be
+                  on the classpath, and must implement either the org.xml.sax.DocumentHandler interface, the
+                  org.xml.sax.ContentHandler interface, or the
+                  net.sf.saxon.output.Emitter interface. The last of these, though proprietary, is a richer interface that
+                  gives access to additional information.
+               </p>
+            </td>
+            
+         </tr>
+         
+         
+         <tr>
+            
+            <td valign="top">
+               <p>cdata-section-elements</p>
+            </td>
+            
+            <td valign="top">
+               <p>This is used only for XML output. It is a whitespace-separated list of
+                  element names. Character data belonging to these output elements will be written within CDATA
+                  sections.
+               </p>
+            </td>
+         </tr>
+         
+         
+         
+         <tr>
+            
+            <td valign="top">
+               <p>doctype-system</p>
+            </td>
+            
+            <td>
+               <p>This is used only for XML output: it is copied into the DOCTYPE declaration
+                  as the system identifier
+               </p>
+            </td>
+            
+         </tr>
+         
+         
+         <tr>
+            
+            <td valign="top">
+               <p>doctype-public</p>
+            </td>
+            
+            <td>
+               <p>This is used only for XML output: it is copied into the DOCTYPE declaration
+                  as the public identifier. It is ignored if there is no system identifier.
+               </p>
+            </td>
+            
+         </tr>
+         
+         
+         <tr>
+            
+            <td valign="top">
+               <p>encoding</p>
+            </td>
+            
+            <td>
+               <p>A character encoding, e.g. iso-8859-1 or utf-8. The value must be one recognised
+                  both by the Java run-time system and by Saxon itself: the encoding names that Saxon recognises are ASCII,
+                  US-ASCII, iso-8859-1, utf-8, utf8, KOI8R, cp1251. It is used for three distinct purposes: to control character conversion
+                  by the Java I/O routines; to determine which characters will be represented as character entities; and
+                  to document the encoding in the output file itself. The default (and fallback) is utf-8.
+               </p>
+            </td>
+            
+         </tr>
+         
+         
+         <tr>
+            
+            <td valign="top">
+               <p>escape-uri-attributes</p>
+            </td>
+            
+            <td>
+               <p>New in XSLT 2.0: values "yes" or "no" are accepted. This affects HTML output only.
+                  It controls whether non-ASCII characters in HTML URI-valued attributes (for example, <code>href</code>)
+                  are escaped using the %HH convention. The default is "yes".
+               </p>
+            </td>
+            
+         </tr>
+         
+         
+         <tr>
+            
+            <td valign="top">
+               <p>include-content-type</p>
+            </td>
+            
+            <td>
+               <p>New in XSLT 2.0: values "yes" or "no" are accepted. This affects HTML output only.
+                  It controls whether a <code>meta</code> tag is inserted into the HTML <code>head</code>
+                  element. The default is "yes".
+               </p>
+            </td>
+            
+         </tr>
+         
+         
+         <tr>
+            
+            <td valign="top">
+               <p>indent</p>
+            </td>
+            
+            <td>
+               <p>as in the XSLT spec: values "yes" or "no" are accepted. The indentation
+                  algorithm is different for HTML and XML. For HTML it avoids outputting extra space before or
+                  after an inline element, but will indent text as well as tags, except in elements such as PRE
+                  and SCRIPT. For XML, it avoids outputting extra whitespace except between two tags. The
+                  emphasis is on conformance rather than aesthetics!
+               </p>
+            </td>
+            
+         </tr>
+         
+         
+         <tr>
+            
+            <td valign="top">
+               <p>media-type</p>
+            </td>
+            
+            <td>
+               <p>For example, "text/xml" or "text/html". This is largely documentary. However,
+                  the value assigned is passed back to the calling application in the OutputDetails object, where
+                  is can be accessed using the getMediaType() method. The supplied servlet application SaxonServlet
+                  uses this to set the media type in the HTTP header.
+               </p>
+            </td>
+            
+         </tr>
+         
+         
+         <tr>
+            
+            <td valign="top">
+               <p>omit-xml-declaration</p>
+            </td>
+            
+            <td>
+               <p>The values are "yes" or "no".
+                  For XML output this controls whether an xml declaration should be output; the default is "no".
+                  
+               </p>
+            </td>
+            
+         </tr>
+         
+         
+         <tr>
+            
+            <td valign="top">
+               <p>standalone</p>
+            </td>
+            
+            <td>
+               <p>This is used only for XML output: if it is present, a standalone attribute
+                  is included in the XML declaration, with the value "yes" or "no".
+               </p>
+            </td>
+            
+         </tr>
+         
+         
+         <tr>
+            
+            <td valign="top">
+               <p>use-character-maps</p>
+            </td>
+            
+            <td valign="top">
+               <p>A space-separated list of the names of character maps (see <a href="../xsl-elements/character-map.html" target="_self" class="bodylink">xsl:character-map</a>)
+                  which will be applied to transform individual characters during serialization.
+               </p>
+            </td>
+         </tr>
+         
+         
+         
+         <tr>
+            
+            <td valign="top">
+               <p>version</p>
+            </td>
+            
+            <td>
+               <p>Determines the version of XML or HTML to be output. Currently this is
+                  documentary only.
+               </p>
+            </td>
+            
+         </tr>
+         
+         
+         
+      </table>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">See <a class="bodylink" href="javascript:topage('extensions', 'intro')">extensions.html</a> for descriptions of additional attributes
+         supported by Saxon on the <code>xsl:output</code> declaration.
+      </p>
+      
+      
+      
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="output.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="output-character.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

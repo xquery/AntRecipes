@@ -1,0 +1,95 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--xsl-elements/key
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: xsl:key</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: xsl:key">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>xsl:key</h1>
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>xsl:key</code> element is used at the top level of the stylesheet to declare an attribute, or other value,
+         that may be used as a key to identify nodes using the <code>key()</code> function within an expression. Each xsl:key
+         definition declares a named key, which must match the name of the key used in the <code>key()</code> function.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The set of nodes to which the key applies is defined by a pattern in the match attribute: for example,
+         if <code>match="ACT|SCENE"</code> then every <code>ACT</code> element and every <code>SCENE</code> element is indexed by this key.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The value of the key, for each of these matched elements, is determined by the <code>use</code> attribute.
+         This is an expression, which is evaluated for each matched element. If the expression returns a node-set,
+         the typed value of each node in this node-set acts as a key value. For example, if <code>use="AUTHOR"</code>, then each
+         AUTHOR child of the matched element supplies one key value. 
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Note that:</p>
+      
+      <ol xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         
+         <li>
+            <p>Keys are not unique: the same value may identify many different nodes</p>
+         </li>
+         
+         <li>
+            <p>Keys are multi-valued: each matched node may have several (zero or more) values of the key, any one
+               of which may be used to locate that node
+            </p>
+         </li>
+         
+         <li>
+            <p>Keys can only be used to identify nodes within a single XML document: the key() function will return nodes
+               that are in the same document as the current node.
+            </p>
+         </li>
+         
+      </ol>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">All three attributes, <code>name</code>, <code>match</code>, and <code>use</code>, are mandatory.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The optional <code>collation</code> attribute can be used when comparing strings.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Saxon does not yet allow the <code>xsl:key</code> element to contain a sequence constructor in place
+         of the <code>use</code> attribute.
+      </p>
+      
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="key.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="matching-substring.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

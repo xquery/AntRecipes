@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<!-- ============================================================= -->
+<!-- ANT RECIPES FOR WEB DEVELOPERS CHP 1 Text Recipe              -->
+<!-- Author: James Fuller / Webcomposite                           -->
+<!-- Email/WWW: jim.fuller@webcomposite.com /  www.antrecipes.com  -->
+<!-- ============================================================= -->
+<!--    (C) Copyright James Fuller 2010 - All Rights Reserved.     -->
+<!--  use the -debug flag for more information when running ant  //-->
+
+<project name="Filter Example" basedir="." default="run">
+<description>Ant native Filter and Filterset task example</description>
+
+
+<target name="filter">
+	<filter token="name" value="Jason"/>
+	<filter token="version" value="1.6.5"/>
+	<copy file="data/data.txt" tofile="result/data.out.txt" filtering="true" overwrite="true"/>
+</target>
+
+<target name="filterset">
+<copy toDir="result/filterset">
+  <fileset dir="data">
+    <include name="data.txt"/>
+  </fileset>
+  <filterset begintoken="@" endtoken="@">
+     <filter token="name" value="Jim"/>
+     <filter token="version" value="1.7"/>
+  </filterset>
+</copy>
+</target>
+
+
+<target name="filterchain">
+<copy toDir="result/filterchain">
+  <fileset dir="data">
+    <include name="data.txt"/>
+  </fileset>
+  <filterchain>
+    <replacetokens>
+      <token key="name" value="John"/>
+      <token key="version" value="1.7"/>
+    </replacetokens>
+  </filterchain>
+</copy>
+</target>
+
+<target name="multiplefilterchain">
+<copy toDir="result/multiple-filterchain">
+  <fileset dir="data">
+    <include name="data.txt"/>
+  </fileset>
+  <filterchain>
+    <replacetokens>
+      <token key="name" value="John"/>
+      <token key="version" value="1.7"/>
+    </replacetokens>
+    <striplinebreaks/>
+  </filterchain>
+</copy>
+</target>
+
+<target name="expandproperties">
+<property name="name" value="Danny"/>
+<property name="version" value="1.6.5"/>
+<loadfile
+      property="mytext"
+      srcFile="data/src.txt">
+        <filterchain>
+          <expandproperties/>
+        </filterchain>
+</loadfile>
+<echo message="${mytext}"/>
+</target>
+
+
+    <!-- ===================================================== -->
+    <!-- Run Target                                            -->
+    <!-- ===================================================== -->
+     <target name="run" depends="filter,filterset,filterchain,expandproperties" description="runs all examples"/>
+
+     
+    <!-- ===================================================== -->
+    <!-- Clean Target                                          -->
+    <!-- ===================================================== -->     
+    <target name="clean">
+        <delete dir="result"/>
+        <mkdir dir="result"/>
+    </target>
+
+</project>

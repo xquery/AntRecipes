@@ -1,0 +1,107 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--functions/intro/fn_deep-equal
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: fn:deep-equal</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: fn:deep-equal">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>fn:deep-equal</h1>
+      <p class="subhead">fn:deep-equal(item()* $parameter1, item()* $parameter2) &#8594; boolean</p>
+      <p><i>Function signature</i></p>
+      <table>
+         <tr>
+            <td width="120">
+               <p>$operand1</p>
+            </td>
+            <td width="150">
+               <p>item() *</p>
+            </td>
+         </tr>
+         <tr>
+            <td width="120">
+               <p>$operand2</p>
+            </td>
+            <td width="150">
+               <p>item() *</p>
+            </td>
+         </tr>
+         <tr>
+            <td width="120">
+               <p><b>Result</b></p>
+            </td>
+            <td width="150">
+               <p>xs:boolean </p>
+            </td>
+         </tr>
+      </table>
+      <p><i>Compares two sequences for deep equality: the names and contents must be the same,
+            but nodes need not have the same identity.</i></p>
+      <p><a href="http://www.w3.org/TR/xpath-functions/#func-deep-equal" target="_blank" class="bodylink">XPath 2.0 Specification</a></p>
+      <p class="subhead">fn:deep-equal(item()* $parameter1, item()* $parameter2, string $collation) &#8594; boolean</p>
+      <p><i>Function signature</i></p>
+      <table>
+         <tr>
+            <td width="120">
+               <p>$operand1</p>
+            </td>
+            <td width="150">
+               <p>item() *</p>
+            </td>
+         </tr>
+         <tr>
+            <td width="120">
+               <p>$operand2</p>
+            </td>
+            <td width="150">
+               <p>item() *</p>
+            </td>
+         </tr>
+         <tr>
+            <td width="120">
+               <p>$collation</p>
+            </td>
+            <td width="150">
+               <p>string </p>
+            </td>
+         </tr>
+         <tr>
+            <td width="120">
+               <p><b>Result</b></p>
+            </td>
+            <td width="150">
+               <p>xs:boolean </p>
+            </td>
+         </tr>
+      </table>
+      <p><i>Compares two sequences for deep equality; string values are compared using the named collation;
+            nodes are compared for deep equality of names and content.</i></p>
+      <p><a href="http://www.w3.org/TR/xpath-functions/#func-deep-equal" target="_blank" class="bodylink">XPath 2.0 Specification</a></p>
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="fn_deep-equal.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../intro.html">Up</a>&nbsp;&nbsp;<a class="nav" href="fn_default-collation.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

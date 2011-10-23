@@ -1,0 +1,83 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--functions/intro/fn_number
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: fn:number</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: fn:number">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>fn:number</h1>
+      <p class="subhead">fn:number() &#8594; double</p>
+      <p><i>Function signature</i></p>
+      <table>
+         <tr>
+            <td width="120">
+               <p><b>Result</b></p>
+            </td>
+            <td width="150">
+               <p>xs:double </p>
+            </td>
+         </tr>
+      </table>
+      <p><i>Converts the string value of the context node to a number</i></p>
+      <p><a href="http://www.w3.org/TR/xpath-functions/#func-number" target="_blank" class="bodylink">XPath 2.0 Specification</a></p>
+      <p><b>Note:</b>Saxon 7.4 implements some incompatible changes to this function defined in XPath 2.0.
+         When given an empty sequence as the argument, the number function now returns
+         an empty sequence, rather than NaN. When given a value that is not a valid
+         number, it raises an error rather than returning NaN. The strings "INF" and "-INF"
+         are recognized as representations of positive and negative infinity.
+      </p>
+      <p class="subhead">fn:number(item()? $srcval) &#8594; double</p>
+      <p><i>Function signature</i></p>
+      <table>
+         <tr>
+            <td width="120">
+               <p>$srcval</p>
+            </td>
+            <td width="150">
+               <p>item() ?</p>
+            </td>
+         </tr>
+         <tr>
+            <td width="120">
+               <p><b>Result</b></p>
+            </td>
+            <td width="150">
+               <p>xs:double </p>
+            </td>
+         </tr>
+      </table>
+      <p><i>Converts the string value of the given node to a number</i></p>
+      <p><a href="http://www.w3.org/TR/xpath-functions/#func-number" target="_blank" class="bodylink">XPath 2.0 Specification</a></p>
+      <p><b>Note:</b>Implementation follows the XPath 1.0 specification. Changed in 7.4 so that if the
+         argument is the empty sequence, the result is the empty sequence - this causes some backwards
+         compatibility problems.
+      </p>
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="fn_number.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../intro.html">Up</a>&nbsp;&nbsp;<a class="nav" href="fn_one-or-more.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

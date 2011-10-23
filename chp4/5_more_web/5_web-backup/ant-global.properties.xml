@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<app>
+	<dir>
+		<backup>result</backup>
+	</dir>
+	<prefix>
+		<web>web</web>
+		<db>datasource</db>
+	</prefix>
+	<hosts>
+		<virtual name="website1">
+			<documentroot>data/virtualhtdocs1</documentroot>
+		</virtual>
+		<virtual name="website2">
+			<documentroot>data/virtualhtdocs2</documentroot>
+		</virtual>
+		<virtual name="website3">
+			<documentroot>data/virtualhtdocs3</documentroot>
+		</virtual>
+	</hosts>
+</app>

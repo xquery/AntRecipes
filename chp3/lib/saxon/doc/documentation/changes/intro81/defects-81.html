@@ -1,0 +1,190 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--changes/intro81/defects-81
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: Defects Cleared</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Defects Cleared">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>Defects Cleared</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The following defects have been cleared in Saxon 8.1:</p>
+      
+      
+      <p><a href="http://sourceforge.net/tracker/index.php?func=detail&amp;aid=927057&amp;group_id=29872&amp;atid=397617" target="_new" class="bodylink">927057</a>&nbsp;
+         		Under various circumstances (especially with DOM and JDOM sources) Saxon may fail
+         with the message "Unknown type annotation 0"
+      </p>
+      
+      
+      <p><a href="http://sourceforge.net/tracker/index.php?func=detail&amp;aid=972314&amp;group_id=29872&amp;atid=397617" target="_new" class="bodylink">972314</a>&nbsp;
+         		The format-date() function gets the day of the week wrong when using the [F] option.
+      </p>
+      
+      
+      <p><a href="http://sourceforge.net/tracker/index.php?func=detail&amp;aid=973477&amp;group_id=29872&amp;atid=397617" target="_new" class="bodylink">973477</a>&nbsp;
+         		The -s option on the XQuery command line does not work unless the -wrap option is used;
+         the corresponding facility in the Java API doesn't work either
+      </p>
+      
+      
+      <p><a href="http://sourceforge.net/tracker/index.php?func=detail&amp;aid=974605&amp;group_id=29872&amp;atid=397617" target="_new" class="bodylink">974605</a>&nbsp;
+         		A NullPointerException can occur in XQuery when an empty element constructor is used
+         as part of an expression, for example "<a xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"></a>/."
+      </p>
+      
+      
+      <p><a href="http://sourceforge.net/tracker/index.php?func=detail&amp;aid=979108&amp;group_id=29872&amp;atid=397617" target="_new" class="bodylink">979108</a>&nbsp;
+         		A ClassCastException can occur while optimizing the expression used to initialize a global
+         variable in XQuery.
+      </p>
+      
+      
+      <p><a href="http://sourceforge.net/tracker/index.php?func=detail&amp;aid=981277&amp;group_id=29872&amp;atid=397617" target="_new" class="bodylink">981277</a>&nbsp;
+         		An internal error can occur in XQuery, with the error
+         message "Children of an ExprInstruction must themselves be ExprInstructions".
+      </p>
+      
+      
+      <p><a href="http://sourceforge.net/tracker/index.php?func=detail&amp;aid=98379&amp;group_id=29872&amp;atid=397617" target="_new" class="bodylink">98379</a>&nbsp;
+         		The schema processor does not allow an xs:annotation element to appear as a child
+         of xs:include or xs:import.
+      </p>
+      
+      
+      <p><a href="http://sourceforge.net/tracker/index.php?func=detail&amp;aid=983753&amp;group_id=29872&amp;atid=397617" target="_new" class="bodylink">983753</a>&nbsp;
+         		A NullPointerException occurs if the second argument of an arithmetic operator is the empty
+         sequence.
+      </p>
+      
+      
+      <p><a href="http://sourceforge.net/tracker/index.php?func=detail&amp;aid=985577&amp;group_id=29872&amp;atid=397617" target="_new" class="bodylink">985577</a>&nbsp;
+         		The Saxon schema processor does not handle xs:notation; this is a documented restriction,
+         but the processor instead of recovering cleanly fails with an exception when xs:notation is encountered.
+      </p>
+      
+      
+      <p><a href="http://sourceforge.net/tracker/index.php?func=detail&amp;aid=985578&amp;group_id=29872&amp;atid=397617" target="_new" class="bodylink">985578</a>&nbsp;
+         		The Saxon schema processor validates the xs:minInclusive facet incorrectly, leading to
+         spurious error messages.
+      </p>
+      
+      
+      <p><a href="http://sourceforge.net/tracker/index.php?func=detail&amp;aid=985841&amp;group_id=29872&amp;atid=397617" target="_new" class="bodylink">985841</a>&nbsp;
+         		Spurious static type errors may be reported when the static type 
+         of an operand is xdt:untypedAtomic.
+      </p>
+      
+      
+      <p><a href="http://sourceforge.net/tracker/index.php?func=detail&amp;aid=998978&amp;group_id=29872&amp;atid=397617" target="_new" class="bodylink">998978</a>&nbsp;
+         		Variables used in match patterns can corrupt the caller's stack frame.
+      </p>
+      
+      
+      <p><a href="http://sourceforge.net/tracker/index.php?func=detail&amp;aid=1000949&amp;group_id=29872&amp;atid=397617" target="_new" class="bodylink">1000949</a>&nbsp;
+         		A NullPointerException occurs when comparing two QNames if either is in no namespace.
+      </p>
+      
+      
+      <p><a href="http://sourceforge.net/tracker/index.php?func=detail&amp;aid=1000973&amp;group_id=29872&amp;atid=397617" target="_new" class="bodylink">1000973</a>&nbsp;
+         		An infinite loop occurs getting the base URI of a node in a DOM or JDOM tree.
+      </p>
+      
+      
+      <p><a href="http://sourceforge.net/tracker/index.php?func=detail&amp;aid=1001158&amp;group_id=29872&amp;atid=397617" target="_new" class="bodylink">1001158</a>&nbsp;
+         		The stack frame allocated for saxon:evaluate() may be too small, leading to an 
+         ArrayIndexOutOfBounds exception
+      </p>
+      
+      
+      <p><a href="http://sourceforge.net/tracker/index.php?func=detail&amp;aid=1001659&amp;group_id=29872&amp;atid=397617" target="_new" class="bodylink">1001659</a>&nbsp;
+         		When (in XSLT) character maps are used with the text output method, spurious spaces
+         appear in the output.
+      </p>
+      
+      
+      <p><a href="http://sourceforge.net/tracker/index.php?func=detail&amp;aid=1003836&amp;group_id=29872&amp;atid=397617" target="_new" class="bodylink">1003836</a>&nbsp;
+         		A ClassCastException occurs if an XPath expression evaluated using the Java XPath API
+         returns a date or time value.
+      </p>
+      
+      
+      <p><a href="http://sourceforge.net/tracker/index.php?func=detail&amp;aid=1003848&amp;group_id=29872&amp;atid=397617" target="_new" class="bodylink">1003848</a>&nbsp;
+         		A NullPointerException occurs if an XPath expression evaluated using the Java XPath API
+         requires access to the default collation.
+      </p>
+      
+      
+      <p><a href="http://sourceforge.net/tracker/index.php?func=detail&amp;aid=1004442&amp;group_id=29872&amp;atid=397617" target="_new" class="bodylink">1004442</a>&nbsp;
+         		When the count() function is applied to an expression that selects a sub-range of a sequence,
+         the wrong answer is given.
+      </p>
+      
+      
+      <p><a href="http://sourceforge.net/tracker/index.php?func=detail&amp;aid=1006108&amp;group_id=29872&amp;atid=397617" target="_new" class="bodylink">1006108</a>&nbsp;
+         		The namespace-uri() function can give the wrong answer when the source is a DOM source.
+      </p>
+      
+      
+      <p><a href="http://sourceforge.net/tracker/index.php?func=detail&amp;aid=1014271&amp;group_id=29872&amp;atid=397617" target="_new" class="bodylink">1014271</a>&nbsp;
+         		Two nodes in different DOM documents may share the same identity.
+      </p>
+      
+      
+      <p><a href="http://sourceforge.net/tracker/index.php?func=detail&amp;aid=1017755&amp;group_id=29872&amp;atid=397617" target="_new" class="bodylink">1017755</a>&nbsp;
+         		The XQuery API does not validate the values of serialization parameters.
+      </p>
+      
+      
+      <p><a href="http://sourceforge.net/tracker/index.php?func=detail&amp;aid=1024025&amp;group_id=29872&amp;atid=397617" target="_new" class="bodylink">1024025</a>&nbsp;
+         		This is a duplicate of 979108.
+      </p>
+      
+      
+      <p><a href="http://sourceforge.net/tracker/index.php?func=detail&amp;aid=1026414&amp;group_id=29872&amp;atid=397617" target="_new" class="bodylink">1026414</a>&nbsp;
+         		The schema processor does not handle recursive xs:import elements.
+      </p>
+      
+      
+      <p><a href="http://sourceforge.net/tracker/index.php?func=detail&amp;aid=1029493&amp;group_id=29872&amp;atid=397617" target="_new" class="bodylink">1029493</a>&nbsp;
+         		In XQuery, the default element namespace (as used for path expressions) 
+         is not reset when it goes out of scope.
+      </p>
+      
+      
+      <p><a href="http://sourceforge.net/tracker/index.php?func=detail&amp;aid=1029810&amp;group_id=29872&amp;atid=397617" target="_new" class="bodylink">1029810</a>&nbsp;
+         		In the schema processor, the specification mixed="yes" on a complex type is not inherited
+         on another type derived from that type by extension.
+      </p>
+      
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="defects-81.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../intro81.html">Up</a>&nbsp;&nbsp;<a class="nav" href="xslt-81.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

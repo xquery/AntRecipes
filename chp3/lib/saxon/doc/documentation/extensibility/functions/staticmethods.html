@@ -1,0 +1,102 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--extensibility/functions/staticmethods
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: Calling Static Methods in a Java Class</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Calling Static Methods in a Java Class">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>Calling Static Methods in a Java Class</h1>
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><b>Static methods</b> can be called directly.
+         The localname of the function must match the name of a public static method in this class. The names
+         match if they contain the same characters, excluding hyphens and forcing any character that follows
+         a hyphen to upper-case. For example the XPath function call <code>to-string()</code> matches the Java method
+         <code>toString()</code>; but the function call can also be written as <code>toString()</code> if you prefer.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">If there are several methods in the class that match the localname, and that have the correct number
+         of arguments, then the system attempts
+         to find the one that is the best fit to the types of the supplied arguments: for example if the 
+         call is <code>f(1,2)</code> then a method with two <code>int</code> arguments will be preferred
+         to one with two <code>float</code>
+         arguments. The rules for deciding between methods are quite complex. Essentially, for each candidate method,
+         Saxon calculates the "distance" between the types of the supplied arguments and the Java class of the 
+         corresponding method in the method's
+         signature, using a set of tables given below. For example, the distance between the XPath data type "xs:Integer"
+         and the Java class "long" is very small, while the distance between an XPath xs:integer and a Java boolean
+         is much larger. If there is one candidate method where the distances of all arguments are less-than-or-equal-to
+         the distances computed for other candidate methods, and the distance of at least one argument is smaller,
+         then that method is chosen. 
+         If there are several methods with the same name and the correct number of arguments, but none is
+         preferable to the others under these rules, an error is reported: the message indicates that there is
+         more than one method that matches the function call.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">This binding is carried out statically, using the static types of the supplied arguments, not the dynamic
+         types obtained when the arguments are evaluated. If there is insufficient static type information to distinguish
+         the candidate methods, an error is reported. You can supply additional type information using the <code>treat as</code>
+         expression (or by casting).
+      </p>
+      
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">For example (in XSLT):</p>
+      
+      
+      <div class="codeblock" style="border: solid thin; background-color: #B1CCC7; padding: 2px"><pre><code>&lt;xsl:value-of select="math:sqrt($arg)"
+   xmlns:math="java:java.lang.Math"/&gt;
+</code></pre></div>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">This will invoke the static method <code>java.lang.Math#sqrt()</code>, applying it to the value of the variable
+         <code>$arg</code>, and copying the value of the square root of <code>$arg</code> to the result tree.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Similarly (in XQuery):</p>
+      
+      
+      <div class="codeblock" style="border: solid thin; background-color: #B1CCC7; padding: 2px"><pre><code>&lt;a xmlns:double="java:java.lang.Double"/&gt; 
+                              {double:MAX_VALUE()} &lt;/a&gt;
+</code></pre></div>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">This will output the value of the static field <code>java.lang.Double#MAX_VALUE</code>. (In practice, it
+         is better to declare the namespace in the query prolog, because it will then not be copied to the result tree.)
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="staticmethods.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../functions.html">Up</a>&nbsp;&nbsp;<a class="nav" href="constructors.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

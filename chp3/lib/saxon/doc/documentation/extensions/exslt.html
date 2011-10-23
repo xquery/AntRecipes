@@ -1,0 +1,120 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--extensions/exslt
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: EXSLT Extensions</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: EXSLT Extensions">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      
+      <h1>EXSLT Extensions</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><a href="http://www.exslt.org/" target="_blank" class="bodylink">EXSLT</a> is
+         an initiative to define a standardized set of extension functions 
+         and extension elements that can be used across different XSLT processors.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Saxon supports the EXSLT modules Common, Math, Sets, DatesAndTimes, and Random. 
+         These functions are available both in XSLT and in XQuery. The full list
+         of EXSLT extension functions implemented is:
+      </p>
+      
+      
+      <ul xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         
+         <li>
+            <p><b>common (namespace http://exslt.org/common):</b> node-set(), object-type()
+            </p>
+         </li>
+         
+         <li>
+            <p><b>math (namespace http://exslt.org/math):</b> abs(), acos(), asin(), atan(), atan2(),
+               constant(), cos(), exp(), highest(), log(), lowest(), max(), min(), power(), random(),
+               sin(), sqrt(), tan(). <i>The random() function is also implemented, but it doesnt' work
+                  well: since it is not a pure function, Saxon sometimes optimizes it so that successive
+                  calls all return the same value. The random:random-sequence() function is preferable.</i></p>
+         </li>
+         
+         <li>
+            <p><b>sets (namespace http://exslt.org/sets):</b> difference(), intersection(), leading(), trailing(), has-same-node()
+            </p>
+         </li>
+         
+         <li>
+            <p><b>dates-and-times (namespace http://exslt.org/dates-and-times):</b>
+               date-time(), date(), time(), year(), leap-year(), month-in-year(),
+               month-name(), month-abbreviation(), week-in-year(), week-in-month(), day-in-year(),
+               day-in-month(), day-of-week-in-month(), day-in-week(), day-abbreviation(), 
+               hour-in-day(), minute-in-hour(), second-in-minute().
+            </p>
+         </li>
+         
+         <li>
+            <p><b>random (namespace http://exslt.org/random):</b> random-sequence()
+            </p>
+         </li>
+         
+      </ul>
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">These have considerable overlap with extension function and elements that have previously been
+         provided in the Saxon namespace. In some cases the Saxon versions of the functions remain available,
+         for the time being, but the EXSLT versions are preferred.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">There are some known restrictions:</p>
+      
+      
+      <ul xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         
+         <li>
+            <p>In the <code>set:leading()</code> and <code>set:trailing()</code> functions, 
+               Saxon does not implement the rule 
+               "If the first node in the second node set is not contained in the first node set, 
+               then an empty node set is returned." This rule prevents a pipelined implementation. Saxon returns
+               all nodes that precede/follow the first/last node of the second node-set in document order, whether
+               or not the two node-sets intersect.
+            </p>
+         </li>
+         
+      </ul>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">EXSLT extensions that overlap XSLT 2.0 functionality have sometimes been retained in cases where they have no
+         impact on the Saxon core code, but in cases (such as <code>func:function</code>) where the semantics are
+         inconveniently different from XSLT 2.0, they have been withdrawn.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="exslt.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="attributes.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

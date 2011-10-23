@@ -1,0 +1,76 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--using-xquery/intro
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: Using XQuery</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Using XQuery">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>Using XQuery</h1>
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">This section describes how to use Saxon as an XQuery processor, either from the command line,
+         or from the Java API.
+      </p>
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><i>For details of how to set up collation URIs for use in XQuery,
+            see <a class="bodylink" href="javascript:topage('conformance', 'collation-uri')">Collation URIs</a></i></p>
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Saxon supports XQuery 1.0 as well as XSLT 2.0.</p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The run-time code for both languages is identical, reflecting the fact that
+         they have very similar semantics. Most of the compile-time code (in particular, the
+         type checking logic and the optimizer) is also common. The XQuery support in Saxon consists essentially
+         of an XQuery parser (which is itself an extension of the XPath parser); the parser
+         generates the same internal interpretable code as the XSLT processor.
+      </p>
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The XQuery processor may be invoked either from the operating system command line,
+         or via an API from a Java application. There is no graphical user interface provided.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Saxon is an in-memory processor. Whether you use XSLT or XQuery, Saxon is designed
+         to process source documents that fit in memory. Saxon has been used successfully to process
+         source documents of 100Mbytes or more, but if you attempt anything this large, you need to be
+         aware (a) that you will need to allocate sufficient memory to the Java VM (at least 5 times the size
+         of the source document), and (b) that complex FLWR expressions may be very time-consuming to
+         execute. In fact, large documents are currently easier to process efficiently using XSLT, which 
+         offers the <code>xsl:key</code> facility for efficient direct access.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="intro.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="commandline.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

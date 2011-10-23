@@ -1,0 +1,71 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--changes/intro/functions83
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: Changes to Functions and Operators</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Changes to Functions and Operators">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>Changes to Functions and Operators</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The new rules for effective boolean value, and for the <code>boolean()</code> function,
+         have been implemented. These rules make it a type error to ask for the effective boolean value of
+         anything other than a sequence starting with a node, or a singleton boolean, number, or string.
+         For example, testing the effective boolean value of an <code>xs:anyURI</code> value or
+         of a sequence of integers is now an error.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Saxon's two native tree models now implement the W3C <code>xml:id</code> proposal.
+         An attribute named <code>xml:id</code> is considered to be an ID attribute for the purposes
+         of the id() function. Note that when using schema or DTD validation, the attribute is not
+         permitted unless the element declaration explicitly allows it, and it must then be declared
+         as of type ID.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The new function <code>prefix-from-QName</code> is implemented.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">In the TinyTree model, the base URI of a processing instruction is now maintained, and is
+         accessible to the <code>base-uri()</code> function. Previously,
+         the base URI was always taken to be the same as that of the parent element or document node.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Casting or constructing a QName or NOTATION is now permitted only if the argument is
+         supplied as a string literal. (Saxon is actually a bit more flexible than this, and allows a compile-time
+         expression.)
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="functions83.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../intro.html">Up</a>&nbsp;&nbsp;<a class="nav" href="serialization83.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

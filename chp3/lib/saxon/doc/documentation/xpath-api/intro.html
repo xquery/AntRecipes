@@ -1,0 +1,80 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--xpath-api/intro
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: The XPath API</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: The XPath API">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      
+      <h1>The XPath API</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><b>This section describes how to use Saxon as a Java class library, without making any use
+            of XSLT stylesheets. It includes information on the XPath API, and the API for the Saxon implementation
+            of the XPath object model. On other pages you will find 
+            <a class="bodylink" href="javascript:topage('using-xsl', 'embedding')">the API for XSLT transformation</a>,
+            <a class="bodylink" href="javascript:topage('using-xquery', 'embedding')">the API for running XQuery</a>, and 
+            <a class="bodylink" href="javascript:topage('schema-processing', 'validation-api')">the API for Schema validation.</a></b></p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The first section below describes the XPath API. This allows a Java application to execute
+         XPath expressions against a source document, and manipulate the results. No stylesheet is involved.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">From Saxon 8.2, this API implements and extends the XPath API defined in JAXP 1.3, so it should be
+         possible to write applications that are portable between Saxon and other products implementing this
+         interface. Some of the extensions to this interface are provided because Saxon supports XPath 2.0,
+         whereas JAXP 1.3 is designed primarily for XPath 1.0; some are provided for backwards compatibility;
+         and some are provided to allow applications a finer level of control if required.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">JAXP 1.3 is available as a standard part of JDK 1.5 (also referred to as Java 5). It can be installed
+         as an add-on to JDK 1.4, but unfortunately Sun's license for this add-on does not allow redistribution.
+         It must therefore be installed separately. To work around the problems this causes, especially for users
+         who want to embed Saxon in products that are then distributed further, Saxon also provides a standalone
+         XPath API that is not dependent on JAXP 1.3.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The classes that deliver the JAXP XPath API suport are in the separate JAR file
+         <code>saxon8-xpath.jar</code>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">In addition to the APIs described here, Saxon's JavaDoc documentation describes all the public classes
+         and methods that are available for advanced users. These are all subject to change from one release to
+         the next.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="intro.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="expressions.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

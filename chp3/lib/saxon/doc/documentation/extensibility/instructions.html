@@ -1,0 +1,172 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--extensibility/instructions
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: Writing extension instructions</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Writing extension instructions">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      
+      <h1>Writing extension instructions</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Saxon implements the element extensibility feature defined in the XSLT standard.
+         This feature allows you to define your own instruction types for use in the stylesheet. These
+         instructions can be used anywhere within a <i>content constructor</i>, for example as a child
+         of <code>xsl:template</code>, <code>xsl:if</code>, <code>xsl:variable</code>, or of a literal
+         result element.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">If a namespace prefix is to be used to denote extension elements, it must be declared in the
+         <code>extension-element-prefixes</code> attribute on the <code>xsl:stylesheet</code> element, or the
+         <code>xsl:extension-element-prefixes</code> attribute on any enclosing literal result element or
+         extension element.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Note that Saxon itself provides a number of stylesheet elements beyond those defined in the
+         XSLT specification, including <code>saxon:assign</code>, <code>saxon:entity-ref</code>, 
+         and <code>saxon:while</code>. To enable these, use the standard XSLT extension mechanism: define
+         <code>extension-element-prefixes="saxon"</code> on the xsl:stylesheet element, or 
+         <code>xsl:extension-element-prefixes="saxon"</code> on any enclosing literal result element.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">To invoke a user-defined set of extension elements, include the prefix in this attribute as
+         described, and associate it with a namespace URI that ends in "/" followed by the fully qualified
+         class name of a Java class that implements the <code>net.sf.saxon.style.ExtensionElementFactory</code> interface.
+         This interface defines a single method, <code>getExtensionClass()</code>, which takes the local name of the element
+         (i.e., the name without its namespace prefix) as a parameter, and returns the Java class used to
+         implement this extension element (for example, <code>return SQLConnect.class</code>). The class returned must
+         be a subclass of <code>net.sf.saxon.style.StyleElement</code>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The best way to see how to implement an extension element is by looking at the example, for SQL
+         extension elements, provided in package <code>net.sf.saxon.sql</code>, and at the sample stylesheet <b>books-sql.xsl</b>
+         which uses these extension elements. The main methods a <code>StyleElement</code>
+         class must provide are:
+      </p>
+      
+      
+      <table xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         
+         <tr>
+            <td valign="top" width="30%">
+               <p>prepareAttributes()</p>
+            </td>
+            
+            <td>
+               <p>This is called while the stylesheet tree is still being built, so it should not attempt
+                  to navigate the tree. Its task is to validate the attributes of the stylesheet element and
+                  perform any preprocessing necessary. For example, if the attribute is an attribute value template,
+                  this includes creating an Expression that can subsequently be evaluated to get the AVT's
+                  value.
+               </p>
+            </td>
+         </tr>
+         
+         <tr>
+            <td valign="top">
+               <p>validate()</p>
+            </td>
+            
+            <td>
+               <p>This is called once the tree has been built, and its task is to check that the stylesheet
+                  element appears in the right context within the tree, e.g. that it is within a template
+               </p>
+            </td>
+         </tr>
+         
+         <tr>
+            <td valign="top">
+               <p>process()</p>
+            </td>
+            
+            <td>
+               <p>This is called to process a particular node in the source document, which can be accessed
+                  by reference to the XPathContext object supplied as a parameter.
+               </p>
+            </td>
+         </tr>
+         
+         <tr>
+            <td valign="top">
+               <p>isInstruction()</p>
+            </td>
+            
+            <td>
+               <p>This should return true, to ensure that the element is allowed to appear
+                  within a template body.
+               </p>
+            </td>
+         </tr>
+         
+         <tr>
+            <td valign="top">
+               <p>mayContainTemplateBody()</p>
+            </td>
+            
+            <td>
+               <p>This should return true, to ensure that the element can contain instructions.
+                  Even if it can't contain anything else, extension elements should allow an xsl:fallback
+                  instruction to provide portability between processors
+               </p>
+            </td>
+         </tr>
+         
+      </table>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>StyleElement</code> class has access to many services supplied either via its superclasses or via
+         the XPathContext object. For details, see the API documentation of the individual classes.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Any element whose prefix matches a namespace listed in the <code>extension-element-prefixes</code>
+         attribute of an enclosing element is treated as an extension element. If no class can be
+         instantiated for the element (for example, because no ExtensionElementFactory can be loaded,
+         or because the ExtensionElementFactory doesn't recognise the local name), then fallback
+         action is taken as follows. If the element has one or more <code>xsl:fallback</code> children, they are
+         processed. Otherwise, an error is reported. When <code>xsl:fallback</code> is used in any other context, it
+         and its children are ignored.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">It is also possible to test whether an extension element is implemented by using the system
+         function <code>element-available()</code>. This returns true if the namespace of the element identifies
+         it as an extension element (or indeed as a standard XSLT instruction) and if a class can be instantiated
+         to represent it. If the namespace is not that of an extension element, or if no class can be
+         instantiated, it returns false.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="instructions.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="input-filters.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

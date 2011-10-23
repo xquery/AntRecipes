@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ============================================================= -->
+<!-- ANT RECIPES FOR WEB DEVELOPERS CHP 4 Multilingual Web Recipe  -->
+<!-- Author: James Fuller / Webcomposite                           -->
+<!-- Email/WWW: jim.fuller@webcomposite.com /  www.antrecipes.com  -->
+<!-- ============================================================= -->
+<!--    (C) Copyright James Fuller 2009 - All Rights Reserved.     -->
+<!--  use the -debug flag for more information when running ant  //-->
+
+<project name="Multilingual Website" default="build" basedir=".">
+<description>
+    Build target generates a multilingual website from source xml/xsl.
+</description>
+
+<!-- location of saxon jar //-->
+	<property name="jar.saxon" location="lib/saxon.jar"/>
+
+<!-- dist and src directory properties //-->
+	<property name="dir.src" location="data"/>
+	<property name="dir.dist" location="result"/>
+
+
+<!-- delete dist and src directories //-->
+<target name="clean">
+	<delete dir="${dir.dist}"/>
+</target>
+
+
+<!-- create dist and src directories //-->
+<target name="create">
+	<mkdir dir="${dir.dist}"/>
+</target>
+
+
+<!-- generate a specific language version from src directory//-->
+<target name="transform_src">
+
+
+<!-- define timestamp properties //-->
+	<tstamp prefix="ts"/>
+
+	
+<!-- apply transforms using xslt //-->
+	<java classname="com.icl.saxon.StyleSheet"
+           fork="true"
+           failonerror="false">
+ 
+	 <arg value="-o"/>
+
+	 <arg value="${dir.dist}/${dir.current}"/>
+         <arg value="-a"/>
+         <arg value="${dir.src}/${dir.current}"/>
+         
+         <arg value="lang=${lang.current}"/> 
+         <arg value="usedublincore=yes"/> 
+         <arg value="client=${client.current}"/>
+         <arg value="tstamp=${ts.TODAY}|${ts.TSTAMP}"/>
+
+         <classpath>
+           <pathelement location="${jar.saxon}"/>
+           <pathelement path="${java.class.path}"/>
+         </classpath>
+
+       </java>
+
+
+<!-- rename extensions .xml to .html.lang  //-->
+	<move todir="${dir.dist}/${dir.current}">
+	    <fileset dir="${dir.dist}/${dir.current}"/>
+	    <mapper type="glob" from="*.xml" to="*.html.${lang.current}"/>
+	</move>
+
+
+<!-- rename href .xml references to .html//-->
+	<replace dir="${dir.dist}/${dir.current}" value=".html">
+	  <include name="*.html.${lang.current}"/>
+	  <replacetoken>.xml</replacetoken>
+	</replace>
+
+</target>
+
+
+
+
+<!-- generate de,en,fr,it versions //-->
+<target name="generate_language_versions">
+
+
+<!-- generate deutsch | web version //-->
+    <antcall target="transform_src">
+      <param name="lang.current" value="de"/>
+      <param name="client.current" value="web"/>
+      <param name="dir.current" value="${dir.src_dir_to_process}"/>
+    </antcall>
+
+    
+<!-- generate english | web version //-->
+    <antcall target="transform_src">
+      <param name="lang.current" value="en"/>
+      <param name="client.current" value="web"/>
+      <param name="dir.current" value="${dir.src_dir_to_process}"/>
+    </antcall>
+    
+<!-- generate french | web version //-->
+    <antcall target="transform_src">
+      <param name="lang.current" value="fr"/>
+      <param name="client.current" value="web"/>
+      <param name="dir.current" value="${dir.src_dir_to_process}"/>
+    </antcall>
+    
+<!-- generate italian | web version //-->
+    <antcall target="transform_src">
+      <param name="lang.current" value="it"/>
+      <param name="client.current" value="web"/>
+      <param name="dir.current" value="${dir.src_dir_to_process}"/>
+    </antcall>
+
+</target>
+
+
+<!-- generate multilingual distribution //-->
+<target name="generate_dist">
+
+
+<!-- generate navigation templates //-->
+    <antcall target="generate_language_versions">
+      <param name="dir.src_dir_to_process" value="website/navigation"/>
+    </antcall>
+
+    
+<!-- generate company templates //-->
+    <antcall target="generate_language_versions">
+      <param name="dir.src_dir_to_process" value="website/company"/>
+    </antcall>
+
+
+</target>
+
+
+<!-- copy all resources, except xml/xslt, to dist //-->
+<target name="copy_resources">
+
+
+<!-- copy resources//-->
+  <copy todir="${dir.dist}">
+    <fileset dir="${dir.src}">
+	 <exclude name="**/*.xml"/>
+	 <exclude name="**/*.xsl"/>
+    </fileset>
+  </copy>
+
+
+</target>
+
+<target name="test_src">
+
+<xmlvalidate failonerror="yes" lenient="true">
+  <fileset dir="${dir.src}/website/" includes="**/*.xml"/>
+  <fileset dir="${dir.src}/website/resource" includes="**/*.xml"/>
+  <fileset dir="${dir.src}/website/navigation" includes="**/*.xml"/>
+  <fileset dir="${dir.src}/website/company" includes="**/*.xml"/>
+</xmlvalidate>
+
+</target>
+
+<target name="test_dist">
+
+<xmlvalidate failonerror="yes" lenient="true">
+  <fileset dir="${dir.dist}/website/" includes="**/*.html.*"/>
+  <fileset dir="${dir.dist}/website/resource" includes="**/*.html.*"/>
+  <fileset dir="${dir.dist}/website/navigation" includes="**/*.html.*"/>
+  <fileset dir="${dir.dist}/website/company" includes="**/*.html.*"/>
+</xmlvalidate>
+
+</target>
+
+<target name="debug">
+	<echoproperties/>
+	<antstructure output="project.dtd"/>
+</target>
+
+
+<!-- ===================================================== -->
+<!-- Build Target                                          -->
+<!-- ===================================================== -->
+<target name="build" depends="clean, create, copy_resources, generate_dist">
+
+	<echo message="success: language versions (/dist) built from source (/src)"/>
+
+</target>
+
+<!-- ===================================================== -->
+<!-- Run Target                                            -->
+<!-- ===================================================== -->
+<target name="run" depends="build"/>
+
+</project>

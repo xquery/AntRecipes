@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ============================================================= -->
+<!-- ANT RECIPES FOR WEB DEVELOPERS CHP 3 Web Recipe               -->
+<!-- Author: James Fuller / Webcomposite                           -->
+<!-- Email/WWW: jim.fuller@webcomposite.com /  www.antrecipes.com  -->
+<!-- ============================================================= -->
+<!--    (C) Copyright James Fuller 2010 - All Rights Reserved.     -->
+<!--  use the -debug flag for more information when running ant  //-->
+<project name="firefox" basedir="." default="run">
+	<description>Firefox toolbar development with Ant</description>
+	<!-- ============================================================ -->
+	<!-- JAR Target                                                   -->
+	<!-- ============================================================ -->
+	<target name="jar">
+		<zip destfile="data/chrome/toolbar.jar">
+			<zipfileset dir="data/chrome"/>
+		</zip>
+	</target>
+	<!-- ============================================================ -->
+	<!-- DIST Target                                                  -->
+	<!-- ============================================================ -->
+	<target name="dist">
+		<zip destfile="result/toolbar.xpi">
+			<zipfileset dir="data/chrome" includes="toolbar.jar" prefix="chrome"/>
+			<zipfileset dir="data" includes="install.rdf"/>
+		</zip>
+	</target>
+	<!-- ===================================================== -->
+	<!-- Run Target                                            -->
+	<!-- ===================================================== -->
+	<target name="run" depends="clean,jar,dist" description="build firefox toolbar"/>
+	<!-- ===================================================== -->
+	<!-- Clean Target                                          -->
+	<!-- ===================================================== -->
+	<target name="clean">
+		<delete file="data/chrome/toolbar.jar"/>
+		<delete dir="result"/>
+		<mkdir dir="result"/>
+	</target>
+</project>

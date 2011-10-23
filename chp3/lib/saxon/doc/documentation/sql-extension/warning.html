@@ -1,0 +1,56 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--sql-extension/warning
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: A Warning about Side-Effects</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: A Warning about Side-Effects">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      
+      <h1>A Warning about Side-Effects</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">XSLT does not guarantee the order of execution of instructions. In principle, the 
+         <code>sql:close</code> instruction could be evaluated before the <code>sql:query</code>
+         instruction, which would obviously be disastrous.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">In practice, Saxon's order of execution for XSLT instructions is reasonably predictable
+         unless you use variables, or unless you invoke stylesheet functions from within an XPath
+         expression. Using the SQL extension instructions within templates that are directly invoked
+         is thus fairly safe, but it is not a good idea to invoke them as a side-effect of computing
+         a variable or invoking a function. The exceptions are <code>sql:connect</code> and
+         <code>sql:query</code>: if you use these instructions to evaluate the content of a variable,
+         then of course they will be executed before any instruction that uses the value of the
+         variable.
+      </p>
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="warning.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

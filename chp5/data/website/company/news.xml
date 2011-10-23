@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<?xml-stylesheet href="news.xsl" type="text/xsl"?>
+<resource name="contact" type="document">
+
+	<RDF:RDF xmlns:RDF="http://www.w3c.org/RDF/" xmlns:DC="http://purl.org/RDF/DC/">
+	<RDF:Description RDF:HREF="http://purl.org/metadata/dublin_core_elements" 
+		DC:Title="News Page" 	
+		DC:Creator="Jim Fuller"
+		DC:Subject="News Page" 
+		DC:Description="Contains dynamic news area" 
+		DC:Publisher="" 
+		DC:Format="text/html" 
+		DC:Type="Technical Report" 
+		DC:Language="en" 
+		DC:Date="05/08/2003"/>
+	</RDF:RDF>
+<title>
+	<txt xml:lang="en">News Page(english)</txt>
+	<txt xml:lang="fr">News Page(french)</txt>
+	<txt xml:lang="de">News Page(deutsch)</txt>
+	<txt xml:lang="it">News Page(italian)</txt>
+</title>
+
+</resource>

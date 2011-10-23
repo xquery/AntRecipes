@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ============================================================= -->
+<!-- ANT RECIPES FOR WEB DEVELOPERS CHP 3 Web Recipe               -->
+<!-- Author: James Fuller / Webcomposite                           -->
+<!-- Email/WWW: jim.fuller@webcomposite.com /  www.antrecipes.com  -->
+<!-- ============================================================= -->
+<!--    (C) Copyright James Fuller 2009 - All Rights Reserved.     -->
+<!--  use the -debug flag for more information when running ant  //-->
+
+<project name="google-calendar" default="run" basedir=".">
+  <description>Demonstrate how to interact with google web services using Ant</description>
+
+<taskdef resource="net/sf/antcontrib/antcontrib.properties">
+  <classpath>
+    <pathelement location="../lib/ant-contrib-1.0b3.jar"/>
+  </classpath>
+</taskdef>
+
+<target name="example1" description="get information from google calendar">
+
+	<google-calendar
+	   Email="dashboards_with_xquery@webcomposite.com"
+		  Passwd="password"
+		  dest="result"
+		  search="calendar1"/>
+		
+</target>
+
+<target name="example2" description="get information from google contacts">
+
+	<google-contact
+       Email="dashboards_with_xquery@webcomposite.com"                                                            
+          Passwd="password"  
+		  dest="result"/>		
+</target>
+
+<!-- ===================================================== -->
+<!-- Run Target                                            -->
+<!-- ===================================================== -->
+ <target name="run" depends="clean,example1,example2" description="runs all examples"/>
+
+<!-- ===================================================== -->
+<!-- Clean Target                                          -->
+<!-- ===================================================== -->     
+<target name="clean">
+	<delete dir="result"/>
+	<mkdir dir="result"/>
+</target>
+
+
+<!-- ===================================================== -->
+<!-- Google Calendar Macrodef                              -->
+<!-- ===================================================== -->
+
+<macrodef name="google-login">
+	<attribute name="url" default="https://www.google.com/accounts/ClientLogin?session=1"/>
+	<attribute name="Email"/>
+	<attribute name="Passwd"/>
+	<attribute name="accountType" default="HOSTED_OR_GOOGLE"/>
+	<attribute name="source" default="antrecipes.com"/>
+	<attribute name="service" default="wise"/>
+	<sequential>
+		<post to="https://www.google.com/accounts/ClientLogin?session=1"
+			logfile="result/result.txt">
+			<prop name="Email" value="@{Email}"/>
+			<prop name="Passwd" value="@{Passwd}"/>
+			<prop name="accountType" value="@{accountType}"/>
+			<prop name="source" value="@{source}"/>
+			<prop name="service" value="@{service}"/>
+		</post>
+		<loadfile property="result" srcFile="result/result.txt"/>
+    	<propertyregex property="authtoken"
+              input="${result}"
+              regexp="Auth=(.*)"
+              select="\1"
+              casesensitive="false" />
+	</sequential>
+</macrodef>
+
+<macrodef name="google-calendar">
+	<attribute name="url" default="https://www.google.com/accounts/ClientLogin"/>
+	<attribute name="Email"/>
+	<attribute name="Passwd"/>
+	<attribute name="accountType" default="GOOGLE"/>
+	<attribute name="source" default="Personal"/>
+	<attribute name="service" default="cl"/>
+	<attribute name="dest"/>
+	<attribute name="search"/>
+
+	<sequential>
+		<!-- logging onto google //-->
+		<exec executable="curl" outputproperty="googletoken">
+			<arg line="@{url} -X POST -d Email=@{Email} -d Passwd=@{Passwd} -d accountType=@{accountType} -d source=@{source} -d service=@{service}"/>
+		</exec>
+		<echo message="token:${googletoken}"/>
+
+	    <propertyregex property="authtoken"
+	              input="${googletoken}"
+	              regexp="Auth=(.*)"
+	              select="\1"
+	              casesensitive="false" />
+
+		<echo message="authtoken:${authtoken}"/>
+
+		<!-- getting a list of your calendars //-->
+		<exec executable="curl" outputproperty="calendarlist" output="@{dest}/token.txt">
+			<arg line='--silent --header "Authorization: GoogleLogin auth=${authtoken}" "http://www.google.com/calendar/feeds/default/allcalendars/full"'/>
+		</exec>
+
+		<!-- extract link //-->				
+	    <propertyregex property="urlcallist"
+	              input="${calendarlist}"
+	              regexp='HREF="(.*)"'
+	              select="\1"
+	              casesensitive="false" />
+				
+		<!-- get calendar list feed //-->		
+		<exec executable="curl" outputproperty="list" output="@{dest}/list.xml">
+			<arg line='--silent --header "Authorization: GoogleLogin auth=${authtoken}" "${urlcallist}"'/>
+		</exec>
+		
+		<!-- searching all your calendars //-->
+		<exec executable="curl" outputproperty="searchcalendar">
+			<arg line='--silent --header "Authorization: GoogleLogin auth=${authtoken}" "http://www.google.com/calendar/feeds/default/private/full?q=@{search}"'/>
+		</exec>
+
+		<!-- extract link //-->		
+	    <propertyregex property="urlsearchlist"
+	              input="${searchcalendar}"
+	              regexp='HREF="(.*)"'
+	              select="\1"
+	              casesensitive="false" />	
+		
+		<!-- get calendar search feed //-->		
+		<exec executable="curl" outputproperty="search" output="@{dest}/search.xml">
+			<arg line='--silent --header "Authorization: GoogleLogin auth=${authtoken}" "${urlsearchlist}"'/>
+		</exec>
+
+	</sequential>
+</macrodef>
+
+
+<!-- ===================================================== -->
+<!-- Google Contact Macrodef                               -->
+<!-- ===================================================== -->
+<macrodef name="google-contact">
+	<attribute name="url" default="https://www.google.com/accounts/ClientLogin"/>
+	<attribute name="Email"/>
+	<attribute name="Passwd"/>
+	<attribute name="accountType" default="GOOGLE"/>
+	<attribute name="source" default="Personal"/>
+	<attribute name="service" default="cp"/>
+	<attribute name="dest"/>
+
+	<sequential>
+		<!-- logging onto google //-->
+		<exec executable="curl" outputproperty="googletoken" output="@{dest}/token.txt">
+			<arg line="@{url} -X POST -d Email=@{Email} -d Passwd=@{Passwd} -d accountType=@{accountType} -d source=@{source} -d service=@{service}"/>
+		</exec>
+		<echo message="token:${googletoken}"/>
+
+	    <propertyregex property="authtoken"
+	              input="${googletoken}"
+	              regexp="Auth=(.*)"
+	              select="\1"
+	              casesensitive="false" />
+
+		<echo message="authtoken:${authtoken}"/>
+
+		<!-- getting a list of your contacts //-->
+		<exec executable="curl" outputproperty="contactlist" output="@{dest}/contactlist.xml">
+			<arg line='--silent --header "Authorization: GoogleLogin auth=${authtoken}" "http://www.google.com/m8/feeds/contacts/@{Email}/base"'/>
+		</exec>
+		
+		<propertyregex property="urlcontactlist"
+	              input="${contactlist}"
+	              regexp='HREF="(.*)"'
+	              select="\1"
+	              casesensitive="false" />
+	
+				<!-- get contact list feed //-->		
+				<exec executable="curl" outputproperty="search" output="@{dest}/search.xml">
+					<arg line='--silent --header "Authorization: GoogleLogin auth=${authtoken}" "${urlcontactlist}"'/>
+				</exec>				
+	</sequential>
+</macrodef>
+
+</project>

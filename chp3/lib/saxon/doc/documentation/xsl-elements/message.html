@@ -1,0 +1,77 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--xsl-elements/message
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: xsl:message</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: xsl:message">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>xsl:message</h1>
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>xsl:message</code> element causes a message to be displayed. The message
+         is the contents of the <code>xsl:message</code> element.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">There is an optional attribute <code>terminate</code> with permitted values yes and no; the default is no. If the
+         value is set to yes, processing of the stylesheet is terminated after issuing the message. This
+         attribute may be supplied as an attribute value template.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">By default the message is displayed on the standard error output stream. You can supply your
+         own message Emitter if you want it handled differently. This must be a class that implements
+         the net.sf.saxon.output.Emitter interface. The content of the message is in general an
+         XML fragment. You can supply the emitter using the -m option on the command line, or the
+         setMessageEmitter() method of the Controller class.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">No newline is added to the message that is passed to the message emitter. The default message emitter
+         adds a newline itself. 
+         If you want to be sure of getting a newline, add one from the application, as shown below.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Example: This example displays an error message.</p>
+      
+      
+      <div class="codeblock" style="border: solid thin; background-color: #B1CCC7; padding: 2px"><pre><code>&lt;xsl:template match="BOOK"&gt;
+        &lt;xsl:if test="not(@AUTHOR)"&gt;
+            &lt;xsl:message&gt;Error: BOOK found with no AUTHOR!&amp;#xa;&lt;/xsl:message&gt;
+        &lt;/xsl:if&gt;
+    ...
+    &lt;/xsl:template&gt;</code></pre></div>
+      
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="message.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="namespace.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

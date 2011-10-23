@@ -1,0 +1,363 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--xsl-elements/number
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: xsl:number</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: xsl:number">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>xsl:number</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>xsl:number</code> element outputs the sequential number of a node in the source document.
+         It takes an attribute <code>count</code> whose value is a pattern indicating which nodes to count;
+         the default is to match all nodes of the same type and name as the current node.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>level</code> attribute may take three values: "single", "any", or "multiple".
+         The default is "single".
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">There is also an optional <code>from</code> attribute, which is also a pattern. 
+         The exact meaning of this depends on the level.
+      </p>
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The calculation is as follows:</p>
+      
+      
+      <table xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         
+         <tr>
+            <td valign="top">
+               <p>level=single</p>
+            </td>
+            <td>
+               
+               <p>If the current node matches the pattern, the counted node is the current node. Otherwise the
+                  counted node is the innermost ancestor of the current node that matches the pattern. If no ancestor
+                  matches the pattern, the result is zero. If the from attribute is present, the counted node must be
+                  a descendant of a node that matches the "from" pattern.
+               </p>
+               
+               <p>The result is one plus the number of elder siblings of the counted node that match the count pattern.
+                  
+               </p>
+            </td>
+         </tr>
+         
+         
+         <tr>
+            <td valign="top" width="20%">
+               <p>level=any</p>
+            </td>
+            <td>
+               <p>
+                  The result is the number of nodes in the document that match the count pattern, that are at or before
+                  the current node in document order, and that follow in document order the most recent node that matches the "from"
+                  pattern, if any. Typically this is used
+                  to number, say, the diagrams or equations in a document, or in some section or chapter of a document, regardless
+                  of where the diagrams or equations appear in the hierarchic structure.
+                  
+               </p>
+            </td>
+         </tr>
+         
+         
+         <tr>
+            <td valign="top" width="20%">
+               <p>level=multiple</p>
+            </td>
+            <td>
+               <p>
+                  The result of this is not a single number, but a list of numbers. There is one number in the list for each
+                  ancestor of the current element that matches the count pattern and that is a descendant of the anchor element.
+                  Each number is one plus the number of elder siblings of the relevant element that match the count pattern. The
+                  order of the numbers is "outwards-in".
+               </p>
+            </td>
+         </tr>
+      </table>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">There is an optional <code>format</code> attribute which controls the output format. This contains an alternating
+         sequence of format-tokens and punctuation-tokens. A format-token is any sequence of alphanumeric characters,
+         a punctuation-token is any other sequence. The following
+         values (among others) are supported for the format-token:
+      </p>
+      
+      
+      <table xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         
+         <tr>
+            <td width="60">
+               <p>1</p>
+            </td>
+            <td>
+               <p>Sequence 1, 2, 3, ... 10, 11, 12, ...</p>
+            </td>
+         </tr>
+         
+         <tr>
+            <td width="60">
+               <p>001</p>
+            </td>
+            <td>
+               <p>Sequence 001, 002, 003, ... 010, 011, 012, ... (any number of
+                  leading zeroes)
+               </p>
+            </td>
+         </tr>
+         
+         <tr>
+            <td>
+               <p>a</p>
+            </td>
+            <td>
+               <p>Sequence a, b, c, ... aa, ab, ac, ...</p>
+            </td>
+         </tr>
+         
+         <tr>
+            <td>
+               <p>A</p>
+            </td>
+            <td>
+               <p>Sequence A, B, C, ... AA, AB, AC, ...</p>
+            </td>
+         </tr>
+         
+         <tr>
+            <td>
+               <p>i</p>
+            </td>
+            <td>
+               <p>Sequence i, ii, iii, iv, ... x, xi, xii, ...</p>
+            </td>
+         </tr>
+         
+         <tr>
+            <td>
+               <p>I</p>
+            </td>
+            <td>
+               <p>Sequence I, II, III, IV, ... X, XI, XII, ...</p>
+            </td>
+         </tr>
+         
+      </table>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">There is also support for various Japanese sequences (Hiragana, Katakana, and Kanji) using
+         the format tokens &amp;#x3042, &amp;#x30a2, &amp;#x3044, &amp;#x30a4, &amp;#x4e00, and
+         for Greek and Hebrew sequences.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The format token "one" gives the sequence "one", "two", "three", ... , while "ONE" gives
+         the same in upper-case.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The default format is "1".</p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Actually, any sequence of ASCII digits in the format is treated in the same way: writing 999
+         has the same effect as writing 001. A sequence of Unicode digits other than ASCII
+         digits (for exaple, Tibetan digits) can also be used, and will result in decimal numbering using those
+         digits.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Similarly, any other character classified as a letter can be used, and will result in "numbering" using
+         all consecutive Unicode letters following the one provided. For example, specifying "x" will give the
+         sequence x, y, z, xx, xy, xz, yx, yy, yz, etc. Specifying the Greek letter alpha (&amp;#178;) will
+         cause "numbering" using the Greek letters up to "Greek letter omega with tonos" (&amp;#206;).
+         Only "i" and "I" (for roman numbering), and the Japanese characters listed above, are exceptions to this rule.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Successive format-tokens in the format are used to process successive numbers in the list.
+         If there are more format-tokens in the format than numbers in the list,
+         the excess format-tokens and punctuation-tokens are ignored. If there are fewer format-tokens
+         in the format than numbers in the list, the last format-token and the punctuation-token that
+         precedes it are used to format all excess numbers, with the final punctuation-token being used
+         only at the end.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Examples:</p>
+      
+      
+      <table xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         
+         <thead>
+            
+            <tr>
+               <td width="34%">
+                  <p>Number(s)</p>
+               </td>
+               
+               <td width="33%">
+                  <p>Format</p>
+               </td>
+               
+               <td width="33%">
+                  <p>Result</p>
+               </td>
+            </tr>
+            
+         </thead>
+         
+         
+         <tr>
+            <td>
+               <p>3</p>
+            </td>                
+            <td>
+               <p>(1)</p>
+            </td>        
+            <td>
+               <p>(3)</p>
+            </td>
+         </tr>
+         
+         <tr>
+            <td>
+               <p>12</p>
+            </td>               
+            <td>
+               <p>I</p>
+            </td>          
+            <td>
+               <p>XII</p>
+            </td>
+         </tr>
+         
+         <tr>
+            <td>
+               <p>2,3</p>
+            </td>              
+            <td>
+               <p>1.1</p>
+            </td>        
+            <td>
+               <p>2.3</p>
+            </td>
+         </tr>
+         
+         <tr>
+            <td>
+               <p>2,3</p>
+            </td>              
+            <td>
+               <p>1(i)</p>
+            </td>       
+            <td>
+               <p>2(iii)</p>
+            </td>
+         </tr>
+         
+         <tr>
+            <td>
+               <p>2,3</p>
+            </td>              
+            <td>
+               <p>1.</p>
+            </td>         
+            <td>
+               <p>2.3.</p>
+            </td>
+         </tr>
+         
+         <tr>
+            <td>
+               <p>2,3</p>
+            </td>              
+            <td>
+               <p>A.1.1</p>
+            </td>      
+            <td>
+               <p>B.3.</p>
+            </td>
+         </tr>
+         
+         <tr>
+            <td>
+               <p>2,3,4,5</p>
+            </td>          
+            <td>
+               <p>1.1</p>
+            </td>        
+            <td>
+               <p>2.3.4.5</p>
+            </td>
+         </tr>
+         
+      </table>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">This character may be preceded or followed by arbitrary punctuation (anything other than
+         these characters or XML special characters such as "&lt;") which is copied to the output verbatim.
+         For example, the value 3 with format "(a)" produces output "(c)".
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">It is also possible to use xsl:number to format a number obtained from an expression. This is achieved
+         using the value attribute of the xsl:number element. If this attribute is present, the count, level, and from
+         attributes are ignored.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">With large numbers, the digits may be split into groups. For example, specify grouping-size="3" and
+         grouping-separator="/" to have the number 3000000 displayed as "3/000/000".
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Negative numbers are always output in conventional decimal notation,
+         regardless of the format specified.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Example: This example outputs the title child of an H2 element preceded by a composite number
+         formed from the sequential number of the containing H1 element and the number of the containing H2 element.
+      </p>
+      
+      <div class="codeblock" style="border: solid thin; background-color: #B1CCC7; padding: 2px"><pre><code>&lt;xsl:template match="H2/TITLE"&gt;
+        &lt;xsl:number count="H1"&gt;.&lt;xsl:number count="H2"&gt;
+        &lt;xsl:text&gt; &lt;/xsl:text&gt;
+        &lt;xsl:apply-templates/&gt;
+&lt;/xsl:template&gt;</code></pre></div>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="number.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="otherwise.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

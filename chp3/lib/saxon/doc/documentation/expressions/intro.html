@@ -1,0 +1,79 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--expressions/intro
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: Introduction</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Introduction">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      
+      <h1>Introduction</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">This document is an informal guide to the syntax of XPath 2.0 expressions, which are used in Saxon both within
+         XSLT stylesheets, and in the Java API. For formal specifications, see the
+         <a href="http://www.w3.org/TR/xpath20" target="_blank" class="bodylink">XPath 2.0 specification</a>,
+         except where differences are noted here.
+      </p>
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">XPath expressions may be used either in an XSLT stylesheet, or as a parameter to various Java
+         interfaces. The syntax is the same in both cases. In the Java interface, expressions are handled
+         using the <code>net.sf.saxon.xpath.XPathEvaluator</code> class, and are parsed using a call such as
+         <code>XPathEvaluator.createExpression("$a + $b")</code>. 
+         This returns an object of class <code>net.sf.saxon.xpath.XPathExpression</code>,
+         which provides two methods for evaluating the expression: <code>evaluate()</code>, which returns the value
+         of the expression, and <code>iterator()</code>, which allows iteration over the items in the sequence
+         returned by the expression. For further details of these methods, see the API documentation.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">An important change in XPath 2.0 is that all values are now considered as sequences. A sequence
+         consists of zero or more items; an item may be a node or a simple-value. Examples of simple-values
+         are integers, strings, booleans, and dates. A single value such as
+         a number is considered as a sequence of length 1. The empty sequence is written as <code>()</code>;
+         a singleton sequence may be written as <code>"a"</code> or <code>("a")</code>, and a general
+         sequence is written as <code>("a", "b", "c")</code>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The node-sets of XPath 1.0 are replaced in XPath 2.0 by sequences of nodes. Path expressions
+         will return node sequences whose nodes are in document order with no duplicates, but other kinds
+         of expression may return sequences of nodes in any order, with duplicates permitted.
+      </p> 
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">This section summarizes the syntactic constructs and operators provided in XPath 2.0. The functions
+         provided in the function library are listed separately: see <a class="bodylink" href="javascript:topage('functions', 'intro')">functions.html</a>.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="intro.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="literals.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--xsl-elements/function
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: xsl:function</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: xsl:function">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>xsl:function</h1>
+      
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>xsl:function</code> element defines a function within a stylesheet. The function is written
+         in XSLT but it may be called from any XPath expression in the stylesheet. It must have a non-default
+         namespace prefix.
+      </p>
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Example:</p>
+      
+      <div class="codeblock" style="border: solid thin; background-color: #B1CCC7; padding: 2px"><pre><code>&lt;xsl:function name="my:factorial"&gt;
+&lt;xsl:param name="number" as="xs:integer"/&gt; 
+&lt;xsl:sequence as="xs:integer" 
+            select="if ($number=0) then 1 else $number * my:factorial($number-1)"/&gt;</code></pre></div>
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">In limited circumstances, stylesheet functions (<code>xsl:function</code>) now optimise tail-recursion.
+         The circumstances are that the <code>select</code> expression of the <code>xsl:result</code> instruction
+         must contain a call on the same function as the <code>then</code> or <code>else</code> part of a
+         conditional expression (which may be nested in further conditional expressions). It may require a little
+         care to write functions to exploit this. The example above is not tail-recursive, because
+         the recursive call is within an arithmetic expression: the multiplication takes place on return
+         from the recursive call. It can be recast in tail-recursive form by adding an extra parameter (which should
+         be set to 1 on the initial call):
+      </p>
+      
+      
+      <div class="codeblock" style="border: solid thin; background-color: #B1CCC7; padding: 2px"><pre><code>&lt;xsl:function name="x:factorial"&gt;
+    &lt;xsl:param name="acc" as="xs:integer?"/&gt;
+    &lt;xsl:param name="n" as="xs:integer"/&gt;
+    &lt;xsl:sequence as="xs:integer" 
+         select="if ($n = 1) 
+                 then $acc
+                 else x:factorial($acc*$n, $n - 1)" /&gt;
+&lt;/xsl:function&gt;</code></pre></div>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The call <code>x:factorial(1, 5)</code> returns 120.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Saxon defines an extra attribute on <code>xsl:function</code>: <code>saxon:memo-function="yes"</code>
+         indicates that Saxon should remember the
+         results of calling the function in a cache, and if the function is called again
+         with the same arguments, the result is retrieved from the cache rather than being
+         recalculated. Further details: see 
+         <a class="bodylink" href="javascript:tosubpage('extensions','attributes','memo-function')">saxon:memo-function</a>.
+      </p>
+      
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="function.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="if.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

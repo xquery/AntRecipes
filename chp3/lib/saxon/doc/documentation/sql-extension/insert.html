@@ -1,0 +1,55 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--sql-extension/insert
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: sql:insert and sql:column</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: sql:insert and sql:column">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      
+      <h1>sql:insert and sql:column</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><code>sql:insert</code> performs an SQL INSERT statement. This causes a row to be added to the table identified
+         by the "table" attribute. There is a mandatory <code>connection</code> attribute, used as in the <code>sql:query</code>
+         instruction described above.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><code>sql:column</code> is used as a child element of <code>sql:insert</code>, and identifies the name and value of a column
+         to be included in the INSERT statement. The name of the column is identified by the <code>name</code> attribute,
+         the value may be indicated either by evaluating the expression contained in the <code>select</code> attribute, or
+         as the expanded contents of the <code>sql:column</code> element. The value is always interpreted as a String.
+         (Remember this is purely a demonstration of extensibility, in a real system there would be a need to
+         cater for SQL columns of other data types).
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="insert.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="close.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

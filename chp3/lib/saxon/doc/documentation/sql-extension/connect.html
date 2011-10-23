@@ -1,0 +1,73 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--sql-extension/connect
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: sql:connect</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: sql:connect">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      
+      
+      <h1>sql:connect</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><code>sql:connect</code> creates a database connection. It has attributes <code>driver</code>,
+         <code>database</code>, <code>user</code>, and <code>password</code>,
+         all of which are attribute value templates (so the values can be passed in as parameters).
+         The <code>driver</code> attribute names the JDBC driver class to be used. The
+         database name must be a name that JDBC can associate with an actual database.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>sql:connect</code> instruction returns a database connection as a value, specifically
+         a value of type "external object", which can be referred to using the type 
+         <code>java:java.sql.Connection</code>. Typically
+         the value will be assigned to a variable using the construct:
+      </p>
+      
+      
+      <div class="codeblock" style="border: solid thin; background-color: #B1CCC7; padding: 2px"><pre><code>&lt;xsl:variable name="connection" 
+              as="java:java.sql.Connection" 
+              xmlns:java="http://saxon.sf.net/java-type"&gt;
+  &lt;sql:connect database="jdbc:odbc:testdb" 
+              driver="sun.jdbc.odbc.JdbcOdbcDriver" 
+              xsl:extension-element-prefixes="sql"/&gt;
+&lt;/xsl:variable&gt;
+</code></pre></div>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">This can be a global variable or a local variable; if local, it can be passed to other templates
+         as a parameter in the normal way. The connection is used on instructions such as <code>sql:insert</code>
+         and <code>sql:query</code> with an attribute such as <code>connection="$connection"</code>; the value
+         of the <code>connection</code> attribute is an expression that returns a database connection object.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="connect.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="query.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

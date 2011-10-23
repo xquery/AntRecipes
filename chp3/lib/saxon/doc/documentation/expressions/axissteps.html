@@ -1,0 +1,306 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--expressions/axissteps
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: Axis steps</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Axis steps">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      
+      
+      <h1>Axis steps</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The basic primitive for accessing a source document is the <i>axis step</i>. Axis steps 
+         may be combined into path expressions using the path operators <code>/</code> and <code>//</code>,
+         and they may be filtered using filter expressions in the same way as the result of any other
+         expression.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">An axis step has the basic form <code>axis :: node-test</code>, and selects nodes on a given axis
+         that satisfy the node-test. The axes available are:
+      </p>
+      
+      
+      <table xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         <tr>
+            <td>
+               <p>ancestor</p>
+            </td>
+            <td>
+               <p>Selects ancestor nodes starting with the current node and ending
+                  with the document node
+               </p>
+            </td>
+         </tr>
+         
+         <tr>
+            <td>
+               <p>ancestor-or-self</p>
+            </td>
+            <td>
+               <p>Selects the current node plus all ancestor nodes</p>
+            </td>
+         </tr>
+         
+         <tr>
+            <td>
+               <p>attribute</p>
+            </td>
+            <td>
+               <p>Selects all attributes of the current node (if it is an element)</p>
+            </td>
+         </tr>
+         
+         <tr>
+            <td>
+               <p>child</p>
+            </td>
+            <td>
+               <p>Selects the children of the current node, in documetn order</p>
+            </td>
+         </tr>
+         
+         <tr>
+            <td>
+               <p>descendant</p>
+            </td>
+            <td>
+               <p>Selects the children of the current node and their children, recursively
+                  (in document order)
+               </p>
+            </td>
+         </tr>
+         
+         <tr>
+            <td>
+               <p>descendant-or-self</p>
+            </td>
+            <td>
+               <p>Selects the current node plus all descendant nodes</p>
+            </td>
+         </tr>
+         
+         <tr>
+            <td>
+               <p>following</p>
+            </td>
+            <td>
+               <p>Selects the nodes that follow the current node in document order,
+                  other than its descendants
+               </p>
+            </td>
+         </tr>
+         
+         <tr>
+            <td>
+               <p>following-sibling</p>
+            </td>
+            <td>
+               <p>Selects all subsequent child nodes of the same
+                  parent node
+               </p>
+            </td>
+         </tr>
+         
+         <tr>
+            <td>
+               <p>namespace</p>
+            </td>
+            <td>
+               <p>Selects all the in-scope namespaces for an element (this axis
+                  is deprecated in XPath 2.0, but Saxon continues to support it)
+               </p>
+            </td>
+         </tr>
+         
+         <tr>
+            <td>
+               <p>parent</p>
+            </td>
+            <td>
+               <p>Selects the parent of the current node</p>
+            </td>
+         </tr>
+         
+         <tr>
+            <td>
+               <p>preceding</p>
+            </td>
+            <td>
+               <p>Selects the nodes that precede the current node in document order,
+                  other than its ancestors
+               </p>
+            </td>
+         </tr>
+         
+         <tr>
+            <td>
+               <p>preceding-sibling</p>
+            </td>
+            <td>
+               <p>Selects all preceding child nodes of the same
+                  parent node
+               </p>
+            </td>
+         </tr>
+         
+         <tr>
+            <td>
+               <p>self</p>
+            </td>
+            <td>
+               <p>Selects the current node</p>
+            </td>
+         </tr>
+      </table>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">When the child axis is used, <code>child::</code> may be omitted, and when the attribute
+         axis is used, <code>attribute::</code> may be abbviated to <code>@</code>. The expression
+         <code>parent::node()</code> may be shortened to <code>..</code></p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><i>The expression <code>.</code> is no longer synonymous with <code>self::node()</code>,
+            since it may now select items that are not nodes. If the context item is not a node, any use of a
+            path expression will raise an error.</i></p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The node-test may be, for example:</p>
+      
+      
+      <ul xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         <li>
+            <p>a node name</p>
+         </li>
+         
+         <li>
+            <p><code>prefix:*</code> to select nodes in a given namespace
+            </p>
+         </li>
+         
+         <li>
+            <p><code>*:localname</code> to select nodes with a given local name, regardless of namespace
+            </p>
+         </li>
+         
+         <li>
+            <p><code>text()</code> (to select text nodes)
+            </p>
+         </li>
+         
+         <li>
+            <p><code>node()</code> (to select any node)
+            </p>
+         </li>
+         
+         <li>
+            <p><code>processing-instruction()</code> (to select any processing instruction)
+            </p>
+         </li>
+         
+         <li>
+            <p><code>processing-instruction('literal')</code> to select processing instructions with the given name
+               (target)
+            </p>
+         </li>
+         
+         <li>
+            <p><code>comment()</code> to select comment nodes
+            </p>
+         </li>
+         
+         <li>
+            <p><code>element()</code> or <code>element(*)</code> to select any element node
+            </p>
+         </li>            
+         
+         <li>
+            <p><code>element(N)</code> to select any element node named N
+            </p>
+         </li>              
+         
+         <li>
+            <p><code>element(*, T)</code> to select any element node whose type annotation
+               is T, or a subtype of T
+            </p>
+         </li>              
+         
+         <li>
+            <p><code>element(N, T)</code> to select any element node whose name is N
+               and whose type annotation is T, or a subtype of T
+            </p>
+         </li>  
+         
+         <li>
+            <p><code>schema-element(N)</code> to select any element node whose name is N,
+               or an element in the substitution group of N, that conforms to the schema-defined
+               type for a global element declaration named N in an imported schema
+            </p>
+         </li>   
+         
+         <li>
+            <p><code>attribute</code> or <code>attribute(*)</code> to select any attribute node
+            </p>
+         </li>            
+         
+         <li>
+            <p><code>attrbute(N)</code> to select any attribute node named N
+            </p>
+         </li>              
+         
+         <li>
+            <p><code>attribute(*, T)</code> to select any attribute node whose type annotation
+               is T, or a subtype of T
+            </p>
+         </li>              
+         
+         <li>
+            <p><code>attribute(N, T)</code> to select any attribute node whose name is N
+               and whose type annotation is T, or a subtype of T
+            </p>
+         </li>  
+         
+         <li>
+            <p><code>schema-attribute(N)</code> to select any attribute node whose name is N,
+               that conforms to the schema-defined
+               type for a global attribute declaration named N in an imported schema
+            </p>
+         </li> 
+         
+         
+      </ul>
+      
+      
+      
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="axissteps.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="parentheses.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--changes/v8.2/schema82
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: Changes to Schema Processing</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Changes to Schema Processing">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>Changes to Schema Processing</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Both in XQuery and XSLT, Saxon now does a lot more static checking of the stylesheet/query against the schema.
+         Providing that constructed elements are validated, and that the names of elements and attributes are known statically,
+         Saxon checks statically that elements and attributes used to construct the content of an element whose type is known
+         are permitted within the content model of the containing element. If the value of an element or attribute is given as
+         a constant string, Saxon also checks that the string is valid for the type of that element or attribute. This is by no
+         means a complete static check (for example there is no check that elements are output in the correct order or that
+         mandatory elements/attributes are present) but it enables many errors to be detected at compile time that would
+         otherwise be found only by validating the result tree during or after construction.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Note that this only works if the type of constructed elements is declared, using the <code>validate</code>
+         expression in XQuery or the <code>[xsl:]validation</code> and <code>[xsl:]type</code> attributes in XSLT.
+      </p> 
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Restrictions on the use of namespace-sensitive values (QNames and NOTATIONs) have been removed. These
+         values may now be freely used as fixed values, default values, and enumeration values, and they may appear
+         in lists and unions.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Note that if a QName is used as a default value, the value that is added to a source document is the lexical
+         value specified in the schema document. No attempt is made to ensure that the relevant namespace prefix is declared in the
+         source document. The XML Schema specification does not make it clear what is supposed to happen here, and the
+         problem is better avoided.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The implementation actually defers the checking of namespace prefixes until the full namespace context in the
+         result tree is known. A consequence of this is that if a QName-validated attribute is added to an element that
+         specifies validate="strip", the type annotation may be removed before the prefix of the QName is ever checked.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">There has been a significant reorganisation of the class hierarchy for classes holding type information. There is now
+         a hierarchy of interfaces representing the upper levels of the XML Schema type hierarchy (as modified by XPath): this
+         includes <code>SchemaType</code> with subtypes <code>ComplexType</code> and <code>SimpleType</code>, and
+         various other interfaces such as <code>AtomicType</code>. 
+         There are separate implementations of these interfaces for built-in types (available in Saxon-B)
+         and for user-defined types (available only in Saxon-SA). This has enabled a cleaner structure to the two packages, with
+         less tendency for schema-aware code to clutter the non-schema-aware product, and less need for artificial marker
+         interfaces.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">In the schema data model, an <code>AttributeUse</code> is now distinguished from an <code>AttributeDecl</code>.
+         For a global attribute declaration, all the information is in an <code>AttributeDecl</code>; for an attribute reference
+         of the form &lt;xs:attribute ref="x"&gt; all the information is in an <code>AttributeUse</code>; for a locally-declared
+         attribute (the most common case) the information is divided between an <code>AttributeDecl</code> and an
+         <code>AttributeUse</code>. This brings the Saxon model closer to the schema component model described
+         in the W3C specification.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Similarly, an <code>ElementParticle</code> is now distinguished from an <code>ElementDecl</code>.
+         For a locally-declared element, there will be one <code>ElementParticle</code> and one <code>ElementDecl</code>.
+      </p> 
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="schema82.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../v8.2.html">Up</a>&nbsp;&nbsp;<a class="nav" href="xpath82.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

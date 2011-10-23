@@ -1,0 +1,333 @@
+<html>
+	<style type="text/css">
+	<!--
+	BODY {BACKGROUND-COLOR: #ffffff }
+	A { TEXT-DECORATION: none }
+	A {COLOR: #333333; FONT-FAMILY: tahoma,helvetica,sans-serif }
+				 A:link {COLOR: #333333; FONT-FAMILY: tahoma,helvetica,sans-serif; TEXT-DECORATION:underline }
+				 A:active {COLOR: #333333; FONT-FAMILY: tahoma,helvetica,sans-serif; TEXT-DECORATION:underline }
+	P {COLOR: #333333; FONT-FAMILY: tahoma,helvetica,sans-serif;  FONT-SIZE:8pt}
+	TD {	COLOR: #333333; FONT-FAMILY: tahoma,helvetica,sans-serif; FONT-SIZE:8pt }
+	TR {	COLOR: #333333; FONT-FAMILY: tahoma,helvetica,sans-serif; FONT-SIZE:8pt }
+	!-->
+	</style>
+
+<center>
+	<table width="755">
+	<tr>
+	<td>
+<table width="100%">
+	<tr bgcolor="397AB2">
+	<td align=left><b><font color="#FFFFFF" size=+2>List of hosts</font></b></align></td>
+	</tr>
+	<tr bgcolor="#EEF2F3">
+	<td><center><table width=100%>
+<a name="toc"></a>
+<tr><td width=60%><a href="#toc_rrg.flamedigital.com">rrg.flamedigital.com</td><td width=40%><font color=red>High Severity problem(s) found</font></td></tr>
+</table></center></table>
+<a name="toc_rrg.flamedigital.com"></a><p align="right"><a href="#toc">[^] Back</a>
+<center><table width="100%">
+		<tr bgcolor="#CC0000">
+		<td align=left><b><font color="#FFFFFF" size=+2>rrg.flamedigital.com</font></b></align></td>
+		</tr>
+		<tr bgcolor="#EEF2F3">
+		<td>
+		<br><br>
+		<table width=80%>
+		<tr><td><u>Scan time :</u><br><table width=60%>
+			 <tr><td align=right>Start time : </td><td align=right>Fri Sep 19 09:48:02 2008</td></tr>
+			 <tr><td align=right>End time : </td><td align=right>Fri Sep 19 10:04:11 2008</td></tr></table></tr></td>
+	   <tr><td><u>Number of vulnerabilities :</u><br><table width=60%>
+			 <tr><td align=right>Open ports : </td><td align=right>4</td></tr>
+					<tr><td align=right>Low : </td><td align=right>18</td></tr>
+				 <tr><td align=right>Medium : </td><td align=right>2</td></tr>
+				   <tr><td align=right>High : </td><td align=right>1</td></tr></table></tr></td>
+		<tr><td colspan=2><hr></td></tr>
+	<tr><td><u>Information about the remote host :</u><br><br><table width=100%>
+	   <tr><td align=right>Operating system : </td><td align=right>Linux Kernel 2.6</td></tr>
+		   <tr><td align=right>NetBIOS name : </td><td align=right>(unknown)</td></tr>
+			   <tr><td align=right>DNS name : </td><td align=right>rrg.flamedigital.com.</td></tr></table></tr></td>
+		</table>
+		</tr>
+			 </table></center></html><a name="rrg.flamedigital.com_mysql (3306/tcp)"></a><p align=right><a href="#toc_rrg.flamedigital.com">[^] Back to rrg.flamedigital.com</a></p><table width="100%">
+<tr bgcolor="#0F346C">
+<td><b><font color=#FFFFFF>Port mysql (3306/tcp)</font></b></td>
+</tr>
+	   </table><a name="rrg.flamedigital.com_https (443/tcp)"></a><p align=right><a href="#toc_rrg.flamedigital.com">[^] Back to rrg.flamedigital.com</a></p><table width="100%">
+<tr bgcolor="#0F346C">
+<td><b><font color=#FFFFFF>Port https (443/tcp)</font></b></td>
+</tr>
+	   </table><html>
+	<table width="100%">
+	<tr bgcolor="#397AB2">
+	<td align=left><b><font color="#FFFFFF">Service detection</font></b></align></td>
+	</tr>
+	<tr bgcolor="#EEF2F3">
+    <td colspan=2>
+    A TLSv1 server answered on this port.<br><br><br>
+			Nessus ID : <a href="http://www.nessus.org/plugins/index.php?view=single&id=22964">22964</a>
+    </td>
+	</tr>
+	</table>
+<html>
+	<table width="100%">
+	<tr bgcolor="#397AB2">
+	<td align=left><b><font color="#FFFFFF">Service detection</font></b></align></td>
+	</tr>
+	<tr bgcolor="#EEF2F3">
+    <td colspan=2>
+    A web server is running on this port through TLSv1.<br><br>
+			Nessus ID : <a href="http://www.nessus.org/plugins/index.php?view=single&id=22964">22964</a>
+    </td>
+	</tr>
+	</table>
+<html>
+	<table width="100%">
+	<tr bgcolor="#397AB2">
+	<td align=left><b><font color="#FFFFFF">Supported SSL Ciphers Suites</font></b></align></td>
+	</tr>
+	<tr bgcolor="#EEF2F3">
+    <td colspan=2>
+    <br><b>Synopsis :</b><br><br>The remote service encrypts communications using SSL. <br><br><b>Description :</b><br><br>This script detects which SSL ciphers are supported by the remote<br>service for encrypting communications. <br><br><b>See also :</b><br><br><a href="http://www.openssl.org/docs/apps/ciphers.html">http://www.openssl.org/docs/apps/ciphers.html</a><br><br><b>Risk factor :</b> <br><br>None<br><br><b>Plugin output :</b><br><br>Here is the list of SSL ciphers supported by the remote server :<br><br>  Medium Strength Ciphers (&gt;= 56-bit and &lt; 112-bit key)<br>    SSLv3<br>      EDH-RSA-DES-CBC-SHA        Kx=DH         Au=RSA     Enc=DES(56)      Mac=SHA1   <br>      DES-CBC-SHA                Kx=RSA        Au=RSA     Enc=DES(56)      Mac=SHA1   <br>    TLSv1<br>      EDH-RSA-DES-CBC-SHA        Kx=DH         Au=RSA     Enc=DES(56)      Mac=SHA1   <br>      DES-CBC-SHA                Kx=RSA        Au=RSA     Enc=DES(56)      Mac=SHA1   <br><br>  High Strength Ciphers (&gt;= 112-bit key)<br>    SSLv3<br>      EDH-RSA-DES-CBC3-SHA       Kx=DH         Au=RSA     Enc=3DES(168)    Mac=SHA1   <br>      DES-CBC3-SHA               Kx=RSA        Au=RSA     Enc=3DES(168)    Mac=SHA1   <br>      RC4-MD5                    Kx=RSA        Au=RSA     Enc=RC4(128)     Mac=MD5    <br>      RC4-SHA                    Kx=RSA        Au=RSA     Enc=RC4(128)     Mac=SHA1   <br>    TLSv1<br>      EDH-RSA-DES-CBC3-SHA       Kx=DH         Au=RSA     Enc=3DES(168)    Mac=SHA1   <br>      DHE-RSA-AES128-SHA         Kx=DH         Au=RSA     Enc=AES(128)     Mac=SHA1   <br>      DHE-RSA-AES256-SHA         Kx=DH         Au=RSA     Enc=AES(256)     Mac=SHA1   <br>      DES-CBC3-SHA               Kx=RSA        Au=RSA     Enc=3DES(168)    Mac=SHA1   <br>      AES128-SHA                 Kx=RSA        Au=RSA     Enc=AES(128)     Mac=SHA1   <br>      AES256-SHA                 Kx=RSA        Au=RSA     Enc=AES(256)     Mac=SHA1   <br>      RC4-MD5                    Kx=RSA        Au=RSA     Enc=RC4(128)     Mac=MD5    <br>      RC4-SHA                    Kx=RSA        Au=RSA     Enc=RC4(128)     Mac=SHA1   <br><br>The fields above are :<br><br>  {OpenSSL ciphername}<br>  Kx={key exchange}<br>  Au={authentication}<br>  Enc={symmetric encryption method}<br>  Mac={message authentication code}<br>  {export flag}<br><br></a><br>
+			Nessus ID : <a href="http://www.nessus.org/plugins/index.php?view=single&id=21643">21643</a>
+    </td>
+	</tr>
+	</table>
+<html>
+	<table width="100%">
+	<tr bgcolor="#397AB2">
+	<td align=left><b><font color="#FFFFFF">Directory Scanner</font></b></align></td>
+	</tr>
+	<tr bgcolor="#EEF2F3">
+    <td colspan=2>
+    <br><b>Synopsis :</b><br><br>It is possible to enumerate web directories.<br><br><b>Description :</b><br><br>This plugin attempts to determine the presence of various<br>common dirs on the remote web server.<br><br><b>Risk factor :</b> <br><br>None<br><br><b>Plugin output :</b><br><br>The following directories were discovered:<br>/cgi-bin<br><br>While this is not, in and of itself, a bug, you should manually inspect <br>these directories to ensure that they are in compliance with company<br>security standards<br><br>Other references : OWASP:OWASP-CM-006<br><br>
+			Nessus ID : <a href="http://www.nessus.org/plugins/index.php?view=single&id=11032">11032</a>
+    </td>
+	</tr>
+	</table>
+<html>
+	<table width="100%">
+	<tr bgcolor="#397AB2">
+	<td align=left><b><font color="#FFFFFF">HTTP Server type and version</font></b></align></td>
+	</tr>
+	<tr bgcolor="#EEF2F3">
+    <td colspan=2>
+    <br><b>Synopsis :</b><br><br>A web server is running on the remote host.<br><br><b>Description :</b><br><br>This plugin attempts to determine the type and the version of<br>the remote web server.<br><br><b>Risk factor :</b> <br><br>None<br><br><b>Plugin output :</b><br><br>The remote web server type is :<br><br>Apache<br><br>and the 'ServerTokens' directive is ProductOnly<br>Apache does not permit to hide the server type.<br><br><br>
+			Nessus ID : <a href="http://www.nessus.org/plugins/index.php?view=single&id=10107">10107</a>
+    </td>
+	</tr>
+	</table>
+<html>
+	<table width="100%">
+	<tr bgcolor="#397AB2">
+	<td align=left><b><font color="#FFFFFF">HyperText Transfer Protocol Information</font></b></align></td>
+	</tr>
+	<tr bgcolor="#EEF2F3">
+    <td colspan=2>
+    <br><b>Synopsis :</b><br><br>Some information about the remote HTTP configuration can be extracted. <br><br><b>Description :</b><br><br>This test gives some information about the remote HTTP protocol - the<br>version used, whether HTTP Keep-Alive and HTTP pipelining are enabled,<br>etc... <br><br>This test is informational only and does not denote any security<br>problem<br><br><b>Solution :</b><br><br>None.<br><br><b>Risk factor :</b><br><br>None<br><br><b>Plugin output :</b><br><br>Protocol version : HTTP/1.1<br>SSL : yes<br>Pipelining : yes<br>Keep-Alive : yes<br>Options allowed : (Not implemented)<br>Headers :<br><br>  Date: Fri, 19 Sep 2008 07:56:10 GMT<br>  Server: Apache<br>  WWW-Authenticate: Basic realm="Restricted Files"<br>  Content-Length: 401<br>  Keep-Alive: timeout=15, max=100<br>  Connection: Keep-Alive<br>  Content-Type: text/html; charset=iso-8859-1<br>  <br><br><br>
+			Nessus ID : <a href="http://www.nessus.org/plugins/index.php?view=single&id=24260">24260</a>
+    </td>
+	</tr>
+	</table>
+<html>
+	<table width="100%">
+	<tr bgcolor="#FDBE00">
+	<td align=left><b><font color="#FFFFFF">HTTP TRACE / TRACK Methods</font></b></align></td>
+	</tr>
+	<tr bgcolor="#EEF2F3">
+    <td colspan=2>
+    <br><b>Synopsis :</b><br><br>Debugging functions are enabled on the remote web server. <br><br><b>Description :</b><br><br>The remote webserver supports the TRACE and/or TRACK methods.  TRACE<br>and TRACK are HTTP methods which are used to debug web server<br>connections. <br><br>In addition, it has been shown that servers supporting the TRACE<br>method are subject to cross-site scripting attacks, dubbed XST for<br>"Cross-Site Tracing", when used in conjunction with various weaknesses<br>in browsers.  An attacker may use this flaw to trick your legitimate<br>web users to give him their credentials. <br><br><b>See also :</b><br><br><a href="http://www.cgisecurity.com/whitehat-mirror/WH-WhitePaper_XST_ebook.pdf">http://www.cgisecurity.com/whitehat-mirror/WH-WhitePaper_XST_ebook.pdf</a><br><a href="http://www.apacheweek.com/issues/03-01-24">http://www.apacheweek.com/issues/03-01-24</a><br><a href="http://www.kb.cert.org/vuls/id/867593">http://www.kb.cert.org/vuls/id/867593</a><br><br><b>Solution :</b><br><br>Disable these methods.<br><br><b>Risk factor :</b><br><br>Medium / CVSS Base Score : 5.0<br>(CVSS2#AV:N/AC:L/Au:N/C:P/I:N/A:N)<br><b>Solution :</b> <br><br>Add the following lines for each virtual host in your configuration file :<br><br>    RewriteEngine on<br>    RewriteCond %{REQUEST_METHOD} ^(TRACE|TRACK)<br>    RewriteRule .* - [F]<br><br>Alternatively, note that Apache versions 1.3.34, 2.0.55, and 2.2<br>support disabling the TRACE method natively via the 'TraceEnable'<br>directive.<br><br><br><br><b>Plugin output :</b><br><br>The server response from a TRACE request is : <br><br><br>TRACE /Nessus1830539269.html HTTP/1.1<br>Connection: Close<br>Host: rrg.flamedigital.com<br>Pragma: no-cache<br>User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0)<br>Accept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, image/png, */*<br>Accept-Language: en<br>Accept-Charset: iso-8859-1,*,utf-8<br><br><br>CVE : CVE-2004-2320<br>BID : 9506, 9561, 11604<br>Other references : OSVDB:877, OSVDB:3726<br></a><br>
+			Nessus ID : <a href="http://www.nessus.org/plugins/index.php?view=single&id=11213">11213</a>
+    </td>
+	</tr>
+	</table>
+<a name="rrg.flamedigital.com_general/udp"></a><p align=right><a href="#toc_rrg.flamedigital.com">[^] Back to rrg.flamedigital.com</a></p><table width="100%">
+<tr bgcolor="#0F346C">
+<td><b><font color=#FFFFFF>Port general/udp</font></b></td>
+</tr>
+	   </table><html>
+	<table width="100%">
+	<tr bgcolor="#397AB2">
+	<td align=left><b><font color="#FFFFFF">Traceroute</font></b></align></td>
+	</tr>
+	<tr bgcolor="#EEF2F3">
+    <td colspan=2>
+    For your information, here is the traceroute from 192.168.1.14 to 209.20.80.176 : <br>192.168.1.14<br>192.168.1.1<br>89.102.194.1<br>81.27.207.161<br>78.102.0.129<br>213.46.172.21<br>213.46.160.193<br>213.46.179.58<br>130.117.14.185<br>130.117.0.2<br>130.117.0.230<br>154.54.6.141<br>154.54.25.25<br>154.54.2.161<br>154.54.1.97<br>154.54.3.66<br>66.28.5.246<br>38.104.162.22<br>209.20.79.227<br>209.20.80.176<br><br><br>
+			Nessus ID : <a href="http://www.nessus.org/plugins/index.php?view=single&id=10287">10287</a>
+    </td>
+	</tr>
+	</table>
+<a name="rrg.flamedigital.com_http (80/tcp)"></a><p align=right><a href="#toc_rrg.flamedigital.com">[^] Back to rrg.flamedigital.com</a></p><table width="100%">
+<tr bgcolor="#0F346C">
+<td><b><font color=#FFFFFF>Port http (80/tcp)</font></b></td>
+</tr>
+	   </table><html>
+	<table width="100%">
+	<tr bgcolor="#397AB2">
+	<td align=left><b><font color="#FFFFFF">Service detection</font></b></align></td>
+	</tr>
+	<tr bgcolor="#EEF2F3">
+    <td colspan=2>
+    A web server is running on this port.<br><br>
+			Nessus ID : <a href="http://www.nessus.org/plugins/index.php?view=single&id=22964">22964</a>
+    </td>
+	</tr>
+	</table>
+<html>
+	<table width="100%">
+	<tr bgcolor="#397AB2">
+	<td align=left><b><font color="#FFFFFF">Directory Scanner</font></b></align></td>
+	</tr>
+	<tr bgcolor="#EEF2F3">
+    <td colspan=2>
+    <br><b>Synopsis :</b><br><br>It is possible to enumerate web directories.<br><br><b>Description :</b><br><br>This plugin attempts to determine the presence of various<br>common dirs on the remote web server.<br><br><b>Risk factor :</b> <br><br>None<br><br><b>Plugin output :</b><br><br>The following directories were discovered:<br>/cgi-bin, /error, /icons<br><br>While this is not, in and of itself, a bug, you should manually inspect <br>these directories to ensure that they are in compliance with company<br>security standards<br><br>Other references : OWASP:OWASP-CM-006<br><br>
+			Nessus ID : <a href="http://www.nessus.org/plugins/index.php?view=single&id=11032">11032</a>
+    </td>
+	</tr>
+	</table>
+<html>
+	<table width="100%">
+	<tr bgcolor="#397AB2">
+	<td align=left><b><font color="#FFFFFF">HTTP Server type and version</font></b></align></td>
+	</tr>
+	<tr bgcolor="#EEF2F3">
+    <td colspan=2>
+    <br><b>Synopsis :</b><br><br>A web server is running on the remote host.<br><br><b>Description :</b><br><br>This plugin attempts to determine the type and the version of<br>the remote web server.<br><br><b>Risk factor :</b> <br><br>None<br><br><b>Plugin output :</b><br><br>The remote web server type is :<br><br>Apache<br><br>and the 'ServerTokens' directive is ProductOnly<br>Apache does not permit to hide the server type.<br><br><br>
+			Nessus ID : <a href="http://www.nessus.org/plugins/index.php?view=single&id=10107">10107</a>
+    </td>
+	</tr>
+	</table>
+<html>
+	<table width="100%">
+	<tr bgcolor="#397AB2">
+	<td align=left><b><font color="#FFFFFF">HyperText Transfer Protocol Information</font></b></align></td>
+	</tr>
+	<tr bgcolor="#EEF2F3">
+    <td colspan=2>
+    <br><b>Synopsis :</b><br><br>Some information about the remote HTTP configuration can be extracted. <br><br><b>Description :</b><br><br>This test gives some information about the remote HTTP protocol - the<br>version used, whether HTTP Keep-Alive and HTTP pipelining are enabled,<br>etc... <br><br>This test is informational only and does not denote any security<br>problem<br><br><b>Solution :</b><br><br>None.<br><br><b>Risk factor :</b><br><br>None<br><br><b>Plugin output :</b><br><br>Protocol version : HTTP/1.1<br>SSL : no<br>Pipelining : yes<br>Keep-Alive : yes<br>Options allowed : (Not implemented)<br>Headers :<br><br>  Date: Fri, 19 Sep 2008 07:56:07 GMT<br>  Server: Apache<br>  WWW-Authenticate: Basic realm="Restricted Files"<br>  Content-Length: 401<br>  Keep-Alive: timeout=15, max=100<br>  Connection: Keep-Alive<br>  Content-Type: text/html; charset=iso-8859-1<br>  <br><br><br>
+			Nessus ID : <a href="http://www.nessus.org/plugins/index.php?view=single&id=24260">24260</a>
+    </td>
+	</tr>
+	</table>
+<html>
+	<table width="100%">
+	<tr bgcolor="#FDBE00">
+	<td align=left><b><font color="#FFFFFF">HTTP TRACE / TRACK Methods</font></b></align></td>
+	</tr>
+	<tr bgcolor="#EEF2F3">
+    <td colspan=2>
+    <br><b>Synopsis :</b><br><br>Debugging functions are enabled on the remote web server. <br><br><b>Description :</b><br><br>The remote webserver supports the TRACE and/or TRACK methods.  TRACE<br>and TRACK are HTTP methods which are used to debug web server<br>connections. <br><br>In addition, it has been shown that servers supporting the TRACE<br>method are subject to cross-site scripting attacks, dubbed XST for<br>"Cross-Site Tracing", when used in conjunction with various weaknesses<br>in browsers.  An attacker may use this flaw to trick your legitimate<br>web users to give him their credentials. <br><br><b>See also :</b><br><br><a href="http://www.cgisecurity.com/whitehat-mirror/WH-WhitePaper_XST_ebook.pdf">http://www.cgisecurity.com/whitehat-mirror/WH-WhitePaper_XST_ebook.pdf</a><br><a href="http://www.apacheweek.com/issues/03-01-24">http://www.apacheweek.com/issues/03-01-24</a><br><a href="http://www.kb.cert.org/vuls/id/867593">http://www.kb.cert.org/vuls/id/867593</a><br><br><b>Solution :</b><br><br>Disable these methods.<br><br><b>Risk factor :</b><br><br>Medium / CVSS Base Score : 5.0<br>(CVSS2#AV:N/AC:L/Au:N/C:P/I:N/A:N)<br><b>Solution :</b> <br><br>Add the following lines for each virtual host in your configuration file :<br><br>    RewriteEngine on<br>    RewriteCond %{REQUEST_METHOD} ^(TRACE|TRACK)<br>    RewriteRule .* - [F]<br><br>Alternatively, note that Apache versions 1.3.34, 2.0.55, and 2.2<br>support disabling the TRACE method natively via the 'TraceEnable'<br>directive.<br><br><br><br><b>Plugin output :</b><br><br>The server response from a TRACE request is : <br><br><br>TRACE /Nessus2107989199.html HTTP/1.1<br>Connection: Keep-Alive<br>Host: rrg.flamedigital.com<br>Pragma: no-cache<br>User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0)<br>Accept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, image/png, */*<br>Accept-Language: en<br>Accept-Charset: iso-8859-1,*,utf-8<br><br><br>CVE : CVE-2004-2320<br>BID : 9506, 9561, 11604<br>Other references : OSVDB:877, OSVDB:3726<br></a><br>
+			Nessus ID : <a href="http://www.nessus.org/plugins/index.php?view=single&id=11213">11213</a>
+    </td>
+	</tr>
+	</table>
+<a name="rrg.flamedigital.com_general/icmp"></a><p align=right><a href="#toc_rrg.flamedigital.com">[^] Back to rrg.flamedigital.com</a></p><table width="100%">
+<tr bgcolor="#0F346C">
+<td><b><font color=#FFFFFF>Port general/icmp</font></b></td>
+</tr>
+	   </table><html>
+	<table width="100%">
+	<tr bgcolor="#397AB2">
+	<td align=left><b><font color="#FFFFFF">icmp timestamp request</font></b></align></td>
+	</tr>
+	<tr bgcolor="#EEF2F3">
+    <td colspan=2>
+    <br><b>Synopsis :</b><br><br>It is possible to determine the exact time set on the remote host. <br><br><b>Description :</b><br><br>The remote host answers to an ICMP timestamp request.  This allows an<br>attacker to know the date which is set on your machine. <br><br>This may help him to defeat all your time based authentication<br>protocols. <br><br><b>Solution :</b><br><br>Filter out the ICMP timestamp requests (13), and the outgoing ICMP<br>timestamp replies (14). <br><br><b>Risk factor :</b><br><br>None<br><br><b>Plugin output :</b><br><br>The difference between the local and remote clocks is -12 seconds<br><br>CVE : CVE-1999-0524<br><br>
+			Nessus ID : <a href="http://www.nessus.org/plugins/index.php?view=single&id=10114">10114</a>
+    </td>
+	</tr>
+	</table>
+<a name="rrg.flamedigital.com_globe (2002/tcp)"></a><p align=right><a href="#toc_rrg.flamedigital.com">[^] Back to rrg.flamedigital.com</a></p><table width="100%">
+<tr bgcolor="#0F346C">
+<td><b><font color=#FFFFFF>Port globe (2002/tcp)</font></b></td>
+</tr>
+	   </table><html>
+	<table width="100%">
+	<tr bgcolor="#397AB2">
+	<td align=left><b><font color="#FFFFFF">Service detection</font></b></align></td>
+	</tr>
+	<tr bgcolor="#EEF2F3">
+    <td colspan=2>
+    An SSH server is running on this port.<br><br>
+			Nessus ID : <a href="http://www.nessus.org/plugins/index.php?view=single&id=22964">22964</a>
+    </td>
+	</tr>
+	</table>
+<html>
+	<table width="100%">
+	<tr bgcolor="#397AB2">
+	<td align=left><b><font color="#FFFFFF">SSH Server type and version</font></b></align></td>
+	</tr>
+	<tr bgcolor="#EEF2F3">
+    <td colspan=2>
+    <br><b>Synopsis :</b><br><br>An SSH server is listening on this port.<br><br><b>Description :</b><br><br>It is possible to obtain information about the remote SSH<br>server by sending an empty authentication request.<br><br><b>Risk factor :</b><br><br>None<br><br><b>Plugin output :</b><br><br>SSH version : SSH-2.0-OpenSSH_4.3<br>SSH supported authentication : publickey,gssapi-with-mic,password<br><br><br>
+			Nessus ID : <a href="http://www.nessus.org/plugins/index.php?view=single&id=10267">10267</a>
+    </td>
+	</tr>
+	</table>
+<html>
+	<table width="100%">
+	<tr bgcolor="#397AB2">
+	<td align=left><b><font color="#FFFFFF">SSH protocol versions supported</font></b></align></td>
+	</tr>
+	<tr bgcolor="#EEF2F3">
+    <td colspan=2>
+    <br><b>Synopsis :</b><br><br>An SSH server is running on the remote host. <br><br><b>Description :</b><br><br>This plugin determines the versions of the SSH protocol supported by<br>the remote SSH daemon. <br><br><b>Risk factor :</b> <br><br>None<br><br><b>Plugin output :</b><br><br>The remote SSH daemon supports the following versions of the<br>SSH protocol :<br><br>  . 1.99<br>  . 2.0<br><br><br>SSHv2 host key fingerprint : fe:c8:5b:1a:f0:ff:eb:47:c0:d1:61:06:e1:02:03:4b<br><br><br>
+			Nessus ID : <a href="http://www.nessus.org/plugins/index.php?view=single&id=10881">10881</a>
+    </td>
+	</tr>
+	</table>
+<a name="rrg.flamedigital.com_general/tcp"></a><p align=right><a href="#toc_rrg.flamedigital.com">[^] Back to rrg.flamedigital.com</a></p><table width="100%">
+<tr bgcolor="#0F346C">
+<td><b><font color=#FFFFFF>Port general/tcp</font></b></td>
+</tr>
+	   </table><html>
+	<table width="100%">
+	<tr bgcolor="#397AB2">
+	<td align=left><b><font color="#FFFFFF">Host FQDN</font></b></align></td>
+	</tr>
+	<tr bgcolor="#EEF2F3">
+    <td colspan=2>
+    209.20.80.176 resolves as rrg.flamedigital.com.<br><br>
+			Nessus ID : <a href="http://www.nessus.org/plugins/index.php?view=single&id=12053">12053</a>
+    </td>
+	</tr>
+	</table>
+<html>
+	<table width="100%">
+	<tr bgcolor="#397AB2">
+	<td align=left><b><font color="#FFFFFF">TCP timestamps</font></b></align></td>
+	</tr>
+	<tr bgcolor="#EEF2F3">
+    <td colspan=2>
+    <br><b>Synopsis :</b><br><br>The remote service implements TCP timestamps.<br><br><b>Description :</b><br><br>The remote host implements TCP timestamps, as defined by RFC1323.<br>A side effect of this feature is that the uptime of the remote <br>host can sometimes be computed.<br><br><b>See also :</b><br><br><a href="http://www.ietf.org/rfc/rfc1323.txt">http://www.ietf.org/rfc/rfc1323.txt</a><br><br><b>Risk factor :</b> <br><br>None<br></a><br>
+			Nessus ID : <a href="http://www.nessus.org/plugins/index.php?view=single&id=25220">25220</a>
+    </td>
+	</tr>
+	</table>
+<html>
+	<table width="100%">
+	<tr bgcolor="#397AB2">
+	<td align=left><b><font color="#FFFFFF">OS Identification</font></b></align></td>
+	</tr>
+	<tr bgcolor="#EEF2F3">
+    <td colspan=2>
+    <br>Remote operating system : Linux Kernel 2.6<br>Confidence Level : 70<br>Method : SinFP<br><br> <br>The remote host is running Linux Kernel 2.6<br><br>
+			Nessus ID : <a href="http://www.nessus.org/plugins/index.php?view=single&id=11936">11936</a>
+    </td>
+	</tr>
+	</table>
+<html>
+	<table width="100%">
+	<tr bgcolor="#CC0000">
+	<td align=left><b><font color="#FFFFFF">Information about the scan</font></b></align></td>
+	</tr>
+	<tr bgcolor="#EEF2F3">
+    <td colspan=2>
+    Information about this scan : <br><br>Nessus version : 3.2.1<br>Plugin feed version : 200805291113<br>Type of plugin feed : Release<br><br>ERROR: Your plugin feed has not been updated since 2008/5/29<br>Performing a scan with an older plugin set will yeld out of date results and<br>produce an incomplete audit. Please run nessus-update-plugins to get the<br>newest vulnerability checks from Nessus.org.<br><br>Scanner IP : 192.168.1.14<br>Port scanner(s) : nessus_tcp_scanner <br>Port range : default<br>Thorough tests : no<br>Experimental tests : no<br>Paranoia level : 1<br>Report Verbosity : 1<br>Safe checks : yes<br>Optimize the test : yes<br>Max hosts : 20<br>Max checks : 5<br>Recv timeout : 5<br>Scan Start Date : 2008/9/19 9:48<br>Scan duration : 968 sec<br><br><br>
+			Nessus ID : <a href="http://www.nessus.org/plugins/index.php?view=single&id=19506">19506</a>
+    </td>
+	</tr>
+	</table>
+</td></tr></table></center>
+</html>

@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!-- ============================================================= -->
+<!-- ANT RECIPES FOR WEB DEVELOPERS CHP 1 Database Recipe          -->
+<!-- Author: James Fuller / Webcomposite                           -->
+<!-- Email/WWW: jim.fuller@webcomposite.com /  www.antrecipes.com  -->
+<!-- ============================================================= -->
+<!--    (C) Copyright James Fuller 2010 - All Rights Reserved.     -->
+<!--  use the -debug flag for more information when running ant  //-->
+<project name="SQL Task Example" basedir="." default="run">
+	<description>Example of using SQL with Ant</description>
+	<property name="db.name" value="example"/>
+	<property name="exe.mysqlimport" location="mysqlimport"/>
+	<!-- import text files for product catalog //-->
+	<macrodef name="import_text">
+		<attribute name="dbname"/>
+		<attribute name="txtfile"/>
+		<sequential>
+			<echo message="importing @{txtfile} into @{dbname}"/>
+			<exec dir="." executable="${exe.mysqlimport}">
+				<arg line="@{db.name} @{txtfile}"/>
+			</exec>
+		</sequential>
+	</macrodef>
+	<!-- import text files for product catalog //-->
+	<target name="catalog-import">
+		<import_text dbname="${db.name}" txtfile="data/product.txt"/>
+	</target>
+	<target name="import" depends="catalog-import">
+		<echo message="****import success**********************"/>
+	</target>
+	<!-- ===================================================== -->
+	<!-- Run Target                                            -->
+	<!-- ===================================================== -->
+	<target name="run" depends="import" description="runs all examples"/>
+	<!-- ===================================================== -->
+	<!-- Clean Target                                          -->
+	<!-- ===================================================== -->
+	<target name="clean" description="">
+		<delete dir="result"/>
+		<mkdir dir="result"/>
+	</target>
+</project>

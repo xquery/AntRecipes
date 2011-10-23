@@ -1,0 +1,58 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--changes/intro81/xquery-api-81
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: Changes to the XQuery Java API</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Changes to the XQuery Java API">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>Changes to the XQuery Java API</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The Java API for invoking XQuery has been simplified: there is no longer any need to create
+         a <code>QueryProcessor</code> object, and the constructor for the <code>QueryProcessor</code>
+         has been deprecated. Instead, all the methods that were previously available on the 
+         <code>QueryProcessor</code> can now be invoked directly on the <code>StaticQueryContext</code>
+         object.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The constructor for the <code>DynamicQueryContext</code> object now requires a
+         <code>Configuration</code> object to be supplied. This must be the same as the 
+         <code>Configuration</code> that was used when creating the <code>StaticQueryContext</code>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">A new sample program, <code>QueryAPIExamples.java</code>, is available in the
+         <code>samples/java</code> directory. This illustrates most of the different ways of using
+         the XQuery Java API.
+      </p>
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="xquery-api-81.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../intro81.html">Up</a>&nbsp;&nbsp;<a class="nav" href="schema-aware-81.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

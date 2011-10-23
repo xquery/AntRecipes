@@ -1,0 +1,99 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--patterns/syntax
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: Pattern syntax</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Pattern syntax">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      
+      <h1>Pattern syntax</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Saxon supports the full XSLT syntax for patterns. The rules below describe
+         a simplified form of this syntax (for example, it omits the legal but useless pattern
+         '@comment()'):
+      </p>
+      
+      
+      <div class="codeblock" style="border: solid thin; background-color: #B1CCC7; padding: 2px"><pre><code>
+pattern          ::= path ( '|' path )*
+path             ::= anchor? remainder? (Note 1)
+
+anchor           ::= '/' | '//' | id | key
+id               ::= 'id' '(' value ')'
+key              ::= 'key' '(' literal ',' value ')'
+value            ::= literal | variable-reference
+
+remainder        ::= path-part ( sep path-part )* 
+sep              ::= '/' | '//'
+path-part        ::= node-match predicate+
+node-match       ::= element-match | text-match | attribute-match | pi-match | node-match
+element-match    ::= 'child::'? ( name | '*' ) 
+text-match       ::= 'text' '(' ')' 
+attribute-match  ::= ('attribute::' | '@') ( name | '*' ) 
+pi-match         ::= 'processing-instruction' '(' literal? ')'
+node-match       ::= 'node' '(' ')'
+
+predicate        ::= '[' ( boolean-expression | numeric-expression ) ']'
+</code></pre></div>
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Note 1: not all combinations are allowed.
+         If the anchor is '//' then the remainder is mandatory.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The form of a literal is as defined in expressions; and a predicate is itself a boolean
+         or numeric expression. As with predicates in expressions, a numeric predicate [P] is shorthand
+         for the boolean predicate [position()=P].
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Informally, a pattern consists of either a single path or a sequence of paths separated
+         by vertical bars. An element matches the match-pattern if it matches any one of the paths.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">A path consists of a sequence of path-parts separated by either "/" or "//".
+         There is an optional separator ("/" or "//") at the start; a "//" has no effect and
+         can be ignored. The last path-part may be an element-match, a text-match, an
+         attribute-match, a pi-match, or a node-match; in practice, a path-part other than the last
+         should be an element-match. 
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The axis syntax child:: and attribute:: may also be used in patterns, as described in the XSLT
+         specification.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="syntax.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="examples.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

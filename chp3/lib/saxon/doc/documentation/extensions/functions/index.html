@@ -1,0 +1,135 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--extensions/functions/index
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: saxon:index()</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: saxon:index()">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>saxon:index()</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><b>index(sequence, expression)</b></p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><b>index(sequence, expression, collation)</b></p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The first argument is any sequence. Usually it will be a sequence of nodes, but this is
+         not essential. This is the sequence being indexed.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The second argument evaluates to an XPath expression. Most commonly, the argument will be written as
+         a call to the <a class="bodylink" href="javascript:tosubpage('extensions','functions','expression')">saxon:expression()</a>
+         extension function. This expression is evaluated once for each item in the sequence being indexed, with that
+         item as the context node. (The context position and size reflect the position of this item in the sequence, but
+         this will not normally be useful.) The result of the expression is atomized. Each value in the atomized result
+         represents a key value: the item in the indexed sequence can be efficiently found using any of these key values.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">If a key value is of type <code>xdt:untypedAtomic</code>, it is treated as a string. If you want to treat
+         the value as numeric, say, then perform a conversion within the expression.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The optional third argument is the URI of a collation to be used when comparing strings. For example, if you
+         want string matching to be accent- and case-blind, specify <code>"http://saxon.sf.net/collation?strength=primary"</code>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">For example, consider a source document of the form:</p>
+      
+      
+      <div class="codeblock" style="border: solid thin; background-color: #B1CCC7; padding: 2px"><pre><code>&lt;doc&gt;
+  &lt;town name="Amherst" state="NH"/&gt;
+  &lt;town name="Amherst" state="MA"/&gt;
+  &lt;town name="Auburn" state="MA"/&gt;
+  &lt;town name="Auburn" state="NH"/&gt;
+  &lt;town name="Auburn" state="ME"/&gt;
+  &lt;town name="Bristol" state="RI"/&gt;
+  &lt;town name="Bristol" state="ME"/&gt;
+  &lt;town name="Bristol" state="CT"/&gt;
+  &lt;town name="Bristol" state="NH"/&gt;
+  &lt;town name="Bristol" state="VT"/&gt;
+  &lt;town name="Cambridge" state="ME"/&gt;
+ &lt;/doc&gt;</code></pre></div>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">and suppose there is a requirement to find <code>town</code> elements efficiently given the abbreviation for the
+         <code>state</code>. You can do this by first setting up an indexed sequence. In XQuery you can write:
+      </p>
+      
+      
+      <div class="codeblock" style="border: solid thin; background-color: #B1CCC7; padding: 2px"><pre><code>declare namespace saxon="http://saxon.sf.net/";
+ declare variable $indexedTowns := saxon:index(//town, saxon:expression("@state"));</code></pre></div>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">This could be a local variable (declared in a <code>let</code> clause) rather than a global variable.
+         The XSLT equivalent is:
+      </p>
+      
+      
+      <div class="codeblock" style="border: solid thin; background-color: #B1CCC7; padding: 2px"><pre><code>&lt;xsl:variable name="indexedTowns" 
+           select="saxon:index(//town, saxon:expression('@state'))"/&gt;</code></pre></div>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">You can then find all the towns in New Hampshire using the expression:</p>
+      
+      
+      <div class="codeblock" style="border: solid thin; background-color: #B1CCC7; padding: 2px"><pre><code>saxon:find($indexedTowns, "NH")</code></pre></div>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Indexed sequences are primarily useful in XQuery, where they provide functionality equivalent to the 
+         standard <code>xsl:key</code> mechanism in XSLT. There are some cases, however, where indexed sequences
+         can also be useful in XSLT. One example is where there is a need for an index to span multiple documents: the
+         XSLT <code>key()</code> function will only search within a single document.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">As well as using an indexed sequence in the first argument to the <code>saxon:find()</code> function,
+         you can use it in any other place where a sequence is expected, in which case the value is the sequence
+         that was passed as the first argument to <code>saxon:index()</code>.
+      </p>
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><i>The <code>saxon:index</code> function is available only with Saxon-SA.</i></p>
+      
+      
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">For examples of use, see <a class="bodylink" href="javascript:tosubpage('extensions','functions','index')">saxon:index()</a>.
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="index.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../functions.html">Up</a>&nbsp;&nbsp;<a class="nav" href="leading.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

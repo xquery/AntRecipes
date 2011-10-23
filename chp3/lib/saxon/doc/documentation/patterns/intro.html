@@ -1,0 +1,69 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--patterns/intro
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: XSLT Patterns</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: XSLT Patterns">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      
+      <h1>XSLT Patterns</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">This document gives an informal description of the syntax of XSLT patterns.
+         For a formal specification, see the XSLT recommendation. Pattern syntax has not
+         changed significantly in XSLT 2.0, except that any XPath 2.0 expression may now
+         be used within a predicate.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Patterns define a condition that a node may or may not satisfy: a node either matches the
+         pattern, or it does not. The syntax of patterns is a subset of that for
+         <a class="bodylink" href="javascript:topage('expressions', 'intro')">XPath Expressions</a>, and formally, a node matches
+         a pattern if it is a member of the node set selected by the corresponding expression, with
+         some ancestor of the node acting as the current node for evaluating the expression. For example
+         a TITLE node matches the pattern "TITLE" because it is a member of the node set selected by the
+         expression "TITLE" when evaluated at the immediate parent node.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">XSLT patterns may be used either in an XSLT stylesheet, or as a parameter to various Java
+         interfaces in the Saxon API. The syntax is the same in both cases. In the Java interface, patterns are encapsulated
+         by the <b>net.sf.saxon.pattern.Pattern</b> class, and are created by calling the static method Pattern.make().
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">In style sheets, patterns are used primarily in the <b>match</b> attribute of the xsl:template element.
+         They are also used in the <b>count</b> and <b>from</b> attributes of xsl:number, the
+         <b>match</b> attribute of xsl:key, and the <b>group-starting-at</b> attribute of
+         xsl:for-each-group.
+      </p>
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="intro.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="syntax.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

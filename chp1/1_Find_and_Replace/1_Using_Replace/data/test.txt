@@ -1,0 +1,7 @@
+Example of replacing using Ant replace task
+
+some default value
+
+value2
+
+This is value 3

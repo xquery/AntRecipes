@@ -1,0 +1,146 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--extensibility/localizing
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: Localizing numbers and dates</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Localizing numbers and dates">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      
+      <h1>Localizing numbers and dates</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">It is possible to define a localized numbering sequence for use by <code>xsl:number</code> and <code>format-date()</code>. 
+         This sequence will be used when you specify a language in the <code>lang</code>
+         attribute of the <code>xsl:number</code> element, or in the third argument of the functions
+         <code>format-date()</code>, <code>format-time()</code>, and <code>format-dateTime()</code>.
+         The feature is primarily intended to provide language-dependent numbers and dates,
+         but in fact it can be used to provide arbitrary numbering sequences.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">To implement a numberer for language X, you need to define a class <code>net.sf.saxon.number.Numberer_X</code>,
+         for example <code>net.sf.saxon.sort.Numberer_xfootnote</code>. This must implement the interface <code>Numberer</code>.
+         A <code>Numberer</code> is supplied for <code>lang="de"</code> (German) as a specimen, and you can use this as a prototype to write your
+         own. A numbering sequence is also supplied for <code>lang="en"</code>, and this is used by default if no other can be loaded.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Normally your localization class will extend the class <code>Numberer_en</code> so that you can reuse functionality like roman
+         numerals which do not need to be localized. If you only need to override some methods and not others, you can do so:
+         you will get the English representation of those components you have not localized.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">You can override any of the methods in the base class, but the most useful ones to implement are 
+         the following:
+      </p>
+      
+      
+      <table xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         
+         <thead>
+            <tr>
+               <td align="left">
+                  <p>Method</p>
+               </td>
+               <td align="left">
+                  <p>Effect</p>
+               </td>
+            </tr>
+         </thead>
+         
+         <tbody>
+            
+            <tr>
+               <td valign="top">
+                  <p>ordinalSuffix</p>
+               </td>
+               <td>
+                  <p>Supplies a suffix to be appended to a number to create the ordinal form,
+                     for example "1" becomes "1st" in English
+                  </p>
+               </td>
+            </tr>
+            
+            <tr>
+               <td valign="top">
+                  <p>toWords</p>
+               </td>
+               <td>
+                  <p>Displays a number in words, in title case: 
+                     for example "53" becomes "Fifty Three" in English
+                  </p>
+               </td>
+            </tr>
+            
+            <tr>
+               <td valign="top">
+                  <p>toOrdinalWords</p>
+               </td>
+               <td>
+                  <p>Displays an ordinal number in words, in title case: 
+                     for example "53" becomes "Fifty Third" in English
+                  </p>
+               </td>
+            </tr>
+            
+            <tr>
+               <td valign="top">
+                  <p>monthName</p>
+               </td>
+               <td>
+                  <p>Displays the name of a month, optionally abbreviated</p>
+               </td>
+            </tr>
+            
+            <tr>
+               <td valign="top">
+                  <p>dayName</p>
+               </td>
+               <td>
+                  <p>Displays the name of a day of the week, optionally abbreviated</p>
+               </td>
+            </tr>
+            
+         </tbody>
+         
+      </table>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Note that any hyphens in the language name are ignored in forming the class name, but case is significant.
+         For example if you specify <code>lang="en-GB"</code>, the Numberer must be named <code>net.sf.saxon.number.Numberer_enGB</code>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><i>If you write a comprehensive Numberer for a particular language, please submit it, and I will be happy to include it in future
+            versions of the product as an open-source component.</i></p>
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="localizing.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="output-encoding.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

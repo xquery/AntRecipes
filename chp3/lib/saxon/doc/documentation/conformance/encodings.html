@@ -1,0 +1,77 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--conformance/encodings
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: Character Encodings Supported</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Character Encodings Supported">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      
+      
+      <h1>Character Encodings Supported</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The encodings supported on input depend entirely on your choice of XML parser.</p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">On output, any encoding supported by the Java VM may be used.</p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The encodings <code>iso-646</code> and <code>iso646</code> (in any mixture of upper and lower
+         case) are recognized as synonyms of <code>US-ASCII</code>, even though they are not supported directly
+         by JDK 1.4.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">There are some differences between the character encodings supported by the old <code>java.io</code> package
+         and the new <code>java.nio</code> package. If the requested encoding is not supported by the <code>java.nio</code> package, then
+         all non-ASCII characters will be represented using numeric character references. If the encoding is
+         not supported by the <code>java.io</code> package, then Saxon will revert to using UTF-8 as the actual output
+         encoding.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">A list of the character encodings
+         supported in the <code>java.nio</code> package can be obtained by using the command 
+         <code>java net.sf.saxon.charcode.CharacterSetFactory</code>,
+         with no parameters. Java does not provide any means of determining the list of encodings
+         supported by the <code>java.io</code> package.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Although Saxon now supports any encoding that the Java VM supports, it still handles certain encodings itself, 
+         because this is more efficient and more reliable. The encodings that Saxon supports directly (including synonyms) are
+         ASCII, US-ASCII, iso-646, iso646, iso-8859-1, ISO8859_1,   iso-8859-2, ISO8859_2, UTF-8, UTF8, UTF-16, UTF16, 
+         KOI8-R, cp1250, windows-1250, cp1251, windows-1251, cp1252, windows-1252, cp852, windows-852.
+      </p>
+      
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="encodings.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="collation-uri.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

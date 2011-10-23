@@ -1,0 +1,348 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--using-xsl/embedding
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: Invoking XSLT from Java</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Invoking XSLT from Java">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      
+      <h1>Invoking XSLT from Java</h1>
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Rather than using the XSLT interpreter from the command line, you may want to include it in your
+         own application, perhaps one that enables it to be used within an applet or servlet. If you run
+         the interpreter repeatedly, this will always be much faster than running it each time from
+         a command line.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Saxon incorporates support for the
+         <a href="http://java.sun.com/xml/jaxp/index.html" target="_blank" class="bodylink">JAXP transformation API</a> (previously known as TrAX).
+         This is compatible with the API for invoking other XSLT processors such as
+         Xalan and Oracle.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">This API is described in the documentation provided with JDK 1.4. 
+         It is available online at <a href="http://java.sun.com/j2se/1.4/docs/api/" target="_blank" class="bodylink">http://java.sun.com/j2se/1.4/docs/api/</a>
+         Look for the <b>javax.xml.transform</b> package.
+      </p>
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">More information and examples relating to the JAXP transformation API can be found in the
+         <b>TraxExamples.java</b> example application found in the samples directory.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The types of object that can be supplied as stylesheet parameters are not defined
+         in the JAXP specification: they are implementation-dependent. Saxon takes the Java object
+         supplied, and converts it to an XPath value using the same
+         rules as it applies for the return value from a Java
+         extension function: for these rules, 
+         see <a class="bodylink" href="javascript:topage('extensibility', 'function-result')">Saxon Extensibility</a>. If the resulting value
+         is an atomic value, it is cast to the required type of the parameter as specified in the
+         <code>xsl:param</code> declaration, using the XPath casting rules. If the value is non-atomic (for example,
+         if it is a node, or a sequence of integers), then no conversion is attempted, instead, the value must
+         match the required type as stated.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The JAXP <code>TransformerFactory</code> interface provides a configuration method
+         <code>setAttribute()</code> for setting implementation-defined configuration parameters. The
+         parameters supported by Saxon have names defined by constants in the class
+         <code>net.sf.saxon.FeatureKeys</code>. The names of these properties and their meanings, 
+         are described in the table below.
+      </p>
+      
+      
+      <table xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         
+         <tr>
+            
+            <td valign="top">
+               <p><b>property</b></p>
+            </td>
+            
+            <td valign="top">
+               <p><b>meaning</b></p>
+            </td>
+            
+         </tr>
+         
+         
+         
+         <tr>
+            <td valign="top">
+               <p>ALLOW_EXTERNAL_FUNCTIONS</p>
+            </td>
+            
+            <td valign="top">
+               <p>A Boolean: true if the stylesheet allows external functions to be called.
+                  Default is true. The setting <code>false</code> is recommended in an environment
+                  where untrusted stylesheets may be executed. Setting this value to <code>false</code>
+                  also disables user-defined extension elements, together with the writing of multiple
+                  output files, all of which carry similar security risks.
+               </p>
+            </td>
+            
+         </tr>
+         
+         
+         <tr>
+            <td valign="top">
+               <p>TRACE_EXTERNAL_FUNCTIONS</p>
+            </td>
+            
+            <td valign="top">
+               <p>A Boolean: true if the tracing of calls to external Java methods is required.
+                  Default is false. 
+                  This switch is useful when analyzing why Saxon fails to find a Java method to match
+                  an extension function call in the stylesheet, or why it chooses one method over another when several
+                  are available. The trace output is sent to System.err.
+               </p>
+            </td>
+            
+         </tr>
+         
+         
+         <tr>
+            
+            <td valign="top">
+               <p>TIMING</p>
+            </td>
+            
+            <td valign="top">
+               <p>A Boolean: true if basic timing information is to be output to the standard error output stream.</p>
+            </td>
+            
+         </tr>
+         
+         
+         <tr>
+            
+            <td valign="top">
+               <p>TREE_MODEL</p>
+            </td>
+            
+            <td valign="top">
+               <p>An Integer: Builder.STANDARD_TREE or Builder.TINY_TREE. Selects an implementation of the
+                  Saxon tree model. The default is Builder.TINY_TREE.
+               </p>
+            </td>
+            
+         </tr>
+         
+         
+         <tr>
+            
+            <td valign="top">
+               <p>TRACE_LISTENER</p>
+            </td>
+            
+            <td valign="top">
+               <p>An instance of the class net.sf.saxon.trace.TraceListener. This object will be notified of
+                  significant events occurring during the transformation, for tracing or debugging purposes.
+               </p>
+            </td>
+            
+         </tr>
+         
+         
+         <tr>
+            
+            <td valign="top">
+               <p>LINE_NUMBERING</p>
+            </td>
+            
+            <td valign="top">
+               <p>A Boolean. Indicates whether line numbers are to be maintained for the source document. This
+                  will not be possible if the source document is supplied as a DOM. The line numbers are accessible
+                  through the tracing interface, and also via the saxon:line-number() extension function.
+               </p>
+            </td>
+            
+         </tr>
+         
+         
+         <tr>
+            
+            <td valign="top">
+               <p>RECOVERY_POLICY</p>
+            </td>
+            
+            <td valign="top">
+               <p>An Integer. Indicates how dynamic errors should be handled. One of the values (defined as constants
+                  in the Controller class) RECOVER_SILENTLY, RECOVER_WITH_WARNINGS, or DO_NOT_RECOVER).
+               </p>
+            </td>
+            
+         </tr>
+         
+         
+         <tr>
+            
+            <td valign="top">
+               <p>MESSAGE_EMITTER_CLASS</p>
+            </td>
+            
+            <td valign="top">
+               <p>The full name of a class that implements the net.sf.saxon.output.Emitter interface; the class will
+                  be used to format the output of the xsl:message instruction.
+               </p>
+            </td>
+            
+         </tr>
+         
+         
+         <tr>
+            
+            <td valign="top">
+               <p>SOURCE_PARSER_CLASS</p>
+            </td>
+            
+            <td valign="top">
+               <p>The full name of a class that implements the org.xml.sax.XMLReader interface; the class will be
+                  used to parse source documents (that is, the principal source document plus any secondary source
+                  documents read using the document() function)
+               </p>
+            </td>
+            
+         </tr>
+         
+         
+         <tr>
+            
+            <td valign="top">
+               <p>STYLE_PARSER_CLASS</p>
+            </td>
+            
+            <td valign="top">
+               <p>The full name of a class that implements the org.xml.sax.XMLReader interface; the class will be
+                  used to parse stylesheet documents (that is, the principal stylesheet module plus any secondary source
+                  documents read using xsl:include or xsl:import)
+               </p>
+            </td>
+            
+         </tr>
+         
+         
+         <tr>
+            
+            <td valign="top">
+               <p>OUTPUT_URI_RESOLVER</p>
+            </td>
+            
+            <td valign="top">
+               <p>An instance of the class net.sf.saxon.OutputURIResolver; this object will be used to resolve URIs
+                  of secondary result documents specified in the <code>href</code> attribute of the <code>xsl:result-document</code>
+                  instruction
+               </p>
+            </td>
+            
+         </tr>
+         
+         
+         <tr>
+            
+            <td valign="top">
+               <p>VALIDATION</p>
+            </td>
+            
+            <td valign="top">
+               <p>A Boolean. Indicates whether the XML parser should be asked to validate source documents
+                  against their DTD. This applies to the initial source document and any source documents read using the
+                  document() function, unless handled by a user-written URIResolver.
+               </p>
+            </td>
+            
+         </tr>
+         
+         
+         <tr>
+            
+            <td valign="top">
+               <p>VERSION_WARNING</p>
+            </td>
+            
+            <td valign="top">
+               <p>A Boolean. Indicates whether a warning message should be notified (to the ErrorListener) if
+                  running against a stylesheet that specifies <code>version="1.0"</code>. This warning is output by default (because
+                  the W3C specification requires it), but it may be suppressed using this option.
+               </p>
+            </td>
+            
+         </tr>
+         
+         
+         <tr>
+            
+            <td valign="top">
+               <p>NAME_POOL</p>
+            </td>
+            
+            <td valign="top">
+               <p>A instance of class <code>net.sf.saxon.om.NamePool</code>. 
+                  Indicates that the supplied NamePool should be used as the target (run-time) NamePool by all
+                  stylesheets compiled (using <code>newTemplates()</code>) after this call on <code>setAttribute</code>.
+                  Normally a single system-allocated NamePool is used for all stylesheets compiled while the Java VM
+                  remains loaded; this attribute allows user control over the allocation of NamePools.
+                  Note that source trees used as input to a transformation must be built using the same NamePool
+                  that is used when the stylesheet is compiled: this will happen automatically if the input
+                  to a transformation is supplied as a SAXSource or StreamSource but it is under user control if
+                  you build the source tree yourself.
+               </p>
+            </td>
+            
+         </tr>
+         
+      </table>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Saxon's implementation of the JAXP <code>Transformer</code> interface is the class <code>net.sf.saxon.Controller</code>.
+         This provides a number of options beyond those available in the standard JAXP interface, for example the
+         ability to set an output URI resolver for secondary output documents, and a method to set the initial mode
+         before the transformation starts. You can access these methods by casting
+         the <code>Transformer</code> to a <code>Controller</code>. The methods are described in the JavaDoc documentation
+         supplied with the product.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">When using the JAXP interface, you can set serialization properties using a <code>java.util.Properties</code>
+         object. The names of the core XSLT 1.0 properties, such as <code>method</code>, <code>encoding</code>,
+         and <code>indent</code>, are defined in the JAXP class <code>javax.xml.transform.OutputKeys</code>. 
+         Additional properties, including Saxon extensions and XSLT 2.0 extensions, have names defined by
+         constants in the class <code>net.sf.saxon.event.SaxonOutputKeys</code>. The values of the properties
+         are exactly as you would specify them in the <code>xsl:output</code> declaration.
+      </p>
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="embedding.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="performanceanalysis.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

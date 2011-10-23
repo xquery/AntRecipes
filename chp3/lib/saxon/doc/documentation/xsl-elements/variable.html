@@ -1,0 +1,87 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--xsl-elements/variable
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: xsl:variable</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: xsl:variable">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>xsl:variable</h1>
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>xsl:variable</code> element is used to declare a variable and give it a value. If it appears at the
+         top level (immediately within xsl:stylesheet) it declares a global variable, otherwise it declares a local variable
+         that is visible only within the stylesheet element containing the xsl:variable declaration.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The mandatory <code>name</code> attribute defines the name of the variable.
+      </p> 
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The value of the variable may be defined either by an expression within the optional <code>select</code> attribute, or
+         by the contents of the xsl:variable element. In the latter case the result is a temporary tree. A
+         temporary tree can be used like a source document, for example it can be accessed using path expressions
+         and processed using template rules.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">There is an optional attribute, <code>as</code>, to define the type of the variable. The actual supplied
+         value must be an instance of this type; it will not be converted. <i>This has changed in Saxon 7.4: previous
+            releases did a conversion.</i></p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">In standard XSLT, variables once declared cannot be updated. Saxon however provides a 
+         <a class="bodylink" href="javascript:tosubpage('extensions','instructions','assign')">saxon:assign</a>
+         extension element to circumvent this restriction.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The value of a variable can be referenced within an expression using the syntax <code>$name</code>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Example:</p>
+      
+      <div class="codeblock" style="border: solid thin; background-color: #B1CCC7; padding: 2px"><pre><code>&lt;xsl:variable name="title"&gt;A really exciting document"&lt;/xsl:variable&gt;
+&lt;xsl:variable name="backcolor" expr="'#FFFFCC'" /&gt;
+&lt;xsl:template match="/*"&gt;
+    &lt;HTML&gt;&lt;TITLE&lt;xsl:value-of select="$title"/&gt;&lt;/TITLE&gt;
+    &lt;BODY BGCOLOR='{$backcolor}'&gt;
+    ...<br xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    &lt;/BODY&gt;&lt;/HTML&gt;
+&lt;/xsl:template&gt;</code></pre></div>
+      
+      
+      
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="variable.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="when.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

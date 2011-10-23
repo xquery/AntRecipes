@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+<book lang="en">
+  <title>Example Docbook</title>
+
+  <bookinfo>
+    <copyright>
+      <year>2009-2010</year>
+
+      <holder>James Fuller</holder>
+    </copyright>
+
+    <releaseinfo>V 1.0</releaseinfo>
+
+    <productname>DBF</productname>
+
+    <authorgroup>
+      <corpauthor>Webcomposite</corpauthor>
+    </authorgroup>
+
+  </bookinfo>
+
+  <toc/>
+
+  <chapter id="chapter-preface">
+    <title>Example Docbook</title>
+
+    <section id="section-about-this-project">
+      <title>Lorum Ipsum</title>
+
+      <para>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eget mi nibh, ut porta tortor. Nunc nec augue ut ante aliquam egestas in eget justo. Maecenas quam sem, porttitor vitae facilisis sed, tristique non tortor. Phasellus ut mauris sed dolor bibendum vulputate. Duis id massa nisl, in venenatis neque. Phasellus id euismod erat. Sed a dui quis leo suscipit dignissim in sed arcu. Ut nec sagittis lacus. Sed sed lectus tortor. Sed volutpat elit in orci laoreet vitae consectetur tortor pharetra. Nulla sit amet hendrerit purus. In dignissim, lectus condimentum eleifend venenatis, nisl sapien lacinia felis, eget facilisis nisl odio ac odio. Donec at urna in diam tempus tempus. Vestibulum lacinia velit eget neque dapibus convallis. Nulla quis quam eget sem varius pulvinar. Nulla blandit consequat lobortis. Fusce mi risus, malesuada in malesuada a, malesuada in nisi. Ut non nisi leo. Aliquam gravida nulla non nisi varius ut suscipit velit vestibulum. Duis tortor magna, viverra ut molestie at, auctor eget turpis.</para>
+    </section>
+
+  </chapter>
+</book>

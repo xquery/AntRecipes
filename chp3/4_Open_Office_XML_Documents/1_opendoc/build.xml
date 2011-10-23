@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ============================================================= -->
+<!-- ANT RECIPES FOR WEB DEVELOPERS CHP XML Recipe                 -->
+<!-- Author: James Fuller / Webcomposite                           -->
+<!-- Email/WWW: jim.fuller@webcomposite.com /  www.antrecipes.com  -->
+<!-- ============================================================= -->
+<!--    (C) Copyright James Fuller 2010 - All Rights Reserved.     -->
+<!--  use the -debug flag for more information when running ant  //-->
+<project name="xslt_processing" default="run" basedir=".">
+	<description>Demonstrate Opendoc processing within Ant</description>
+	<!-- ===================================================== -->
+	<!-- Macrodef definition                                   -->
+	<!-- ===================================================== -->	
+	<macrodef name="transform-opendoc">
+		<attribute name="document.name"/>
+		<attribute name="document.src"/>
+		<attribute name="result.dir"/>
+		<attribute name="xslt"/>
+		<attribute name="document.dest" default="@{result.dir}/@{document.name}"/>
+		<attribute name="content.src" default="@{result.dir}/unpack/content.xml"/>
+		<attribute name="content.dest" default="@{result.dir}/newcontent.xml"/>
+		<sequential>
+			<unzip src="@{document.src}/@{document.name}" dest="@{result.dir}/unpack"/>
+			<xslt in="@{content.src}" out="@{content.dest}" style="@{xslt}">
+				<outputproperty name="method" value="xml"/>
+				<outputproperty name="indent" value="yes"/>
+			</xslt>
+			<copy file="@{document.src}/@{document.name}" tofile="@{document.dest}" preservelastmodified="true"/>
+			<delete file="@{content.src}"/>
+			<copy file="@{content.dest}" tofile="@{content.src}"/>
+			<delete file="@{content.dest}"/>
+			<touch file="@{content.src}"/>
+			<zip update="true" destfile="@{document.dest}" basedir="@{result.dir}/unpack"/>
+			<delete dir="@{result.dir}/unpack"/>
+		</sequential>
+	</macrodef>
+	<!-- ===================================================== -->
+	<!-- example1                                              -->
+	<!-- ===================================================== -->
+	<target name="example1">
+		<transform-opendoc document.src="data"
+						   document.name="test.odt" 
+						   result.dir="result" 
+						   xslt="conversion.xslt"/>
+	</target>
+	<!-- ===================================================== -->
+	<!-- Run Target                                            -->
+	<!-- ===================================================== -->
+	<target name="run" depends="clean,example1" description="runs all examples"/>
+	<!-- ===================================================== -->
+	<!-- Clean Target                                          -->
+	<!-- ===================================================== -->
+	<target name="clean">
+		<delete dir="result"/>
+		<mkdir dir="result"/>
+	</target>
+</project>

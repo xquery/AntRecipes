@@ -1,0 +1,92 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--changes/v8.2/functions82
+		Generated at 11 February 2005 at 11:55-->
+      <title>Saxonica: XSLT and XQuery Processing: Changes to Functions and Operators</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Changes to Functions and Operators">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../../" + section + "_menu.html";
+                parent.frames['content'].location="../../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>Changes to Functions and Operators</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The XSLT <code>format-number()</code> function now accepts an empty sequence as the first argument, treating it as
+         if the value <code>NaN</code> were supplied. The function now formats decimal values without 
+         first converting them to doubles; this means that the full precision can be retained. The function also implements
+         a change to the W3C specification that has been agreed but not yet published: when a number such as 123 is
+         formatted using the picture "000.###", the result will now contain no trailing decimal point. That is, the output
+         will be "123" rather than "123.".
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>error()</code> function now implements the signatures defined in the current specification. Note however
+         that (a) the URI part of the error QName is currently ignored, and (b) the third argument to the <code>error()</code>
+         function, if specified, has no effect.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>escape-uri()</code> function now accepts an empty sequence: in this case it returns a
+         zero-length string. The function now never escapes a % sign: previously a percent sign was escaped 
+         unless followed by two hex digits.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>lang()</code> function now accepts an optional second argument giving the node whose language
+         is to be tested.
+      </p> 
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>local-name-from-QName()</code> function has been changed to return a value of type
+         <code>xs:NCName</code>.
+      </p> 
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>upper-case()</code> and <code>lower-case()</code> functions have been changed to return
+         a zero-length string when the argument is an empty sequence.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The functions <code>string-to-codepoints()</code>, <code>resolve-QName()</code>, and <code>resolve-uri()</code> functions have
+         been changed to return an empty sequence when
+         the first argument is an empty sequence.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The functions <code>string-length()</code> and <code>normalize-space()</code>, when called with no arguments,
+         now use the string-value of the context item as their input, rather than the atomized value of the context item. This
+         makes no difference unless you are using a schema.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">A number of functions have been changed to report the error codes defined in the W3C specification.</p>
+      
+      
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a href="functions82.html" class="nav" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="../v8.2.html">Up</a>&nbsp;&nbsp;<a class="nav" href="extensions82.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--conformance/schema
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: Conformance with XML Schema 1.0</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Conformance with XML Schema 1.0">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      
+      <h1>Conformance with XML Schema 1.0</h1>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The schema-aware version of the Saxon product (Saxon-SA) 
+         includes an almost complete implementation of XML Schema 1.0. This version of the product
+         is available from <a href="http://www.saxonica.com/" target="_blank" class="bodylink">Saxonica Limited</a>.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Known limitations include the following:</p>
+      
+      
+      <ul xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         
+         
+         <li>
+            <p>Default or fixed values specified for an element whose type is a complex type with complex content are
+               ignored when validating instance documents.
+            </p>
+         </li>
+         
+         
+         <li>
+            <p>Facets are evaluated according to XPath rules rather than XML Schema rules. For example, the pattern
+               syntax allows the extended syntax permitted in the XPath <code>matches()</code> function, and comparisons
+               against facets such as <code>minInclusive</code> and <code>maxInclusive</code> follow the XPath semantics
+               for the <code>lt</code> and <code>gt</code> operators. This may be slightly different when comparing values such as dates,
+               times, and durations.
+            </p>
+         </li>
+         
+         
+         <li>
+            <p>Saxon imposes limits on the values of <code>minOccurs</code> and <code>maxOccurs</code> appearing on any
+               particle in a content model. These limits are designed to prevent out-of-memory errors. By default, the upper limit for 
+               <code>minOccurs</code> is 100 and  the upper limit for <code>maxOccurs</code> is 250. If these limits are exceeded, 
+               a warning is output, and the values specified are replaced with the highest allowed value (which is "unbounded"
+               in the case of <code>maxOccurs</code>). The limits are configurable using the method <code>setOccurrenceLimits()</code>
+               in the class <code>SchemaAwareConfiguration</code>. If they are set too high, however, out-of-memory or stack overflow errors will
+               occur either during schema compilation or during instance validation.
+            </p>
+         </li>
+         
+         
+         <li>
+            <p>Uniqueness and key/keyref constraints are implemented only where the keys are atomic values (that is, they are not
+               implemented for list-valued elements or attributes). Also, where element values participate in such constraints 
+               they must not be interleaved with comments or processing instructions. When evaluating these constraints,
+               equality of values is assessed according to XPath rules rather than XML Schema rules. This means, for example,
+               that a decimal and a double can be equal to each other, which is never the case under the XML Schema rules.
+               (However, the schema processor never treats strings and anyURI values as equal, even though they can now be
+               equal under XPath.)
+            </p>
+         </li>
+         
+         
+         <li>
+            <p>ID and IDREF constraints are checked only for values typed as <code>xs:ID</code>, <code>xs:IDREF</code>, or 
+               <code>xs:IDREFS</code>. They are not checked for types derived from these base types.
+            </p>
+         </li>
+         
+         
+         <li>
+            <p>Any failure to resolve a QName in a schema document (that is, a reference within a schema to
+               a component that has not been defined) is treated as a fatal error. The XML schema specification says
+               this should only be an error if the component is actually required for validation.
+            </p>
+         </li>
+         
+         
+         <li>
+            <p>Saxon implements schema processing only to the extent required for XPath, XSLT, and XQuery processing. This
+               means that PSVI properties beyond those required for the XPath data model are not provided. It also means that
+               validation errors are fatal, they do not result in a PSVI that indicates the validation outcome for individual nodes.
+            </p>
+         </li>
+         
+         
+         <li>
+            <p>Elements and attributes of type <code>xs:ENTITY</code> or <code>xs:ENTITIES</code> are not checked against the list of unparsed entities
+               declared in the document. (This check is not required during XSLT or XQuery validation, but it is required by standalone
+               schema validation.)
+            </p>
+         </li>
+         
+         
+         <li>
+            <p>Saxon uses a different algorithm to evaluate type subsumption from the one given in the specification. The Saxon
+               algorithm (an implementation of the algorithm published by Henry Thompson and Richard Tobin of the University of
+               Edinburgh) is more accurate than the one in the W3C specification in deciding whether one complex type subsumes another.
+            </p>
+         </li>
+         
+         
+         <li>
+            <p>Saxon also uses the Thomson and Tobin algorithm to evaluate the Unique Particle Attribution constraint. In a few 
+               cases this permits constructs that are unambiguous, but are not allowed according to the W3C specification.
+               Specifically, no UPA violation is reported when a complex type contains two element particles that are references to the
+               same element declaration, since the element declaration can be identified unambiguously.
+            </p>
+         </li>
+         
+      </ul>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="schema.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="other.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

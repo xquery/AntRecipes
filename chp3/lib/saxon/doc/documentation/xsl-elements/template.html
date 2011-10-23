@@ -1,0 +1,270 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--xsl-elements/template
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: xsl:template</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: xsl:template">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      <h1>xsl:template</h1>
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>xsl:template</code> element defines a processing rule for source elements or other nodes of a
+         particular type.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The type of node to be processed is identified by a pattern, written in the
+         mandatory <code>match</code> attribute. The most common form of pattern is simply an
+         element name. However, more complex patterns may also be used:
+         The full syntax of patterns is given in <a class="bodylink" href="javascript:topage('patterns', 'intro')">XSLT Pattern Syntax</a></p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The following examples show some of the possibilities:</p>
+      
+      
+      
+      <table xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         
+         <tr>
+            
+            <td width="50%" valign="top">
+               <p><b>Pattern</b></p>
+            </td>
+            
+            <td width="50%" valign="top">
+               <p><b>Meaning</b></p>
+            </td>
+            
+         </tr>
+         
+         <tr>
+            
+            <td width="50%" valign="top">
+               <p>XXX</p>
+            </td>
+            
+            <td width="50%" valign="top">
+               <p>Matches any element whose name (tag) is XXX</p>
+            </td>
+            
+         </tr>
+         
+         <tr>
+            
+            <td width="50%" valign="top">
+               <p><b>*</b></p>
+            </td>
+            
+            <td width="50%" valign="top">
+               <p>Matches any element</p>
+            </td>
+            
+         </tr>
+         
+         <tr>
+            
+            <td width="50%" valign="top">
+               <p>XXX/YYY</p>
+            </td>
+            
+            <td width="50%" valign="top">
+               <p>Matches any YYY element 
+                  whose parent is an XXX
+               </p>
+            </td>
+            
+         </tr>
+         
+         <tr>
+            
+            <td width="50%" valign="top">
+               <p>XXX//YYY</p>
+            </td>
+            
+            <td width="50%" valign="top">
+               <p>Matches any YYY element that has an ancestor named XXX</p>
+            </td>
+            
+         </tr>
+         
+         <tr>
+            
+            <td width="50%" valign="top">
+               <p>/*/XXX</p>
+            </td>
+            
+            <td width="50%" valign="top">
+               <p>Matches any XXX element that is immediately below
+                  the root (document) element
+               </p>
+            </td>
+            
+         </tr>
+         
+         <tr>
+            
+            <td width="50%" valign="top">
+               <p>*[@ID]</p>
+            </td>
+            
+            <td width="50%" valign="top">
+               <p>Matches any element with an ID attribute</p>
+            </td>
+            
+         </tr>
+         
+         <tr>
+            
+            <td width="50%" valign="top">
+               <p>XXX[1]</p>
+            </td>
+            
+            <td width="50%" valign="top">
+               <p>Matches any XXX element that is the first XXX child of
+                  its parent element. (Note that this kind of pattern can be very inefficient: it is better to match all XXX
+                  elements with a single template, and then use xsl:if to distinguish them)
+               </p>
+            </td>
+            
+         </tr>
+         
+         <tr>
+            
+            <td width="50%" valign="top">
+               <p>SECTION[TITLE="Contents"]</p>
+            </td>
+            
+            <td width="50%" valign="top">
+               <p>Matches any SECTION element whose first TITLE child element
+                  has the value "Contents"
+               </p>
+            </td>
+            
+         </tr>
+         
+         <tr>
+            
+            <td width="50%" valign="top">
+               <p>A/TITLE | B/TITLE | C/TITLE</p>
+            </td>
+            
+            <td width="50%" valign="top">
+               <p>Matches any TITLE element whose parent is of type A or B or C</p>
+            </td>
+            
+         </tr>
+         
+         <tr>
+            
+            <td width="50%" valign="top">
+               <p>text()</p>
+            </td>
+            
+            <td width="50%" valign="top">
+               <p>Matches any character data node</p>
+            </td>
+            
+         </tr>
+         
+         <tr>
+            
+            <td width="50%" valign="top">
+               <p>@*</p>
+            </td>
+            
+            <td width="50%" valign="top">
+               <p>Matches any attribute</p>
+            </td>
+            
+         </tr>
+         
+         <tr>
+            
+            <td width="50%" valign="top">
+               <p>/</p>
+            </td>
+            
+            <td width="50%" valign="top">
+               <p>Matches the document node</p>
+            </td>
+            
+         </tr>
+         
+      </table>
+      
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The <code>xsl:template</code> element has an optional <code>mode</code> attribute. If this is present, the template
+         will only be matched when the same mode is used in the invoking <code>xsl:apply-templates</code> element.
+         The value can be a list of mode names, indicating that the template matches more than one mode; this list
+         can include the token <code>#default</code> to indicate that the template matches the default (unnamed)
+         mode. Alternatively the <code>mode</code> attribute can be set to <code>#all</code>, to indicate that the
+         template matches all modes. (This can be useful in conjunction with <code>xsl:next-match</code>: one
+         can write a template rule that matches in all modes, and then call <code>xsl:next-match</code> to continue
+         processing in the original mode.)
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">There is also an optional <code>name</code> attribute. If this is present, the template may be invoked
+         directly using <code>xsl:call-template</code>. The match attribute then becomes optional.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">If there are several <code>xsl:template</code> elements that all match the same
+         node, the one that is chosen is determined by the optional <code>priority</code> attribute: the template
+         with highest priority wins. The priority is written as a floating-point number; the default priority
+         is 1. If two matching templates have the same priority, the one that appears last in the stylesheet
+         is used.
+      </p>
+      
+      
+      <p class="subhead">Examples:</p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The following examples illustrate different kinds of template and match pattern.</p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><b>Example 1</b>: a simple XSLT template for a particular element. This example causes
+         all &lt;ptitle&gt; elements in the source document to be output as HTML &lt;h2&gt;
+         elements.
+      </p>
+      
+      
+      <div class="codeblock" style="border: solid thin; background-color: #B1CCC7; padding: 2px"><pre><code>&lt;xsl:template match="ptitle"&gt;
+    &lt;h2&gt;
+        &lt;xsl:apply-templates/&gt;
+    &lt;/h2&gt;
+&lt;/xsl:template&gt;</code></pre></div>
+      
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="template.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="text.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

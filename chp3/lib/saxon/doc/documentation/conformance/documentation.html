@@ -1,0 +1,145 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <!--conformance/documentation
+		Generated at 2005-02-11T11:55:21.247Z-->
+      <title>Saxonica: XSLT and XQuery Processing: Conformance Documentation</title>
+      <meta name="coverage" content="Worldwide">
+      <meta name="copyright" content="Copyright Saxonica Ltd">
+      <meta name="title" content="Saxonica: XSLT and XQuery Processing: Conformance Documentation">
+      <meta name="robots" content="noindex,nofollow">
+      <link rel="stylesheet" href="../saxondocs.css" type="text/css"><script type="text/javascript" language="JavaScript">
+            function topage(section, page) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + ".html";
+            }
+            function tosubpage(section, page, subpage) {
+                parent.frames['menu'].location="../" + section + "_menu.html";
+                parent.frames['content'].location="../" + section + "/" + page + "/" + subpage + ".html";
+            }
+      </script></head>
+   <body class="main">
+      
+      <h1>Conformance Documentation</h1>
+      
+      
+      <div class="boxed" style="border: solid thin; background-color: #B1CCC7; padding: 2px">This information will be updated for XSLT 2.0 and XQuery 1.0 once the conformance rules
+         are fully stable.
+      </div>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The XSLT specification says that the documentation for an implementation should specify
+         which URI schemes
+         are supported. Saxon supports the URI scheme implemented by the Java <code>java.net.URL</code> class, with
+         the optional addition of a fragment identifier, as described below. 
+         Additionally,
+         Saxon allows the user to nominate a URIResolver class which can be used to implement any URI scheme
+         the user wants.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The XSLT specification says that the documentation for an implementation should specify for which
+         media types fragment identifiers are supported. The standard URI resolver supports access to 
+         XML documents 
+         only. A simple fragment identifier is allowed, consisting of the value of an ID attribute in the
+         document. The effect is to return the subdocument rooted at the element with this identifier if there
+         is one, or an empty document otherwise. For example, the URI mydoc.xml#aaa locates the XML document
+         mydoc.xml, and if it contains an element &lt;eeee id="aaa"&gt;, where id is an attribute of type ID, then
+         the document retrieved is an XML document with this &lt;eeee&gt; element as its outermost (document) 
+         element.
+      </p>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The values of the vendor-specific system properties accessible through the <code>system-property()</code>
+         function in XSLT are:
+      </p>
+      
+      
+      <table xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         
+         <thead>
+            
+            <tr>
+               <td>
+                  <p>Property</p>
+               </td>
+               <td>
+                  <p>Value</p>
+               </td>
+            </tr>
+            
+         </thead>
+         
+         <tbody>
+            
+            <tr>
+               <td width="120">
+                  <p>xsl:version</p>
+               </td>
+               <td>
+                  <p>2.0</p>
+               </td>
+            </tr>
+            
+            <tr>
+               <td>
+                  <p>xsl:vendor</p>
+               </td>
+               <td>
+                  <p>SAXON n.n.n from Saxonica</p>
+               </td>
+            </tr>
+            
+            <tr>
+               <td>
+                  <p>xsl:vendor-url</p>
+               </td>
+               <td>
+                  <p>http://saxon.sf.net/</p>
+               </td>
+            </tr>
+            
+            <tr>
+               <td>
+                  <p>xsl:product-name</p>
+               </td>
+               <td>
+                  <p>SAXON</p>
+               </td>
+            </tr>
+            
+            <tr>
+               <td>
+                  <p>xsl:product-version</p>
+               </td>
+               <td>
+                  <p>n.n.n</p>
+               </td>
+            </tr>
+            
+         </tbody>
+         
+      </table>
+      
+      
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">All these values are subject to change in future releases. Users wishing to test whether the
+         processor is Saxon are advised to test whether the <code>xsl:product</code> system property has the value
+         "SAXON".
+      </p>
+      
+      
+      <table width="100%">
+         <tr>
+            <td>
+               <p align="left"><a class="nav" href="documentation.html" target="_blank">Expand</a></p>
+            </td>
+            <td>
+               <p align="right"><a class="nav" href="extensions.html">Next</a></p>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>
